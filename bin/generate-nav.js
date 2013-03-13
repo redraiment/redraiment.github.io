@@ -107,7 +107,6 @@ var getFileTitle = function(file) {
 };
 
 var i18n_zh_CN = {
-    'article': '笔记',
     'development': '软件开发',
     'programming': '程序设计方法',
     'code': '代码分享',
