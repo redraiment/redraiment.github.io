@@ -45,6 +45,10 @@
     text-indent: 2em;
 }
 
+.article-content blockquote {
+    margin-left: 2em;
+}
+
 .article-content a, .article-content a:visited, span.tab-href {
     color: #3070A0;
     text-decoration: none;

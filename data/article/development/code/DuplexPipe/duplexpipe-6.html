@@ -1,0 +1,32 @@
+<div title="DuplexPipe二三事（六）——没有第七" class="article-content">
+<div class="sign">2009-09-05 12:42</div>
+<h1>我的设想</h1>
+<p>在着手编写 DuplexPipe 之前，我规划过我的需求：我想要一个最通用的通信工具，换言之就是能让所有具有输入/输出的程序都可以相互通信。DuplexPipe 本身远没达到这个设想，至少还得具备以下几中模式：</p>
+<pre>-f file       # 通过读写文件获得数据
+-s            # 从 stdio 中获得数据
+-e exefile    # 从本地程序的输入输出中获得数据
+-r url        # 这是一个附加功能。如果你玩过几天木马，你可能也渴望将它变成一个强大的后门！通过这个选项可以从URL中获得IP地址和端口，主动进行连接。</pre>
+<h1>没有第七</h1>
+<p>但我会很遗憾的宣布，上述功能不会被加入 DuplexPipe 中。这也意味着介绍 DuplexPipe 到此为止，不会再有《DuplexPipe二三事（七）》，关于 DuplexPipe 维护的动态则会更新在项目主页<a href="http://code.google.com/p/duplexpipe/" target="_blank"> http://code.google.com/p/duplexpipe/ </a>中。</p>
+<p>你可能听说过：“一篇文章的完成不是再也不能往里面加内容，而是再也没法删内容时。”写程序也是如此。我们来看上面提到的四个功能：</p>
+<pre>-f file       # 这条可以最先被排除，因为主流的系统都支持输入输出重定向（'&lt;'、'&gt;'和'&gt;&gt;'）。
+-s            # -s 和 -e 两种模式 nc 都支持！写程序也很机会重复制造车轮。
+-e exefile    # 理由同上
+-r url        # 这个功能虽然诱人，但很明显和主要功能无关，没必要保留。</pre>
+<p>因此，前三个功能都可以通过和 nc 配合来完成（瑞士军刀 nc 的使用方法请参看《<span class="tab-href" title="duplexpipe-2.html">DuplexPipe二三事（二）</span>》）！而且现在 Http Client 遍地开花（例如 wget 和 curl），要完成第四个功能也很简单。比如我用来搞定我们校园内部计算机的 Shell 脚本：</p>
+<pre><code data-language="shell">#!/bin/sh
+
+# 外网计算机的IP文件，格式是ip port
+IP_FILE='http://www.xxx.com/ip.txt'
+
+while true
+do
+    wget -O ip.txt $IP_FILE
+    read ip port &lt; ip.txt
+    java -jar DuplexPipe-0.1_0.jar -v -c $ip $port -c 10.21.*.* 3389
+    # 如果失败，每分钟尝试连接一次
+    sleep 60
+done</code></pre>
+<h1>曲终</h1>
+<p>善用身边的小工具，这是我推崇的“<span class="tab-href" title="/data/article/thinking/make-the-best-use-of-everything.html">物尽其（奇）用</span>”！也体现了 UNIX 的哲学：只提供机制，不提供策略。通过善用他人的成果，可以降低我们编码的复杂度，节省下更多的时间做更有意义的事情！</p>
+</div>
