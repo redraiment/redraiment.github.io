@@ -1,0 +1,167 @@
+<div title="BrainFuck解释器（C语言实现）" class="article-content">
+<div class="sign">2012-04-20 22:25</div>
+<p>码农的业余休闲活动就是去学习一门冷门的语言或者研究一项非主流的技术。BrainFuck 是一门小巧的编程语言，顾名思义，阅读这门语言的代码就像在强奸你的大脑一样。事实证明开发它的解释器比读懂它的 Hello World 要快。</p>
+<p>BrainFuck只有八条指令：</p>
+<table>
+  <thead>
+	<tr>
+	  <th>指令</th>
+	  <th>含义</th>
+	  <th>等价的C代码</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td>&gt;</td>
+	  <td>指针加一</td>
+	  <td>++ptr;</td>
+	</tr>
+	<tr>
+	  <td>&lt;</td>
+	  <td>指针减一</td>
+	  <td>--ptr;</td>
+	</tr>
+	<tr>
+	  <td>+</td>
+	  <td>指针指向的字节的值加一</td>
+	  <td>++*ptr;</td>
+	</tr>
+	<tr>
+	  <td>-</td>
+	  <td>指针指向的字节的值减一</td>
+	  <td>--*ptr;</td>
+	</tr>
+	<tr>
+	  <td>.</td>
+	  <td>输出指针指向的单元内容（ASCII码）</td>
+	  <td>putchar(*ptr);</td>
+	</tr>
+	<tr>
+	  <td>,</td>
+	  <td>输入内容到指针指向的单元（ASCII码）</td>
+	  <td>*ptr = getchar();</td>
+	</tr>
+	<tr>
+	  <td>[</td>
+	  <td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
+	  <td>while (*ptr) {</td>
+	</tr>
+	<tr>
+	  <td>]</td>
+	  <td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
+	  <td>}</td>
+	</tr>
+  </tbody>
+</table>
+<p>解释器代码如下：</p>
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+
+#define TOKENS &quot;&gt;&lt;+-.,[]&quot;
+#define CODE_SEGMENT_SIZE 30000
+#define STACK_SEGMENT_SIZE 1000
+#define DATA_SEGMENT_SIZE 30000
+
+typedef void (*Callback)(void);
+
+struct {
+  char cs[CODE_SEGMENT_SIZE];   /* Code Segment */
+  long ip;                      /* Instruction Pointer */
+  char ss[STACK_SEGMENT_SIZE];  /* Stack Segment */
+  long sp;                      /* Stack Pointer */
+  char ds[DATA_SEGMENT_SIZE];   /* Data Segment */
+  long bp;                      /* Base Pointer */
+  Callback fn[128];
+} vm;
+
+void vm_forward() {
+  vm.bp = (vm.bp + 1) % DATA_SEGMENT_SIZE;
+}
+
+void vm_backward() {
+  vm.bp = (vm.bp + DATA_SEGMENT_SIZE - 1) % DATA_SEGMENT_SIZE;
+}
+
+void vm_increment() {
+  vm.ds[vm.bp]++;
+}
+
+void vm_decrement() {
+  vm.ds[vm.bp]--;
+}
+
+void vm_input() {
+  vm.ds[vm.bp] = getchar();
+}
+
+void vm_output() {
+  putchar(vm.ds[vm.bp]);
+}
+
+void vm_while_entry() {
+  if (vm.ds[vm.bp]) {
+    vm.ss[vm.sp] = vm.ip - 1;
+    vm.sp++;
+  } else {
+    int c = 1;
+    for (vm.ip++; vm.cs[vm.ip] &amp;&amp; c; vm.ip++) {
+      if (vm.cs[vm.ip] == '[') {
+        c++;
+      } else if (vm.cs[vm.ip] == ']') {
+        c--;
+      }
+    }
+  }
+}
+
+void vm_while_exit() {
+  if (vm.ds[vm.bp]) {
+    vm.sp--;
+    vm.ip = vm.ss[vm.sp];
+  }
+}
+
+void setup() {
+  int c;
+  int i;
+  memset(&amp;vm, 0, sizeof(vm));
+  vm.fn['&gt;'] = vm_forward;
+  vm.fn['&lt;'] = vm_backward;
+  vm.fn['+'] = vm_increment;
+  vm.fn['-'] = vm_decrement;
+  vm.fn['.'] = vm_output;
+  vm.fn[','] = vm_input;
+  vm.fn['['] = vm_while_entry;
+  vm.fn[']'] = vm_while_exit;
+  for (i = 0; (c = getchar()) != EOF;) {
+    if (strchr(TOKENS, c)) {
+      vm.cs[i] = c;
+      i++;
+    }
+  }
+}
+
+void run() {
+  while (vm.cs[vm.ip]) {
+    vm.fn[vm.cs[vm.ip]]();
+    vm.ip++;
+  }
+}
+
+int main(int argc, char* argv[]) {
+  if (argc &gt; 1) {
+    freopen(argv[1], &quot;r&quot;, stdin);
+  }
+  setup();
+  run();
+  return 0;
+}
+</code></pre>
+<p>执行Brainfuck版Hello world效果如下：</p>
+<pre><code data-language="shell">brainfuc$ cat helloword.bf
+++++++++++[&gt;+++++++&gt;++++++++++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;++.&gt;+.+++++++..+++.&gt;++.&lt;&lt;+++++++++++++++.&gt;.+++.------.--------.&gt;+.&gt;.
+brainfuc$ ./bf helloword.bf
+Hello World!
+brainfuc$</code></pre>
+</div>

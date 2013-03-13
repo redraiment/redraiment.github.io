@@ -1,0 +1,90 @@
+.article-content {
+    padding: 20px;
+    font-family: Georgia,​ serif;
+    font-size: 15px;
+    color: #555555;
+}
+
+.article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 {
+    margin-top: 12px;
+    color: #008000;
+}
+
+.article-content h1 {
+    font-size: xx-large;
+}
+
+.article-content h2 {
+    font-size: x-large;
+}
+
+.article-content h3 {
+    font-size: large;
+}
+
+.article-content p, .article-content pre, .article-content ol, .article-content ul, .article-content li, .article-content dt {
+    margin-top: 15px;
+}
+
+.article-content ul li {
+    list-style-position: inside;
+    list-style-type: disc;
+}
+
+.article-content ol li {
+    list-style-position: inside;
+    list-style-type: decimal;
+}
+
+.article-content dt {
+    text-indent: 1em;
+    font-weight: bold;
+}
+
+.article-content dd {
+    text-indent: 2em;
+}
+
+.article-content a, .article-content a:visited, span.tab-href {
+    color: #3070A0;
+    text-decoration: none;
+}
+
+.article-content a:hover, span.tab-href:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.article-content table {
+    border-collapse: collapse;
+    empty-cells: show;
+}
+
+.article-content th, .article-content td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.article-content div.sign {
+    text-align: right;
+}
+
+.icon-share-sina {
+    background-image: url(../image/icon-share-sina.gif);
+    background-repeat: no-repeat;
+}
+
+.icon-share-qq-t {
+    background-image: url(../image/icon-share-qq-t.png);
+    background-repeat: no-repeat;
+}
+
+.icon-copy-link {
+    background-image: url(../image/icon-copy-link.png);
+    background-repeat: no-repeat;
+}
+
+.icon-navigator {
+    background-image: url(../image/icon-navigator.png);
+    background-repeat: no-repeat;
+}

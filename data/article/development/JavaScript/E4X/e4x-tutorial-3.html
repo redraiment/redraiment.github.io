@@ -1,0 +1,24 @@
+<div title="E4X教程[3] - 后代与筛选器" class="article-content">
+<div class="sign">2011-06-15 12:21</div>
+<h1>访问后代节点</h1>
+<p>很多时候，你感兴趣的节点往往不是 XML 根节点的子节点，而是嵌套在多层下的后代节点。你可以使用 .. 操作符访问任意深度的节点，或者使用 descendants 性质。例如：</p>
+<pre><code data-language="javascript">var element = &lt;pets&gt;
+                &lt;dogs&gt;
+                  &lt;fido color=&quot;red&quot;/&gt;
+		  &lt;spike color=&quot;blue&quot;/&gt;
+		&lt;/dogs&gt;
+              &lt;/pets&gt;;
+element..fido.@color = &quot;green&quot;;
+element..spike.@color = &quot;purple&quot;;</code></pre>
+<p>两只宠物狗的颜色都做了改变。</p>
+<p>点（.）操作符的所有规则都适用于 .. 操作符。那就是说，如果有多个请求的类型，就会返回一个 XML 后代的列表。星号（*）选择器会返回 XML 列表的所有后代。</p>
+<h1>过滤器</h1>
+<p>在很多情况下，尤其是用 * 选择器时，你并不想要处理 . 或 .. 操作符返回的所有节点。为了只处理其中特定的子集，可以将筛选条件放到 . 操作符后面的圆括号里。</p>
+<pre><code data-language="javascript">var element = &lt;dogs&gt;
+                &lt;fido color=&quot;brown&quot;/&gt;
+                &lt;spike color=&quot;black&quot;/&gt;
+                &lt;killer color=&quot;brown&quot;/&gt;
+              &lt;/dogs&gt;;
+var list = element.*.(@color == &quot;brown&quot;);</code></pre>
+<p>本来，element.* 返回一个包含三只狗的列表。但其中只有 fido 和 killer 的颜色是褐色的。因此，该过来条件创建了一个只包含 fido 和 killer 的列表。</p>
+</div>

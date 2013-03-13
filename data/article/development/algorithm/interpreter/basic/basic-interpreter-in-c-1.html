@@ -1,0 +1,253 @@
+<div title="用C语言写解释器[1] - 我们的目标" class="article-content">
+<div class="sign">2009-10-18 16:24</div>
+<h1>声明</h1>
+<p>为提高教学质量，我所在的学院正在筹划编写C语言教材。《用C语言写解释器》系列文章经整理后将收入书中“综合实验”一章。因此该系列的文章主要阅读对象定为刚学完C语言的学生（不要求有数据结构等其他知识），所以行文比较罗嗦，请勿见怪。本人水平有限，如有描述不恰当或错误之处请不吝赐教！特此声明。</p>
+<h1>起因</h1>
+<p>最近，我们学院老师联系我，希望我能提供一段用 C 语言编写的 BASIC 解释器，用于 C 语言课程设计教学。我前段时间也正好着迷于“语言”本身，本就有打算写一个解释器，这下正中我下怀，于是欣然接受。</p>
+<p>以前在图书馆看过梁肇新的《编程高手箴言》，第四章“编程语言的运行机理”中就包含了一段 C 语言编写的 BASIC 解释器代码，但代码好像并不完整（我翻了好几遍，都没发现函数 get_token 的实现代码）；再者，这次的代码还有其他用处，不宜牵涉版权问题；最后的原因是我有“想自己编码”的冲动 ^_^。综上所述，我要从零开始用 C 语言来编写一个 BASIC 解释器。</p>
+<h1>前置知识</h1>
+<p>1. 要编写解释器，首先就要明白什么是解释器（详细的解释请参看维基百科：<a href="http://zh.wikipedia.org/zh-cn/解释器" target="_blank">http://zh.wikipedia.org/zh-cn/解释器</a>）。盗用《编程高手箴言》里的话：解释程序就是一个字符串的解释器（P165 解释语言的原理）。所以，如果仅仅是为我个人编写的话，我宁可会借助 lex &amp; yacc 甚至 perl，而不会纯粹用 C 语言来写。</p>
+<p>2. 在起因中已经提过，这个程序会在学弟学妹们学完 C 语言后作为综合实验。因此需要你熟悉 C 语言的语法、单链表添加/删除节点等操作以及栈的概念（这些内容大部分都能在 C 语言的教材中找到），一些相对冷僻的技术（例如 setjmp/longjmp）则不会出现在程序中。</p>
+<h1>关于语言</h1>
+<p>我在《<a target="_blank" href="http://blog.csdn.net/redraiment/archive/2009/07/25/4378548.aspx">编程和语言之我见</a>》一文中提过，编程是一个很宽泛的概念。从某种意义上来说所有的软件都是一种特定的语言，但根据程序本身的灵活性可以分为“硬编码”、“可配置”、“可控制”和“可编程”四类（详见《<a target="_blank" href="http://blog.csdn.net/redraiment/archive/2009/07/25/4379151.aspx">四类程序</a>》）。如果一个程序的灵活性达到了“可编程”，它的配置文件就可以被看作一种“编程语言”，而该程序本身也就是一个“解释器”。</p>
+<p>要做到“可编程”，程序至少应该具备“输入/输出”、“表达式运算”、“内存管理”和“按条件跳转”四个功能（详见《<a target="_blank" href="http://blog.csdn.net/redraiment/archive/2009/07/03/4318815.aspx">用DOS批处理来做数字图像处理</a>》）。这正好对应了冯·诺依曼计算机的结构：以运算器和控制器为中心，输入/输出设备与存储器之间的数据传输都要经过运算器。下面详细介绍各个部分。</p>
+<h1>我们的目标</h1>
+<p>我们要编写解释器，自然也逃不出上面的条条例例。语法就参考 BASIC，但因为是设计我们自己的语言，当然可以根据个人兴趣进行“添油加醋”（比如表达式里提供神往已久的阶乘运算 ^_^）。下面是一段 BASIC 的示例代码（example.bas）：</p>
+<pre><code data-lanuage="shell">0009 N = 0
+0010 WHILE N &lt; 1 OR N &gt; 20
+0011   PRINT &quot;请输入一个1-20之间的数&quot;
+0012   INPUT N
+0013 WEND
+0020 FOR I = 1 TO N
+0030   L = &quot;*&quot;
+0040   FOR J = 1 TO N - I
+0050     L = &quot; &quot; + L
+0060   NEXT
+0070   FOR J = 2 TO 2 * I - 1 STEP 2
+0080     L = L + &quot;**&quot;
+0090   NEXT
+0100   PRINT L
+0110 NEXT
+0120 I = N - 1
+0130 L = &quot;&quot;
+0140 FOR J = 1 TO N - I
+0150   L = L + &quot; &quot;
+0160 NEXT
+0170 FOR J = 1 TO ((2*I) - 1)
+0180   L = L + &quot;*&quot;
+0190 NEXT
+0200 PRINT L
+0210 I = I - 1
+0220 IF I &gt; 0 THEN
+0230   GOTO 130
+0240 ELSE
+0250   PRINT &quot;By redraiment&quot;
+0260 END IF</code></pre>
+<p>BASIC 语法要求行首提供一个 1-&gt;9999 之间的数字作为该行的行号（当前行的行号不小于上一行的行号），供 GOTO 语句跳转时调用。BASIC 的语法比 C 严格，这不仅可以降低代码的复杂性还使语言本身更易学。上面的代码差不多涵盖了我们需要实现的所有功能，如果能被正确解析，你将看到下面的运行效果：</p>
+<img src="/resources/figure/c-interpreter-basic-0-1.png" />
+<p>下面来依次讨论要实现的功能。</p>
+<h2>输入/输出（IO）</h2>
+<p>通过输入/输出来和外部程序或人交互，这是脱离“硬编码”的最基本要求。输入/输出也是很抽象的概念，它并不局限于标准输入输出端（键盘、显示器等），也可以通过文件、互联网等方式获得数据（因此 C 语言中除了 scanf、printf 等，其实 #include 指令也算是一种 IO 操作）。我们这个程序并不强调 IO，因此只要求实现 INPUT 和 PRINT 两条指令，分别用于从键盘输入数据和打印到屏幕。指令的格式如下：</p>
+<dl>
+  <dt>INPUT var[, var ...]</dt>
+  <dd>其中 var 代表变量名(下同)，变量之间用逗号隔开。</dd>
+  <dd>作用：从键盘获得一个或多个值，并赋值到相应的变量。同时输入多个变量时，输入的每个数之间用空格、回车或制表符隔开。</dd>
+  <dd>示例：INPUT A, B, C</dd>
+  <dt>PRINT expression[, expression ...]</dt>
+  <dd>其中 expression 为表达式（下同），表达式之间用逗号隔开。</dd>
+  <dd>作用：对表达式求值，将结果输出到屏幕并换行。如果有多个表达式，表达式之间用制表符（/t）隔开。</dd>
+  <dd>示例：PRINT I * 3 + 1, (A + B)*(C + D)</dd>
+</dl>
+<h2>表达式运算</h2>
+<p>在《DOS》中我称呼它为“算术运算”。但对于计算机来说，“算术运算”不仅包含诸如“四则运算”等算术运算，还包括“关系运算”和“逻辑运算”。为了避免歧义，在此就改称它为“表达式运算”。“表达式运算”是整个程序的核心，地位相当于计算机的运算器。在我们的程序中，需要实现以下几种运算符：</p>
+<table>
+  <tbody>
+    <tr>
+      <th>符号</th>
+      <th>名称</th>
+      <th>优先级</th>
+      <th>结合性</th>
+    </tr>
+    <tr>
+      <td>(</td>
+      <td>左括号</td>
+      <td>17</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>)</td>
+      <td>右边</td>
+      <td>17</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>加</td>
+      <td>12</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>减</td>
+      <td>12</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>*</td>
+      <td>乘</td>
+      <td>13</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>/</td>
+      <td>除</td>
+      <td>13</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>%</td>
+      <td>取模</td>
+      <td>13</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>求幂</td>
+      <td>14</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>正号</td>
+      <td>16</td>
+      <td>right2left</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>负号</td>
+      <td>16</td>
+      <td>right2left</td>
+    </tr>
+    <tr>
+      <td>!</td>
+      <td>阶乘</td>
+      <td>16</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>大于</td>
+      <td>10</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>&lt;</td>
+      <td>小于</td>
+      <td>10</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>=</td>
+      <td>等于</td>
+      <td>9</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>&lt;&gt;</td>
+      <td>不等于</td>
+      <td>9</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>&lt;=</td>
+      <td>不大于</td>
+      <td>10</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>&gt;=</td>
+      <td>不小于</td>
+      <td>10</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>AND</td>
+      <td>逻辑与</td>
+      <td>5</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>OR</td>
+      <td>逻辑或</td>
+      <td>4</td>
+      <td>left2right</td>
+    </tr>
+    <tr>
+      <td>NOT</td>
+      <td>逻辑非</td>
+      <td>15</td>
+      <td>right2left</td>
+    </tr>
+  </tbody>
+</table>
+<h2>内存管理</h2>
+<p>在我们这个迷你型的解释器中，可以不用考虑内存空间动态分配的问题，只要实现简单的变量管理。我们默认提供 A-Z 26个可用的弱类型变量（可以随意赋值为整数、浮点数或字符串）。变量要求先赋值才能使用，否则就会提示变量不可用（因此示例代码中第一行就是给 N 赋值为 0）。赋值语句的格式为</p>
+<dl>
+  <dt>[LET] var = expression</dt>
+  <dd>其中 LET 是可选的关键字。BASIC 中不允许出现 var1 = var2 = expression 这样的赋值语句，因为在表达式中“=”被翻译为“等于”，所以赋值符合没有出现在上面的表格中。</dd>
+  <dd>作用：计算表达式的值，并将结果赋值给变量 var。</dd>
+  <dd>示例：I = (123 + 456) * 0.09</dd>
+</dl>
+<h2>按条件跳转</h2>
+<p>如果设计一门最简洁的语言，那它的控制语句就只需提供像汇编中的 JMP、JNZ 等根据条件跳转的语句即可，通过它们的组合即可模拟出 IF、WHILE、FOR、GOTO 等控制语句。但 BASIC 作为一门高级语言，需要提供更高层、更抽象的语句。我们将会实现以下四条语句：</p>
+<blockquote>
+	<pre>1)
+GOTO expression
+　　其中 expression 是一个数值表达式，计算结果必须为可用的行号。因为它是一个表达式，通过动态计算就能模拟子程序调用。
+　　作用：无条件跳转到指定行。
+　　例如：GOTO 120+10
+2)
+IF expression THEN
+  block1
+[ELSE
+  block2]
+END IF
+　　其中 block 是语句块（下同），包含一条或多条可执行语句。ELSE 为可选部分。
+　　作用：分支结构。但表达式值为真（数字不等于0或者字符串不为空）时执行语句块1；否则，有 ELSE 语句块时执行 ELSE 语句块。
+　　例如：
+        IF 1=1 THEN
+           PRINT &quot;TRUE&quot;
+        ELSE
+           PRINT &quot;FALSE&quot;
+        END IF
+3)
+FOR var = expression TO expression [STEP expression]
+  block
+NEXT
+　　所有表达式均为数值表达式。STEP 为可选部分，为迭代器的步长。步长表达式的值不允许为 0。
+　　作用：循环迭代结构
+　　例如：
+        FOR I = 1 TO 10 STEP 3
+          PRINT I
+        NEXT
+4)
+WHILE expression
+  block
+WEND
+　　作用：迭代执行语句块，直到表达式的值为假。
+　　例如：
+        WHILE N &lt; 10
+          N = N + 1
+        WEND
+</pre>
+</blockquote>
+<h2>更多细节</h2>
+<ol>
+<li>BASIC 的源代码不区分大小写；</li>
+<li>本程序在实现中没有处理字符转义，因此无法无法输出双引号。在介绍完所有源码后，如果你有兴趣可以尝试自行完善；</li>
+<li>本程序同样没有考虑注释（REM 关键字）。其实这很简单，但这个问题同样留给你来处理 ^_^；</li>
+<li>也许你也会有兴趣添加 GOSUB 和 RETURN 关键字，让子程序功能从 GOTO 中解放出来。</li>
+</ol>
+<h1>总结</h1>
+<p>这一篇主要介绍了我们编写的解释器要实现的功能，接下来会有一系列文章来逐步详细介绍解释器的实现。在下一篇中会首先介绍解释器的核心部分——表达式求值。</p>
+</div>
