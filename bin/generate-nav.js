@@ -86,6 +86,13 @@ var htmlFileFilter = new java.io.FileFilter() {
     }
 };
 
+var expandedFileFilter = new java.io.FileFilter() {
+    accept: function(file) {
+        return file.isFile()
+            && file.getName().equalsIgnoreCase("expanded");
+    }
+};
+
 var getFileFirstLine = function(file) {
     var line = '';
     var fin = new java.util.Scanner(file);
@@ -122,7 +129,7 @@ var go_folder = function(folder) {
     var o = {
         id: id,
         text: i18n_zh_CN[id] || id,
-        expanded: true,
+        expanded: folder.listFiles(expandedFileFilter).length > 0,
         children: []
     };
 
