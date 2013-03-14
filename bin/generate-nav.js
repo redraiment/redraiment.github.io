@@ -114,7 +114,7 @@ var getFileTitle = function(file) {
 };
 
 var i18n_zh_CN = {
-    'development': '软件开发',
+    'software': '软件人生',
     'programming': '程序设计方法',
     'code': '代码分享',
     'basic': 'BASIC解释器',

@@ -1,0 +1,58 @@
+<div title="awk学习笔记" class="article-content">
+<div class="sign">2010-01-05 20:20</div>
+<h1>看完sed部分之后</h1>
+<p>花了几个晚上看完后面 awk 部分。awk 不同于 sed，它是一门模式匹配的程序设计语言。学习 sed 和 awk 时，正则表达式可能是一大障碍。但事有凑巧，去年我暑假我一个人出去散心时，顺带看完了《<a href="http://goo.gl/LBAT" target="_blank">精通正则表达式（第三版）</a>》，另外我还掌握一些 Bash、Perl 等脚步编程的经验，因此很快就能适应 awk 的风格。</p>
+<p>写到此处，我突然联系到《倚天屠龙记》中的张无忌，他经常说“我有九阳神功护体，学什么武功都很快”；那我们程序员也可以牛气地喊“我掌握了正则表达式，UNIX下工具上手都很快”，哈哈。</p>
+<h1>环境的问题</h1>
+<p>比起 sed，使用 awk 时让我有点小意外，哈哈。</p>
+<ol>
+<li>Debian 5.0 默认安装的 awk 是 mawk。我一开始以为是 GNU awk，直到测试“gensub”函数（gawk特有）时才发现不对，于是通过 CD 盘安装了 GNU awk。到目前为止，gawk 的最新版本是 3.1.7，但 Debian 5.0 的软件包中提供的是 v3.1.5。而 fedora 默认安装的是 gawk v3.1.5，另外我在 Windows 下也使用 gawk.exe v3.1.5。</li>
+<li>在上文《<span class="tab-href" title="sed-one-line.html">sed单行脚本学习笔记</span>》中已经提到用模式“[ -~]”来匹配任意可打印字符，这个特性在 mawk 中也可使用。理论上在 GNU gawk 中不能使用，但在 Windows 平台下的 gawk 却也具备此特性。为保持脚本的可移植性，应该用“[:print:]”来代替。</li>
+<li>gawk 支持扩展的正则表达式，在文档中指出操作符“/B”可以匹配单词中字符与字符之间的空白位置。例如模式“//Bour/”可以匹配“course”，不能匹配“our”。但这一特性在 gawk v3.1.5 中实现有问题。</li>
+</ol>
+<p>比如文件data内容如下：</p>
+<blockquote><pre>ABCDE
+ABCD
+ABC
+AB
+A</pre></blockquote>
+<p>用 GNU Awk 3.1.5 执行 awk '{gsub(//B/,&quot;-&quot;)}1' data，得到如下结果</p>
+<blockquote><pre>A-B-C-DE
+A-B-CD
+A-BC
+A-B
+A</pre></blockquote>
+<p>即单词长度大于二时，在 gsub 中“/B”不能匹配最后一个空白位置。这个问题在 gawk v3.1.6 版本被修复。v3.1.6 的执行结果如下：</p>
+<blockquote><pre>A-B-C-D-E
+A-B-C-D
+A-B-C
+A-B
+A</pre></blockquote>
+<p>这到底算不算 bug，也只有 gawk 的维护者说了算，哈哈。</p>
+<h1>awk单行脚本</h1>
+<p>较少的设施总能给人带来更多的快乐。awk 作为一门编程语言，它的能力比原作者预期的更多，一些 sed 很费劲要完成的事情它能轻易完成。这造成的结果是，在大多数情况下用 awk 完成任务后，不会像 sed 一样让你兴奋不已，因为杀鸡用了牛刀，显得理所当然。</p>
+<p>另一方面，一门抽象的语言不仅拥有丰富的表达能力，也有更具可读性的语句，使得语句不会过分精练。同样是输出，awk 中是“print”、sed 中只需一个字符“p”。</p>
+<p>综上原因，用 awk 来编写只要 65 个字符的单行脚本显得勉强，下面罗列《<a href="http://ximix.org/translation/awk1line_zh-CN.txt" target="_blank">AWK单行脚本快速参考</a>》中几段精练的脚本。</p>
+<pre><code data-language="shell"># 删除所有空白行 （类似于 &quot;grep '.' &quot;）
+awk NF</code></pre>
+<p>这段脚本使用了 awk 的隐含动作：“{print $0}”。awk 中只要当值为 0 或空（&quot;&quot;）时才为“False”，否则都是“True”，而 NF 只有在空行上才为 0。因此整个语句的意思就是“但当前行的字段数大于0时，显示该行”。</p>
+<pre><code data-language="shell"># 删除重复的、非连续的行
+awk '! a[$0]++'</code></pre>
+<p>这段脚本同样使用了隐含的打印动作。awk 的数组是一种关联数组，允许用字符串或数值做下标（事实上数值会先根据 CONVFMT 规则来转换成字符串），因此所谓的数组其实更像是键/值映射。通过关联数组来记录每一行的出现次数，且仅在第一次出现时输出。</p>
+<h1>单行脚本中的错误</h1>
+<pre><code data-language="shell"># 倒置每行并打印
+awk '{for (i=NF; i&gt;0; i--) printf(&quot;%s &quot;,i);printf (&quot;/n&quot;)}' file</code></pre>
+<p>其中“printf(&quot;%s&quot;,i)”应该是“printf(&quot;%s&quot;,$i)”。这是译文中的错误，原文中正确。</p>
+<pre><code data-language="shell"># 删除重复连续的行 （模拟 &quot;uniq&quot;）
+awk 'a !~ $0; {a=$0}'</code></pre>
+<p>运算符“!~”为“不匹配”，运算符右边可以是 awk 中任意表达式，awk 将它作为一个字符串并用来指定一个正则表达式。由此，这段代码不能正确处理以下数据：</p>
+<pre><code data-language="shell">$ cat data
+ABCDE
+ABCD
+ABC
+AB
+A
+$ awk 'a !~ $0; {a=$0}' data
+ABCDE</code></pre>
+<p>需要将匹配改成比较，即“awk 'a != $0; {a=$0}'”。</p>
+</div>
