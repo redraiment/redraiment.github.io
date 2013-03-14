@@ -1,0 +1,16 @@
+<div title="返回多层父目录" class="article-content">
+<div class="sign">2011-05-09 23:45</div>
+<p>为了快速返回上层目录，有些人定义了一个别名 alias ..='cd ..'，不过在返回多层目录时并没方便多少。用下面的函数，如果要返回上 5 层，执行 .. 5 即可。</p>
+<pre><code data-language="shell">.. () {
+  if [ $# -eq 0 ] || [ $1 -le 0 ]; then
+    cd_parent_cnt=1
+  else
+    cd_parent_cnt=$1
+  fi
+  while [ $cd_parent_cnt -gt 0 ] &amp;&amp; [ &quot;$PWD&quot; != &quot;/&quot; ]; do
+    command cd ..
+    cd_parent_cnt=`expr $cd_parent_cnt - 1`
+  done
+  unset cd_parent_cnt
+}</code></pre>
+</div>

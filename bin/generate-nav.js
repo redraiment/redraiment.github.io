@@ -116,8 +116,9 @@ var getFileTitle = function(file) {
 var i18n_zh_CN = {
     'software': '软件人生',
     'programming': '程序设计方法',
-    'code': '代码分享',
+    'code': '物尽其（奇）用',
     'basic': 'BASIC解释器',
+    'shell': '脚本小子',
     'thinking': '思考与感悟',
     'tool-tips': '善用佳软',
     'reading-room': '阅读室',

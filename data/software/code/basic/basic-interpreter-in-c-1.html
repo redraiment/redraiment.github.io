@@ -44,7 +44,7 @@
 0250   PRINT &quot;By redraiment&quot;
 0260 END IF</code></pre>
 <p>BASIC 语法要求行首提供一个 1-&gt;9999 之间的数字作为该行的行号（当前行的行号不小于上一行的行号），供 GOTO 语句跳转时调用。BASIC 的语法比 C 严格，这不仅可以降低代码的复杂性还使语言本身更易学。上面的代码差不多涵盖了我们需要实现的所有功能，如果能被正确解析，你将看到下面的运行效果：</p>
-<img src="/resources/figure/c-interpreter-basic-0-1.png" />
+<img src="resources/figure/c-interpreter-basic-0-1.png" />
 <p>下面来依次讨论要实现的功能。</p>
 <h2>输入/输出（IO）</h2>
 <p>通过输入/输出来和外部程序或人交互，这是脱离“硬编码”的最基本要求。输入/输出也是很抽象的概念，它并不局限于标准输入输出端（键盘、显示器等），也可以通过文件、互联网等方式获得数据（因此 C 语言中除了 scanf、printf 等，其实 #include 指令也算是一种 IO 操作）。我们这个程序并不强调 IO，因此只要求实现 INPUT 和 PRINT 两条指令，分别用于从键盘输入数据和打印到屏幕。指令的格式如下：</p>

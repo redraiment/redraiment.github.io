@@ -1,0 +1,86 @@
+<div title="cd 增强版" class="article-content">
+<div class="sign">2011-05-09 23:45</div>
+<p>zsh 的 cd 有个很吸引我的特性：比如你在 ~/data/foo/horrible/dir/names 目录下，需要切换到 ~/data/bar/horrible/dir/names，只需执行 cd foo bar。</p>
+<p>我的工作环境是 AIX 5.3，有多套开发环境，经常需要做这样的切换。一开始上面只有最原始的 c shell，因为权限问题，费了很大劲编译出了 bash，zsh 到现在还编不出来，呵呵。所以就自己动手增强一下 cd 命令。增强的功能有：</p>
+<ol>
+	<li>
+		诸如 zsh 路径替换的功能；
+	</li>
+	<li>
+		支持短名（自动模式匹配），比如要进入 workspace/shell/curl，就输入 cd w/s/c，效果等价于 cd *w*/*s*/*c*。如果有多个路径同时匹配，就将他们全部输出到屏幕；
+	</li>
+	<li>
+		简写支持 CDPATH。使用相对路径时，如果当前目录下没找到匹配的路径，就到 CDPATH 下逐一检查。
+	</li>
+</ol>
+<p>因为我默认在短命的两头都加上了 *，你可以修改 $i = &quot;*&quot;$i&quot;*&quot; 这一句，改成符合你自己习惯的匹配方式，比如 $i = $i&quot;*&quot;，值匹配开头~</p>
+<pre><code data-language="shell">cd () {
+  if [ $# -eq 0 ]; then
+    command cd
+    return $(true)
+  elif [ $# -eq 1 ]; then
+    if { command cd &quot;$1&quot; 2&gt;/dev/null; }; then
+      return $(true)
+    fi
+    cd_path_pattern=`echo &quot;$1&quot; | awk -F/ -v OFS=/ '{
+      for (i = 1; i &lt;= NF; i++) {
+        if ($i != &quot;&quot; &amp;&amp; $i != &quot;.&quot; &amp;&amp; $i != &quot;..&quot; &amp;&amp; index($i, &quot;*&quot;) == 0) {
+          $i = &quot;*&quot;$i&quot;*&quot;
+        }
+      }
+      print $0
+    }'`
+    if [ -z &quot;$cd_path_pattern&quot; ]; then
+      unset cd_path_pattern
+      return $(false)
+    fi
+    set $cd_path_pattern
+    if [ $# -eq 1 -a &quot;$1&quot; != &quot;$cd_path_pattern&quot; ]; then
+      command cd &quot;$1&quot;
+      unset cd_path_pattern
+      return $(true)
+    elif [ $# -gt 1 ]; then
+      # ignore file
+      cd_path_dir_cnt=`file $cd_path_pattern | sed -n '/: directory/{s///; p}' | wc -l`
+      if [ $cd_path_dir_cnt -eq 1 ]; then
+        command cd `file $cd_path_pattern | sed -n '/: directory/{s///; p}'`
+        unset cd_path_pattern
+        unset cd_path_dir_cnt
+        return $(true)
+      elif [ $cd_path_dir_cnt -gt 1 ]; then
+        file $cd_path_pattern | sed -n '/: directory/{s///; p}' &gt;&amp;2
+        unset cd_path_pattern
+        unset cd_path_dir_cnt
+        return $(false)
+      fi
+    fi
+    pattern_with_cd_path=$(echo &quot;$CDPATH&quot; |
+      sed 's/://n/g' |
+      awk -F: '$0 &amp;&amp; !a[$0]++' |
+      while read pp; do
+        pp=`echo &quot;$pp/$cd_path_pattern&quot; | sed &quot;s#//+#/#g&quot;`
+        set $pp
+        if [ $# -eq 1 -a &quot;$1&quot; != &quot;$pp&quot; ]; then
+          echo &quot;$1&quot; &gt;&amp;1
+          break
+        elif [ $# -gt 1 ]; then
+          cd_path_dir_cnt=`file $pp | sed -n '/: directory/{s///; p}' | wc -l`
+          if [ $cd_path_dir_cnt -eq 1 ]; then
+            file $pp | sed -n '/: directory/{s///; p}' &gt;&amp;1
+            break;
+          elif [ $cd_path_dir_cnt -gt 1 ]; then
+            file $pp | sed -n '/: directory/{s///; p}' &gt;&amp;2
+            break
+          fi
+        fi
+      done)
+    if [ ! -z &quot;$pattern_with_cd_path&quot; ]; then
+      command cd &quot;$pattern_with_cd_path&quot;
+    fi
+    unset pattern_with_cd_path
+    unset cd_path_pattern
+  else
+    command cd `pwd | sed &quot;s/$1/$2/g&quot;`
+  fi
+}</code></pre>
+</div>
