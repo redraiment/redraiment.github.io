@@ -1,4 +1,4 @@
-<div title="DuplexPipe二三事（四）——网络连接方式随心换" class="article-content">
+<div title="DuplexPipe二三事[4] - 网络连接方式随心换" class="article-content">
 <div class="sign">2009-09-04 13:18</div>
 <h1>连接方式</h1>
 <p>在《<span class="tab-href" title="duplexpipe-1.html">DuplexPipe二三事（一）</span>》中提到建立连接有两种方式：监听本地端口，等待其他程序来连接（以下简称“监听方式”）；或者主动连接其他程序（以下简称“连接方式”）。排列组合一下，会得到三种结果：监听-连接、监听-监听、连接-连接。其中只有“监听-连接”方式能正确地建立连接，《<span class="tab-href" title="duplexpipe-3.html">DuplexPipe二三事（三）</span>》中介绍的 FPipe 只是在其中添加了一节“监听-连接-监听-连接”，其中粗体部分就是 FPipe 的工作。</p>

@@ -1,0 +1,21 @@
+<div title="Emacs-Lisp Database Connectivity" class="article-content"> <div class="sign">2012-12-25 23:14</div>
+<p>今天更新了之前的 Emacs-CGI，把其中的数据库连接模块拎出来，作为一的独立的项目：EDBC（Emacs-Lisp Database Connectivity）。项目地址：<a href="https://github.com/redraiment/edbc" target="_blank">https://github.com/redraiment/edbc</a> 文档地址：<a href="https://github.com/redraiment/edbc/wiki" target="_blank">https://github.com/redraiment/edbc/wiki</a></p>
+<p>现在通过抽象，edbc.el 就是定义了一个框架，规范了 elisp 中程序访问各种数据库的简洁、统一的接口。目前已经支持 MySQL 和 Sqlite 两种。并且，参考 edbc-mysql.el 能非常方便支持其他数据库！</p>
+<p>下面是访问 Sqlite 的样例：</p>
+<pre><code data-language="scheme">(edbc-with-connect ((url &quot;users.db&quot;))
+  (let ((id 1)
+        (name &quot;Joe&quot;)
+        (nickname &quot;redraiment&quot;))
+    ; Purge table
+    (edbc delete from users)
+    ; Equals insert into users (id, name) values (1, 'Joe') on sqlite
+    (edbc insert into users (id, name) values (:id, :name))
+    ; Equals update users set name = 'redraiment' where id = 1 on sqlite
+    (edbc update users set name = :nickname where id = :(identity id))
+    ; Returns (((&quot;id&quot; . &quot;1&quot;) (&quot;name&quot; . &quot;redraiment&quot;)))
+    (edbc select * from users)))</code></pre>
+<div class="sign">2012-12-26 09:29</div>
+<p>今天早上醒来在 Hacker News 上发布了 EDBC 的信息，没想到一下子被顶到首页上去了！大家都去围观一下，嘿嘿~</p>
+<p><a href="http://news.ycombinator.com/item?id=4967432" target="_blank">http://news.ycombinator.com/item?id=4967432</a></p>
+<img src="resources/figure/edbc-hacker-news.png" />
+</div>
