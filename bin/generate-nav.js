@@ -121,6 +121,7 @@ var i18n_zh_CN = {
     'thinking': '思考与感悟',
     'tool-tips': '善用佳软',
     'reading-room': '阅读室',
+    'learning': '学习方法',
     'happy-life': '幸福生活'
 };
 
