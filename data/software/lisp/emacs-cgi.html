@@ -1,0 +1,93 @@
+<div title="用 Emacs Lisp 开发 CGI 程序" class="article-content">
+<div class="sign">2012-09-02 10:14</div>
+<p>Emacs Lisp 作为编程语言也是非常强大的。尤其 Emacs 作为一款编辑器，自带了很多处理文本的函数，用起来很方便。我一直希望用 Emacs Lisp 作为服务端脚本语言来开发 Web 程序。在网上搜索了很久，还真有人做过类似的事情：http://www.emacswiki.org/emacs/cgi.el。但他封装的还不够彻底，用起来还是挺麻烦，于是自己动手写了一个。目前支持：</p>
+<ol>
+<li>script-let，即可在 &lt;% %&gt; 或 &lt;%= %&gt; 之中插入 lisp 代码；</li>
+<li>原生 s-exp 生成 html 文档；</li>
+<li>GET/POST 请求支持；</li>
+<li>存取 Cookie。</li>
+</ol>
+<p>程序作为 CGI 运行于 Apache 下，这里提供一个简单的求斐波那契数的例程作为演示。</p>
+<p>BTW，这也是我第一次使用 Github 托管代码：<a href="https://github.com/redraiment/emacs-cgi" target="_blank">https://github.com/redraiment/emacs-cgi</a>。</p>
+<pre><code data-language="scheme">#!/usr/local/bin/emacs --script
+
+(require 'cgi)
+
+(cgi/cookie &quot;n&quot;
+ (or (cgi/param &quot;n&quot;)
+     (cgi/cookie &quot;n&quot;)
+     &quot;15&quot;))
+
+(html
+ (head
+  (title &quot;Fabonacci 1 -&gt; n&quot;)
+  (meta (http-equiv . &quot;Content-Type&quot;)
+        (content . &quot;text/html; charset=UTF-8&quot;)))
+ (body
+  (form (method . post)
+   (span &quot;n = &quot;)
+   (input (type . text) (name . n))
+   (button (type . submit) &quot;Submit&quot;))
+  (table (border . 1) (width . &quot;100%&quot;)
+   (thead
+    (caption &quot;Fabonacci&quot;)
+    (tr
+     (th &quot;#&quot;)
+     (th &quot;Value&quot;)))
+   (tbody
+    &lt;%
+    (let ((a 0) (b 1) x)
+      (dotimes (i (string-to-number
+                   (cgi/cookie &quot;n&quot;)))
+        (tr
+         (td &lt;%= (1+ i) %&gt;)
+         (td &lt;%= (setq x a a b b (+ x b)) %&gt;))))
+    %&gt;))))</code></pre>
+<p>运行效果：</p>
+<p><img src="resources/figure/emacs-cgi-1.png" /></p>
+<div class="sign">2012-09-03 19:16</div>
+<p>最新进展：Emacs-cgi 加入对存取 Cookie 和 Session 的支持，以及页面之间跳转（redirect和forward）。项目地址：<a href="https://github.com/redraiment/emacs-cgi" target="_blank">https://github.com/redraiment/emacs-cgi</a>。下面以一个登入页面作为示例：</p>
+<p>首先是首页：如果用户为登入，显示输入框提示用户输入用户名；否则输出欢迎词。</p>
+<pre><code data-language="scheme">#!/usr/local/bin/elisp
+
+(require 'cgi)
+
+(html
+ (head
+  (title &quot;Hello Session&quot;)
+  (meta (http-equiv . &quot;Content-Type&quot;)
+        (content . &quot;text/html; charset=UTF-8&quot;)))
+ (body
+  (h1 &quot;Welcome to Emacs Lisp CGI&quot;)
+   &lt;%
+   (if (cgi/session &quot;name&quot;)
+       (form (method . post) (action . &quot;logout.el&quot;)
+        (div
+         &quot;Hello &quot; &lt;%= (cgi/session &quot;name&quot;) %&gt;
+         (button (type . submit) logout)))
+     (form (method . post) (action . &quot;login.el&quot;)
+      (div
+       &quot;My name is: &quot;
+       (input (type . text)
+              (name . name))
+       (button (type . submit) Submit))))
+   %&gt;)))</code></pre>
+<p>然后登入处理页面，在 session 中设置名字。</p>
+<pre><code data-language="scheme">#!/usr/local/bin/elisp
+
+(require 'cgi)
+
+(if (cgi/param &quot;name&quot;)
+    (cgi/session &quot;name&quot; (cgi/param &quot;name&quot;)))
+(cgi/redirect &quot;index.el&quot;)</code></pre>
+<p>最后是退出处理页面，即清空 session 中的值。</p>
+<pre><code data-language="scheme">#!/usr/local/bin/elisp
+
+(require 'cgi)
+
+(cgi/remove-session &quot;name&quot;)
+(cgi/redirect &quot;index.el&quot;)</code></pre>
+<p>运行效果：</p>
+<p><img src="resources/figure/emacs-cgi-2.png" /></p>
+<p><img src="resources/figure/emacs-cgi-3.png" /></p>
+</div>
