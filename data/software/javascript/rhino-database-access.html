@@ -1,0 +1,73 @@
+<div title="JS访问数据库[非Node.js]" class="article-content">
+<div class="sign">2012-08-22 09:20</div>
+<p>提起服务器端 JavaScript，很多人第一反应都是 Node.js。其实 Java 6 开始包含 Script Engine，其中就自带了一个“阉割版”的 Mozilla Rhino - 纯 Java 实现的 JavaScript 解释器。</p>
+<p>使用 jrunscript 就能启动这个解释器。使用 Rhino 的好处是你能使用 JavaScript 语言做开发，但又能使用现成的浩瀚的 Java 库！而且支持编译成 class 文件。</p>
+<p>我以连接 Sqlite 数据库为例子抛砖引玉。首先创建一个 sqlite 数据库：</p>
+<pre><code data-language="shell">sqliteλ sqlite3 user.db
+SQLite version 3.7.3
+Enter &quot;.help&quot; for instructions
+Enter SQL statements terminated with a &quot;;&quot;
+sqlite&gt; .header on
+sqlite&gt; select * from users;
+id|name|age
+1|Joe|24
+2|redraiment|24
+3|Kewell|30
+sqlite&gt; .quit
+sqliteλ </code></pre>
+<p>JS 封装 JDBC</p>
+<pre><code data-language="javascript">var with_connection = function(url) {
+    var connection = java.sql.DriverManager.getConnection(url);
+    for (var argc = 1; argc &lt; arguments.length; argc++) {
+        arguments[argc].call(connection);
+    }
+    connection.close();
+};
+
+var with_query = function(sql, fn) {
+    return function() {
+        var call = this.prepareStatement(sql);
+        var rs = call.executeQuery();
+        var meta = rs.getMetaData();
+        var list = [];
+        while (rs.next()) {
+            var o = {};
+            for (var i = 1; i &lt;= meta.getColumnCount(); i++) {
+                o[meta.getColumnName(i)] = rs.getObject(i);
+            }
+            list.push(o);
+        }
+        rs.close();
+        call.close();
+        return fn(list);
+    };
+};</code></pre>
+<p>使用：读取表信息</p>
+<pre><code data-language="javascript">new org.sqlite.JDBC();
+with_connection(
+    'jdbc:sqlite:user.db',
+    with_query('select * from users', function(rs) {
+        for (var row = 0; row &lt; rs.length; row++) {
+            for (var columnName in rs[row]) {
+                printf('%s =&gt; %s\n', columnName, rs[row][columnName]);
+            }
+            print('\n');
+        }
+    })
+);</code></pre>
+<p>执行结果</p>
+<pre><code data-language="shell">sqliteλ jrunscript -cp &quot;$CLASSPATH:$PWD/sqlite-jdbc-3.7.2.jar&quot; jdbc.js 
+id =&gt; 1
+name =&gt; Joe
+age =&gt; 24
+
+id =&gt; 2
+name =&gt; redraiment
+age =&gt; 24
+
+id =&gt; 3
+name =&gt; Kewell
+age =&gt; 30
+
+sqliteλ </code></pre>
+</div>
