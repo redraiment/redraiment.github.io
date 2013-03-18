@@ -2,11 +2,39 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>根据输入的半径值，计算球的体积。</p>
 <h2>Input</h2>
+<p>输入数据有多组，每组占一行，每行包括一个实数，表示球的半径。</p>
 <h2>Output</h2>
+<p>输出对应的球的体积，对于每组输入数据，输出一行，计算结果保留三位小数。</p>
 <h2>Sample Input</h2>
+<pre>1
+1.5</pre>
 <h2>Sample Output</h2>
+<pre>4.189
+14.137</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>前置知识:球体体积公式</p>
+<h2>Algorithm Analyse</h2>
+<p>球体的体积公式:V = 4пr<sup>3</sup>/3</p>
 <h1>算法实现</h1>
+<p> 因为题目没有提示说怎样才算输入结束，所以我就规定是文件读到底为止(即EOF)。</p>
+<p>这是ACM的默规。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define PI 3.1415927
+
+int main(void) {
+  double r;
+
+  while (scanf("%lf", &r) != EOF)
+    printf("%.3lf\n", 4.0*PI*r*r*r/3.0);
+
+  return EXIT_SUCCESS;
+}</code></pre>
 </div>
