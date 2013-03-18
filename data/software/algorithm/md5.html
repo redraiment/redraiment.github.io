@@ -1,0 +1,229 @@
+<div title="MD5算法实现注意点" class="article-content">
+<h1>前记</h1>
+<p>最近很有危机感，发现自己相对别人毫无优势。虽然在班里成绩还算拔尖，但最近想静下来认认真真做一个小东西出来，却发现自己虽然感觉什么都知道一些，但却什么都做不出来！盗版李宗盛《最近比较烦》的一句歌词&ldquo;最近比较烦比较烦比较烦，我看那前方怎麽也看不到岸；那个后面还有一班天才追赶哎呦，写一段皆大欢喜的程序，是越来越难&rdquo;...打击太大了。</p>
+<p>这种时候最不能混乱了，我要安安稳稳、认认真真、集中精力只去做一件事。就先编个MD5算法吧，很早就看它不爽了，但一直狠不下心来自己写一个。</p>
+<p>所谓祸不单行，困难就好像约好了一样，本来一件简单的事情居然让我折腾到半夜，特来记下中间的坎坷。</p>
+<h1>正文</h1>
+<p>早在高中的时候，做过一段时间工具黑客，每每入侵一个论坛（比如动网），获得管理员的密码后，都要拿工具暴力破解 md5 密码。打那会儿开始就没对它有好感。现在学过Ｃ语言了，终于能自己来写个&ldquo;乱七八糟&rdquo;的程序了，回想起当年的雄心壮志，就开始自己动手来实现md5加密算法！</p>
+<p>第一步当然是先到 Google 上搜索相关资料咯。先饿补一下 md5 的知识。我这次鬼使神差地进入了 www.google.cn，而不是以往的 www.google.com 英文版。也因此埋下了祸根呀！用关键词&ldquo;md5&rdquo;直接搜索，看到百度百科的链接。心想自己怎么糊涂了，这么出名的算法，百科里一定有的呀。打开链接，简单地浏览了前面的历史背景介绍什么的，进入了主题&ldquo;算法描述&rdquo;。　看完之后，我感觉我这次又要黄了，根据它的描述，我实在无法实现这个算法，因为有太多地方描述不清楚了！我一步一步写完程序后，本打算自己把所有可能的情况都试试看，希望找到正确的结果。但很快发现这不可能。</p>
+<p>所幸，百科里留下一个链接：http://www.ietf.org/rfc/rfc1321.txt），这是一份最权威的文档，由 Ronald L. Rivest 在1992年8月向 IETF 提交。我对照英文原文看，发现中文版里不仅有很多没描述清楚，甚至还有很多错误！下面我按照算法实现步骤，把需要注意的地方列举一下，具体实现可以参考英文原文：</p>
+<h2>一、首先是要对信息进行填充</h2>
+<ol>
+<li>在原来的信息基础上，在后面进行填充，使其字节长度除64余56。即64*N+56的形式。</li>
+<li>用于填充的位是：第一位为1，其他都为0。</li>
+<li>填充必须进行！也就是说，即使原始信息长度余数本来就是56，那也得再填充64字节的信息。</li>
+<li>最后8字节长度的空间来保存原始信息的长度。</li>
+<ol>
+<li>单位是bit，即位。这一点我查可很多中文资料，都没有说明，所有一开始我一直在琢磨长度单位是bit还是byte。</li>
+<li>最后8位的内存存储形式是低到高。这一点也没有说明的，开始我也一直在想，这8位到底是怎么用的？因为内存是从低到高的，而我们平时写数字，比如0x1234是从高到低的。最后我查看Linux下开源的程序md5sum，才知道是把8位作为一个整数从低到高存储的，所有在实现的时候，我直接用了long long来存储，然后用memmove()来追加到信息串里。</li>
+</ol>
+<li>填充完后，整个信息串就是(N+1)*64个字节，关于N，百度百科里说N是一个正整数，也就是说填充完的信息最短是128字节；但实际上N是一个非负整数！也就是说，N可以为0，而信息的长度最短是64字节。这个错误让我郁闷很久。</li>
+</ol>
+<h2>二、四个初始常量的值</h2>
+<p>百度百科里原文：&ldquo;MD5中有四个32位被称作链接变量（Chaining Variable）的整数参数，他们分别为： A=0x01234567，B=0x89abcdef，C=0xfedcba98，D=0x76543210。&rdquo;</p>
+<p>这又是一个错误的地方，英文原文中说这个四个常量的值从低到高依次是：</p>
+<blockquote><pre>word A: 01 23 45 67
+word B: 89 ab cd ef
+word C: fe dc ba 98
+word D: 76 54 32 10 </pre></blockquote>
+<p>上面说过内存存储方向和我们平时书写是相反的，所以定义的时候应该是：</p>
+<blockquote><pre>#define A 0x67452301UL
+#define B 0xEFCDAB89UL
+#define C 0x98BADCFEUL
+#define D 0x10325476UL </pre></blockquote>
+<p>这一开始也让我郁闷。</p>
+<h2>三、四轮加密的函数</h2>
+<p>四个非线性函数没有问题：</p>
+<blockquote><pre>#define F( X, Y, Z ) ( ( (X) &amp; (Y) ) | ( (~(X)) &amp; (Z) ) )
+#define G( X, Y, Z ) ( ( (X) &amp; (Z) ) | ( (Y) &amp; (~(Z)) ) )
+#define H( X, Y, Z ) ( (X) ^ (Y) ^ (Z) )
+#define I( X, Y, Z ) ( (Y) ^ ( (X) | (~(Z)) ) ) </pre></blockquote>
+<p>但是四轮的加密函数就有问题，我看过几篇不同的md5算法文章，不知道是不是显示问题，函数表达式连括号都不匹配！所以想不用想，那些表达式没有参考价值！最后看 md5sum 的源代码才知道具体的实现方法：</p>
+<blockquote><pre>#define FF( a, b, c, d, Mj, s, ti ) /
+    (a = b + LOGIC_SHIFT_LEFT( ( a + F( b, c, d ) + Mj + ti ), s ))
+#define GG( a, b, c, d, Mj, s, ti ) /
+    (a = b + LOGIC_SHIFT_LEFT( ( a + G( b, c, d ) + Mj + ti ), s ))
+#define HH( a, b, c, d, Mj, s, ti ) /
+    (a = b + LOGIC_SHIFT_LEFT( ( a + H( b, c, d ) + Mj + ti ), s ))
+#define II( a, b, c, d, Mj, s, ti ) /
+    (a = b + LOGIC_SHIFT_LEFT( ( a + I( b, c, d ) + Mj + ti ), s )) </pre></blockquote>
+<h2>四、最后的输出</h2>
+<p>几乎所有文章都是写道四轮加密就结束了。而我的算法实现到这里，产生的最终的四个数值：a, b, c ,d。这四个数都是32位的整数。于是我就直接用printf ( "%08x%08x%08x%08x/n", a, b, c, d ); 结果却怎么都不能正确！但按文档上的算法说明，没有错误呀。无奈还得参看 md5sum 的代码，单步跟踪下去，发现算法完全正确！再看他的输出函数，原来是先把结果在转入一个长度为16的 char 数组里，再逐个输出！又是数值存储的高低位顺序问题！改完就通过了！</p>
+<p>下面附上我的代码，在 FC6 + GCC 下通过。其实代码还能再精简一下的。晚了，先睡觉！</p>
+<h1>程序清单</h1>
+<pre><code data-language="c">/*
+ * md5 -- compute and check MD5 message digest.
+ * this version only can calculate the char string.
+ *
+ * MD5 (Message-Digest algorithm 5) is a widely used, partially
+ * insecure cryptographic hash function with a 128-bit hash value.
+ *
+ * Author: redraiment@ZJGSU.edu.cn
+ * Date: Aug 27, 2008
+ * Version: 0.1.6
+ */
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define SINGLE_ONE_BIT 0x80
+#define BLOCK_SIZE 512
+#define MOD_SIZE 448
+#define APP_SIZE 64
+#define BITS 8
+
+// MD5 Chaining Variable
+#define A 0x67452301UL
+#define B 0xEFCDAB89UL
+#define C 0x98BADCFEUL
+#define D 0x10325476UL
+
+// Creating own types
+#ifdef UINT64
+# undef UINT64
+#endif
+#ifdef UINT32
+# undef UINT32
+#endif
+
+typedef unsigned long long UINT64;
+typedef unsigned long UINT32;
+typedef unsigned char UINT8;
+typedef struct
+{
+    char * message;
+    UINT64 length;
+}STRING;
+
+const UINT32 X[4][2] = {{0, 1}, {1, 5}, {5, 3}, {0, 7}};
+// Constants for MD5 transform routine.
+const UINT32 S[4][4] = {
+    { 7, 12, 17, 22 },
+    { 5,  9, 14, 20 },
+    { 4, 11, 16, 23 },
+    { 6, 10, 15, 21 }
+};
+
+// F, G, H and I are basic MD5 functions.
+UINT32 F( UINT32 X, UINT32 Y, UINT32 Z ) {
+    return ( X &amp; Y ) | ( ~X &amp; Z );
+}
+
+UINT32 G( UINT32 X, UINT32 Y, UINT32 Z ) {
+    return ( X &amp; Z ) | ( Y &amp; ~Z );
+}
+
+UINT32 H( UINT32 X, UINT32 Y, UINT32 Z ) {
+    return X ^ Y ^ Z;
+}
+
+UINT32 I( UINT32 X, UINT32 Y, UINT32 Z ) {
+    return Y ^ ( X | ~Z );
+}
+
+// rotates x left s bits.
+UINT32 rotate_left( UINT32 x, UINT32 s ) {
+    return ( x &lt;&lt; s ) | ( x &gt;&gt; ( 32 - s ) );
+}
+
+// Pre-processin
+UINT32 count_padding_bits ( UINT32 length ) {
+    UINT32 div = length * BITS / BLOCK_SIZE;
+    UINT32 mod = length * BITS % BLOCK_SIZE;
+    UINT32 c_bits;
+    if ( mod == 0 )
+        c_bits = MOD_SIZE; //BLOCK_SIZE;
+    else
+        c_bits = ( MOD_SIZE + BLOCK_SIZE - mod ) % BLOCK_SIZE;
+    return c_bits / BITS;
+}
+
+STRING append_padding_bits ( char * argv ) {
+    UINT32 msg_length = strlen ( argv );
+    UINT32 bit_length = count_padding_bits ( msg_length );
+    UINT64 app_length = msg_length * BITS;
+    STRING string;
+    string.message = (char *)malloc(msg_length + bit_length + APP_SIZE / BITS);
+    // Save message
+    strncpy ( string.message, argv, msg_length );
+    // Pad out to mod 64.
+    memset ( string.message + msg_length, 0, bit_length );
+    string.message [ msg_length ] = SINGLE_ONE_BIT;
+    // Append length (before padding).
+    memmove ( string.message + msg_length + bit_length, (char *)&amp;app_length, sizeof( UINT64 ) );
+    string.length = msg_length + bit_length + sizeof( UINT64 );
+    return string;
+}
+
+int main ( int argc, char *argv[] ) {
+    STRING string;
+    UINT32 w[16];
+    UINT32 chain[4];
+    UINT32 state[4];
+    UINT8 r[16];
+    UINT32 ( *auxi[ 4 ])( UINT32, UINT32, UINT32 ) = { F, G, H, I };
+    int roundIdx;
+    int argIdx;
+    int sIdx;
+    int wIdx;
+    int i;
+    int j;
+    if ( argc &lt; 2 ) {
+        fprintf ( stderr, "usage: %s string .../n", argv[ 0 ] );
+        return EXIT_FAILURE;
+    }
+    for ( argIdx = 1; argIdx &lt; argc; argIdx++ ) {
+        string = append_padding_bits ( argv[ argIdx ] );
+        // MD5 initialization.
+        chain[0] = A;
+        chain[1] = B;
+        chain[2] = C;
+        chain[3] = D;
+        for ( j = 0; j &lt; string.length; j += BLOCK_SIZE / BITS) {
+            memmove ( (char *)w, string.message + j, BLOCK_SIZE / BITS );
+            memmove ( state, chain, sizeof(chain) );
+            for ( roundIdx = 0; roundIdx &lt; 4; roundIdx++ ) {
+                wIdx = X[ roundIdx ][ 0 ];
+                sIdx = 0;
+                for ( i = 0; i &lt; 16; i++ ) {
+                    // FF, GG, HH, and II transformations for rounds 1, 2, 3, and 4.
+                    // Rotation is separate from addition to prevent recomputation.
+                    state[sIdx] = state [ (sIdx + 1) % 4 ] + 
+                        rotate_left ( state[sIdx] +
+                        ( *auxi[ roundIdx ] )
+                        ( state[(sIdx+1) % 4], state[(sIdx+2) % 4], state[(sIdx+3) % 4]) +
+                        w[ wIdx ] +
+                        (UINT32)floor( (1ULL &lt;&lt; 32) * fabs(sin( roundIdx * 16 + i + 1 )) ),
+                        S[ roundIdx ][ i % 4 ]);
+                    sIdx = ( sIdx + 3 ) % 4;
+                    wIdx = ( wIdx + X[ roundIdx ][ 1 ] ) &amp; 0xF;
+                }
+            }
+            chain[ 0 ] += state[ 0 ];
+            chain[ 1 ] += state[ 1 ];
+            chain[ 2 ] += state[ 2 ];
+            chain[ 3 ] += state[ 3 ];
+        }
+        memmove ( r +  0, (char *)&amp;chain[0], sizeof(UINT32) );
+        memmove ( r +  4, (char *)&amp;chain[1], sizeof(UINT32) );
+        memmove ( r +  8, (char *)&amp;chain[2], sizeof(UINT32) );
+        memmove ( r + 12, (char *)&amp;chain[3], sizeof(UINT32) );
+        for ( i = 0; i &lt; 16; i++ )
+            printf ( "%02x", r[i] );
+        putchar ( '/n' );
+    }
+    return EXIT_SUCCESS;
+}</code></pre>
+<h1>后记</h1>
+<p>源代码中有一处笔误，第 78 行：</p>
+<blockquote>
+<pre>原来的:
+   if ( mod == 0 )
+       c_bits = BLOCK_SIZE;
+应该是:
+   if ( mod == 0 )
+       c_bits = MOD_SIZE;</pre>
+</blockquote>
+<p>否则，当传入数据的长度正好是512的整数倍时，就会出错。感想热心网友<b>Ted Feng</b>指正！</p>
+</div>
