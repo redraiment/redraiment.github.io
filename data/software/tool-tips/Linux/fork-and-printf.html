@@ -1,0 +1,61 @@
+<div title="fork与printf输出缓冲区" class="article-content">
+<div class="sign">2008-01-07 12:44</div>
+<p>那天，我们&ldquo;操作系统&rdquo;课程安排上机实验，主题是让我们熟悉 Linux 下的系统调用，内容是尝试用 fork() 创建一个子进程。老师告诉我们 fork() 执行后，父进程和子进程共享代码段。我当时还不清楚子进程运行的时候，到底是从头开始执行还是从 fork() 开始执行。fork 这个单词的字面意思是分叉，按这个逻辑进程应该是从 fork() 这个分叉口继续执行。于是，写了如下代码检验我的推测。</p>
+<pre><code data-language="c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf("1");
+    fork();
+    printf("0\n");
+    return EXIT_SUCCESS;
+}</code></pre>
+<p>然后编译运行，执行结果为</p>
+<pre><code data-language="shell">10
+10</code></pre>
+<p>这儿输出了两行&ldquo;10&rdquo;，岂不是 printf("1"); 这条语句在子进程中也被执行了？随即我也发现代码里有一处笔误：我的本意是让&ldquo;1&rdquo;和&ldquo;0&rdquo;各自单独成一行，但在&ldquo;1&rdquo;后面少加了个&ldquo;\n&rdquo;，修改源码后重新编译执行。按照前面的执行结果推断，输出应该是：</p>
+<pre><code data-language="shell">1
+0
+1
+0</code></pre>
+<p>但真实的结果是：</p>
+<pre><code data-language="shell">1
+0
+0</code></pre>
+<p>前后只相差了一个回车，运行结果却大相径庭。我猜想是因为 printf 输出带有缓冲区，直到回车时才输出缓冲区的内容，同时也清空缓冲区。为验证我的猜想，我另写了一下两段代码。</p>
+<pre><code data-language="c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf("1\n");
+    printf("2");
+    fork();
+    printf("0\n");
+    return EXIT_SUCCESS;
+}</code></pre>
+<p>执行结果为：</p>
+<pre><code data-language="shell">1
+20
+20</code></pre>
+<p>再尝试主动调用fflash清空缓冲区。</p>
+<pre><code data-language="c">#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf("1");
+    fflash(stdout);
+    fork();
+    printf("0\n");
+    return EXIT_SUCCESS;
+}</code></pre>
+<p>执行结果为：</p>
+<pre><code data-language="shell">10
+0</code></pre>
+<p>看来是对了，问题就是出在缓冲区没有清空，所以子进程在执行printf()时把残留在缓冲区里的内容一起输出了。</p>
+</div>
