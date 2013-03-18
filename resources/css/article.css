@@ -73,6 +73,10 @@
     text-align: right;
 }
 
+.article-content img {
+    margin: 10px;
+}
+
 .icon-share-sina {
     background-image: url(../image/icon-share-sina.gif);
     background-repeat: no-repeat;
