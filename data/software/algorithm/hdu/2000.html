@@ -1,0 +1,48 @@
+<div title="2000 ASCII码排序" class="article-content">
+<div class="sign">2008-06-11 20:04</div>
+<h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>输入三个字符后，按各字符的ASCII码从小到大的顺序输出这三个字符。</p>
+<h2>Input</h2>
+<p>输入数据有多组，每组占一行，有三个字符组成，之间无空格。</p>
+<h2>Output</h2>
+<p>对于每组输入数据，输出一行，字符中间用一个空格分开。</p>
+<h2>Sample Input</h2>
+<pre>qwe
+asd
+zxc</pre>
+<h2>Sample Output</h2>
+<pre>e q w
+a d s
+c x z</pre>
+<h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>前置知识:if判断语句的语法</p>
+<h2>Algorithm Analyse</h2>
+<p>要让三个数从小到大排，顺序就是：</p>
+<ol>
+<li>比较1，2两个数。如果第一个数比第二数大，把这两个数交换，来保证前面两个数按升序排列。</li>
+<li>比较2，3两个数。如果第二个数比第三数大，把这两个数交换，来保证后面两个数按升序排列。</li>
+<li>经过上面两步，最大的数已经被移到最后。再重复一次第一步。保证三个数都是按升序来排列。 </li>
+</ol>
+<p>虽然你也可以用排序算法对它进行排序，但那就把问题复杂化了。做ACM的题目，就是要充分利用题目给出的条件(本题一明确指出输入的只有三个字符)。选择最优算法，而不是最通用的算法。 </p>
+<h1>算法实现</h1>
+<p>通过前面的问题分析，可以看出本题要实现排序。你可以选择任何一门你熟悉的语言编写。这里我用的是C++，因为C++为了提高开发效率，已经为我们准备好了很多常用的算法。比如该题可以直接调用sort()函数。ACM中，效率才是关键！</p>
+<h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;algorithm&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+int main(void) {
+  char s[4];
+
+  while (cin &gt;&gt; s) {
+    sort(s, s + 3);
+    cout &lt;&lt; s[0] &lt;&lt; ' ' &lt;&lt; s[1] &lt;&lt; ' ' &lt;&lt; s[2] &lt;&lt; endl;
+  }
+
+  return EXIT_SUCCESS;
+}</code></pre>
+</div>

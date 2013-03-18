@@ -117,6 +117,7 @@ var i18n_zh_CN = {
     'software': '软件人生',
     'programming': '程序设计方法',
     'algorithm': '算法',
+    'hdu': '杭电100题',
     'kill-if': '消灭成堆的分支语句',
     'code': '物尽其（奇）用',
     'basic': 'BASIC解释器',
