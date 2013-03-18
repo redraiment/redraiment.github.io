@@ -1,0 +1,134 @@
+<div title="求质数 - 筛法" class="article-content">
+<div class="sign">2008-01-29 18:38著</div>
+<h1>问题描述</h1>
+<p>试编写一个程序，找出 2&rarr;N 之间的所有质数。</p>
+<h1>问题分析</h1>
+<p>这个问题可以有两种解法：一种是用&ldquo;筛法&rdquo;，另一种是除余法。本文使用筛法，&ldquo;除余法&rdquo;详情请参见《<span class="tab-href" title="prime-div-in-c.html">求质数 - 除余法</span>》。</p>
+<p>先通过一个简单的例子来介绍一下&ldquo;筛法&rdquo;，求 2&rarr;20 的质数，它的做法是先把 2&rarr;20 这些数一字排开：</p>
+<blockquote>2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</blockquote>
+<p>取出数组中最小的数 2，把后面 2 的倍数全部删掉。</p>
+<blockquote>2 | 3 5 7 9 11 13 15 17 19</blockquote>
+<p>接下来取出最小数 3，并删除 3 的倍数。</p>
+<blockquote>2 3 | 5 7 11 13 17 19</blockquote>
+<p>以此类推直至结束，剩余之数皆为素数。</p>
+<h2>筛法的原理：</h2>
+<ol>
+<li>数字2是素数。</li>
+<li>在数字K前，每找到一个素数，都会删除它的倍数，即以它为因子的整数。如果k未被删除，就表示2-&gt;k-1都不是k的因子，那k自然就是素数了。</li>
+</ol>
+<h2>算法优化</h2>
+<ol>
+<li>除余法那篇文章里也介绍了，要找出一个数的因子，其实不需要检查 2&rarr;k，只要从 2-&gt;sqrt(k)，就可以了。所有，我们筛法里，其实只要筛到sqrt(n)就已经找出所有的素数了，其中n为要搜索的范围。</li>
+<li>另外，我们不难发现，每找到一个素数 k，就一次删除 2k, 3k, 4k,..., ik，不免还是有些浪费，因为2k已经在找到素数2的时候删除过了，3k已经在找到素数3的时候删除了。因此，当 i＜k 时，都已经被前面的素数删除过了，只有那些最小的质因子是k的那些数还未被删除过，所有，就可以直接从 k*k 开始删除。</li>
+<li>再有，所有的素数中，除了 2 以外，其他的都是奇数，那么，当 i 是奇数的时候，ik 就是奇数，此时 k*k+ik 就是个偶数，偶数已经被2删除了，所有我们就可以以2k为单位删除步长，依次删除 k*k, k*k+2k, k*k+4k, ...。</li>
+<li>我们都清楚，在前面一小段范围内，素数是比较集中的，比如 1&rarr;100 之间就有25个素数。越到后面就越稀疏。</li>
+</ol>
+<p>因为这些素数本身值比较小，所以搜索范围内，大部分数都是它们的倍数，比如搜索 1&rarr;100，这 100 个数。光是 2 的倍数就有 50 个，3 的倍数有 33 个，5的倍数 20 个，7 的倍数 14 个。我们只需搜索到7就可以，因此一共做删除操作50+33+20+14=117次，而 2 和 3 两个数就占了 83 次，这未免太浪费时间了。</p>
+<p>所以我们考虑，能不能一开始就排除这些小素数的倍数，这里用 2 和 3 来做例子。</p>
+<p>如果仅仅要排除 2 的倍数，数组里只保存奇数：1、3、5...，那数字 k 的坐标就是 k/2。</p>
+<p>如果我们要同时排除 2 和 3 的倍数，因为 2 和 3 的最小公倍数是 6，把数字按 6 来分组：6n, 6n+1, 6n+2, 6n+3, 6n+4, 6n+5。其中 6n, 6n+2, 6n+4 是 2 的倍数，6n+3 是 3 的倍数。所以数组里将只剩下 6n+1 和 6n+5。n 从 0 开始，数组里的数字就一次是 1, 5, 7, 11, 13, 17...。</p>
+<p>现在要解决的问题就是如何把数字 k 和它的坐标 i 对应起来。比如，给出数字 89，它在数组中的下标是多少呢？不难发现，其实上面的序列，每两个为一组，具有相同的基数 n，比如 1 和 5 ，同是 n=0 那组数，6*0+1 和 6*0+5；31 和 35 同是n=5那组，6*5+1 和 6*5+5。所以数字按6分组，每组2个数字，余数为5的数字在后，所以坐标需要加 1。</p>
+<p>所以 89 在第 89/6=14 组，坐标为 14*2=28，又因为 89%6==5，所以在所求的坐标上加 1，即 28+1=29，最终得到 89 的坐标 i=29。同样，找到一个素数 k 后，也可以求出 k*k 的坐标等，就可以做筛法了。</p>
+<p>这里，我们就需要用 k 做循环变量了，k 从 5 开始，交替与 2 和 4 相加，即先是 5+2=7，再是 7+4=11，然后又是 11+2=13...。这里我们可以再设一个变量gab，初始为 4，每次做 gab = 6 - gab，k += gab。让gab在2和4之间交替变化。另外，2 和 4 都是 2 的幂，二进制分别为10和100，6的二进制位110，所以可以用 k += gab ^= 6来代替。参考代码：</p>
+<pre><code data-language="c">gab = 4;
+for (k = 5; k * k &lt;= N; k += gab ^= 6) {
+    ...
+}</code></pre>
+<p>但我们一般都采用下标 i 从 0&rarr;x 的策略，如果用 i 而不用 k，那应该怎么写呢？</p>
+<p>由优化策略(1)可知，我们只要从 k<sup>2</sup> 开始筛选。 n=i/2，我们知道了 i 对应的数字 k 是素数后，根据(2)，那如何求得 k<sup>2 </sup>的坐标 j 呢？这里假设 i 为偶数，即 k=6n+1。</p>
+<p>k<sup>2</sup> = (6n+1)*(6n+1) = 36n<sup>2</sup> + 12n + 1，其中 36n<sup>2</sup>+12n = 6(6n<sup>2</sup>+2n) 是6的倍数，所以 k<sup>2 </sup>除 6 余 1。</p>
+<p>所以 k<sup>2 </sup>的坐标 j = k<sup>2</sup>/6*2 = 12n<sup>2</sup>+4n。</p>
+<p>由优化策略(2)可知，我们只要依次删除 k<sup>2</sup>+2l&times;k, l = 0, 1, 2...。即 (6n+1)&times;(6n+1+2l)。</p>
+<p>我们发现，但l=1, 4, 7...时，(6n+1+2l)是3的倍数，不在序列中。所以我们只要依次删除 k<sup>2</sup>, k<sup>2</sup>+4l, k<sup>2</sup>+4l+2l...，又是依次替换2和4。</p>
+<p>为了简便，我们可以一次就删除 k<sup>2 </sup>和 k<sup>2</sup>+4l 两项，然后步长增加6l。所以我们需要求 len=4l 和 stp=6l。不过这里要注意一点，k<sup>2</sup>+4k=(6n+1)*(6n+5)，除以6的余数是5，坐标要加1。</p>
+<pre>len = k*(k+4)/6*2 - k<sup>2</sup>/6*2 = (6n+1)*(6n+1+4)/6*2+1 - (6n+1)*(6n+1)/6*2 = (12n<sup>2</sup>+12n+1) - (12n<sup>2</sup>+4n) = 8n+1;
+stp = k*(k+6)/6*2 - k<sup>2</sup>/6*2 = 12n+2;</pre>
+<p>最终，我们得到：</p>
+<pre>len = 8n+1;
+stp = 12n+2;
+  j = 12n2+4n;</pre>
+<p>同理可以求出 k=6n+5 时的情况：</p>
+<pre>len = 4n+3;
+stp = 12n+10;
+  j = 12n<sup>2</sup>+20n+8;</pre>
+<p>下面的代码在实现上用了位运算，可能有点晦涩。</p>
+<p style="color: red; text-decoration: underline;">★注：第5种优化方法还是理论阶段，下面的代码中并未采用这种优化算法，仅供大家参考。</p>
+<p>5. 由(2)可知，如果每找到一个素数k，能依次只删除以k为最小素数因子的数，那么每个数字就都只被删除一次，那这个筛法就能达到线性的 O(n) 效率了。比如数字 600 = 2*2*3*5*11，其中 2 是它的最小素数因子。那这个数就被 2 删除了。3、5、11虽然都是它的因子，但不做删除它的操作。要实现这种策略，那每找到一个素数 k，那从 k 开始，一次后面未被删除的数字来与 k 相乘，删除它们的积。比如要筛出 2～60 之间的素数：</p>
+<p>1. 先列出所有的数。</p>
+<blockquote>
+02 03 04 05 06 07 08 09 10 11 12 13 14 15 ... 50 51 52 53 54 55 56 57 58 59 60
+</blockquote>
+<p>2. 选出序列中的第一个数 2，判定它是素数，然后从 2 开始，依次与剩下的未被删除的数相乘，删除它们的积。即 2*2=4， 2*3=6，2*4=8...。</p>
+<blockquote>02 03 <span style="text-decoration: line-through;">04</span> 05 <span style="text-decoration: line-through;">06</span> 07 <span style="text-decoration: line-through;">08</span> 09 <span style="text-decoration: line-through;">10</span> 11 <span style="text-decoration: line-through;">12</span> 13 <span style="text-decoration: line-through;">14</span> 15 ... <span style="text-decoration: line-through;">50</span> 51 <span style="text-decoration: line-through;">52</span> 53 <span style="text-decoration: line-through;">54</span> 55 <span style="text-decoration: line-through;">56</span> 57 <span style="text-decoration: line-through;">58</span> 59 <span style="text-decoration: line-through;">60</span><br />02 | 03 05 07 09 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53 55 57 59</blockquote>
+<p>3. 去掉 2 后，再选出序列中第一个数 3，判定它是素数，然后从 3 开始，依次与剩下的数相乘，即 3*3=9，3*5=15，3*7=21...</p>
+<blockquote>
+02 | 03 05 07 <span style="text-decoration: line-through;">09</span> 11 13 <span style="text-decoration: line-through;">15</span> 17 19 <span style="text-decoration: line-through;">21</span> 23 25 <span style="text-decoration: line-through;">27</span> 29 31 <span style="text-decoration: line-through;">33</span> 35 37 <span style="text-decoration: line-through;">39</span> 41 43 <span style="text-decoration: line-through;">45</span> 47 49 <span style="text-decoration: line-through;">51</span> 53 55 <span style="text-decoration: line-through;">57</span> 59<br />
+02 03 | 05 07 11 13 17 19 23 25 29 31 35 37 41 43 47 49 53 55 59
+</blockquote>
+<p>4. 去掉 3 后，选出最小的数 5，判定它为素数，依次删除 5*5=25，5*7=35，5*11=55，...</p>
+<blockquote>
+02 03 | 05 07 11 13 17 19 23 <span style="text-decoration: line-through;">25</span> 29 31 <span style="text-decoration: line-through;">35</span> 37 41 43 47 49 53 <span style="text-decoration: line-through;">55</span> 59<br />
+02 03 05 | 07 11 13 17 19 23 29 31 37 41 43 47 49 53 59
+</blockquote>
+<p>5. 去掉5后，选出最小的数7，为素数，删除7*7=49，...</p>
+<blockquote>
+02 03 05 | 07 11 13 17 19 23 29 31 37 41 43 47 <span style="text-decoration: line-through;">49</span> 53 59<br />
+02 03 05 | 07 11 13 17 19 23 29 31 37 41 43 47 53 59
+</blockquote>
+<p>6. 去掉7后，第一个数 11 的平方 121 大于 60，所以结束。剩下的数字全为素数。</p>
+<blockquote>
+02 03 05 07 11 13 17 19 23 29 31 37 41 43 47 53 59 |
+</blockquote>
+<p>上面的操作效率很高，但在计算机中模拟的时候却又很大的障碍：</p>
+<p>首先，计算机内存是一维的空间，很多时候我们不能随心所欲，要实现上面的算法，要求这个数据结构既能很高效地查找某个特定的值，又能不费太大代价对序列中的元素进行删除。高效地查找，用数组是最合适的了，能在 O(1) 的时间内对内存进行读写，但要删除序列中一个元素却要 O(n)；单链表可以用 O(1) 的时间做删除操作，当然要查找就只能是 O(n) 了。所以这个数据结构很难找。</p>
+<p>其次，筛法的一个缺点就是空间浪费太大，典型的以空间换时间。如果我们对数组进行压缩，比如初始时就排除了所有偶数，数组 0对应数字1，1对应3，...。这样又会因为多了一道计算数字下标的工序而浪费时间。这又是一个矛盾的问题。</p>
+<p>也许我们可以试试折中的办法：数据结构综合数组和链表 2 种，数组用来做映射记录，链表来记录剩下的还未被删除的数据，而且开始也不必急着把链表里的节点释放掉，只要在数组里做个标记就可以了。下次遍历到这个数字时才删除。这样为了删除，可以算只遍历了一次链表，不过频繁地使用free()函数，也许又会减低效率。总之，我们所做的，依然是用空间来换时间，记录更多的信息，方便下次使用，减少再次生成信息所消耗的时间。</p>
+<h1>程序清单</h1>
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+#define N 100000000
+#define size (N/6*2 + (N%6 == 5? 2: (N%6&gt;0)))
+
+int p[size / 32 + 1] = {1};
+int creat_prime(void)
+{
+    int i, j;
+    int len, stp;
+    int c = size + 1;
+    for (i = 1; ((i&amp;~1)&lt;&lt;1) * ((i&amp;~1) + (i&gt;&gt;1) + 1) &lt; size; i++)
+    {
+        if (p[i &gt;&gt; 5] &gt;&gt; (i &amp; 31) &amp; 1) continue;
+        len = (i &amp; 1)? ((i&amp;~1)&lt;&lt;1) + 3: ((i&amp;~1)&lt;&lt;2) + 1;
+        stp = ((i&amp;~1)&lt;&lt;1) + ((i&amp;~1)&lt;&lt;2) + ((i &amp; 1)? 10: 2);
+        j = ((i&amp;~1)&lt;&lt;1) * (((i&amp;~1)&gt;&gt;1) + (i&amp;~1) + 1) + ((i &amp; 1)? ((i&amp;~1)&lt;&lt;3) + 8 + len: len);
+        for (; j &lt; size; j += stp)
+        {
+            if (p[j &gt;&gt; 5] &gt;&gt; (j &amp; 31) &amp; 1 ^ 1)
+                p[j &gt;&gt; 5] |= 1L &lt;&lt; (j &amp; 31), --c;
+            if (p[(j-len) &gt;&gt; 5] &gt;&gt; ((j-len) &amp; 31) &amp; 1 ^ 1)
+                p[(j-len) &gt;&gt; 5] |= 1L &lt;&lt; ((j-len) &amp; 31), --c;
+        }
+        if (j - len &lt; size &amp;&amp; (p[(j-len) &gt;&gt; 5] &gt;&gt; ((j-len) &amp; 31) &amp; 1 ^ 1))
+            p[(j-len) &gt;&gt; 5] |= 1L &lt;&lt; ((j-len) &amp; 31), --c;
+    }
+    return c;
+}
+
+int main(void)
+{
+    clock_t t = clock();
+    printf("%d ", creat_prime());
+    printf("Time: %f ", 1.0 * (clock() - t) / CLOCKS_PER_SEC);
+    return EXIT_SUCCESS;
+}</code></pre>
+<h1>运行结果</h1>
+<pre>5761455
+Time: 0.300000</pre>
+<p>运行环境：Linux debian 2.6.26-1-686、GCC (Debian 4.3.2-1.1) 4.3.2、Intel Core 2、512MB RAM</p>
+<h1>算法比较</h1>
+<p>现在，我们已经拥有初步改进的&ldquo;筛法&rdquo;和&ldquo;除余法&rdquo;的函数了，把它们加到自己的函数库里。方便下次调用。这里，我想说一下个人对这两种算法的使用经验：</p>
+<p>就时间效率上讲，筛法绝对比除余法高。比如上面的代码，可以在半秒内筛一亿以内的所有素数。如果用除余法来解决这样的问题，绝对可以考验一个人的耐性。因此，在搜索空间比较大的时候，&ldquo;筛法&rdquo;无疑会是首选。</p>
+<p>但筛法是以空间换时间，用除余法，我们只要开一个可以容纳结果的数组就可以了，而筛法开的数组要求可以容纳整个搜索范围；另外，我们用&ldquo;除余法&rdquo;得到的结果，是一个已经排好序的素数序列，如果要解决的问题需要用到这些连续的素数，而且搜索范围也不大，那显然除余法很适合。而&ldquo;筛法&rdquo;得到的结果，是一个布尔型的表格，通过它，你可以很轻松的判断某个数是不是素数，但如果你想知道这个素数的下一个素数是多大，可能要费点劲了。</p>
+</div>
