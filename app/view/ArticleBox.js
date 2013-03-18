@@ -8,17 +8,21 @@ Ext.define('iKnowledge.view.ArticleBox', {
         var me = this;
         var id = 'tab-' + url;
         var tab = Ext.getCmp(id);
+        var path = '/root' + url.substr(4);
 
         if (!tab) {
             tab = me.add({
                 xtype: 'article',
                 id: id,
                 title: 'New Tab',
-                url: url
+                url: url,
+                listeners: {
+                    activate: function() {
+                        Ext.getCmp('nav').selectPath(path);
+                    }
+                }
             });
         }
         tab.show();
-
-        Ext.getCmp('nav').selectPath('/root' + url.substr(4));
     }
 });
