@@ -1,0 +1,63 @@
+<div title="求完美数" class="article-content">
+<div class="sign">2008-07-10 20:06</div>
+<p>一个数如果恰好等于它的因子之和，这个数就称为&quot;完美数&quot;或&quot;完数&quot;。例如6=1+2+3.(6的因子是1,2,3) 完美数的一些性质： </p>
+<ol>
+<li>欧几里德证明了：一个偶数是完数，当且仅当它具有如下形式：2<sup>(p-1)</sup>×(2<sup>p</sup>-1) 其中p和(2<sup>p</sup>-1)是素数。 尽管没有发现奇完数，但是当代数学家奥斯丁·欧尔（Oystein Ore）证明，若有奇完全数，则其形状必然是12p+1或36p+9的形式，其中p是素数。在1018以下的自然数中奇完数是不存在的。 </li>
+<li>除6以外的偶完数，把它的各位数字相加,直到变成一位数,那么这个一位数一定是1（亦即：除6以外的完数，被9除都余1） 28：2+8=10，1+0=1 496：4+9+6=19，1+9=10，1+0=1 </li>
+<li>因为 2<sup>p</sup> 是 2的幂，用C语言也就是1 &lt;&lt; p，那么 2<sup>p</sup>-1 的二进制也就是p个1组成了，而 2<sup>(p-1)</sup> 是 2的幂，这两个数相乘，也就相当于把 2<sup>p</sup>-1 向左移 p-1 位，即 (2<sup>p</sup>-1) &lt;&lt; (p-1)，那所有完美数的二进制就是前面p个1，后面跟着p-1个0。 所以偶完数都可以表达为2的一些连续正整数次幂之和，如： 6=2(1 ) +&nbsp;&nbsp; 2(2 ) 28=2(2&nbsp; ) +&nbsp;&nbsp; 2(3)&nbsp;&nbsp; +&nbsp;&nbsp; 2(4) 8128=2(6)&nbsp;&nbsp; +&nbsp;&nbsp; 2(7)&nbsp;&nbsp; +&nbsp;&nbsp; ...&nbsp;&nbsp; +&nbsp;&nbsp; 2(12) 33550336=2(12)&nbsp;&nbsp; +&nbsp;&nbsp; 2(13 )&nbsp; +&nbsp;&nbsp; ...&nbsp;&nbsp; +&nbsp;&nbsp; 2(24)</li>
+<pre><code data-language="c">j = ((1 + (i ^ (i-1) )) &gt;&gt; 1) + i - 1;
+(j &amp; (j + 1)) || (i &amp; 1)</code></pre>
+<p>上面的代码可以判断整数i是否是前面1后面0的形式。</p>
+<li>每一个偶完数都可以写成连续自然数之和： 6=1+2+3 28=1+2+3+4+5+6+7 496=1+2+3+…+30+31 </li>
+<li>除6以外的偶完数，还可以表示成连续奇数的立方和（被加的项共有)： 28 = 1(3) + 3(3) 496 = 1(3) + 3(3) + 5(3) + 7(3) 8128 = 1(3) + 3(3) + 5(3) + ... + 15(3) 33550336 = 1(3) + 3(3) + 5(3) + ... + 125(3) + 127(3) </li>
+<li>每一个完数的所有约数(包括本身)的倒数之和，都等于2： 1/1 + 1/2 + 1/3 + 1/6 = 2 1/1 + 1/2 + 1/4 + 1/7 + 1/14 + 1/28 = 2</li>
+</ol>
+<p>了解了上面一些性质后，就可以简单的来写一个求完美数的程序了。 </p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+#ifndef WIN32
+typedef long long ll;
+#else
+typedef __int64 ll;
+#endif
+
+int main(void) {
+    ll i, j, n, x;
+
+    for (n = 2; n &lt;= 31; n++) {
+        x = (1 &lt;&lt; n) - 1;
+        for(i = 3; i*i &lt;= x; i += 2)
+            if(x % i == 0)
+                break;
+        if(i*i &lt;= x) continue;
+        printf(&quot;%lld/n&quot;, (1 &lt;&lt; (n - 1)) * x);
+    }
+
+    return 0;
+}
+</code></pre>
+<p>运行结果： </p>
+<pre><code data-language="shell">6
+28
+496
+8128
+33550336
+8589869056
+137438691328
+2305843008139952128</code></pre>
+<p>到目前为止，已经求出的2<sup>p</sup>-1是素数的有25个：2、3、5、7、13、17、19、31、61、89、107、127、521、607、1279、2203、2281、3217、4253、4423、9689、9941、11213、19937、21701。 据说最后一个即2<sup>21701</sup>－1是1978年两名美国大学生新发现的截止目前为止最大的一个素数 所有我们可以利用这个结果来求已知的完美数：</p>
+<pre><code data-language="java">import java.math.BigInteger;
+
+public class Main {
+    public static void main(String[] argv) {
+        int [] prime = {
+            2,3,5,7,13,17,19,31,61,89,107,127,
+            521,607,1279,2203,2281,3217,4253,
+            4423,9689,9941,11213,19937,21701
+        };
+        BigInteger x = BigInteger.ONE;
+        for (int i = 0; i &lt; prime.length; i++)
+            System.out.println(x.shiftLeft(prime[i]-1).multiply(x.shiftLeft(prime[i]).subtract(x)));
+    }
+}</code></pre>
+</div>
