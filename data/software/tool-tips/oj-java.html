@@ -1,0 +1,27 @@
+<div title="OJ添加Java语言" class="article-content">
+<div class="sign">2008-04-09 18:31</div>
+<p>我校ACM还处于萌芽阶段，目前用的 OJ 系统是 PKU 上免费提供的版本。系统功能不是非常完善，许多功能都没提供，不过毕竟是免费版本嘛，能用就行了。</p>
+<p>应同学们的要求，为 OJ 添加 Java 语言。在网上搜索了一下，都没有相关的文章介绍。在老师的指导下，我们摸索出一种简单的方法，现介绍给大家。</p>
+<ol>
+<li>安装JDK：到官网下载最新版本的J2SE，并配置相应环境变量。</li>
+<li>打开服务器的配置文件&ldquo;serverconfig.property&rdquo;（默认安装的话在目录C:/JudgeOnline下）。</li>
+<li>找到一下信息，红色部分是需要修改或者添加的部分。</li>
+</ol>
+<pre>LangCount=<span style="color: #ff0000;">4</span>
+LanguageDescs=G++,GCC,Pascal<span style="color: #ff0000;">,Java</span>
+LanguageExtMemory=668,668,700<span style="color: #ff0000;">,10100</span>
+LanguageExtTime=60,60,15<span style="color: #ff0000;">,4000</span>
+LanguageExts=cc,c,pas<span style="color: #ff0000;">,java</span>
+LanguageExes=exe,exe,exe<span style="color: #ff0000;">,class</span>
+LanguageTimeFactor=1,1,1<span style="color: #ff0000;">,1</span>
+CompileStreamOrder=1,1,0<span style="color: #ff0000;">,1</span>
+
+G++CompileCmd=C:/JudgeOnline/bin/gcc/bin/g++.exe -fno-asm -s -w -O1 -DONLINE_JUDGE -o %PATH%%NAME% %PATH%%NAME%.%EXT%
+GCCCompileCmd=C:/JudgeOnline/bin/gcc/bin/gcc.exe -fno-asm -s -w -O1 -DONLINE_JUDGE -o %PATH%%NAME% %PATH%%NAME%.%EXT%
+PascalCompileCmd=C:/JudgeOnline/bin/fpc/fpc.exe -Sg -dONLINE_JUDGE %PATH%%NAME%.%EXT%
+<span style="color: #ff0000;">JavaCompileCmd=javac %PATH%%NAME%.%EXT%</span>
+
+<span style="color: #ff0000;">JavaRunCmd=java -classpath %PATH% %NAME%</span>
+</pre>
+<p>保存好文件重启 Tomcat 服务器就可以了。欢迎大家光临<a href="http://acm.zjgsu.edu.cn/" target="_blank">我校 ACM网站</a>，另外我们提供了<span style="color: #ff0000;">测试数据和参考源码下载功能</span>。</p>
+</div>
