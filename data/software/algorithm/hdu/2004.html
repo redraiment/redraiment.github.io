@@ -2,11 +2,67 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>输入一个百分制的成绩t，将其转换成对应的等级，具体转换规则如下：</p>
+<ul>
+  <li>90~100为A;</li>
+  <li>80~89为B;</li>
+  <li>70~79为C;</li>
+  <li>60~69为D;</li>
+  <li>0~59为E; </li>
+</ul>
 <h2>Input</h2>
+<p>输入数据有多组，每组占一行，由一个整数组成。</p>
 <h2>Output</h2>
+<p>对于每组输入数据，输出一行。如果输入数据不在0~100范围内，请输出一行：“Score is error!”。</p>
 <h2>Sample Input</h2>
+<pre> 	56
+67
+100
+123</pre>
 <h2>Sample Output</h2>
+<pre>E
+D
+A
+Score is error!</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>前置知识:if嵌套语法</p>
+<h2>Algorithm Analyse</h2>
+<ol>
+  <li>接受数据Score，直到读入失败</li>
+  <li>如果 Score 小于 0，为错误数据，输出“Score is error!”，返回第1步，否则进入第3步。</li>
+  <li>如果 Score 小于 60，输出“E”，返回第1步，否则进入第3步。</li>
+  <li>如果 Score 小于 70，输出“D”，返回第1步，否则进入第4步。</li>
+  <li>如果 Score 小于 80，输出“C”，返回第1步，否则进入第5步。</li>
+  <li>如果 Score 小于 90，输出“B”，返回第1步，否则进入第6步。</li>
+  <li>如果 Score 小于等于 100，输出“A”，返回第1步，否则进入第7步。</li>
+  <li>Score为错误数据，输出“Score is error!”，返回第1步。 </li>
+</ol>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void) {
+    int r;
+
+    while (scanf("%d", &r) != EOF) {
+        if (r &lt; 0)
+            puts("Score is error!");
+        else if (r &lt; 60)
+            puts("E");
+        else if (r &lt; 70)
+            puts("D");
+        else if (r &lt; 80)
+            puts("C");
+        else if (r &lt; 90)
+            puts("B");
+        else if (r &lt;= 100)
+            puts("A");
+        else
+            puts("Score is error!");
+    }
+
+    return 0;
+}</code></pre>
 </div>
