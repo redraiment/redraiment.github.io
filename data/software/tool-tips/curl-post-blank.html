@@ -1,0 +1,13 @@
+<div title="curl命令post带空格的数据" class="article-content">
+<div class="sign">2008-10-16 14:40</div>
+<p>偶然遇到一个情况，我想用curl登入一个网页，无意间发现要post的数据里带空格。比如用户名为"abcdef"，密码为"abc def"（中间有一个空格），按照以前的方式提交提示登入失败。</p>
+<pre><code data-language="shell">curl -D cookie -d "username=abcdef&amp;password=abc def" http://login.xxx.com/</code></pre>
+<p>查看curl手册man curl后得知：</p>
+<dl>
+<dt>d/--data </dt>
+<dd>(HTTP) Sends the speciﬁed data in a POST request to the HTTP server, in a way that can emulate as if a user has ﬁlled in a HTML form and pressed the submit button. Note that the data is sent exactly as speciﬁed with no extra processing (with all newlines cut off). The data is expected to be "url-encoded". This will cause curl to pass the data to the server using the content-type application/x-www-form-urlencoded. Compare to -F/--form. If this option is used more than once on the same command line, the data pieces speciﬁed will be merged together with a separating &amp;-letter. Thus, using &rsquo;-d name=daniel -d skill=lousy&rsquo; would generate a post chunk that looks like &rsquo;name=daniel&amp;skill=lousy&rsquo;.</dd>
+</dl>
+<p>于是改用：</p>
+<pre><code data-language="shell">curl -D cookie -d "username=abcdef" -d "password=abc efg" http://login.xxx.com/</code></pre>
+<p>这样就能成功登入了。</p>
+</div>
