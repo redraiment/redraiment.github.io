@@ -2,11 +2,39 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>求实数的绝对值。</p>
 <h2>Input</h2>
+<p>输入数据有多组，每组占一行，每行包含一个实数。</p>
 <h2>Output</h2>
+<p>对于每组输入数据，输出它的绝对值，要求每组数据输出一行，结果保留两位小数。</p>
 <h2>Sample Input</h2>
+<pre>123
+-234.00</pre>
 <h2>Sample Output</h2>
+<pre>123.00
+234.00</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>前置知识:库函数的调用</p>
+<h2>Algorithm Analyse</h2>
+<p>直接调用库函数。</p>
 <h1>算法实现</h1>
+<p>本题用到实数求绝对值函数:</p>
+<pre><code data-language="c">#include &lt;math.h&gt;
+double fabs(double arg);</code></pre>
+<p>功能： 函数返回参数arg的绝对值。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(void) {
+  double r;
+
+  while (scanf("%lf", &r) != EOF)
+    printf("%.2lf\n", fabs(r));
+
+  return EXIT_SUCCESS;
+}</code></pre>
 </div>
