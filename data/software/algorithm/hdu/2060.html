@@ -1,7 +1,51 @@
 <div title="2060 Snooker" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>background:</p>
+<p>Philip likes to play the QQ game of Snooker when he wants a relax, though he was just a little vegetable-bird. Maybe you hadn't played that game yet, no matter, I'll introduce the rule for you first.</p>
+<p>There are 21 object balls on board, including 15 red balls and 6 color balls: yellow, green, brown, blue, pink, black.</p>
+<p>The player should use a white main ball to make the object balls roll into the hole, the sum of the ball's fixed value he made in the hole is the player's score. The player should firstly made a red ball into the hole, after that he gains red-ball's value(1 points), then he gets the chance to make a color ball, then alternately. The color ball should be took out until all the red-ball are in the hole. In other word, if there are only color balls left on board, the player should hit the object balls in this order: yellow(2 point), green(3 point), brown(4 point), blue(5 point), pink(6 point), black(7 point), after the ball being hit into the hole, they are not get out of the hole, after no ball left on board, the game ends, the player who has the higher score wins the game. PS: red object balls never get out of the hole.</p>
+<p>I just illustrate the rules that maybe used, if you want to contact more details, visit http://sports.tom.com/snooker/ after the contest.</p>
+<p>for example, if there are 12 red balls on board(if there are still red ball left on board, it can be sure that all the color balls must be on board either). So suppose Philp can continuesly hit the ball into the hole, he can get the maximun score is</p>
+<p>12 * 1 (12 red-ball in one shoot) + 7 * 12(after hit a red ball, a black ball which was the most valuable ball should be the target) + 2 + 3 + 4 + 5 + 6 + 7(when no red ball left, make all the color ball in hole).</p>
+<p>Now, your task is to judge whether Philip should make the decision to give up when telling you the condition on board(How many object balls still left not in the hole and the other player's score). If Philp still gets the chance to win, just print "Yes", otherwise print "No". (PS: if the max score he could get on board add his current score is equal to the opponent's current score, still output "Yes")</p>
+<h2>Input</h2>
+<p>The first line contains a numble N indicating the total conditions. Then followed by N lines, each line is made of three integers:</p>
+<p>Ball_Left P_Score O_Score represeting the ball number left on board, Philp's current score, and the opponent's current score.</p>
+<p>All the input value are in 32 bit integer value range.</p>
+<h2>Output</h2>
+<p>You should caculate the max score left Philp can gain, and judge whether he has the possiblity to win.</p>
+<h2>Sample Input</h2>
+<pre>2
+12 1 1
+1 30 39</pre>
+<h2>Sample Output</h2>
+<pre>Yes
+No</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>背景:</p>
+<p>当菲利普要放松一下自己的时候，他喜欢去玩QQ里的斯诺克游戏，虽然他还只是个小菜鸟。也许你还不知道这个游戏的规则，没关系，我会先为你介绍。 一共有21个球在台面上，其中包括15个红球和6个彩球:黄、绿、褐、蓝、粉、黑。选手需要用一个白球来使这些球滚进洞里，那些球所代表的值的和就是他的得分。 选手必须先把一个红球打进洞里，然后它得到红球相应的分值(1分)，然后他就有一次机会去选择打一个彩球。在红球还未全部打进洞里之前，打进去的彩球需要重新拿出来。 换句话说，也就是最后桌上将会只留下彩球。选手按下面的顺序来击球:黄(2分)、绿(3分)、褐(4分)、蓝(5分)、粉(6分)、黑(7分)。这时候把彩球打进洞里，它们不会被拿出来。 当桌面上没有球留下的时候，比赛结束。分数高的选手获胜。PS:红球不会重新拿出。我仅仅只阐述了一下规则，如果你希望了解更多的资料，请浏览:http://sports.tom.com/snooker/</p>
+<p>例如，桌台上还有12个红球(如果还有红球留在台面上，表示所有的彩球一定也都留在台面上)。我假设菲利普能继续击球，他能得到的最大分数是： 12 * 1(一次性打掉12个红球) + 7 * 12(每打完一个红球就打黑球) + 2 + 3 + 4 + 5 + 6 + 7(没有红球剩下时，就打所有的彩球)。 现在，你的任务就是在菲利普告诉你现在台面上的情况(有多少个球还留在台面上)后判断一下他是否需要放弃这局比赛。如果他还有获胜的机会，就输出“Yes”，否则输出“No”。 (PS:如果他最大可能的得分加上现在的分数等于对手的分数，依然输出“Yes”)</p>
+<p>简单数学计算</p>
+<h2>Algorithm Analyse</h2>
+<p>只要直接按题目的意思来就可以了。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int t, n, s1, s2;
+
+  scanf("%d", &t);
+  while (t-- && scanf("%d%d%d", &n, &s1, &s2))
+  {
+    s1 += n &gt; 6 ? 8 * (n - 6) : 0;
+    s1 += n &gt; 6 ? 27 : n * (15 - n) / 2;
+    puts(s1 &gt;= s2 ? "Yes" : "No");
+  }
+
+  return 0;
+}</code></pre>
 </div>
