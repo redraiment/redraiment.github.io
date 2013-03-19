@@ -2,11 +2,71 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>There are many lamps in a line. All of them are off at first. A series of operations are carried out on these lamps. On the i-th operation, the lamps whose numbers are the multiple of i change the condition ( on to off and off to on ).</p>
 <h2>Input</h2>
+<p>Each test case contains only a number n ( 0&lt; n&lt;= 10^5) in a line.</p>
 <h2>Output</h2>
+<p>Output the condition of the n-th lamp after infinity operations ( 0 - off, 1 - on ).</p>
 <h2>Sample Input</h2>
+<pre>1
+5</pre>
 <h2>Sample Output</h2>
+<pre>1
+0</pre>
+<h2>Hint</h2>
+<pre>Consider the second test case:
+
+The initial condition      : 0 0 0 0 0 …
+After the first operation  : 1 1 1 1 1 …
+After the second operation : 1 0 1 0 1 …
+After the third operation  : 1 0 0 0 1 …
+After the fourth operation : 1 0 0 1 1 …
+After the fifth operation  : 1 0 0 1 0 …
+
+The later operations cannot change the condition of the fifth lamp any more. So the answer is 0.</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>有一些灯排成一条直线。所有的灯在刚开始都是关闭的，在对灯进行一系列操作后:在第i次操作的时候，调整所有标号是i的倍数的灯的状态(原本打开的灯将它关闭，原本关闭的将它打开)。</p>
+<h2>Algorithm Analyse</h2>
+<p>我们举个简单的例子来看看它的规律:</p>
+<p>比如n=16,则在第1、2、4、8、16次操作的时候，第16号灯都会被调整，因为16是1、2、4、8、16的倍数。</p>
+<p>共有5次，因为开始是关闭的，所以最后将是亮着的。</p>
+<p>你可能已经发现，其实求第n盏灯最后的状态，只是求它的因子个数的奇偶性(因为对同一盏等调整两次就恢复原状态)。</p>
+<p>下面的代码就可以AC了。</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int i, c, n;
+  while (scanf("%d", &n) != EOF)
+  {    
+    for (i = 1, c= 0; i &lt;= n; i++)
+    {
+      if (n % i == 0)
+        c++;
+    }
+    printf("%d\n", c & 1);
+  }
+
+  return 0;
+}</code></pre>
+<p>但你继续往下思考一下。是不是又发现了什么呢？</p>
+<p>因子是不会只有1个的，比如16 = 1 * 16 = 2 * 8 = 4 * 4</p>
+<p>所以，因为A = a × b，如果所有的因子a都不等于b，则因子的个数一定是偶数。</p>
+<p>唯一使A的因子的个数为奇数的可能是存在A = a × b 且 a = b。即A是完全平方数。就像刚刚的16 = 4 × 4。</p>
+<p>所以只要判断输入的数是否为完全平方数即可。 </p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+#define S(x) (((int)x)*((int)x))
+
+int main(void)
+{
+  int n;
+  while (scanf("%d", &n) != EOF)
+    printf("%d\n", S(sqrt(n)) == n);
+
+  return 0;
+}</code></pre>
 </div>
