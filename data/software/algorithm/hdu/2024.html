@@ -2,11 +2,73 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>输入一个字符串，判断其是否是C的合法标识符。</p>
 <h2>Input</h2>
+<p>输入数据包含多个测试实例，数据的第一行是一个整数n,表示测试实例的个数，然后是n行输入数据，每行是一个长度不超过50的字符串。</p>
 <h2>Output</h2>
+<p>对于每组输入数据，输出一行。如果输入数据是C的合法标识符，则输出"yes"，否则，输出“no”。</p>
 <h2>Sample Input</h2>
+<pre>3
+12ajf
+fi8x_a
+ff  ai_2</pre>
 <h2>Sample Output</h2>
+<pre>no
+yes
+no</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>直接按题目的描述来做就可以了。</p>
+<p>先判断是不是以下划线或字母开头，然后依次判断后面的字符是不是都为数字或字母。</p>
 <h1>算法实现</h1>
+<p>多用库函数，勤用库函数。</p>
+<p>isalpha</p>
+<dl>
+  <dt>语法</dt>
+  <dd>#include &lt;ctype.h&gt;</dd>
+  <dd>int isalpha( int ch );</dd>
+  <dt>功能</dt>
+  <dd>如果参数是字母字符，函数返回非零值，否则返回零值。</dd>
+</dl>
+<p>isalnum</p>
+<dl>
+  <dt>语法</dt>
+  <dd>#include &lt;ctype.h&gt;</dd>
+  <dd>int isalnum( int ch );</dd>
+  <dt>功能</dt>
+  <dd>如果参数是数字或字母字符，函数返回非零值，否则返回零值。</dd>
+</dl>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, d, i;
+  char sym[64];
+
+  scanf("%d%*c", &n);
+  while (n--)
+  {
+    gets(sym);
+    if (sym[0] != '_' && !isalpha(sym[0]))
+    {
+      puts("no");
+      continue;
+    }
+    for (d = i = 1 ; sym[i] ; i++)
+    {
+      if (!isalnum(sym[i]) && sym[i] != '_')
+      {
+        d = 0;
+        break;
+      }
+    }
+    puts(d ? "yes" : "no");
+  }
+
+  return 0;
+}</code></pre>
 </div>
