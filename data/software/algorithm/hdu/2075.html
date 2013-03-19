@@ -1,7 +1,36 @@
 <div title="2075 A|B?" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>正整数A是否能被正整数B整除，不知道为什么xhd会研究这个问题，来帮帮他吧。</p>
+<h2>Input</h2>
+<p>输入数据的第一行是一个数据T，表示有T组数据。</p>
+<p>每组数据有两个正整数A和B(A,B&lt;10^9)。</p>
+<h2>Output</h2>
+<p>对于每组输入数据，输出"YES"表示可以被整除，"NO"表示不能被整除。</p>
+<h2>Sample Input</h2>
+<pre>2
+4 2
+5 3</pre>
+<h2>Sample Output</h2>
+<pre>YES
+NO</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>简单题</p>
+<h2>Algorithm Analyse</h2>
+<p>差不多是考你基本输入输出了。我也不明白他们为什么研究这个问题。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include&lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, a, b;
+
+  scanf("%d", &n);
+  while(n-- && scanf("%d%d", &a, &b))
+    puts(a % b ? "NO" : "YES");
+
+  return 0;
+}</code></pre>
 </div>
