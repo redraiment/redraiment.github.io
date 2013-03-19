@@ -2,11 +2,49 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>对于输入的每个字符串，查找其中的最大字母，在该字母后面插入字符串“(max)”。</p>
 <h2>Input</h2>
+<p>输入数据包括多个测试实例，每个实例由一行长度不超过100的字符串组成，字符串仅由大小写字母构成。</p>
 <h2>Output</h2>
+<p>对于每个测试实例输出一行字符串，输出的结果是插入字符串“(max)”后的结果，如果存在多个最大的字母，就在每一个最大字母后面都插入"(max)"。</p>
 <h2>Sample Input</h2>
+<pre>abcdefgfedcba
+xxxxx</pre>
 <h2>Sample Output</h2>
+<pre>abcdefg(max)fedcba
+x(max)x(max)x(max)x(max)x(max)</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>依然是找最大值^_^</p>
 <h1>算法实现</h1>
+<p>找到最大值后，只要用putchar()逐个输出，然后判断输出的是不是最大值，是就再输出一个(max)，就是这么简单！</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  char t[128];
+  char max;
+  int i;
+
+  while (gets(t))
+  {
+    for (max = i = 0 ; t[i] ; i++)
+    {
+      if (t[i] &gt; max)
+        max = t[i];
+    }
+    for (i = 0 ; t[i] ; i++)
+    {
+      putchar(t[i]);
+      if (t[i] == max)
+        printf("%s", "(max)");
+    }
+    putchar('\n');
+  }
+
+  return 0;
+}</code></pre>
 </div>
