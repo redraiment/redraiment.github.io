@@ -1,7 +1,68 @@
 <div title="2081 手机短号" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>大家都知道，手机号是一个11位长的数字串，同时，作为学生，还可以申请加入校园网，如果加入成功，你将另外拥有一个短号。假设所有的短号都是是 6+手机号的后5位，比如号码为13512345678的手机，对应的短号就是645678。</p>
+<p>现在，如果给你一个11位长的手机号码，你能找出对应的短号吗？</p>
+<h2>Input</h2>
+<p>输入数据的第一行是一个N(N &lt;= 200)，表示有N个数据，接下来的N行每一行为一个11位的手机号码。</p>
+<h2>Output</h2>
+<p>输入数据的第一行是一个N(N &lt;= 200)，表示有N个数据，接下来的N行每一行为一个11位的手机号码。</p>
+<h2>Sample Input</h2>
+<pre>2
+13512345678
+13787654321</pre>
+<h2>Sample Output</h2>
+<pre>645678
+654321</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>字符串处理</p>
+<h2>Algorithm Analyse</h2>
+<p>这个不用说了把。你可以按字符串处理，也可以按整数处理。给出以下两段AC代码：</p>
+<p>字符串</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+  char s[12];
+  scanf("%d", &n);
+  while (n--&&scanf("%s", s))
+    printf("6%s\n", s+6);
+  return 0;
+}</code></pre>
+<p>整数</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+  __int64 x;
+  scanf("%d", &n);
+  while (n--&&scanf("%I64d", &x))
+    printf("6%05I64u\n", x % 100000);
+  return 0;
+}</code></pre>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int i, n;
+  char c;
+
+  scanf("%d%*c", &n);
+  while (n--)
+  {
+    putchar('6');
+    for (i = 0; i &lt; 12; i++)
+    {
+      if ((c = getchar()) && i &gt; 5)
+        putchar(c);
+    }
+  }
+
+  return 0;
+}</code></pre>
 </div>
