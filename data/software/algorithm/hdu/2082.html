@@ -1,7 +1,76 @@
 <div title="2082 找单词" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>假设有x1个字母A， x2个字母B,..... x26个字母Z，同时假设字母A的价值为1，字母B的价值为2,..... 字母Z的价值为26。那么，对于给定的字母，可以找到多少价值&lt;=50的单词呢？单词的价值就是组成一个单词的所有字母的价值之和，比如，单词ACM的价值是1+3+14=18，单词HDU的价值是8+4+21=33。(组成的单词与排列顺序无关，比如ACM与CMA认为是同一个单词）。</p>
+<h2>Input</h2>
+<p>输入首先是一个整数N，代表测试实例的个数。</p>
+<p>然后包括N行数据，每行包括26个&lt;=20的整数x1,x2,.....x26.</p>
+<h2>Output</h2>
+<p>对于每个测试实例，请输出能找到的总价值&lt;=50的单词数,每个实例的输出占一行。</p>
+<h2>Sample Input</h2>
+<pre>2
+1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+9 2 6 2 10 2 2 5 6 1 0 2 7 0 2 2 7 5 10 6 10 2 10 6 1 9</pre>
+<h2>Sample Output</h2>
+<pre>7
+379297</pre>
 <h1>问题分析</h1>
+<h2>Problem analyse</h2>
+<p>经典的母函数题目</p>
+<h2>algorithm analyse</h2>
+<p>如果有一组序列:a<sub>0</sub>, a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, ...，存在一个多项式G(X) = a<sub>0</sub> + a<sub>1</sub>X + a<sub>2</sub>X<sup>2</sup> + a<sub>3</sub>X<sup>3</sup> + ...，则称G(X)是序列 a<sub>0</sub>, a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>, ... 的母函数。譬如：</p>
+<p>(1 + x)n = C0n + C1nX<sup>1</sup> + ... + CnnX<sup>n</sup></p>
+<p>则 (1 + x)n是序列C<sup>0</sup><sub>n</sub>， C<sup>1</sup><sub>n</sub>, ..., C<sup>n</sup><sub>n</sub>的母函数。</p>
+<p>用母函数解题，就是用多项式的指数来代表某一属性(质量、分数、体积...)，前面的系数为它的种数。譬如：有1克、2克、3克、4克的砝码各一枚，能称出哪几种重量？各有几种可能方案？</p>
+<p>按上面讲的，我们把X的指数设为质量。所以：</p>
+<p>1克能表示0克和1克两种，所有是:X<sup>0</sup> + X<sup>1</sup> = 1 + X<sup>1</sup></p>
+<p>2克能表示0克和2克两种，所有是:X<sup>0</sup> + X<sup>2</sup> = 1 + X<sup>2</sup></p>
+<p>3克能表示0克和3克两种，所有是:X<sup>0</sup> + X<sup>3</sup> = 1 + X<sup>3</sup></p>
+<p>4克能表示0克和4克两种，所有是:X<sup>0</sup> + X<sup>4</sup> = 1 + X<sup>4</sup></p>
+<p>几种砝码的组合可以称重的情况，可以用以上几个函数的乘积表示：</p>
+<p>(1 + X<sup>1</sup>)(1 + X<sup>2</sup>)(1 + X<sup>3</sup>)(1 + X<sup>4</sup>) = 1 + X<sup>1</sup> + X<sup>2</sup> + 2X<sup>3</sup> + 2X<sup>4</sup> + 2X<sup>5</sup> + 2X<sup>6</sup> + 2X<sup>7</sup> + X<sup>8</sup> + X<sup>9</sup> + X<sup>10</sup></p>
+<p>所以，能称出0-&gt;10克的重量。3-&gt;7都有两种表示方法，其他的都只有1种。因此，本题就是求1-&gt;50的母函数的系数和。</p>
 <h1>算法实现</h1>
+<p>多项式的表示方法很多，本题不是稀疏的多项式，所有直接用一个一维数组就可以了。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(void)
+{
+  int i, j, k, t, x;
+  int n[2][51];
+
+  scanf("%d", &t);
+  while (t--)
+  {
+    memset(n[0], 0, sizeof(n[0]));
+    n[0][0] = 1;
+    for (i = 1; i &lt; 27; i++)
+    {
+      scanf("%d", &x);
+      if (!x)
+      {
+        for (j = 0; j &lt; 51; j++)
+          n[i % 2][j] = n[!(i%2)][j];
+        continue;
+      }
+      memset(n[i % 2], 0, sizeof(n[0]));
+      for (j = 0; j &lt; 51 && j &lt;= x * i; j += i)
+      {
+        for (k = 0; k + j &lt; 51 ; k++)
+        {
+          if (n[!(i%2)][k])
+            n[i % 2][k + j] += n[!(i%2)][k];
+        }
+      }
+    }
+    for (x = 0, i = 1; i &lt; 51; i++)
+      x += n[0][i];
+    printf("%d\n", x);
+  }
+
+  return 0;
+}</code></pre>
 </div>
