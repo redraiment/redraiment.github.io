@@ -2,11 +2,53 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>对于给定的一个字符串，统计其中数字字符出现的次数。</p>
 <h2>Input</h2>
+<p>输入数据有多行，第一行是一个整数n，表示测试实例的个数，后面跟着n行，每行包括一个由字母和数字组成的字符串。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，输出该串中数值的个数，每个输出占一行。</p>
 <h2>Sample Input</h2>
+<pre>2
+asdfasdf123123asdfasdf
+asdf111111111asdfasdfasdf</pre>
 <h2>Sample Output</h2>
+<pre>6
+9</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>因为本题只要求输出每一行数字的个数。所以不需要把那些字符记录下来。</p>
+<p>因此不需要开个字符数组去记录。而且如果你想开也不知道该开多大，因为题目中没有提示一行最多有几个。</p>
+<p>而判断行末就判断是否为'\n'就可以。</p>
 <h1>算法实现</h1>
+<p>判断是否为数字，直接调用库函数isdigit();</p>
+<dl>
+  <dt>语法</dt>
+  <dd>#include &lt;ctype.h&gt;</dd>
+  <dd>int isdigit( int ch );</dd>
+  <dt>功能</dt>
+  <dd>如果参数是0到9之间的数字字符，函数返回非零值，否则返回零值.</dd>
+</dl>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, d;
+  char c;
+
+  scanf("%d%*c", &n);
+  while (n--)
+  {
+    for (d = 0 ; (c = getchar()) != '\n' ;)
+    {
+      if (isdigit(c)) d++;
+    }
+    printf("%d\n", d);
+  }
+
+  return 0;
+}</code></pre>
 </div>
