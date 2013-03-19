@@ -40,7 +40,11 @@ Ext.define('iKnowledge.controller.Navigator', {
     },
 
     onLoad: function() {
-        Ext.getCmp('main').open(this.getDefaultArticle());
+        var url = this.getDefaultArticle();
+        var path = '/root' + url.substr(4);
+        Ext.getCmp('main').open(url);
+        // Ext JS Bug: won't fire active event when add first tab.
+        Ext.getCmp('nav').selectPath(path);
     },
 
     getDefaultArticle: function() {
