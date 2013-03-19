@@ -2,11 +2,90 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<pre>“今年暑假不AC？”
+“是的。”
+“那你干什么呢？”
+“看世界杯呀，笨蛋！”
+“@#$%^&*%...”</pre>
+<p>确实如此，世界杯来了，球迷的节日也来了，估计很多ACMer也会抛开电脑，奔向电视了。</p>
+<p>作为球迷，一定想看尽量多的完整的比赛，当然，作为新时代的好青年，你一定还会看一些其它的节目，比如新闻联播（永远不要忘记关心国家大事）、非常6+7、超级女生，以及王小丫的《开心辞典》等等，假设你已经知道了所有你喜欢看的电视节目的转播时间表，你会合理安排吗？（目标是能看尽量多的完整节目）</p>
 <h2>Input</h2>
+<p>输入数据包含多个测试实例，每个测试实例的第一行只有一个整数n(n&lt;=100)，表示你喜欢看的节目的总数，然后是n行数据，每行包括两个数据Ti_s,Ti_e (1&lt;=i&lt;=n)，分别表示第i个节目的开始和结束时间，为了简化问题，每个时间都用一个正整数表示。n=0表示输入结束，不做处理。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，输出能完整看到的电视节目的个数，每个测试实例的输出占一行。</p>
 <h2>Sample Input</h2>
+<pre>12
+1 3
+3 4
+0 7
+3 8
+15 19
+15 20
+10 15
+8 18
+6 12
+5 10
+4 14
+2 9
+0</pre>
 <h2>Sample Output</h2>
+<pre>5</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>一维数组上的动态规划</p>
+<h2>Algorithm Analyse</h2>
+<p>说是动态规划，其实也有点贪心的思想。</p>
+<p>一维数组里保存的的就是以当前节目作为开始，最多能完整地看多少个不同的节目。</p>
+<p>很明显，播出时间最晚的节目只是能1。</p>
+<p>我采取从后往前的规划方法。</p>
+<p>这样，当循环到i时，能保证数组里 D[i+1] -&gt; D[n-1] 保存的都是最优解。</p>
+<p>所以让j 从 i+1 到 n-1 循环，找出看完第i个节目后最多还能看的节目数max。(不要忘了判断能否完整收看哦)</p>
+<p>把max+1 保存到 D[i]里。如此下去直到结束。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct c
+{
+  int x;
+  int y;
+  int ord;
+}d[100];
+
+int cmp(const struct c *a, const struct c *b)
+{
+  if ((*a).x == (*b).x)
+    return (*a).y - (*b).y;
+  else
+    return (*a).x - (*b).x;
+}
+
+int main(void)
+{
+  int i, j, n, max;
+
+  while (scanf("%d", &n), n)
+  {
+    for (max = i = 0; i &lt; n; i++)
+    {
+      scanf("%d%d", &d[i].x, &d[i].y);
+      d[i].ord = 1;
+    }
+    qsort(d, n, sizeof(struct c), cmp);
+    d[n-1].ord = 1;
+    for (i = n - 2; i &gt;= 0; i--)
+    {
+      for (j = i + 1; j &lt; n; j++)
+      {
+        if (d[i].y &lt;= d[j].x && d[i].ord &lt; d[j].ord + 1)
+          d[i].ord = d[j].ord + 1;
+      }
+      if (max &lt; d[i].ord)
+        max = d[i].ord;
+    }
+    printf("%d\n", max);
+  }
+
+  return 0;
+}</code></pre>
 </div>
