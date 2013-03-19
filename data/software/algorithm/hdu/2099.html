@@ -1,7 +1,36 @@
 <div title="2099 整除的尾数" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
-<h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Description</h2>
+<p>一个整数，只知道前几位，不知道末二位，被另一个整数除尽了，那么该数的末二位该是什么呢？</p>
+<h2>Input</h2>
+<p>输入数据有若干组，每组数据包含二个整数a，b（0&lt;a&lt;10000, 10&lt;b&lt;100），若遇到0 0则处理结束。</p>
+<h2>Output</h2>
+<p>对应每组数据，将满足条件的所有尾数在一行内输出，格式见样本输出。同组数据的输出，其每个尾数之间空一格，行末没有空格。</p>
+<h2>Sample Input</h2>
+<pre>200 40
+1992 95
+0 0</pre>
+<h2>Sample Output</h2>
+<pre>00 40 80
+15</pre>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int  i;
+  int  a, b;
+  int  c;
+
+  while (scanf("%d%d", &a, &b), a + b)
+  {
+    for (c = i = 0; i &lt; 100; i++)
+    {
+      if ((a * 100 + i) % b == 0)
+        printf(c++ ? " %02d" : "%02d", i);
+    }
+    putchar('\n');
+  }
+}</code></pre>
 </div>
