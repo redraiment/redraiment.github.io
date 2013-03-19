@@ -2,11 +2,47 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>有一楼梯共M级，刚开始时你在第一级，若每次只能跨上一级或二级，要走上第M级，共有多少种走法？</p>
 <h2>Input</h2>
+<p>输入数据首先包含一个整数N，表示测试实例的个数，然后是N行数据，每行包含一个整数M（1&lt;=M&lt;=40）,表示楼梯的级数。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，请输出不同走法的数量</p>
 <h2>Sample Input</h2>
+<pre>2
+2
+3</pre>
 <h2>Sample Output</h2>
+<pre>1
+2</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>简单递推</p>
+<h2>Algorithm Analyse</h2>
+<p>由题目可知，每次只能走一级或两级。</p>
+<p>因此从第一级走上第二级只能走一步，只有1种走法。</p>
+<p>从第一级走上第三级，可以从第一级直接走两步，也可以从第二级走一步。有2种走法</p>
+<p>走上第n级，可以从第n-1级走一步上来，也可以从第n-2级走两步上来。</p>
+<blockquote><pre>f(2) = 1
+f(3) = 2
+f(n) = f(n-1) + f(n-2) (n > 3)</pre></blockquote>
+<p>是一个斐波那契序列。</p>
 <h1>算法实现</h1>
+<p>数值可能很大，用unsigned long 可能溢出。要用__int64(VC++)或long long(GCC)</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int i, n;
+  __int64 m[41] = {0, 1};
+
+  for (i = 2; i &lt; 41; i++)
+    m[i] = m[i-1] + m[i-2];
+
+  scanf("%d", &n);
+  while (n-- && scanf("%d", &i))
+    printf("%I64d\n", m[i]);
+
+  return 0;
+}</code></pre>
 </div>
