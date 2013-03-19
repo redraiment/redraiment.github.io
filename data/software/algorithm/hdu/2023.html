@@ -2,11 +2,73 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>假设一个班有n(n&lt;=50)个学生，每人考m(m&lt;=5)门课，求每个学生的平均成绩和每门课的平均成绩，并输出各科成绩均大于等于平均成绩的学生数量。</p>
 <h2>Input</h2>
+<p>输入数据有多个测试实例，每个测试实例的第一行包括两个整数n和m，分别表示学生数和课程数。然后是n行数据，每行包括m个整数（即：考试分数）。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，输出3行数据，第一行包含n个数据，表示n个学生的平均成绩，结果保留两位小数；第二行包含m个数据，表示m门课的平均成绩，结果保留两位小数；第三行是一个整数，表示该班级中各科成绩均大于等于平均成绩的学生数量。</p>
+<p>每个测试实例后面跟一个空行。</p>
 <h2>Sample Input</h2>
+<pre>2 2
+5 10
+10 20</pre>
 <h2>Sample Output</h2>
+<pre>7.50 15.00
+7.50 15.00
+1</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>只是简单的循环+条件判断。</p>
 <h1>算法实现</h1>
+<p>如果你有更好更简单的方法，欢迎和我们一起分享。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(void)
+{
+  int n, m;
+  int i, j;
+  int t, d;
+  int s[50];
+  int c[5];
+  int sc[50][5];
+
+  while (scanf("%d%d", &n, &m) != EOF)
+  {
+    memset(s, 0, sizeof(s));
+    memset(c, 0, sizeof(c));
+    memset(sc, 0, sizeof(sc));
+    for (i = 0 ; i &lt; n ; i++)
+    {
+      for (j = 0 ; j &lt; m ; j++)
+      {
+        scanf("%d", &sc[i][j]);
+        c[j] += sc[i][j];
+        s[i] += sc[i][j];
+      }
+    }
+    for (i = 0 ; i &lt; n ; i++)
+      printf("%.2lf%c", s[i] * 1.0 / m, i &lt; n - 1 ? ' ' : ' \n');
+    for (i = 0 ; i &lt; m ; i++)
+      printf("%.2lf%c", c[i] * 1.0 / n, i &lt; m - 1 ? ' ' : ' \n');
+    for (t = i = 0 ; i &lt; n ; i++)
+    {
+      for (d = 1, j = 0 ; j &lt; m ; j++)
+      {
+        if (sc[i][j] &lt; 1.0 * c[j] / n)
+        {
+          d = 0;
+          break;
+        }
+      }
+      if (d) t++;
+    }
+    printf("%d\n\n", t);
+  }
+
+  return 0;
+}</code></pre>
 </div>
