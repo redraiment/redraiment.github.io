@@ -1,7 +1,45 @@
 <div title="2097 Sky数" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>Sky从小喜欢奇特的东西，而且天生对数字特别敏感，一次偶然的机会，他发现了一个有趣的四位数2992，这个数，它的十进制数表示，其四位数字之和为2+9+9+2=22，它的十六进制数BB0，其四位数字之和也为22，同时它的十二进制数表示1894，其四位数字之和也为22，啊哈，真是巧啊。Sky非常喜欢这种四位数，由于他的发现，所以这里我们命名其为Sky数。但是要判断这样的数还是有点麻烦啊，那么现在请你帮忙来判断任何一个十进制的四位数，是不是Sky数吧。</p>
+<h2>Input</h2>
+<p>输入含有一些四位正整数，如果为0，则输入结束。</p>
+<h2>Output</h2>
+<p>若n为Sky数，则输出“#n is a Sky Number.”，否则输出“#n is not a Sky Number.”。每个结果占一行。注意：#n表示所读入的n值。</p>
+<h2>Sample Input</h2>
+<pre>2992
+1234
+0</pre>
+<h2>Sample Output</h2>
+<pre>2992 is a Sky Number.
+1234 is not a Sky Number.</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>进制转换</p>
+<h2>Algorithm Analyse</h2>
+<p>进制转换相关知识请参阅<span class="tab-href" title="2031.html">2031</span>题。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int Sum(int n, int as)
+{
+  int sum = 0;
+  while (n)
+  {
+    sum += n % as;
+    n /= as;
+  }
+  return sum;
+}
+
+int main(void)
+{
+  int n;
+
+  while (scanf("%d", &n), n)
+    printf(Sum(n,10)==Sum(n,12)&&Sum(n,10)==Sum(n,16)?"%d is a Sky Number.\n":"%d is not a Sky Number.\n", n);
+
+  return 0;
+}</code></pre>
 </div>
