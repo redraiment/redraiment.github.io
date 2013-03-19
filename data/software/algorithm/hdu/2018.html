@@ -2,11 +2,56 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>有一头母牛，它每年年初生一头小母牛。每头小母牛从第四个年头开始，每年年初也生一头小母牛。请编程实现在第n年的时候，共有多少头母牛？</p>
 <h2>Input</h2>
+<p>输入数据由多个测试实例组成，每个测试实例占一行，包括一个整数n(0&lt;n&lt;55)，n的含义如题目中描述。</p>
+<p>n=0表示输入数据的结束，不做处理。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，输出在第n年的时候母牛的数量。</p>
+<p>每个输出占一行。</p>
 <h2>Sample Input</h2>
+<pre>2
+4
+5
+0</pre>
 <h2>Sample Output</h2>
+<pre>2
+4
+6</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>简单的递推题</p>
+<h2>Algorithm Analyse</h2>
+<p>递推题我很喜欢，它们写出来的代码都很简单。但关键看你能不能找到规律。</p>
+<p>本题中，第n年的牛的来源有2中:</p>
+<ul>
+<li>第n-1年的牛</li>
+<li>第n-3年的牛所生的小牛 </li>
+</ul>
+<p>而递推的出口是第1年为1头，第2年为2头，第3年为3头。 </p>
 <h1>算法实现</h1>
+<p>知道了递推的规律，就可以写出方程了:</p>
+<p>f(n) = f(n-1) + f(n-3);  (n &gt; 3)</p>
+<p>f(n) = n; (n &lt;= 3)</p>
+<p>因为这是重复计算的过程。你可以把结果都保存在数组里。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, i;
+  int fab[55] = {1, 2, 3, 4, 6};
+
+  for (i = 5 ; i &lt; 55 ; i++)
+    fab[i] = fab[i - 1] + fab[i - 3];
+
+  while (scanf("%d", &n), n)
+  {
+    printf("%d\n", fab[n - 1]);
+  }
+
+  return 0;
+}</code></pre>
 </div>
