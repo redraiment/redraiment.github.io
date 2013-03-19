@@ -2,11 +2,45 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>给你n个整数，求他们中所有奇数的乘积。</p>
 <h2>Input</h2>
+<p>输入数据包含多个测试实例，每个测试实例占一行，每行的第一个数为n，表示本组数据一共有n个，接着是n个整数，你可以假设每组数据必定至少存在一个奇数。</p>
 <h2>Output</h2>
+<p>输出每组数中的所有奇数的乘积，对于测试实例，输出一行。</p>
 <h2>Sample Input</h2>
+<pre>3 1 2 3
+4 2 3 4 5</pre>
 <h2>Sample Output</h2>
+<pre>3
+15</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>前置知识:循环语句</p>
+<h2>Algorithm Analyse</h2>
+<p>循环+条件判断</p>
 <h1>算法实现</h1>
+<h2>编码建议</h2>
+<p>循环用for实现就可以了。至于那个判断条件，一般是if (t % 2 == 1)，但也可以简化为 if (t % 2)</p>
+<h2>课外资料</h2>
+<p>在早期CPU处理的功能还不够强的时候，求X对于2<sup>n</sup>的余数，会换成位运算：X & (2<sup>n</sup> - 1)。比如求 X 余 8，写成 X & 7。</p>
+<p>这样写可读性比较差。现在的机器性能提升了，而且编译器也能自动优化，所以这种写法现在不推荐，仅做了解(当然如果你想炫耀一番自己的才华，那另当别论)。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void) {
+  int n, i, s, t;
+
+  while (scanf("%d", &n) != EOF) {
+    s = 1;
+    for (i = 0; i &lt; n; i++) {
+      scanf("%d", &t);
+      if (t & 1)
+        s *= t;
+    }
+    printf("%d\n", s);
+  }
+
+  return 0;
+}</code></pre>
 </div>
