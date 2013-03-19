@@ -2,11 +2,63 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>Given two rectangles and the coordinates of two points on the diagonals of each rectangle,you have to calculate the area of the intersected part of two rectangles. its sides are parallel to OX and OY .</p>
 <h2>Input</h2>
+<p>Input The first line of input is 8 positive numbers which indicate the coordinates of four points that must be on each diagonal.The 8 numbers are x1,y1,x2,y2,x3,y3,x4,y4.That means the two points on the first rectangle are(x1,y1),(x2,y2);the other two points on the second rectangle are (x3,y3),(x4,y4).</p>
 <h2>Output</h2>
+<p>Output For each case output the area of their intersected part in a single line.，　accurate up to 2 decimal places.</p>
 <h2>Sample Input</h2>
+<pre>1.00 1.00 3.00 3.00 2.00 2.00 4.00 4.00
+5.00 5.00 13.00 13.00 4.00 4.00 12.50 12.50</pre>
 <h2>Sample Output</h2>
+<pre>1.00
+56.25</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>给出两个矩形在对角线上的顶点的坐标，要求你计算两个矩形的公共部分的面积。</p>
+<p>数学计算。</p>
+<h2>Algorithm Analyse</h2>
+<p>两个矩形摆放大致有下面几种(其他几种都可以由它们变形过来)。</p>
+<img src="resources/figure/hdu/2056-1.bmp" />
+<p>其实，说的极端一点，两矩形摆放，也就两种摆法：相交与不相交。</p>
+<p>这一题这样考虑反而更简单一点。要求一个矩形的面积。如下图，我们先要知道边AD、BC的横坐标(X1, X2)，边AB、CD的纵坐标(Y1, Y2)。然后按公式S = (X2 - X1) * (Y2 - Y1)。因此问题的关键是求这四个参数。</p>
+<img src="resources/figure/hdu/2056-2.bmp" />
+<p>两个矩形相交的图形一定是矩形(这个容易证明，这里不阐述)。如下图，我们只要求出相交的矩形的那四个参数就可以了。</p>
+<img src="resources/figure/hdu/2056-3.bmp" />
+<pre>X1' = max(X1, X3)
+Y1' = max(Y1, Y3)
+X2' = min(X2, X4)
+Y2' = min(Y2, Y4)</pre>
+<p>而当X1 > X2 且 Y1 > y2，则原来的两个矩形相离，所以面积为0。</p>
 <h1>算法实现</h1>
+<p>如下图:给出的两点可能是A、C，也可能是B、D，所以我们自己要在开始时做个统一。</p>
+<img src="resources/figure/hdu/2056-4.bmp" />
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int main(void)
+{
+  int i;
+  double a[2], b[2];
+  double x[4], y[4];
+
+  while (scanf("%lf%lf", x, y) != EOF)
+  {
+    for (i = 1; i &lt; 4; i++)
+      scanf("%lf%lf", x+i, y+i);
+    if (x[0] &gt; x[1]) swap(x[0], x[1]);
+    if (y[0] &gt; y[1]) swap(y[0], y[1]);
+    if (x[2] &gt; x[3]) swap(x[2], x[3]);
+    if (y[2] &gt; y[3]) swap(y[2], y[3]);
+    a[0] = x[0] &gt; x[2] ? x[0] : x[2];
+    a[1] = x[1] &lt; x[3] ? x[1] : x[3];
+    b[0] = y[0] &gt; y[2] ? y[0] : y[2];
+    b[1] = y[1] &lt; y[3] ? y[1] : y[3];
+    printf("%.2f\n", a[0]&lt;a[1] && b[0]&lt;b[1]? (b[1]-b[0])*(a[1]-a[0]) : 0);
+  }
+
+  return 0;
+}</code></pre>
 </div>
