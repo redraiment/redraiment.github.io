@@ -2,11 +2,60 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>Given a sequence 1,2,3,......N, your job is to calculate all the possible sub-sequences that the sum of the sub-sequence is M.</p>
 <h2>Input</h2>
+<p>Input contains multiple test cases. each case contains two integers N, M( 1 &lt;= N, M &lt;= 1000000000).input ends with N = M = 0.</p>
 <h2>Output</h2>
+<p>For each test case, print all the possible sub-sequence that its sum is M.The format is show in the sample below.print a blank line after each test case.</p>
 <h2>Sample Input</h2>
+<pre>20 10
+50 30
+0 0</pre>
 <h2>Sample Output</h2>
+<pre>[1,4]
+[10,10]
+
+[4,8]
+[6,9]
+[9,11]
+[30,30]</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>给出一个数列1，2，3，......N，你所要做的就是算出和为M的所有连续的数列。</p>
+<h2>简单数学题。</h2>
+<p></p>
+<h2>Algorithm Analyse</h2>
+<p>我们都知道，在连续的整数序列里，1, 2, 3, ..., n-1, n, n+1, ...</p>
+<pre>∵2n = [(n-1) + (n+1)] = [(n-2) + (n+2)] = ... = [1 + (2n-1)]
+∴(n-m) + (n-m+1) + ... + n-1 + n + n+1 + ... + (n+m-1) + (n+m) = (2m+1) × n
+∵2m+1是奇数
+∴如果X能被2m+1整除(即能被分割成2m+1份)，且n = X / (2m+1)
+  则X = (n-m) + (n-m+1) + ... + n-1 + n + n+1 + ... + (n+m-1) + (n+m)</pre>
+<p>同理，在整数序列中，又有这样的规律:</p>
+<pre>∵n + (n+1) = (n-1) + (n+2) = ... = 1 + 2n
+∴(n-m) + (n-m+1) + ... + (n+m+1) = (m+1)(2n+1)
+∴如果X能被(2n+1)整除，且X / (2m+2) = n
+  则X = (n-m) + (n-m+1) + ... + (n+m+1)</pre>
+<p>运算的时候，保证n-m大于0，n+m+1或n+m小于给定的上界即可。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include&lt;stdio.h&gt;
+
+int main()
+{
+  int n, m, i;
+
+  while (scanf("%d%d", &m, &n), m+n)
+  {
+    for (i = 1; n/i-(i-1)/2&gt;0; i++);
+    for(i--; i && n/i+i/2 &lt;= m; i--)
+    {
+      if((n-n/i*i)*2 == i)
+        printf("[%d,%d]\n", n/i-(i-1)/2, n/i+i/2);
+      if(!(n%i) && i%2)
+        printf("[%d,%d]\n", n/i-(i-1)/2, n/i+i/2);
+    }
+    putchar('\n');
+  }
+  return 0;
+}</code></pre>
 </div>
