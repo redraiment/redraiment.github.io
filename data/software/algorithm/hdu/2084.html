@@ -1,7 +1,96 @@
 <div title="2084 数塔" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<img src="resources/figure/hdu/2084-1.bmp" align="right" />
+<h2>Problem Description</h2>
+<p>在讲述DP算法的时候，一个经典的例子就是数塔问题，它是这样描述的：</p>
+<p>有如下所示的数塔，要求从顶层走到底层，若每一步只能走到相邻的结点，则经过的结点的数字之和最大是多少？</p>
+<p>已经告诉你了，这是个DP的题目，你能AC吗?</p>
+<h2>Input</h2>
+<p>输入数据首先包括一个整数C,表示测试实例的个数，每个测试实例的第一行是一个整数N(1 &lt;= N &lt;= 100)，表示数塔的高度，接下来用N行数字表示数塔，其中第i行有个i个整数，且所有的整数均在区间[0,99]内。</p>
+<h2>Output</h2>
+<p>对于每个测试实例，输出可能得到的最大和，每个实例的输出占一行。</p>
+<h2>Sample Input</h2>
+<pre>1
+5
+7
+3 8
+8 1 0
+2 7 4 4
+4 5 2 6 5</pre>
+<h2>Sample Output</h2>
+<pre>30</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>二维数组上的动态规划</p>
+<h2>Algorithm Analyse</h2>
+<p>前面已经做过两道一维数组上的动态规划。二维数组上的动态规划就是一个递归的过程了。</p>
+<p>我们知道，在求解的过程中，很多元素的值都算了不止一次，所有我们可以开个数组把这些已经计算出来的中间值保存下来。这就是编程的又一大原则:以空间换时间。我们把原来的数塔保存入一个二维数组g[n][n]里</p>
+<dl>
+<dd>f[i][j] = g[i][j] + max(f[i+1][j], f[i+1][j+1]) (i &lt; n)</dd>
+<dd>f[i][j] = g[i][j] (i = n)</dd>
+</dl>
+<p>最后我们输出f[0][0]就可以了。下面给出动态规划的AC代码:</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define max(a,b) (a)&gt;(b)?(a):(b)
+
+int  f[120][120];
+int  g[120][120];
+int  n;
+
+int fc(int i,int j)
+{
+  if(f[i][j]==-1)
+    f[i][j]=i==n-1?g[i][j]:max(g[i][j]+fc(i+1,j),g[i][j]+fc(i+1,j+1));
+  return f[i][j];
+}
+
+int main(void)
+{
+  int  c;
+  int  i;
+  int  j;
+  
+  scanf("%d", &c);
+  while (c--)
+  {
+    memset(f,-1,sizeof(f));
+    scanf("%d",&n);
+    for(i=0;i&lt;n;i++)
+    {
+      for(j=0;j&lt;=i;j++)
+        scanf("%d",&g[i][j]);
+    }
+    printf("%d\n",fc(0,0));
+  }
+  return 0;
+}</code></pre>
+<p>但其实这一题完全可以不用动态规划。我们从最下层往上推，比如到了第i层，比较f(i, j)和f(i, j+1)，把较大值加到f(i-1, j)上。事实证明，这样算的速度比动态规划要快。</p>
 <h1>算法实现</h1>
+<p>这是一个下三角矩阵，直接开二维数组太浪费空间了。可以开个一维数组压缩空间。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int t[5600];
+  int n, i, j, c;
+
+  scanf("%d",&c);
+  while (c--)
+  {
+    scanf("%d",&n);
+    for(i=0;i&lt;n;i++)
+      for(j=0;j&lt;=i;j++)
+        scanf("%d",&t[(i+1)*(i+2)/2+j-1]);
+    for(i=n-2;i&gt;=0;i--)
+      for(j=0;j&lt;=i;j++)
+        t[(i+1)*(i+2)/2+j-1]+=t[(i+3)*(i+2)/2+j-1]&gt;t[(i+3)*(i+2)/2+j]?t[(i+3)*(i+2)/2+j-1]:t[(i+3)*(i+2)/2+j];
+    printf("%d\n",t[0]);
+  }
+
+  return 0;
+}</code></pre>
 </div>
