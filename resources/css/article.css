@@ -26,14 +26,18 @@
     margin-top: 15px;
 }
 
-.article-content ul li {
-    list-style-position: inside;
-    list-style-type: disc;
+.article-content ul, .article-content ol {
+    text-indent: 1em;
 }
 
 .article-content ol li {
     list-style-position: inside;
     list-style-type: decimal;
+}
+
+.article-content ul li {
+    list-style-position: inside;
+    list-style-type: disc;
 }
 
 .article-content dt {
