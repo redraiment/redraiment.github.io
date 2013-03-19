@@ -2,11 +2,55 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>有n(n&lt;=100)个整数，已经按照从小到大顺序排列好，现在另外给一个整数x，请将该数插入到序列中，并使新的序列仍然有序。</p>
 <h2>Input</h2>
+<p>输入数据包含多个测试实例，每组数据由两行组成，第一行是n和m，第二行是已经有序的n个数的数列。n和m同时为0标示输入数据的结束，本行不做处理。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，输出插入新的元素后的数列。</p>
 <h2>Sample Input</h2>
+<pre>3 3
+1 2 4
+0 0</pre>
 <h2>Sample Output</h2>
+<pre>1 2 3 4</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>本题目其实就是让你实现一次插入排序。</p>
+<p>插入排序的工作机理与很多人打牌时，整理手中牌时的做法差不多。在开始摸牌时，我们的左手是空的，牌面朝下放在桌上。</p>
+<p>接这，一次从桌上摸起一张牌，并将它插入到左手一把牌中的正确位置上。为了找到这张牌的正确位置，要将它与手中已有的每一张牌从右到左地进行比较。</p>
+<p>无论在什么时候，左手中的牌都是排好序的，而这些牌原先都是桌上那副牌里最顶上的有一些牌。</p>
+<p>下面是插入排序的伪代码：</p>
+<blockquote><pre>INSERTION-SORT(A)
+1  for j←2 to length[A]
+2      do key←A[j]
+3         /*Insert A[j]into the sorted sequence A[1..j-1].*/
+4         i←j - 1
+5         while i>0 and A[j]>key
+6            do A[i+1]←A[i]
+7               i←i - 1
+8         A[i+1]←key</pre></blockquote>
 <h1>算法实现</h1>
+<p>根据算法描述里的伪代码使用自己熟悉的语言实现。本题的要求更简单，只要做一趟插入排序就可以了！试试看，祝你好运！ </p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, i, m, x[101];
+  
+  while (scanf("%d%d", &n, &m), n || m)
+  {
+    for (i = 0 ; i &lt; n ; i++)
+      scanf("%d", x + i);
+    for (i = n ; i && x[i - 1] &gt; m ; i--)
+      x[i] = x[i - 1];
+    x[i] = m;
+    for (i = 0 ; i &lt; n + 1 ; i++)
+      printf("%d%c", x[i], (i - n ? ' ' : '\n'));
+  }
+
+  return 0;
+}</code></pre>
 </div>
