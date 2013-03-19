@@ -2,11 +2,49 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>统计给定文本文件中汉字的个数。</p>
 <h2>Input</h2>
+<p>输入文件首先包含一个整数n，表示测试实例的个数，然后是n段文本。</p>
 <h2>Output</h2>
+<p>对于每一段文本，输出其中的汉字的个数，每个测试实例的输出占一行。</p>
+<p>[Hint:]从汉字机内码的特点考虑~</p>
 <h2>Sample Input</h2>
+<pre>2
+WaHaHa! WaHaHa! 今年过节不说话要说只说普通话WaHaHa! WaHaHa!
+马上就要期末考试了Are you ready?</pre>
 <h2>Sample Output</h2>
+<pre>14
+9</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>汉字占双字节，高位的字节里都是 &lt; 0,所以只要统计小于0的字符的个数。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(void)
+{
+  int n;
+  int count;
+  char c;
+
+  scanf("%d%*c", &n);
+
+  while (n--)
+  {
+    count = 0;
+
+    while ((c = getchar()) != '\n')
+    {
+      if (c &lt; 0)
+        count++;
+    }
+
+    printf("%d\n", count / 2);
+  }
+
+  return 0;
+}</code></pre>
 </div>
