@@ -2,11 +2,46 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>统计给定的n个数中，负数、零和正数的个数。</p>
 <h2>Input</h2>
+<p>输入数据有多组，每组占一行，每行的第一个数是整数n（n<100），表示需要统计的数值的个数，然后是n个实数；如果n=0，则表示输入结束，该行不做处理。</p>
 <h2>Output</h2>
+<p>对于每组输入数据，输出一行a,b和c，分别表示给定的数据中负数、零和正数的个数。</p>
 <h2>Sample Input</h2>
+<pre>6 0 1 2 3 -1 0
+5 1 2 3 4 0.5
+0</pre>
 <h2>Sample Output</h2>
+<pre>1 2 3
+0 0 5</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>前置知识:if嵌套语法</p>
+<h2>Algorithm Analyse</h2>
+<p>算法与2004题雷同，但要注意这里上以0作为结束符，而不是EOF</p>
 <h1>算法实现</h1>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int n, i, a, b, c;
+    double x;
+
+    while (scanf("%d", &n) , n)
+    {
+        a = b = c = 0;
+        for (i = 0 ; i &lt; n ; i++)
+        {
+            scanf("%lf", &x);
+            if (x &gt; 0) c++;
+            else if (x &lt; 0) a++;
+            else b++;
+        }
+        printf("%d %d %d\n", a, b, c);
+    }
+
+    return 0;
+}</code></pre>
 </div>
