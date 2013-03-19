@@ -1,7 +1,59 @@
 <div title="2091 空心三角形" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>把一个字符三角形掏空，就能节省材料成本，减轻重量，但关键是为了追求另一种视觉效果。在设计的过程中，需要给出各种花纹的材料和大小尺寸的三角形样板，通过电脑临时做出来，以便看看效果。</p>
+<h2>Input</h2>
+<p>每行包含一个字符和一个整数n(0&lt;n&lt;41)，不同的字符表示不同的花纹，整数n表示等腰三角形的高。显然其底边长为2n-1。如果遇到@字符，则表示所做出来的样板三角形已经够了。</p>
+<h2>Output</h2>
+<p>每个样板三角形之间应空上一行，三角形的中间为空。显然行末没有多余的空格。</p>
+<h2>Sample Input</h2>
+<pre>X 2
+A 7
+@</pre>
+<h2>Sample Output</h2>
+<pre>X
+XXX
+
+      A
+     A A
+    A   A
+   A     A
+  A       A
+ A         A
+AAAAAAAAAAAAA</pre>
 <h1>问题分析</h1>
+<p>字符串处理</p>
 <h1>算法实现</h1>
+<p>这一题的确没什么算法可言，但编程技巧倒是有的。很多人可能不知道'*'在格式化输入输出中的作用。在scanf()中，用%*#，就代表读入一个#的数据，但不处理。比如：</p>
+<pre>scanf("%c%*c%c", &a, &b);</pre>
+<p>输入ABC，此时，变量a='A', c='C'。而中间的'B'，只是读入，没有做任何处理。</p>
+<p>在printf()中，%*#用来设定场宽。我们平时用%2d一类的转义字符来代表输出整形d时场宽为2个字符，但这种方法设置场宽只能是常数，不能在程序运行时其变化。而用'*'，就做到了可变场宽的作用。比如：</p>
+<pre>printf("%*d", 4, a);</pre>
+<p>表示输出整形数据a，场宽为4个字符。用'*'的这一特性，可以很轻松搞定这一题。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  char c;
+  int i = 0, n;
+
+  while ((c = getchar()) != '@')
+  {
+    scanf("%d%*c", &n);
+    printf(i ? "\n%*c\n" : "%*c\n", n, c);
+    if (n == 1) 
+    {
+      i = 1;
+      continue;
+    }
+    for (i = 1; i + 1 &lt; n; i++)
+      printf("%*c%*c\n", n - i, c, i * 2, c);
+    for (i = 0; i &lt; 2 * n - 1; i++)
+      putchar(c);
+    putchar('\n');
+  }
+  return 0;
+}</code></pre>
 </div>
