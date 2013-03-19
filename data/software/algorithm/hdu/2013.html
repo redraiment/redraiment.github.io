@@ -2,11 +2,112 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>喜欢西游记的同学肯定都知道悟空偷吃蟠桃的故事，你们一定都觉得这猴子太闹腾了，其实你们是有所不知：悟空是在研究一个数学问题！</p>
+<p>什么问题？他研究的问题是蟠桃一共有多少个！</p>
+<p>不过，到最后，他还是没能解决这个难题，呵呵^-^</p>
+<p>当时的情况是这样的：</p>
+<p>第一天悟空吃掉桃子总数一半多一个，第二天又将剩下的桃子吃掉一半多一个，以后每天吃掉前一天剩下的一半多一个，到第n天准备吃的时候只剩下一个桃子。聪明的你，请帮悟空算一下，他第一天开始吃的时候桃子一共有多少个呢？</p>
 <h2>Input</h2>
+<p>输入数据有多组，每组占一行，包含一个正整数n（1&lt;n&lt;30），表示只剩下一个桃子的时候是在第n天发生的。</p>
 <h2>Output</h2>
+<p>对于每组输入数据，输出第一天开始吃的时候桃子的总数，每个测试实例占一行。</p>
 <h2>Sample Input</h2>
+<pre>2
+4</pre>
 <h2>Sample Output</h2>
+<pre>4
+22</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>本题可以直接用循环迭代过关。但是，如果你对算法有兴趣，你想知道另一种更神奇的算法吗？^_^</p>
 <h1>算法实现</h1>
+<p>迭代的方法很简单，直接按题目意思来就可以了。</p>
+<blockquote><pre>for (s = n = 1; n &lt; 30; n++)
+s = (s + 1) * 2;</pre></blockquote>
+<p>计算机的鼻祖本来就是数学家，自然优化程序的最终方法还是要回归到数学上。本题很容易得到它的递推方程:</p>
+<blockquote><pre>f(1) = 1;
+f(n) = [f(n-1) + 1] × 2;</pre></blockquote>
+于是我们得到:
+<blockquote><pre>f(n) + 2 = 2 × [f(n-1) + 2]
+f(1) + 2 = 3
+
+=>
+
+f(n) + 2 = 3 × 2<sup>n-1</sup>
+
+=>
+
+f(n) = 3 × 2<sup>n-1</sup> - 2</pre></blockquote>
+<p>对于这种推断题还有另外一种递推方法，虽然对于本题来说很麻烦。但有时候它是无可替代的。</p>
+<blockquote><pre>f(1) = 1;
+f(n) = 2f(n-1) + 2 = f(n-1) + 2f(n-2) + 4;
+
+=>
+
+f(n) + f(n-1) + 4 = 2 × [f(n-1) + f(n+2) + 4];
+
+设 g(n) = f(n) + f(n-1) + 4;
+
+则 g(n) = 2 × g(n-1);
+   g(2) = f(2) + f(1) + 4 = 9;
+
+∴g(n) = 9 × 2<sup>n-2</sup>  (n > 1)
+
+∴f(n)   + f(n-1) = 9 × 2<sup>n-2</sup> - 4	①
+  f(n-1) + f(n-2) = 9 × 2<sup>n-3</sup> - 4	②
+  ┋
+  f(3)   + f(2)   = 9 × 2 - 4
+  f(2)   + f(1)   = 9 - 4
+
+把①式减去②式得
+  f(n)   = 9 × 2<sup>n-3</sup> + f(n-2)
+  f(n-2) = 9 × 2<sup>n-5</sup> + f(n-4)
+  ┋</pre></blockquote>
+<p>这时候，我们需要分类讨论了：</p>
+<ol>
+<li>n为奇数</li>
+<blockquote><pre>  f(n)   = 9 × 2<sup>n-3</sup> + f(n-2)
+  f(n-2) = 9 × 2<sup>n-5</sup> + f(n-4)
+  ┋
+  f(5)   = 9 × 2<sup>2</sup> + f(3)
+  f(3)   = 9 + f(1)
+  f(1)   = 1
+
+从下往上迭代，得:
+  f(n) = 9 × (2<sup>n-3</sup> + 2<sup>n-5</sup> + ... + 2<sup>2</sup> + 1) + 1
+=>
+  f(n) = 9 × (1 - 4<sup>(n-1)/2</sup>) ÷ (1 - 4) + 1
+=>
+  f(n) = 3 × 2<sup>n - 1</sup> - 2</pre></blockquote>
+<li>n为偶数</li>
+<blockquote><pre>  f(n)   = 9 × 2<sup>n-3</sup> + f(n-2)
+  f(n-2) = 9 × 2<sup>n-5</sup> + f(n-4)
+  ┋
+  f(4)   = 9 × 2<sup>1</sup> + f(2)
+  f(2)   = 4
+
+从下往上迭代，得:
+  f(n) = 9 × (2<sup>n-3</sup> + 2<sup>n-5</sup> + ... + 2<sup>1</sup>) + 4
+=>
+  f(n) = 9 × 2 × (1 - 4<sup>(n-2)/2</sup>) ÷ (1 - 4) + 4
+=>
+  f(n) = 3 × 2<sup>n - 1</sup> - 2</pre></blockquote>
+</ol>
+<p>世上的事往往如此，巧合的事情经常发生。不得不感叹大自然的美妙~</p>
+<p>现在我们就得到了这道题目的公式了: f(n) = 3 × 2<sup>n - 1</sup> - 2</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+
+  while (scanf("%d", &n) != EOF)
+    printf("%.0f\n", 3 * pow(2, n - 1) - 2);
+
+  return 0;
+}</code></pre>
 </div>
