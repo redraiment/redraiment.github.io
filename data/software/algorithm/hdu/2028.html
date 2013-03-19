@@ -2,11 +2,104 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>求n个数的最小公倍数。</p>
 <h2>Input</h2>
+<p>输入包含多个测试实例，每个测试实例的开始是一个正整数n，然后是n个正整数。</p>
 <h2>Output</h2>
+<p>为每组测试数据输出它们的最小公倍数，每个测试实例的输出占一行。你可以假设最后的输出是一个32位的整数。</p>
 <h2>Sample Input</h2>
+<pre>2 4 6
+3 2 5 7</pre>
 <h2>Sample Output</h2>
+<pre>12
+70</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>最小公倍数lcm(x, y) = x * y / gcd(x, y) (其中gcd()求最大公约数)</p>
+<p>所以这题的关键的关键是求最大公约数。</p>
 <h1>算法实现</h1>
+<p>我这里用欧几里德算法：对任意非负数a 和 任意正整数b</p>
+<pre>gcd(a, b) = gcd(b, a mod b)</pre>
+<p>有很多人喜欢打破沙锅问到底，曾经很多人也问过我gcd算法的原理，下面是GCD递归定理的证明。</p>
+<p>下面提到的 a|b 就是表示a能被b整除。</p>
+<p>首先我们来看一下两条定理，都很好理解的。</p>
+<ol>
+  <li>d|a 并且 d|b 蕴含着 d|(ax + by) ①</li>
+  <li>a|b 且 b|a 蕴含着 a = ±b ②</li>
+</ol>
+<p>从上述②式就可以看出，只要证明gcd(a, b) 与 gcd(b, a mod b)可以互相整除，就能证明它们相等。先来证明gcd(a, b) | gcd(b, a mod b)。</p>
+<blockquote><pre>设d = gcd(a, b)
+ =&gt; 
+1. d|a
+2. d|b
+
+∵(a mod b) = a - q×b; (q = 「a/b」)
+即(a mod b)是a与b的线性组合。
+由①式得:
+d | (a - q×b) &lt;==&gt; d | (a mod b)
+由①式得:
+d | gcd(b, a mod b) &lt;==&gt; gcd(a, b) | gcd(b, a mod b)  ③
+<pre></blockquote>
+<p>证明gcd(b, a mod b) | gcd(a, b)。</p>
+<blockquote><pre>设d = gcd(b, a mod b)
+ =&gt; 
+1. d|b
+2. d|(a mod b)
+
+∵a = (a mod b) + q×b; (q = 「a/b」)
+即 a 是b与(a mod b)的线性组合。
+由①式得:
+d | a
+∵d | b
+由①式得:
+d | gcd(a, b) &lt;==&gt; gcd(b, (a mod b)) | gcd(a, b)    ④
+</pre></blockquote>
+<p>运用定理②，再根据③④就可以完成GCD定理的证明。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include&lt;stdio.h&gt;
+
+typedef unsigned long UL;
+
+UL gcd(UL u, UL v)
+{
+  int remainder;
+  
+  remainder = u % v;
+  while(remainder)
+  {
+    u = v;
+    v = remainder;
+    remainder = u % v;
+  }
+  return v;
+}
+
+UL lcm(UL u, UL v)
+{
+  return u * v / gcd(u, v);
+}
+
+int main(void)
+{
+  int n;
+  UL u;
+  UL res;
+  
+  while (scanf("%d", &n) != EOF)
+  {
+    res = 1;
+
+    while (n--)
+    {
+      scanf("%lu", &u);
+      res = lcm(res, u);
+    }
+
+    printf("%lu\n", res);
+  }
+
+  return 0;
+}</code></pre>
 </div>
