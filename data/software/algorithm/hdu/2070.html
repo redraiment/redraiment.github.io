@@ -1,7 +1,43 @@
 <div title="2070 Fibbonacci	Number" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>Your objective for this question is to develop a program which will generate a fibbonacci number. The fibbonacci function is defined as such:</p>
+<dl>
+<dd>f(0) = 0</dd>
+<dd>f(1) = 1</dd>
+<dd>f(n) = f(n-1) + f(n-2)</dd>
+</dl>
+<p>Your program should be able to handle values of n in the range 0 to 50.</p>
+<h2>Input</h2>
+<p>Each test case consists of one integer n in a single line where 0≤n≤50. The input is terminated by -1.</p>
+<h2>Output</h2>
+<p>Print out the answer in a single line for each test case.</p>
+<h2>Sample Input</h2>
+<pre>3
+4
+5
+-1</pre>
+<h2>Sample Output</h2>
+<pre>2
+3
+5</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<p>公式都有了，还等什么？直接AC掉它！</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int i;
+  __int64 f[51]={0, 1};
+
+  for(i = 2; i &lt; 51; i++)
+    f[i] = f[i-1] + f[i-2];
+
+  while(scanf("%d", &i), i + 1)
+    printf("%I64d\n", f[i]);
+
+  return 0;
+}</code></pre>
 </div>
