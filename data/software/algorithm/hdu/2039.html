@@ -2,11 +2,40 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>给定三条边，请你判断一下能不能组成一个三角形。</p>
 <h2>Input</h2>
+<p>输入数据第一行包含一个数M，接下有M行，每行一个实例，包含三个正数A,B,C。其中A,B,C &lt;1000;</p>
 <h2>Output</h2>
+<p>对于每个测试实例，如果三条边长A,B,C能组成三角形的话，输出YES，否则NO。</p>
 <h2>Sample Input</h2>
+<pre>2
+1 2 3
+2 2 2</pre>
 <h2>Sample Output</h2>
+<pre>NO
+YES</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>基本数学知识</p>
+<h2>Algorithm Analyse</h2>
+<p>如果a, b, c三条边能组成三角形，则</p>
+<p>a + b &gt; c</p>
+<p>a + c &gt; b</p>
+<p>b + c &gt; a</p>
 <h1>算法实现</h1>
+<p>读数据的时候，不要忘了三条边要用实数型，而不是整型。^_^</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+  double a, b, c;
+
+  scanf("%d", &n);
+  while (n-- && scanf("%lf%lf%lf", &a, &b, &c))
+    puts(a + b &gt; c && a + c &gt; b && b + c &gt; a ? "YES" : "NO");
+
+  return 0;
+}</code></pre>
 </div>
