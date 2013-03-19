@@ -1,7 +1,60 @@
 <div title="2064 汉诺塔III" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>约19世纪末，在欧州的商店中出售一种智力玩具，在一块铜板上有三根杆，最左边的杆上自上而下、由小到大顺序串着由64个圆盘构成的塔。目的是将最左边杆上的盘全部移到右边的杆上，条件是一次只能移动一个盘，且不允许大盘放在小盘的上面。</p>
+<p>现在我们改变游戏的玩法，不允许直接从最左(右)边移到最右(左)边(每次移动一定是移到中间杆或从中间移出)，也不允许大盘放到下盘的上面。</p>
+<p>Daisy已经做过原来的汉诺塔问题和汉诺塔II，但碰到这个问题时，她想了很久都不能解决，现在请你帮助她。现在有N个圆盘，她至少多少次移动才能把这些圆盘从最左边移到最右边？</p>
+<h2>Input</h2>
+<p>包含多组数据，每次输入一个N值(1&lt;=N&lt;=35)。</p>
+<h2>Output</h2>
+<p>对于每组数据，输出移动最小的次数。</p>
+<h2>Sample Input</h2>
+<pre>1
+3
+12</pre>
+<h2>Sample Output</h2>
+<pre>2
+26
+531440</pre>
 <h1>问题分析</h1>
+<p>汉诺塔是我很喜欢玩的一个游戏。如果规则没这么变态，允许直接从1跨越到3，那n个盘最少需要2<sup>n</sup> - 1次。这个公式可以递推得到，很容易的，你可以试一下，这里就不阐述了。</p>
+<p>而这一题同样可以用递推得到。我们先来看看下面一组图，了解一下如何把n个盘从1搬到3。</p>
+<img src="resources/figure/hdu/2064-1.bmp" />
+<p>第1步:初始状态</p>
+<img src="resources/figure/hdu/2064-2.bmp" />
+<p>第2步:把上面的n-1个盘移到第3号杆上</p>
+<img src="resources/figure/hdu/2064-3.bmp" />
+<p>第3步:把第n个盘从1移到2</p>
+<img src="resources/figure/hdu/2064-4.bmp" />
+<p>第4步:把前n-1个从3移到1，给第个盘让路</p>
+<img src="resources/figure/hdu/2064-5.bmp" />
+<p>第5步:把第n个盘从2移到3</p>
+<img src="resources/figure/hdu/2064-6.bmp" />
+<p>第6步:把前n-1个从移到3，完成移动</p>
+<p>设f(n)为把n个盘从1移到3所需要的步数，当然也等于从3移到1的步数。看上面的图就知道，要想把第n个盘从1移到3，需要想把前n-1个从1移动3，再从3->1最后再1->3。而第n个盘要从1->2->3经历2步。</p>
+<pre>∴f(n) = 3 × f(n-1) + 2;
+  f(1) = 2;</pre>
 <h1>算法实现</h1>
+<p>得到递公式了，你可以开始解题了。但这一题还是有优化方法。</p>
+<blockquote><pre>f(n) = 3 × f(n-1) + 2
+f(1) = 2
+=&gt;
+f(n) + 1 = 3 × [f(n-1) + 1]
+f(1) + 1 = 2 + 1 = 3
+=&gt;
+f(n) + 1 = 3n
+=&gt;
+f(n) = 3n - 1</pre></blockquote>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+  while (scanf("%d", &n) != EOF)
+    printf("%.0f\n", pow(3, n) - 1);
+  return 0;
+}</code></pre>
 </div>
