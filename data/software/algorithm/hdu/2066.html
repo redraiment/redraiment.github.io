@@ -1,7 +1,153 @@
 <div title="2066 一个人的旅行" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>虽然草儿是个路痴（就是在杭电待了一年多，居然还会在校园里迷路的人，汗~),但是草儿仍然很喜欢旅行，因为在旅途中 会遇见很多人（白马王子，^0^），很多事，还能丰富自己的阅历，还可以看美丽的风景……草儿想去很多地方，她想要去东京铁塔看夜景，去威尼斯看电影，去阳明山上看海芋，去纽约纯粹看雪景，去巴黎喝咖啡写信，去北京探望孟姜女……眼看寒假就快到了，这么一大段时间，可不能浪费啊，一定要给自己好好的放个假，可是也不能荒废了训练啊，所以草儿决定在要在最短的时间去一个自己想去的地方！因为草儿的家在一个小镇上，没有火车经过，所以她只能去邻近的城市坐火车（好可怜啊~）。</p>
+<h2>Input</h2>
+<p>输入数据有多组，每组的第一行是三个整数T，S和D，表示有T条路，和草儿家相邻的城市的有S个，草儿想去的地方有D个；</p>
+<p>接着有T行，每行有三个整数a，b，time,表示a,b城市之间的车程是time小时；(1=&lt;(a,b)&lt;=1000;a,b 之间可能有多条路)</p>
+<p>接着的第T+1行有S个数，表示和草儿家相连的城市；</p>
+<p>接着的第T+2行有D个数，表示草儿想去地方。</p>
+<h2>Output</h2>
+<p>输出草儿能去某个喜欢的城市的最短时间。</p>
+<h2>Sample Input</h2>
+<pre>6 2 3
+1 3 5
+1 4 7
+2 8 12
+3 8 4
+4 9 12
+9 10 2
+1 2
+8 9 10</pre>
+<h2>Sample Output</h2>
+<pre>9</pre>
 <h1>问题分析</h1>
+<p>求单源最短路径的算法是Dijkstra算法。它解决了有向图G=(V, E)上带权的单源最短路径问题。但要求所有边的权值非负。</p>
+<p>Dijkstra算法中设置了一顶点集合S，从源点s到集合中的顶点的最终最短路径的权值均已确定。算法反复选择具有最短路径估计的顶点u∈V-S，并将u加入到S中，对u的所有出边进行松弛。在下面的 算法实现中，用到了顶点的最小优先级列队Q，排序关键字为顶点的d值。</p>
+<p>下面是Dijkstra的伪码:</p>
+<blockquote><pre>DIJKSTRA(G, w, s)
+1 INITIALIZE-SINGLE-SOURCE(G, s)
+2 S←Φ
+3 Q←V[G]
+4 while Q ≠ Φ
+5     do u ← EXTRACT-MIN(Q)
+6        S ← S∪{u}
+7        for each vertex v ∈ Adj[u]
+8            do RELAX(u, v, w)</pre></blockquote>
+<p>下面用来演示一下它的执行过程。正确性这里就不证明了。</p>
+<table>
+  <tr>
+    <td><img src="resources/figure/hdu/2066-1.bmp" /></td>
+    <td><img src="resources/figure/hdu/2066-2.bmp" /></td>
+    <td><img src="resources/figure/hdu/2066-3.bmp" /></td>
+  </tr>
+  <tr align="center">
+    <td>a</td>
+    <td>b</td>
+    <td>c</td>
+  </tr>
+  <tr>
+    <td><img src="resources/figure/hdu/2066-4.bmp" /></td>
+    <td><img src="resources/figure/hdu/2066-5.bmp" /></td>
+    <td><img src="resources/figure/hdu/2066-6.bmp" /></td>
+  </tr>
+  <tr align="center">
+    <td>d</td>
+    <td>e</td>
+    <td>f</td>
+  </tr>
+</table>
+<p>Dijkstra算法的执行过程。源点s为最坐端顶点。最短路径估计被标记在顶点内，阴影覆盖的边指出了前趋的值。 蓝色顶点在集合S中，而白色顶点在最小优先级队列Q=V-S中。 a)第4～8行while循环第一次迭代前的情形。阴影覆盖的顶点具有最小的d值，而且在第5行被选为顶点u。 b)至f)while循环在每一次连续迭代后的情形。每个图中阴影覆盖的顶点被选作下一次迭代第5行的顶点u。 f)图中的值为最终结果。</p>
+<p>因为Dijkstra算法总是在V-S中选择“最轻”或“最近”的顶点插入集合S中，所有我们说它使用了贪心策略。</p>
 <h1>算法实现</h1>
+<p>最小优先级队列可以用STL里的make_heap()来。下面是C++版的Dijkstra算法。</p>
+<pre><code data-language="c">struct node {
+  int ord;
+  int cost;
+} v[1001];
+
+for (i = len; i; i--) {
+  make_heap(v + 1, v + 1 + i);
+  for (j = 2; j &lt;= i; j++) {
+    if (v[j].cost &gt; v[1].cost + mp[v[1].ord][v[j].ord])
+      v[j].cost = v[1].cost + mp[v[1].ord][v[j].ord];
+  }
+  swap(v[1], v[i]);
+}
+sort(v + 1, v + 1 + len, cmp);</code></pre>
+<p>但发现用STL，速度会比较慢，大概需要90几MS。我的参考代码里用的是数组。没用STL。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+#define Max 99999
+
+int mp[1001][1001];
+
+int main(void)
+{
+  int i, j, k;
+  int x, y, cost;
+  int len, min;
+  int T, S, D;
+  int visit[1024];
+
+  while (scanf("%d%d%d", &T, &S, &D) != EOF)
+  {
+    for (i = 0; i &lt; 1001; i++)
+    {
+      for (j = 0; j &lt; 1001; j++)
+        mp[i][j] = Max;
+    }
+
+    len = 0;
+
+    for (i = 0; i &lt; T; i++)
+    {
+      scanf("%d%d%d", &x, &y, &cost);
+      if (mp[x][y] &gt; cost) mp[x][y] = mp[y][x] = cost;
+      if (len &lt; x) len = x;
+      if (len &lt; y) len = y;
+    }
+
+    for (i = 0; i &lt; S; i++)
+    {
+      scanf("%d", &x);
+      mp[0][x] = 0;
+    }
+
+    for (i = 0; i &lt;= len; visit[i++] = false);
+
+    for (i = 1; i &lt;= len; i++)
+    {
+      min = Max;
+      for (j = 1; j &lt;= len; j++)
+      {
+        if (!visit[j] && min &gt; mp[0][j])
+        {
+          min = mp[0][j];
+          k = j;
+        }
+      }
+      if (min == Max) break;
+      visit[k] = true;
+      for (j = 1; j &lt;= len; j++)
+      {
+        if (!visit[j] && mp[0][j] &gt; mp[0][k] + mp[k][j])
+          mp[0][j] = mp[0][k] + mp[k][j];
+      }
+    }
+
+    min = Max;
+    for (i = 0; i &lt; D; i++)
+    {
+      scanf("%d", &x);
+      if (min &gt; mp[0][x])
+        min = mp[0][x];
+    }
+    printf("%d\n", min);
+  }
+
+  return 0;
+}</code></pre>
 </div>
