@@ -2,11 +2,53 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>Give you the width and height of the rectangle,darw it.</p>
 <h2>Input</h2>
+<p>Input contains a number of test cases.For each case ,there are two numbers n and m (0 &lt; n,m &lt; 75)indicate the width and height of the rectangle.Iuput ends of EOF.</p>
 <h2>Output</h2>
+<p>For each case,you should draw a rectangle with the width and height giving in the input.</p>
+<p>after each case, you should a blank line.</p>
 <h2>Sample Input</h2>
+<pre>3 2</pre>
 <h2>Sample Output</h2>
+<pre>+---+
+|   |
+|   |
++---+</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>给你一个矩形的宽和长，把它画出来。</p>
+<p>简单的模拟题。</p>
+<h2>Algorithm Analyse</h2>
+<p>这题的简单之处在于周围的4个'+'不在范围之内。</p>
+<p>所以像1 1这样的数据也不用另外考虑了。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int w, h, i, j;
+  while (scanf("%d%d", &w, &h) != EOF)
+  {    
+    putchar('+');
+    for (i = 0; i &lt; w; i++)
+      putchar('-');
+    putchar('+');
+    putchar('\n');
+    for (j = 0; j &lt; h; j++)
+    {
+      putchar('|');
+      for (i = 0; i &lt; w; i++)
+        putchar(' ');
+      putchar('|');
+      putchar('\n');
+    }
+    putchar('+');
+    for (i = 0; i &lt; w; i++)
+      putchar('-');
+    printf("+\n\n");
+  }
+
+  return 0;
+}</code></pre>
 </div>
