@@ -2,11 +2,71 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>网上流传一句话:"常在网上飘啊，哪能不挨刀啊～"。其实要想能安安心心地上网其实也不难，学点安全知识就可以。</p>
+<p>首先，我们就要设置一个安全的密码。那什么样的密码才叫安全的呢？一般来说一个比较安全的密码至少应该满足下面两个条件：</p>
+<ol>
+<li>密码长度大于等于8，且不要超过16。</li>
+<li>密码中的字符应该来自下面“字符类别”中四组中的至少三组。</li>
+</ol>
+<p>这四个字符类别分别为：</p>
+<ol>
+<li>大写字母：A,B,C...Z;</li>
+<li>小写字母：a,b,c...z;</li>
+<li>数字：0,1,2...9;</li>
+<li>特殊符号：~,!,@,#,$,%,^;</li>
+</ol>
+<p>给你一个密码，你的任务就是判断它是不是一个安全的密码。</p>
 <h2>Input</h2>
+<p>输入数据第一行包含一个数M，接下有M行，每行一个密码（长度最大可能为50），密码仅包括上面的四类字符。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，判断这个密码是不是一个安全的密码，是的话输出YES，否则输出NO。</p>
 <h2>Sample Input</h2>
+<pre>3
+a1b2c3d4
+Linle@ACM
+^~^@^@!%</pre>
 <h2>Sample Output</h2>
+<pre>NO
+YES
+NO</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>基本编程语法</p>
+<h2>Algorithm Analyse</h2>
+<p>只要按照题目的意思做就可以了。没有想到什么特别精妙的算法。</p>
 <h1>算法实现</h1>
+<p>不要忽略了判断密码的长度哦。^_^</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, a[6];
+  char c;
+
+  scanf("%d%*c", &n);
+  while (n--)
+  {
+    a[0] = a[1] = a[2] = a[3] = a[4] = a[5] = 0;
+    while ((c = getchar()) != '\n')
+    {
+      if (isupper(c))
+        a[0] = a[5]++;
+      else if (islower(c))
+        a[1] = a[5]++;
+      else if (isdigit(c))
+        a[2] = a[5]++;
+      else
+        a[3] = a[5]++;
+    }
+    if (a[0]) a[4]++;
+    if (a[1]) a[4]++;
+    if (a[2]) a[4]++;
+    if (a[3]) a[4]++;
+    puts(a[4] &gt; 2 && a[5] &gt; 7 && a[5] &lt;17 ? "YES" : "NO");
+  }
+
+  return 0;
+}</code></pre>
 </div>
