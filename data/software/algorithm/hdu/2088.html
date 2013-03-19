@@ -1,7 +1,54 @@
 <div title="2088 Box of Bricks" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<img src="resources/figure/hdu/2088-1.bmp" align="right" />
+<h2>Problem Description</h2>
+<p>Little Bob likes playing with his box of bricks. He puts the bricks one upon another and builds stacks of different height. “Look, I've built a wall!”, he tells his older sister Alice. “Nah, you should make all stacks the same height. Then you would have a real wall.”, she retorts. After a little consideration, Bob sees that she is right. So he sets out to rearrange the bricks, one by one, such that all stacks are the same height afterwards. But since Bob is lazy he wants to do this with the minimum number of bricks moved. Can you help?</p>
+<h2>Input</h2>
+<p>The input consists of several data sets. Each set begins with a line containing the number n of stacks Bob has built. The next line contains n numbers, the heights hi of the n stacks. You may assume 1≤n≤50 and 1≤hi≤100.</p>
+<p>The total number of bricks will be divisible by the number of stacks. Thus, it is always possible to rearrange the bricks such that all stacks have the same height.</p>
+<p>The input is terminated by a set starting with n = 0. This set should not be processed.</p>
+<h2>Output</h2>
+<p>For each set, print the minimum number of bricks that have to be moved in order to make all the stacks the same height.</p>
+<p>Output a blank line between each set.</p>
+<h2>Sample Input</h2>
+<pre>6
+5 2 4 1 7 5
+0</pre>
+<h2>Sample Output</h2>
+<pre>5</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>小鲍勃喜欢玩他的方盒子。他把那些盒子叠成不同高度的栈。他对他的姐姐艾丽丝说：“看，我砌成了一堵墙！” “你只有把所有的栈调整成相同的高度，那样才算是一堵真正的墙。”她回应道。 经过短暂的思考，鲍勃觉得她是对的。为了使栈能一样高，他只好一个一个地搬盒子。 但是鲍勃很懒，他想搬最小的次数来达到目的。你能帮助他吗？</p>
+<p>简单题</p>
+<h2>Algorithm Analyse</h2>
+<p>只要求个平均值就可以了。再算出大于平均值的数是多少。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    !int n, i, s, t, c = 0;
+    int a[50];
+
+    while (scanf("%d", &n), n)
+    {
+        if (c++) putchar('\n');
+        for (s = i = 0; i &lt; n; i++)
+        {
+            scanf("%d", a + i);
+            s += a[i];
+        }
+        s /= n;
+
+        for (t = i = 0; i &lt; n; i++)
+        {
+            if (a[i] &gt; s)
+                t += a[i] - s;
+        }
+        printf("%d\n", t);        
+    }
+
+    return 0;
+}</code></pre>
 </div>
