@@ -1,7 +1,59 @@
 <div title="2086 A1	= ?" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>有如下方程：Ai = (Ai-1 + Ai+1)/2 - Ci (i = 1, 2, 3, .... n).</p>
+<p>若给出A0, An+1, 和 C1, C2, .....Cn.</p>
+<p>请编程计算A1 = ?</p>
+<h2>Input</h2>
+<p>输入包括多个测试实例。</p>
+<p>对于每个实例，首先是一个正整数n,(n &lt;= 3000); 然后是2个数a0, an+1.接下来的n行每行有一个数ci(i = 1, ....n);输入以文件结束符结束。</p>
+<h2>Output</h2>
+<p>对于每个测试实例，用一行输出所求得的a1(保留2位小数).</p>
+<h2>Sample Input</h2>
+<pre>1
+50.00
+25.00
+10.00
+2
+50.00
+25.00
+10.00
+20.00</pre>
+<h2>Sample Output</h2>
+<pre>27.50
+15.00</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>公式推导</p>
+<h2>Algorithm Analyse</h2>
+<p>Ai = (Ai-1 + Ai+1)/2 - Ci (i = 1, 2, 3, .... n)。用A5做示范，就能猜测出公式来。证明方法可以采用数学归纳法。这里证明从略。</p>
+<p>A<sub>5</sub> = (A<sub>4</sub> + A<sub>6</sub>) / 2 - C<sub>5</sub></p>
+<p>A<sub>4</sub> = (A<sub>3</sub> + A<sub>5</sub>) / 2 - C<sub>4</sub> = A<sub>3</sub> / 2 + A<sub>4</sub> / 4 + A<sub>6</sub> / 4 - C<sub>5</sub> / 2 - C<sub>4</sub> =&gt; A<sub>4</sub> = 2A<sub>3</sub>/3 + A<sub>6</sub>/3 - 2C<sub>5</sub>/3 - 4C<sub>4</sub>/3</p>
+<p>A<sub>3</sub> = (A<sub>2</sub> + A<sub>4</sub>) / 2 - C<sub>3</sub> = A<sub>2</sub> / 2 + A<sub>3</sub> / 3 + A<sub>6</sub> / 6 - C<sub>5</sub> / 3 - 2C<sub>4</sub> / 3 - C<sub>3</sub> =&gt; A<sub>3</sub> = 3A<sub>2</sub>/4 + A<sub>6</sub>/4 - C<sub>5</sub>/2 - C<sub>4</sub> - 3C<sub>3</sub>/2</p>
+<p>A<sub>2</sub> = (A<sub>1</sub> + A<sub>3</sub>) / 2 - C<sub>2</sub> = A<sub>1</sub> / 2 + 3A<sub>2</sub> / 8 + A<sub>6</sub> / 8 - C<sub>5</sub> / 4 - C<sub>4</sub> / 2 - 3C<sub>3</sub> / 4 - C<sub>2</sub> =&gt; A<sub>2</sub> = 4A<sub>1</sub>/5 + A<sub>6</sub>/5 - 2C<sub>5</sub>/5 - 4C<sub>4</sub>/5 - 6C<sub>3</sub>/5 - 8C<sub>2</sub>/5</p>
+<p>A<sub>1</sub> = (A<sub>0</sub> + A<sub>2</sub>) / 2 - C<sub>1</sub> = A<sub>0</sub> / 2 + 2A<sub>1</sub> / 5 + A<sub>6</sub> / 10 - C<sub>5</sub> / 5 - 2C<sub>4</sub> / 5 - 3C<sub>3</sub> / 5 - 4C<sub>2</sub> / 5 - C<sub>1</sub> =&gt; A<sub>1</sub> = 5A<sub>0</sub>/6 + A<sub>6</sub>/6 - C<sub>5</sub>/3 - 2C<sub>4</sub>/3 - C<sub>3</sub> - 4C<sub>2</sub>/3 - 5C<sub>1</sub>/3</p>
+<p>算到这里，我想你已经总结出公式了：A1 = (n * A<sub>0</sub> + A<sub>n+1</sub> - 2 * C<sub>n</sub> - 4 * C<sub>n-1</sub> - ... - 2 * i * C<sub>n-i+1</sub> - 2 * n * C<sub>1</sub>) / (n + 1)</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, i;
+  double a0, an1, a1;
+  double c[3000];
+
+  while (scanf("%d", &n) != EOF)
+  {
+    scanf("%lf%lf", &a0, &an1);
+    for (i = 0; i &lt; n; i++)
+      scanf("%lf", c + i);
+    a1 = n * a0 + an1;
+    for (i = 1; i &lt;= n; i++)
+      a1 -= 2 * i * c[n - i];
+    printf("%.2f\n", a1 / (n + 1));
+  }
+
+  return 0;
+}</code></pre>
 </div>
