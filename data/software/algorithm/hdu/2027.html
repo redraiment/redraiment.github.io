@@ -2,11 +2,102 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>统计每个元音字母在字符串中出现的次数。</p>
 <h2>Input</h2>
+<p>输入数据首先包括一个整数n，表示测试实例的个数，然后是n行长度不超过100的字符串。</p>
 <h2>Output</h2>
+<p>对于每个测试实例输出5行，格式如下：</p>
+<p>a:num1</p>
+<p>e:num2</p>
+<p>i:num3</p>
+<p>o:num4</p>
+<p>u:num5</p>
+<p>多个测试实例之间由一个空行隔开。</p>
+<p>请特别注意：最后一块输出后面没有空行：）</p>
 <h2>Sample Input</h2>
+<pre>2
+aeiou
+my name is ignatius</pre>
 <h2>Sample Output</h2>
+<pre>a:1
+e:1
+i:1
+o:1
+u:1
+
+a:2
+e:1
+i:3
+o:0
+u:1</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>这一题，只要懂得switch语法就可以了。当然，用if嵌套也没问题。^_^</p>
 <h1>算法实现</h1>
+<p>也许字母会有大小写之分，记得用tolower()或toupper()换成统一的格式就可以了。</p>
+<p>tolower</p>
+<dl>
+  <dt>语法</dt>
+  <dd>#include &lt;ctype.h&gt;</dd>
+  <dd>int tolower( int ch );</dd>
+  <dt>功能</dt>
+  <dd>函数字符ch的小写形式。</dd>
+</dl>
+<p>toupper</p>
+<dl>
+  <dt>语法</dt>
+  <dd>#include &lt;ctype.h&gt;</dd>
+  <dd>int toupper( int ch );</dd>
+  <dt>功能</dt>
+  <dd>函数字符ch的大写形式。</dd>
+</dl>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+  int y[5];
+  char c;
+
+  scanf("%d%*c", &n);
+  while (n--)
+  {
+    y[0] = y[1] = y[2] = y[3] = y[4] = 0;
+    while ((c = getchar()) != '\n')
+    {
+      switch (tolower(c))
+      {
+        case 'a':
+          y[0]++;
+          break;
+        case 'e':
+          y[1]++;
+          break;
+        case 'i':
+          y[2]++;
+          break;
+        case 'o':
+          y[3]++;
+          break;
+        case 'u':
+          y[4]++;
+          break;
+        default :
+          break;
+      }
+    }
+    printf("a:%d\n", y[0]);
+    printf("e:%d\n", y[1]);
+    printf("i:%d\n", y[2]);
+    printf("o:%d\n", y[3]);
+    printf("u:%d\n", y[4]);
+    if (n) putchar('\n');
+  }
+
+  return 0;
+}</code></pre>
 </div>
