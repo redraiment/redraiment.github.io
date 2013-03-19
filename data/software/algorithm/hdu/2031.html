@@ -2,11 +2,95 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>输入一个十进制数N，将它转换成R进制数输出。</p>
 <h2>Input</h2>
+<p>输入数据包含多个测试实例，每个测试实例包含两个整数N(32位整数)和R（2&lt;=R&lt;=16, R&lt;&gt;10）。</p>
 <h2>Output</h2>
+<p>为每个测试实例输出转换后的数，每个输出占一行。如果R大于10，则对应的数字规则参考16进制（比如，10用A表示，等等）。</p>
 <h2>Sample Input</h2>
+<pre>7 2
+23 12
+-4 3</pre>
 <h2>Sample Output</h2>
+<pre>111
+1B
+-11</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>数制换算的一般方法：</p>
+<ol>
+  <li>把r进数转换成十进制数，只要把r进制数写成r的各次幂的和的形式。然后按十进制计算结果。(这里r是大于1的自然数)</li>
+  <p>例如: (205.21)<sub>8</sub> = 2 × 8<sup>2</sup> + 0 × 8<sup>1</sup> + 5 × 8<sup>0</sup> + 2 × 8<sup>-1</sup> + 1 × 8<sup>-2</sup></p>
+  <li>把十进制换成r进制，可以把十进制化成r的各次幂(各次幂的系数小于r而大于或等于0的整数)的和，从最高次幂起各次幂的系数就是依次的r进制从左到右各个数位上的数字。</li>
+  <ul>
+	<li>当十进制数是整数时，采用“r除取余”法。即用数r除十进整数。取它的每次余数。</li>
+	<p>例如:把(746)<sub>10</sub>化为一个八进制的数。</p>
+    <blockquote><pre>8|746
+ ----
+ 8|93 --- 2
+  ---
+ 8|11 --- 5
+  ---
+  8|1 --- 3
+   --
+    0 --- 1</pre></blockquote>
+    <p>得到(746)<sub>10</sub> = (1352)<sub>8</sub></p>
+	<li>当十进制是小数时，采用“r乘取整”法，即用数r乘十进制小数，每乘一次取一次整数，直至小数部分变成零为止。</li>
+	<p>例如:把(0.8125)<sub>10</sub>化为二进制。</p>
+    <blockquote><pre>
+0.|8125
+ ×|   2
+-------
+1.|6250
+ ×|   2
+-------
+1.|2500
+ ×|   2
+-------
+0.|5000
+ ×|   2
+-------
+1.|0000</pre></blockquote>
+    <p>得到(0.8125)<sub>10</sub> = (0.1101)<sub>2</sub></p>
+	<li>把r1进制数转换成r2进制数，一般可以先把r1进制数转换成十进制数，再从十进制数转换成r2进制数。</li>
+  </ul>
+</ol>
 <h1>算法实现</h1>
+<p>从上面的算法可以看出，数制转换需要逆序输出，就需要用到栈。所以我们直接用递归调用了。^_^</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void ttor(int n, int r)
+{
+  if (n)
+  {
+    ttor(n / r, r);
+    printf("%c", n % r &gt; 9 ? n % r - 10 + 'A' : n % r + '0');
+  }
+}
+
+int main(void)
+{
+  int n;
+  int r;
+
+  while (scanf("%d%d", &n, &r) != EOF)
+  {
+    if (n &gt; 0)
+      ttor(n, r);
+    else if (!n)
+      putchar('0');
+    else
+    {
+      putchar('-');
+      ttor(-n, r);
+    }
+    putchar('\n');
+  }
+
+  return 0;
+}</code></pre>
 </div>
