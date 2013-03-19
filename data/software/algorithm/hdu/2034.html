@@ -2,11 +2,179 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>参加过上个月月赛的同学一定还记得其中的一个最简单的题目，就是{A}+{B}，那个题目求的是两个集合的并集，今天我们这个A-B求的是两个集合的差，就是做集合的减法运算。（当然，大家都知道集合的定义，就是同一个集合中不会有两个相同的元素，这里还是提醒大家一下）</p>
+<p>呵呵，很简单吧？</p>
 <h2>Input</h2>
+<p>每组输入数据占1行,每行数据的开始是2个整数n(0&lt;n&lt;=100)和m(0&lt;m&lt;=100),分别表示集合A和集合B的元素个数，然后紧跟着n+m个元素，前面n个元素属于集合A，其余的属于集合B. 每个元素为不超出int范围的整数,元素之间有一个空格隔开.</p>
+<p>如果n=0并且m=0表示输入的结束，不做处理。</p>
 <h2>Output</h2>
+<p>针对每组数据输出一行数据,表示A-B的结果,如果结果为空集合，则输出“NULL”,否则从小到大输出结果,为了简化问题，每个元素后面跟一个空格.</p>
 <h2>Sample Input</h2>
+<pre>3 3 1 2 3 1 4 7
+3 7 2 5 8 2 3 4 5 6 7 8
+0 0</pre>
 <h2>Sample Output</h2>
+<pre>2 3
+NULL</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>集合论</p>
+<h2>Algorithm Analyse</h2>
+<p>集合的减法 A-B的意义是:在集合A中去掉所有与集合B中相同的元素，剩下的内容就是结果。</p>
 <h1>算法实现</h1>
+<p style="color: red; font-weight: bold;">以下所有代码均能AC。</p>
+<p>你可以直接用C语言去模拟一个集合，然后每读入一个数字，做一次遍历，如果找到就删除。最后才排一次序输出。虽然效率很低，时间复杂度有O(m*n)，但对付这一题已经绰绰有余了。也可以0MS 0K AC掉。</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int cmp(const int *a, const int *b)
+{
+  return *a - *b;
+}
+
+int main(void)
+{
+  int n, m, i, j;
+  int s[101];
+  
+  while (scanf("%d%d", &n, &m), m+n)
+  {
+    for (i = 0; i &lt; n; i++)
+      scanf("%d", s + i);
+    for (i = 0; i &lt; m; i++)
+    {
+      scanf("%d", s + n);
+      for (j = 0; s[j] != s[n]; j++);
+      if (j != n) s[j] = s[--n];
+    }
+    qsort(s, n, sizeof(int), cmp);
+    for (i = 0; i &lt; n; i++)
+      printf("%d ", s[i]);
+    printf(n ? "\n" : "NULL\n");
+  }
+  
+  return 0;
+}</code></pre>
+<p>如果你讨厌用线性的查找方式，也可以修改一下。配合使用库函数的二分找和快速排序，来实现。但对付这题来说，有点杀鸡用牛刀的感觉，呵呵。</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int cmp(const int *a, const int *b)
+{
+  return *a - *b;
+}
+
+int main(void)
+{
+  int a;
+  int b;
+  int i;
+  int n;
+  int *p;
+  int s[128];
+  
+  while (scanf("%d%d", &a, &b), a || b)
+  {
+    for (i = 0 ; i &lt; a ; i++)
+      scanf("%d", s + i);
+
+    qsort(s, a, sizeof(int), cmp);
+
+    for (i = 0 ; i &lt; b ; i++)
+    {
+      scanf("%d", &n);
+      p = bsearch(&n, s, a, sizeof(int), cmp);
+      if (p)
+      {
+        a--;
+        *p = s[a];
+        qsort(s, a, sizeof(int), cmp);
+      }
+    }
+
+    if (a)
+    {
+      for (i = 0 ; i &lt; a ; i++)
+        printf("%d ", s[i]);
+      putchar('\n');
+    }
+    else
+      puts("NULL");
+  }
+
+  return 0;
+}</code></pre>
+<p>其实我们可以用归并排序的思想来做。效率从O(m*n) -> O((m+n)log<sub>2</sub>(m+n))</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int cmp(const int *a, const int *b)
+{
+  return *a - *b;
+}
+
+int main(void)
+{
+  int n, m, i, j, c;
+  int s[128];
+  int t[128];
+  
+  while (scanf("%d%d", &n, &m), m+n)
+  {
+    for (i = 0; i &lt; n; i++)
+      scanf("%d", s + i);
+    for (i = 0; i &lt; m; i++)
+      scanf("%d", t + i);
+    qsort(s, n, sizeof(int), cmp);
+    qsort(t, m, sizeof(int), cmp);
+    for (c = i = j = 0; i &lt; n && j &lt; m;)
+    {
+      if (s[i] &lt; t[j])
+        printf("%d ", s[i++], c++);
+      else if (s[i] &gt; t[j])
+        j++;
+      else
+      {
+        i++;
+        j++;
+      }
+    }
+    for (; i &lt; n;) printf("%d ", s[i++], c++);
+    printf(c ? "\n" : "NULL\n");
+  }
+  
+  return 0;
+}</code></pre>
+<p>其实这些集合的操作都包含在C++的set类库里了。这时候用C++编码真是提速不少。详请参见参考代码。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;set&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main(void)
+{
+  int n, m, t;
+  set &lt;int&gt; s;
+  set &lt;int&gt;::iterator it;
+
+  while (scanf("%d%d", &n, &m), n + m)
+  {
+    while (n--)
+    {
+      scanf("%d", &t);
+      s.insert(t);
+    }
+    while (m--)
+    {
+      scanf("%d", &t);
+      if (s.count(t)) s.erase(t);
+    }
+    for (it = s.begin(); it != s.end(); it++)
+      printf("%d ", *it);
+    printf(s.size() ? "\n" : "NULL\n");
+    s.clear();
+  }
+
+  return 0;
+}</code></pre>
 </div>
