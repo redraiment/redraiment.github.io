@@ -2,11 +2,63 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>多项式的描述如下：</p>
+<p>1 - 1/2 + 1/3 - 1/4 + 1/5 - 1/6 + ...</p>
+<p>现在请你求出该多项式的前n项的和。</p>
 <h2>Input</h2>
+<p>输入数据由2行组成，首先是一个正整数m（m&lt;100），表示测试实例的个数，第二行包含m个正整数，对于每一个整数(不妨设为n,n&lt;1000），求该多项式的前n项的和。</p>
 <h2>Output</h2>
+<p>对于每个测试实例n，要求输出多项式前n项的和。每个测试实例的输出占一行，结果保留2位小数。</p>
 <h2>Sample Input</h2>
+<pre>2
+1 2</pre>
 <h2>Sample Output</h2>
+<pre>1.00
+0.50</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>本题的算法依然是迭代。初始sum=0， i从1开始到n，如果1是奇数，sum += 1.0 / i; 否则 sum -= 1.0 / i；当然，迭代是可以换成递归的。本题的递归定义为：</p>
+<blockquote><pre>    ┌ 0            (n = 0)
+f(n)┼ f(n-1)+1/n   (n为奇数)
+    └ f(n-1)-1/n   (n为偶数)</pre></blockquote>
+<p>当然，你也可以顺着递归，这就随你喜欢了。呵呵</p>
+<blockquote><pre>    ┌ 0            (i > n)
+f(i)┼ f(n+1)+1/n   (n为奇数)
+    └ f(n+1)-1/n   (n为偶数)</pre></blockquote>
 <h1>算法实现</h1>
+<p>像这样的简单题，初学者就可以用它来练练手，熟悉一下递归的写法(但本题来说，递归的效率比迭代差)。这里示范第一种递推公式。</p>
+<p>首先根据公式定义一个函数F(n)：<br>
+<pre><code data-language="c">double f(int n) {
+  if (n == 0)
+    return 0;
+  else if (n % 2 == 1)
+    return f(n - 1) + 1.0 / n;
+  else
+    return f(n - 1) - 1.0 / n;
+}</code></pre>
+<p>我们还可以简化代码，使代码更简洁紧凑。</p>
+<pre><code data-language="c">double f(int n) {
+  return n ? f(n - 1) + ((n & 1) ? 1.0 : -1.0) / n : 0;
+}</pre></code>
+<p>另一种递推公式也同样能用这样的方法写出代码。要不你来试试？祝你好运！^_^</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include&lt;stdio.h&gt;
+
+int n;
+
+double rev(int c) {
+    return c &lt;= n ?( ((c & 1) ? 1.0 : -1.0) / c + rev(c + 1) ): 0;
+}
+
+int main() {
+    int t;
+
+    scanf("%d", &t);
+    while (t-- && scanf("%d", &n))
+        printf("%.2lf\n", rev(1));
+
+    return 0;
+}</code></pre>
 </div>
