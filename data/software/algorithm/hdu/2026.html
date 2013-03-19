@@ -2,11 +2,43 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>输入一个英文句子，将每个单词的第一个字母改成大写字母。</p>
 <h2>Input</h2>
+<p>输入数据包含多个测试实例，每个测试实例是一个长度不超过100的英文句子，占一行。</p>
 <h2>Output</h2>
+<p>请输出按照要求改写后的英文句子。</p>
 <h2>Sample Input</h2>
+<pre>i like acm
+i want to get an accepted</pre>
 <h2>Sample Output</h2>
+<pre>I Like Acm
+I Want To Get An Accepted</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>问题的关键在于如何判断为单词的首字母。</p>
+<p>方法也不难，只要你判断当前字符为字母，而前一个为空格就可以了。</p>
+<p>为了简单处理整个字符串的第一个字符。你可以让保存前一个字符的变量初始为空格。</p>
+<p>这样就可以把判断规则统一起来了，不用特殊处理字符串的第一个字符。 </p>
 <h1>算法实现</h1>
+<p>算法知道了，其实实现起来更简单，让保存字符串的数组第一个为空格，而读数据时从第二个开始保存。这样实现起来可以很简洁。具体的请参见源码。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;ctype.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  char t[128] = {' '};
+  int i;
+
+  while (gets(t + 1))
+  {
+    for (i = 1 ; t[i] ; i++)
+      putchar((isalpha(t[i]) && t[i-1] == ' ') ? toupper(t[i]) : t[i]);
+    putchar('\n');
+  }
+
+  return 0;
+}</code></pre>
 </div>
