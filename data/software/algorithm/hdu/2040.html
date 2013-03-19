@@ -2,11 +2,48 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>古希腊数学家毕达哥拉斯在自然数研究中发现，220的所有真约数(即不是自身的约数)之和为：</p>
+<p>1+2+4+5+10+11+20+22+44+55+110＝284。</p>
+<p>而284的所有真约数为1、2、4、71、 142，加起来恰好为220。人们对这样的数感到很惊奇，并称之为亲和数。一般地讲，如果两个数中任何一个数都是另一个数的真约数之和，则这两个数就是亲和数。</p>
+<p>你的任务就编写一个程序，判断给定的两个数是否是亲和数</p>
 <h2>Input</h2>
+<p>输入数据第一行包含一个数M，接下有M行，每行一个实例,包含两个整数A,B； 其中 0 &lt;= A,B &lt;= 600000 ;</p>
 <h2>Output</h2>
+<p>对于每个测试实例，如果A和B是亲和数的话输出YES，否则输出NO。</p>
 <h2>Sample Input</h2>
+<pre>2
+220 284
+100 200</pre>
 <h2>Sample Output</h2>
+<pre>YES
+NO</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>C基本语法</p>
+<h2>Algorithm Analyse</h2>
+<p>得到数据n后，只要循环1-&gt;n/2，找出所有的因子累加就可以了。</p>
 <h1>算法实现</h1>
+<p>有些人想用1-&gt;sqrt(n)来循环提高效率。其实一个对计算机来说，求一个实数开方时间远大于整数的计算。用sqrt()函数可能适得其反。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int A(int n)
+{
+  int i,sum = 1;
+  for (i = 2; i &lt;= n / 2; i++)
+    if (n % i == 0)
+      sum += i;
+  return sum;
+}
+
+int main(void)
+{
+  int n, a, b;
+
+  scanf("%d", &n);
+  while (n-- && scanf("%d%d", &a, &b))
+    puts(A(a) == b && A(b) == a ? "YES" : "NO");
+
+  return 0;
+}</code></pre>
 </div>
