@@ -2,11 +2,45 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>给定一段连续的整数，求出他们中所有偶数的平方和以及所有奇数的立方和。</p>
 <h2>Input</h2>
+<p>输入数据包含多组测试实例，每组测试实例包含一行，由两个整数m和n组成。</p>
 <h2>Output</h2>
+<p>对于每组输入数据，输出一行，应包括两个整数x和y，分别表示该段连续的整数中所有偶数的平方和以及所有奇数的立方和。</p>
+<p>你可以认为32位整数足以保存结果。</p>
 <h2>Sample Input</h2>
+<pre>1 3
+2 5</pre>
 <h2>Sample Output</h2>
+<pre>4 28
+20 152</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>前置知识:循环语句</p>
+<h2>Algorithm Analyse</h2>
+<p>简单的循环+判断。</p>
+<p>按题目的意思数据类型用unsigned int型就可以了。</p>
+<p>但这个问题有个容易遗漏的地方:输入的m、n有可能m > n!</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void) {
+  unsigned int m, n, i, x, y;
+
+  while (scanf("%u%u", &m, &n) != EOF) {
+    if (m &gt; n) {
+      i = n;
+      n = m;
+      m = i;
+    }
+    x = y = 0;
+    for (i = m ; i &lt;= n ; i++)
+      (i & 1) ? (y += i*i*i) : (x += i*i);
+    printf("%u %u\n", x, y);
+  }
+
+  return EXIT_SUCCESS;
+}</code></pre>
 </div>
