@@ -2,11 +2,56 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>输入n(n&lt;=100)个整数，按照绝对值从大到小排序后输出。题目保证对于每一个测试实例，所有的数的绝对值都不相等。</p>
 <h2>Input</h2>
+<p>输入数据有多组，每组占一行，每行的第一个数字为n,接着是n个整数，n=0表示输入数据的结束，不做处理。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，输出排序后的结果，两个数之间用一个空格隔开。每个测试实例占一行。</p>
 <h2>Sample Input</h2>
+<pre>3 3 -4 2
+4 0 1 2 -3
+0</pre>
 <h2>Sample Output</h2>
+<pre>-4 3 2
+-3 2 1 0</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>这题的考点就是排序。</p>
+<p>对初学者来说，比较熟悉的排序是“冒泡排序”和“选择排序”。</p>
+<p>在排升序的时候，元素比较用'&lt;'，降序用'&gt;'。</p>
+<p>对于整数等基本数据类型，这样的比较符号很容易理解。但换了其他比较规则，你是不是还能很好地理解呢？呵呵。</p>
+<p>就像本题的规则：比较数的绝对值的大小，在这里-3 &gt; 1，所以就不能直接用'&gt;'，而是要自己制定一套大小规则。</p>
+<p>刚开始可能不习惯看到 -3 &gt; 1这样的规则，熟悉后就好了。 </p>
 <h1>算法实现</h1>
+<p>你可以自己写一个判断大小的函数int cmp(a, b)</p>
+<p>如果a &gt; b返回大于0的值，a = b 返回0，a &lt; b 返回小于0的值</p>
+<p>ANSI C里的qsort()就是这样做的。用一个比较函数来提高排序函数的通用性。</p>
+<p>这里的比较规则就是return abs(*b) - abs(*a);</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int cmp(const int *a, const int *b)
+{
+  return abs(*b) - abs(*a);
+}
+
+int main(void)
+{
+  int n, i, x[101];
+  
+  while (scanf("%d", &n), n)
+  {
+    for (i = 0 ; i &lt; n ; i++)
+      scanf("%d", x + i);
+    qsort(x, n, sizeof(int), cmp);
+    for (i = 0 ; i &lt; n ; i++)
+      printf("%d%c", x[i], (i != n - 1 ? ' ' : '\n'));
+  }
+
+  return 0;
+}</code></pre>
 </div>
