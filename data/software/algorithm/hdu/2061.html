@@ -1,7 +1,63 @@
 <div title="2061 Treasure the new start, freshmen!" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>background:</p>
+<p>A new semester comes , and the HDU also meets its 50th birthday. No matter what's your major, the only thing I want to tell you is:"Treasure the college life and seize the time." Most people thought that the college life should be colorful, less presure.But in actual, the college life is also busy and rough. If you want to master the knowledge learned from the book, a great deal of leisure time should be spend on individual study and practise, especially on the latter one. I think the every one of you should take the learning attitude just as you have in senior school.</p>
+<p>"No pain, No Gain", HDU also has scholarship, who can win it? That's mainly rely on the GPA(grade-point average) of the student had got. Now, I gonna tell you the rule, and your task is to program to caculate the GPA.</p>
+<p>If there are K(K &gt; 0) courses, the i-th course has the credit Ci, your score Si, then the result GPA is</p>
+<p>GPA = (C1 * S1 + C2 * S2 +……+Ci * Si……) / (C1 + C2 + ……+ Ci……) (1 &lt;= i &lt;= K, Ci != 0)</p>
+<p>If there is a 0 &lt;= Si &lt; 60, The GPA is always not existed.</p>
+<h2>Input</h2>
+<p>The first number N indicate that there are N test cases(N &lt;= 50). In each case, there is a number K (the total courses number), then K lines followed, each line would obey the format: Course-Name (Length &lt;= 30) , Credits(&lt;= 10), Score(&lt;= 100).</p>
+<p>Notice: There is no blank in the Course Name. All the Inputs are legal</p>
+<h2>Output</h2>
+<p>Output the GPA of each case as discribed above, if the GPA is not existed, ouput:"Sorry!", else just output the GPA value which is rounded to the 2 digits after the decimal point. There is a blank line between two test cases.</p>
+<h2>Sample Input</h2>
+<pre>2
+3
+Algorithm 3 97
+DataStruct 3 90
+softwareProject 4 85
+2
+Database 4 59
+English 4 81</pre>
+<h2>Sample Output</h2>
+<pre>90.10
+
+Sorry!</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>背景:</p>
+<p>新的学期即将到来，也正逢杭州电子科技大学50周年校庆。无论你的专业是什么，我唯一要告诉那么的是：“珍惜大学的生活，利用好时间。” 很多人认为大学的生活回是丰富多采。但事实是，大学生活也同样忙碌。如果你要掌握书上的知识，你的空闲时间必须花在自学和实践上， 尤其是实践。我认为，作为一位大学生，所有人都必须端正自己的学习态度。</p>
+<p>“没有不劳而获的事情”，杭电也设立了奖学金，你能得到吗？它主要依据是学生获得的GPA(测评平均分)。 现在，我将告诉你它的规则，你的任务就是编程计算GPA。</p>
+<p>假如有K门课程，第i门课的学分为Ci，你的成绩为为Si，则GPA为：</p>
+<p>GPA = (C1 * S1 + C2 * S2 +……+Ci * Si……) / (C1 + C2 + ……+ Ci……) (1 &lt;= i &lt;= K, Ci != 0)</p>
+<p>如果有一门课程成绩在0到60之间，则GPA将不存在。</p>
+<p>简单数值计算</p>
+<h2>Algorithm Analyse</h2>
+<p>直接按题意来</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int i, t, n;
+  double s[2], c[2];
+  scanf("%d", &t);
+  while (t-- && scanf("%d", &n))
+  {
+    for (s[1]=c[1]=i=0; n--; )
+    {
+      scanf("%*s%lf%lf", c, s);
+      if (i) continue;
+      if (s[0] &lt; 60 && s[0] &gt;= 0) i = 1;
+      s[1] += s[0]*c[0];
+      c[1] += c[0];
+    }
+    printf(i?"Sorry!\n":"%.2f\n", s[1]/c[1]);
+    if (t) putchar('\n');
+  }
+  return 0;
+}</code></pre>
 </div>
