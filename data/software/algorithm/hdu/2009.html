@@ -2,11 +2,44 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>数列的定义如下：</p>
+<p>数列的第一项为n，以后各项为前一项的平方根，求数列的前m项的和。</p>
 <h2>Input</h2>
+<p>输入数据有多组，每组占一行，由两个整数n（n<10000）和m(m<1000)组成，n和m的含义如前所述。</p>
 <h2>Output</h2>
+<p>对于每组输入数据，输出该数列的和，每个测试实例占一行，要求精度保留2位小数。</p>
 <h2>Sample Input</h2>
+<pre>81 4
+2 2</pre>
 <h2>Sample Output</h2>
+<pre>94.73
+3.41</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<p>前置知识:循环语法</p>
+<h2>Algorithm Analyse</h2>
+<p>循环</p>
 <h1>算法实现</h1>
+<p>本题用到开平方函数:</p>
+<pre><code data-language="c">#include &lt;math.h&gt;
+double sqrt( double num );</pre></code>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int n;
+    double x, s;
+
+    while (scanf("%lf%d", &x, &n) != EOF)
+    {
+        for(s = 0.0; n--; x = sqrt(x))
+            s += x;
+        printf("%.2lf\n", s);
+    }
+
+    return 0;
+}</code></pre>
 </div>
