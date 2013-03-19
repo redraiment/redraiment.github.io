@@ -2,11 +2,46 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>we define f(A) = 1, f(a) = -1, f(B) = 2, f(b) = -2, ... f(Z) = 26, f(z) = -26;</p>
+<p>Give you a letter x and a number y , you should output the result of y+f(x).</p>
 <h2>Input</h2>
+<p>On the first line, contains a number T.then T lines follow, each line is a case.each case contains a letter and a number.</p>
 <h2>Output</h2>
+<p>for each case, you should the result of y+f(x) on a line.</p>
 <h2>Sample Input</h2>
+<pre>6
+R 1
+P 2
+G 3
+r 1
+p 2
+g 3</pre>
 <h2>Sample Output</h2>
+<pre>19
+18
+10
+-17
+-14
+-4</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>我们定义f(A) = 1, f(a) = -1, f(B) = -2, ... f(Z) = -26;</p>
+<p>给你一个字母x 以及一个数字y ，要求你输出 y + f(x)的值。</p>
+<p>简单模拟。</p>
+<h2>Algorithm Analyse</h2>
+<p>直接按提议来。可以用哈希。也可以用数学公式。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main()
+{
+  int n, a;
+  char c;
+
+  scanf("%d%*c", &n);
+  while (n-- && scanf("%c%d%*c", &c, &a))
+    printf("%d\n", a + (c &lt; 97 ? c - 'A' + 1 : 'a' - c - 1));
+
+  return 0;
+}</code></pre>
 </div>
