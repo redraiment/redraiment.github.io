@@ -1,7 +1,106 @@
 <div title="2093 考试排名" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>C++编程考试使用的实时提交系统，具有即时获得成绩排名的特点。它的功能是怎么实现的呢？</p>
+<p>我们做好了题目的解答，提交之后，要么“AC”，要么错误，不管怎样错法，总是给你记上一笔，表明你曾经有过一次错误提交，因而当你一旦提交该题“AC”后，就要与你算一算帐了，总共该题错误提交了几回。虽然你在题数上，大步地跃上了一个台阶，但是在耗时上要摊上你共花去的时间。特别是，曾经有过的错误提交，每次都要摊上一定的单位时间分。这样一来，你在做出的题数上，可能领先别人很多，但是，在做出同样题数的人群中，你可能会在耗时上处于排名的劣势。</p>
+<p>例如：某次考试一共8题（A，B，C，D，E，F，G，H），每个人做的题都在对应的题号下有个数量标记，负数表示该学生在该题上有过的错误提交次数，但到现在还没有AC，正数表示AC所耗的时间，如果正数a跟上一对括号，里面有个整数b，那就表示该学生提交该题AC了，耗去了时间a，同时，曾经错误提交了b次，因此对于下述输入数据：</p>
+<img src="resources/figure/hdu/2093-1.bmp" />
+<p>若每次错误提交的罚分为20分，则其排名从高到低应该是这样的：</p>
+<pre>Josephus 5 376
+John 4 284
+Alice 4 352
+Smith 3 167
+Bob 2 325
+Bush 0 0</pre>
+<h2>Input</h2>
+<p>输入数据的第一行是考试题数n（1≤n≤12）以及单位罚分数m（10≤m≤20），每行数据描述一个学生的用户名（不多于10个字符的字串）以及对所有n道题的答题现状，其描述采用问题描述中的数量标记的格式，见上面的表格，提交次数总是小于100，AC所耗时间总是小于1000。</p>
+<h2>Output</h2>
+<p>将这些学生的考试现状，输出一个实时排名。实时排名显然先按AC题数的多少排，多的在前，再按时间分的多少排，少的在前，如果凑巧前两者都相等，则按名字的字典序排，小的在前。每个学生占一行，输出名字（10个字符宽），做出的题数（2个字符宽，右对齐）和时间分（4个字符宽，右对齐）。名字、题数和时间分相互之间有一个空格。</p>
+<h2>Sample Input</h2>
+<pre>8 20
+Smith		-1	-16	8	0	0	120	39	0
+John		116	-2	11	0	0	82	55(1)	0
+Josephus		72(3)	126	10	-3	0	47	21(2)	-2
+Bush	  	0	-1	-8	0	0	0	0	0
+Alice		-2	67(2)	13	-1	0	133	79(1)	-1
+Bob		0	0	57(5)	0	0	168	-7	0</pre>
+<h2>Sample Output</h2>
+<pre>Josephus    5  376
+John        4  284
+Alice       4  352
+Smith       3  167
+Bob         2  325
+Bush        0    0</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>编程技巧题</p>
+<h2>Algorithm Analyse</h2>
+<p>规则很简单，没什么好讲的。主要考察你编程的技巧性。</p>
 <h1>算法实现</h1>
+<p>因为表格里的数据格式不统一。有时候有"()"，有时候又没有。而它也不会给我们提示。这种情况下，就只能它它们统一看作字符串来处理了。现在就请出我们的主角sscanf()!</p>
+<p>sscanf</p>
+<dl>
+  <dt>语法</dt>
+  <dd>#include &lt;stdio.h&gt;</dd>
+  <dd>int sscanf( const char *buffer, const char *format, ... );</dd>
+</dl>
+<p>函数sscanf()和scanf()类似, 只是输入从buffer(缓冲区)中读取。比如:sscanf("1 2 3", "%d%d%d", &a, &b, &c); 则a = 1, b = 2, c = 3; 只要输入表格内容后，用格式化输入"%d(%d)"；然后判断输入结果，如果是2，表示带有括号，如果是1，则没有括号；而排序直接用快速排序就可以了。规则已经说的很清楚了。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+
+#define  MAX 1000
+
+typedef struct
+{
+  char  name[11];
+  int  sum;
+  int  total;
+} credit;
+
+int cmp(const void *a, const void *b)
+{
+  if ((*(credit *)a).total != (*(credit *)b).total)
+    return (*(credit *)a).total - (*(credit *)b).total;
+  else if ((*(credit *)b).sum != (*(credit *)a).sum)
+    return (*(credit *)b).sum - (*(credit *)a).sum;
+  else
+    return strcmp((*(credit *)b).name, (*(credit *)a).name);
+}
+
+int main(void)
+{
+  int  res, t, f;
+  int  i, n, m, j;
+  char  style[10];
+  credit  c[MAX] = {0};
+
+  scanf("%d%d", &n, &m);
+  for (i = 0; scanf("%s", c[i].name) != EOF; i++)
+  {
+    for (j = 0; j &lt; n; j++)
+    {
+      scanf("%s", style);
+      res = sscanf(style, "%d(%d)", &t, &f);
+      if (res == 2)
+      {
+        c[i].total++;
+        c[i].sum += t + f * m;
+      }
+      else if (res == 1 && t &gt; 0)
+      {
+        c[i].total++;
+        c[i].sum += t;
+      }
+    }
+  }
+
+  qsort(c, i, sizeof(credit), cmp);
+  for (i--; i &gt;= 0; i--)
+    printf("%-10s %2d %4d\n", c[i].name, c[i].total, c[i].sum);
+
+  return 0;
+}</code></pre>
 </div>
