@@ -1,7 +1,78 @@
 <div title="2098 分拆素数和" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>把一个偶数拆成两个不同素数的和，有几种拆法呢？</p>
+<h2>Input</h2>
+<p>输入包含一些正的偶数，其值不会超过10000，个数不会超过500，若遇0，则结束。</p>
+<h2>Output</h2>
+<p>对应每个偶数，输出其拆成不同素数的个数，每个结果占一行。</p>
+<h2>Sample Input</h2>
+<pre>30
+26
+0</pre>
+<h2>Sample Output</h2>
+<pre>3
+2</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>数论</p>
+<h2>Algorithm Analyse</h2>
+<p>首先生成1-&gt;10000之间的素数表。然后直接判断。</p>
 <h1>算法实现</h1>
+<p>关于生成素数的算法，请参阅《<span class="tab-href" title="../prime-div-in-c.html">求质数</span>》。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int p[10001] = {0, 0, 1, 1, 0, 1};
+
+int creat_prime(int prime[],int n,int total)
+{
+  register  int  i;
+  register  int  j;
+  register  int  gab=2;
+  register  int  count;
+  for(i=7;i&lt;=n;i+=gab)
+  {
+    count=1;
+    gab=6-gab;
+    for(j=0;prime[j]*prime[j]&lt;=i;j++)
+    {
+      if(i%prime[j]==0)
+      {
+        count=0;
+        break;
+      }
+    }
+    if(count)
+    {
+      prime[total]=i;
+      p[i] = 1;
+      total++;
+    }
+  }
+
+  return total;
+}
+
+int main(void)
+{
+  int  prime[1229]={2,3,5};
+  int  total=3;
+  int  i;
+  int  n=10001;
+
+  total=creat_prime(prime,n,total);
+  while (scanf("%d", &n), n)
+  {
+    total = 0;
+    if (p[n - 2] && n - 2 != 2) total++;
+    for (i = 3; i &lt; n / 2; i++)
+    {
+      if (p[i] && p[n - i])
+        total++;
+    }
+    printf("%d\n", total);
+  }
+}</code></pre>
 </div>
