@@ -2,11 +2,113 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>青年歌手大奖赛中，评委会给参赛选手打分。选手得分规则为去掉一个最高分和一个最低分，然后计算平均得分，请编程输出某选手的得分。</p>
 <h2>Input</h2>
+<p>输入数据有多组，每组占一行，每行的第一个数是n(2&lt;n&lt;100)，表示评委的人数，然后是n个评委的打分。</p>
 <h2>Output</h2>
+<p>对于每组输入数据，输出选手的得分，结果保留2位小数，每组输出占一行。</p>
 <h2>Sample Input</h2>
+<pre>3 99 98 97
+4 100 99 98 97</pre>
 <h2>Sample Output</h2>
+<pre>98.00
+98.50</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>本题是为C语言初学者提供的。</p>
+<h2>Algorithm Analyse</h2>
+<p>要实现的算法是:求整个数组的和、在数组中找最值。</p>
+<p>找最值，可以先把第一个元素赋给max、min变量，做一次遍历，一一比较，把最大值存入max，最小值存入min。</p>
+<p>也可以直接对数组进行排序，然后从第二个加到倒数第二个，这样就可以了，省去减两个最值。</p>
 <h1>算法实现</h1>
+<p>我的代码采用的是第一种方法。因为对于本题来说，它的效率是O(N)。算法不难，可以直接看代码。这里稍微讨论一下第二种方法，对于排序，我们可以直接调用库函数qsort();</p>
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+void qsort( void *buf, size_t num, size_t size, int (*compare)(const void *, const void *) );</code></pre>
+<p>功能：对buf 指向的数据(包含num 项,每项的大小为size)进行快速排序。如果函数compare 的第一个参数小于第二个参数，返回负值；如果等于返回零值；如果大于返回正值。函数对buf 指向的数据按升序排序。</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int cmp(const double *a, const double *b)
+{
+  return *a &gt; *b ? 1 : *a &lt; *b ? -1 : 0;
+}
+
+int main(void)
+{
+  int n, i;
+  double x, y[100];
+  
+  while (scanf("%d", &n) != EOF)
+  {
+    for (i = 0 ; i &lt; n ; i++)
+      scanf("%lf", y + i);
+    qsort(y, n, sizeof(double), cmp);
+    for (x = 0, i = 1 ; i &lt; n - 1 ; i++)
+      x += y[i];
+    printf("%.2f\n", x / (n - 2));
+  }
+
+  return 0;
+}</code></pre>
+<p>你可能有疑问，为什么cmp函数不直接用return *a - *b;，这也就是我不打算用这种方法的原因（虽然上面的代码可以Accpted）。这就是这段代码的不稳定因素，我们来做个实验：</p>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int i;
+  double x;
+  
+  x = 0.123456;
+  printf("%lf\n", x);
+  for (i = 0 ; x - floor(x); i++)
+    x *= 10;
+  printf("%d\n", i);
+
+  return 0;
+}</code></pre>
+<p>上面的代码的作用就是确定X小数点后有几位。我相信所有人都知道它有6位小数。但它的运行结果却是17(因编译器而异)。你可以自己复制代码去验证一下。我们在循环体里插入printf("%lf\n", floor(x));看看它的变化是怎样的。</p>
+<pre>1.000000
+12.000000
+123.000000
+1234.000000
+12345.000000
+123455.000000
+1234559.000000
+12345599.000000
+123455999.000000
+1234559999.000000
+12345599999.000000
+123455999999.000000
+1234559999999.000000
+12345599999999.000000
+123455999999999.000000
+1234559999999999.000000
+12345599999999998.000000</pre>
+<p>这就是double型数据的精度问题。这是我们无法人为地控制的。所以建议尽量避免double的高精度运算。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, i;
+  double min, max;
+  double x, y;
+  
+  while (scanf("%d", &n) != EOF)
+  {
+    scanf("%lf", &x);
+    min = max = x;
+    for (i = 1 ; i &lt; n ; i++)
+    {
+      scanf("%lf", &y);
+      x += y;
+      if (y &gt; max) max = y;
+      if (y &lt; min) min = y;
+    }
+    printf("%.2lf\n", (x - min - max) / (n - 2));
+  }
+
+  return 0;
+}</code></pre>
 </div>
