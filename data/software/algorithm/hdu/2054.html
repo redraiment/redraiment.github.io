@@ -2,11 +2,58 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>Give you two numbers A and B, if A is equal to B, you should print "YES", or print "NO".</p>
 <h2>Input</h2>
+<p>each test case contains two numbers A and B.</p>
 <h2>Output</h2>
+<p>for each case, if A is equal to B, you should print "YES", or print "NO".</p>
 <h2>Sample Input</h2>
+<pre>1 2
+2 2
+3 3
+4 3</pre>
 <h2>Sample Output</h2>
+<pre>NO
+YES
+YES
+NO</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>给你两个数A和B，如果A等于B就输出"YES"，否则输出"NO"。</p>
+<p>字符处理</p>
+<h2>Algorithm Analyse</h2>
+<p>猜也能猜到，本题的数据不可能是简单到直接能保存进整型里。</p>
+<p>它可能有10000位的长度，所以需要保存到字符串里。</p>
+<p>比较的时候，需要注意的是：像0001.00与1是相同的。</p>
 <h1>算法实现</h1>
+<p>比较前，先去掉前面多余的0，再去小数点后面多余的0(首先要保证有小数点)。最后，如果小数点后面所有的数都去的掉了，还要同时去掉小数点。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void A(char *s)
+{
+  int len = strlen(s);
+  char *p = s + len - 1;
+  if (strchr(s, '.'))
+  while (*p == '0') *p-- = 0;
+  if (*p == '.') *p = 0;
+}
+
+int main(void)
+{
+  char *pa, *pb;
+  char a[100024], b[100024];
+
+  while (scanf("%s%s", &a, &b) != EOF)
+  {
+    pa = a; pb = b;
+    while (*pa == '0') pa++;
+    while (*pb == '0') pb++;
+    A(pa); A(pb);
+    puts(strcmp(pa, pb) ? "NO" : "YES");
+  }
+
+  return 0;
+}</code></pre>
 </div>
