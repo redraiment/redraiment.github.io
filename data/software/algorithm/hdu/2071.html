@@ -1,7 +1,38 @@
 <div title="2071 Max Num" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>There are some students in a class, Can you help teacher find the highest student .</p>
+<h2>Input</h2>
+<p>There are some cases. The first line contains an integer t, indicate the cases; Each case have an integer n ( 1 ≤ n ≤ 100 ) , followed n students’ height.</p>
+<h2>Output</h2>
+<p>For each case output the highest height, the height to two decimal plases;</p>
+<h2>Sample Input</h2>
+<pre>2
+3 170.00 165.00 180.00
+4 165.00 182.00 172.00 160.00</pre>
+<h2>Sample Output</h2>
+<pre>180.00
+182.00</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<p>求一个数列的最大值，这我们还有什么好说的？排第一的代码是用PASCAL写的，不晓得它怎么刷到28MS的。呵呵。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int t, n;
+  double c, b;
+
+  scanf("%d", &t);
+  while (t-- && scanf("%d", &n))
+  {
+    c = 0;
+    while (n-- && scanf("%lf", &b))
+      if (c &lt; b) c = b;
+    printf("%.2f\n", c);
+  }
+
+  return 0;
+}</code></pre>
 </div>
