@@ -2,11 +2,46 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>There must be many A + B problems in our HDOJ , now a new one is coming.</p>
+<p>Give you two hexadecimal integers , your task is to calculate the sum of them,and print it in hexadecimal too.</p>
+<p>Easy ? AC it !</p>
 <h2>Input</h2>
+<p>The input contains several test cases, please process to the end of the file.</p>
+<p>Each case consists of two hexadecimal integers A and B in a line seperated by a blank.</p>
+<p>The length of A and B is less than 15.</p>
 <h2>Output</h2>
+<p>For each test case,print the sum of A and B in hexadecimal in one line.</p>
 <h2>Sample Input</h2>
+<pre>+A -A
++1A 12
+1A -9
+-1A -12
+1A -AA</pre>
 <h2>Sample Output</h2>
+<pre>0
+2C
+11
+-2C
+-90</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>在HDOJ上已经有很多道A+B的题目了，现在有来了道新的。</p>
+<p>给你两个16进制数，你的任务就是计算它们的和，然后以16进制输出。简单吗？把它AC掉！</p>
+<p>C编程基础知识</p>
+<h2>Algorithm Analyse</h2>
+<p>本题的数据量不大，用64位整数不会溢出。</p>
+<p>用%I64X就可以对数据读入输出进行操作。但问题在于直接用%I64X，是不能输出负数的，所以我们碰到负数要自己转成正数，在前面加‘-’。</p>
 <h1>算法实现</h1>
+<p>判断是否为负数，可以直接判断是否&lt;0，也可以求二进制最高位上是不是为1：(a+b)&((__int64)1&lt;&lt;63)</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include&lt;stdio.h&gt;
+
+int main(void)
+{
+  __int64 a, b;
+
+  while(scanf("%I64x%I64X", &a, &b) != EOF)
+    printf(a+b&lt;0?"-%I64X\n":"%I64X\n", a+b&lt;0?-a-b:a+b);
+  return 0;
+}</code></pre>
 </div>
