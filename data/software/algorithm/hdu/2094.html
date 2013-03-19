@@ -1,7 +1,74 @@
 <div title="2094 产生冠军" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>有一群人，打乒乓球比赛，两两捉对撕杀，每两个人之间最多打一场比赛。</p>
+<p>球赛的规则如下：</p>
+<p>如果A打败了B，B又打败了C，而A与C之间没有进行过比赛，那么就认定，A一定能打败C。</p>
+<p>如果A打败了B，B又打败了C，而且，C又打败了A，那么A、B、C三者都不可能成为冠军。</p>
+<p>根据这个规则，无需循环较量，或许就能确定冠军。你的任务就是面对一群比赛选手，在经过了若干场撕杀之后，确定是否已经实际上产生了冠军。</p>
+<h2>Input</h2>
+<p>输入含有一些选手群，每群选手都以一个整数n(n&lt;1000)开头，后跟n对选手的比赛结果，比赛结果以一对选手名字（中间隔一空格）表示，前者战胜后者。如果n为0，则表示输入结束。</p>
+<h2>Output</h2>
+<p>对于每个选手群，若你判断出产生了冠军，则在一行中输出“Yes”，否则在一行中输出“No”。</p>
+<h2>Sample Input</h2>
+<pre>3
+Alice Bob
+Smith John
+Alice Smith
+5
+a c
+c d
+d e
+b e
+a d
+0</pre>
+<h2>Sample Output</h2>
+<pre>Yes
+No</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>拓扑排序</p>
+<h2>Algorithm Analyse</h2>
+<p>但输入A 战胜 B时，就让B指向A。</p>
+<p>最后，指向空的就说明没有人战胜过他。如果这样的人只存在一个，那他就是冠军了。</p>
 <h1>算法实现</h1>
+<p>这里名字映射直接用C++的STL库map，和set。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;set&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(void)
+{
+  int n, i, t;
+  string b, e;
+  set &lt;string&gt; s;
+  set &lt;string&gt;::iterator it;
+  map &lt;string, string&gt; m;
+  map &lt;string, string&gt;::iterator iter;
+
+  while (cin &gt;&gt; n, n)
+  {
+    s.clear();
+    m.clear();
+    for (i = 0; i &lt; n; i++)
+    {
+      cin &gt;&gt; b &gt;&gt; e;
+      s.insert(b);
+      s.insert(e);
+      m[e] = b;
+    }
+    for (t = 0, it = s.begin(); it != s.end(); it++)
+    {
+      if (!m[*it].length())
+        t++;
+    }
+    puts(t == 1 ? "Yes" : "No");
+  }
+
+  return 0;
+}</code></pre>
 </div>
