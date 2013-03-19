@@ -1,7 +1,87 @@
 <div title="2069 Coin Change" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>Suppose there are 5 types of coins: 50-cent, 25-cent, 10-cent, 5-cent, and 1-cent. We want to make changes with these coins for a given amount of money.</p>
+<p>For example, if we have 11 cents, then we can make changes with one 10-cent coin and one 1-cent coin, or two 5-cent coins and one 1-cent coin, or one 5-cent coin and six 1-cent coins, or eleven 1-cent coins. So there are four ways of making changes for 11 cents with the above coins. Note that we count that there is one way of making change for zero cent.</p>
+<p>Write a program to find the total number of different ways of making changes for any amount of money in cents. Your program should be able to handle up to 100 cents.</p>
+<h2>Input</h2>
+<p>The input file contains any number of lines, each one consisting of a number ( ≤250 ) for the amount of money in cents.</p>
+<h2>Output</h2>
+<p>For each input line, output a line containing the number of different ways of making changes with the above 5 types of coins.</p>
+<h2>Sample Input</h2>
+<pre>11
+26</pre>
+<h2>Sample Output</h2>
+<pre>4
+13</pre>
 <h1>问题分析</h1>
+<p>这道题目初学者可能比高手做得更快。</p>
+<p>开始我还思考老半天，后来我想随便输出几个结果看看，发现速度很快。最后直接暴力通过，而且还是OMS OK。最意外的，还是选择排名还在第一位，对此我只能无语...</p>
+<p>这里介绍一下换零钱的通用算法。将总数为amount的现金换成n种硬币的不同方式的数目等于</p>
+<ol>
+  <li>将现金amount换成除第一种硬币之外的所有其他硬币的不同方式的数目，加上</li>
+  <li>将现金数amount-value换成所有种类的硬币的不同方式的数目，其中value是第一种硬币的币值。</li>
+</ol>
+<p>因为每种硬币都有换/不换两种状态。考虑其中某一种硬币，如果它不参与兑换，则兑换方式的数目就是#1；如果它参与兑换，即它的个数至少为1，排除其中一枚，那问题就缩小成现金数为amount-value，货币种类是n的子问题。</p>
+<p>此外，题目中还有如下约束条件：</p>
+<ol>
+  <li>如果amount=0，算1种换零钱的方式；</li>
+  <li>如果amount&lt;0，算0种；</li>
+  <li>如果n=0，算0种；</li>
+  <li>硬币的总数不超过100枚。</li>
+</ol>
+<p>根据上面的算法和约束，容易实现一份递归的代码：</p>
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+const int coins[] = { 1, 5, 10, 25, 50 };
+
+int count_change(int amount, int coin_kind, int deep) {
+  if (deep == 0 && amount &gt; 0) {
+    return 0;
+  }
+  if (amount == 0) {
+    return 1;
+  }
+  if (amount &lt; 0 || coin_kind &lt; 0) {
+    return 0;
+  }
+  return count_change(amount, coin_kind - 1, deep)
+       + count_change(amount - coins[coin_kind], coin_kind, deep - 1);
+}
+
+int main(void) {
+  int amount;
+
+  while (scanf("%d", &amount) != EOF) {
+    printf("%d\n", count_change(amount, 4, 100));
+  }
+
+  return EXIT_SUCCESS;
+}</code></pre>
+<p>这段代码能通过但效率不高，因为它像递归求斐波那契数一样，中间有很多冗余的计算。当然，你可以尝试去优化它，比如记住每个中间计算结果。</p>
 <h1>算法实现</h1>
+<p>前面介绍的算法和实现是通用的，即硬币的种类变化时可以很方便的适应。但针对本题可能不是最佳解法。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, d[251] = {0};
+  int c1, c5, c10, c25, c50;
+
+  for (n = 0; n &lt; 251; n++)
+  for (c50 = 0; c50 * 50 &lt;= n; c50++)
+  for (c25 = 0; c50 * 50 + c25 * 25 &lt;= n; c25++)
+  for (c10 = 0; c50 * 50 + c25 * 25 + c10 * 10 &lt;= n; c10++)
+  for (c5 = 0; c50 * 50 + c25 * 25 + c10 * 10 + c5 * 5 &lt;= n; c5++)
+  {
+    c1 = n - (c50 * 50 + c25 * 25 + c10 * 10 + c5 * 5);
+    if (c1 + c5 + c10 + c25 + c50 &lt;= 100) d[n]++;
+  }
+  while (scanf("%d", &n) != EOF)
+    printf("%d\n", d[n]);
+  return 0;
+}</code></pre>
 </div>
