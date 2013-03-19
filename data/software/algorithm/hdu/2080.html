@@ -1,7 +1,72 @@
 <div title="2080 夹角有多大II" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>这次xhd面临的问题是这样的：在一个平面内有两个点，求两个点分别和原点的连线的夹角的大小。</p>
+<p>注：夹角的范围[0，180]，两个点不会在原点出现。</p>
+<h2>Input</h2>
+<p>输入数据的第一行是一个数据T，表示有T组数据。</p>
+<p>每组数据有四个实数x1,y1,x2,y2分别表示两个点的坐标,这些实数的范围是[-10000,10000]。</p>
+<h2>Output</h2>
+<p>对于每组输入数据，输出夹角的大小精确到小数点后两位。</p>
+<h2>Sample Input</h2>
+<pre>2
+1 1 2 2
+1 1 1 0</pre>
+<h2>Sample Output</h2>
+<pre>0.00
+45.00</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>数学题</p>
+<h2>Algorithm Analyse</h2>
+<p>我们可以先用arcsin求出每个点的角度。(不用arctan是因为x可能等于0)</p>
+<p>公式:asin(y/sqrt(sqr(x)+sqr(y)))/acos(-1)*180;</p>
+<p>之所以加个acos(-1)，即π，是因为C语言里的asin结果是弧度制，但我们需要角度制。</p>
+<p>这里，我们要处理平角的情况(即180°)if (!y && x &lt; 0) y = 180；接下来就要求两个角度的差了(小于0的一直加360，大于360的一直减360)；最后还要判断结果是否大于180°</p>
+<p>此处没有考虑钝角的情况。比如输入-1 -1 1 0，应该输出135，但却只输出了45。可这样依然能AC，说明题目的测试数据很弱，但我们自己必须注意。</p>
+<p>本题还有个更简单的方法，因为输入的两个点与原点构成一个三角形。又因为 S△ = 0.5 * sinψ * A * B，其中ψ就是A, B的夹角了。而两点与原点构成的三角形的面积为 fabs(x[0]*y[1]-x[1]*y[0]) / 2;(推导见<span class="tab-href" title="2036.html">2036</span>)。</p>
 <h1>算法实现</h1>
+<p>给出第一种方法的AC代码</p>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+#define sqr(x) ((x)*(x))
+
+int main(void)
+{
+  int n;
+  double x[2], y[2];
+  
+  scanf("%d", &n);
+  while (n-- && scanf("%lf%lf%lf%lf", x, y, x+1, y+1))
+  {
+    y[0] = asin(y[0]/sqrt(sqr(x[0])+sqr(y[0])))/acos(-1)*180;
+    y[1] = asin(y[1]/sqrt(sqr(x[1])+sqr(y[1])))/acos(-1)*180;
+    if (!y[0] && x[0] &lt; 0) y[0] = 180;
+    if (!y[1] && x[1] &lt; 0) y[1] = 180;
+    y[0] -= y[1];
+    while (y[0] &lt; 0) y[0] += 360;
+    while (y[0] &gt; 360) y[0] -= 360;
+    while (y[0] &gt; 180) y[0] = 360 - y[0];
+    printf("%.2f\n", y[0]);
+  }
+  
+  return 0;
+}</code></pre>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+  double x[2], y[2], t;
+  
+  scanf("%d", &n);
+  while (n-- && scanf("%lf%lf%lf%lf", x, y, x+1, y+1))
+    printf("%.2f\n", (t=asin(fabs(x[0]*y[1]-x[1]*y[0])/sqrt(x[0]*x[0]+y[0]*y[0])/sqrt(x[1]*x[1]+y[1]*y[1]))/acos(-1)*180)?x[0]*x[1]&lt;=0&&y[0]*y[1]&lt;=0?180-t:t:x[0]*x[1]&lt;0?180:0);
+
+  return 0;
+}</code></pre>
 </div>
