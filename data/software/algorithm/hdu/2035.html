@@ -2,11 +2,68 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<p>求A^B的最后三位数表示的整数。</p>
+<p>说明：A^B的含义是“A的B次方”</p>
 <h2>Input</h2>
+<p>输入数据包含多个测试实例，每个实例占一行，由两个正整数A和B组成（1&lt;=A,B&lt;=10000），如果A=0, B=0，则表示输入数据的结束，不做处理。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，请输出A^B的最后三位表示的整数，每个输出占一行。</p>
 <h2>Sample Input</h2>
+<pre>2 3
+12 6
+6789 10000
+0 0</pre>
 <h2>Sample Output</h2>
+<pre>8
+984
+1</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>数值自乘</p>
+<h2>Algorithm Analyse</h2>
+<p>m<sup>n</sup>就是把m连乘n次，虽然效率低，但应付本题也可以0MS 0K AC了</p>
+<p>如果你也想得到一个更有效率的算法，可以看看下面公式，有灵感吗？</p>
+<blockquote><pre>	1	n = 0
+m<sup>n</sup> = 	(m<sup>k</sup>)<sup>2</sup>	n = 2k
+	m·m<sup>2k</sup>	n = 2k + 1</pre></blockquote>
 <h1>算法实现</h1>
+<p>迭代的算法很简单。</p>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int a;
+  int b;
+  int i;
+  int sum;
+  
+  while (scanf("%d%d", &a, &b), a || b)
+  {
+    sum = a;
+
+    for (i = 1 ; i &lt; b ; i++)
+      sum = (sum * a) % 1000;
+
+    printf("%d\n", sum % 1000);
+  }
+
+  return 0;
+}</code></pre>
+<p>递归程序其实就是用了分而治之(Divide.and.Conquere)的策略。X<sup>4</sup>可以用X<sup>2</sup>自乘的关系，可以大量地降低乘法数目。连乘n次要n-1个乘法，而分治只要2log<sub>2</sub>n个乘法。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int mi(int n, int m)
+{
+  return m?(m%2?(mi(n, m/2)*mi(n, m/2)*(n%1000))%1000:(mi(n,m/2)*mi(n,m/2))%1000):1;
+}
+
+int main(void)
+{
+  int n, m;
+
+  while(scanf("%d%d", &n, &m), n+m)
+    printf("%d\n", mi(n, m));
+  return 0;
+}</code></pre>
 </div>
