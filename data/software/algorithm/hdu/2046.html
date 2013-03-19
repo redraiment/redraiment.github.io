@@ -2,11 +2,45 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<img src="resources/figure/hdu/2046-1.jpg" align="right" />
+<p>在2×n的一个长方形方格中,用一个1× 2的骨牌铺满方格,输入n ,输出铺放方案的总数.</p>
+<p>例如n=3时,为2× 3方格，骨牌的铺放方案有三种,如右图：</p>
 <h2>Input</h2>
+<p>输入数据由多行组成，每行包含一个整数n,表示该测试实例的长方形方格的规格是2×n (0&lt;n&lt;=50)。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，请输出铺放方案的总数，每个实例的输出占一行。</p>
 <h2>Sample Input</h2>
+<pre>1
+3
+2</pre>
 <h2>Sample Output</h2>
+<pre>1
+3
+2</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>递推题</p>
+<h2>Algorithm Analyse</h2>
+<p>从图中也可以观察出来，第N张牌的排列可以又N-1张牌的排列再在末尾加上一张竖的牌。这样依然合法。</p>
+<p>也可以在N-2张合法排列的牌后面加上两张横着放的牌(如果竖着放就和上面一种重复了)。</p>
+<p>所以f(n) = f(n-1) + f(n-2)</p>
+<p>即又是一个斐波那契数列。 </p>
 <h1>算法实现</h1>
+<p>用64位整型。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int i;
+  __int64 d[51] = {1, 1, 2,};
+
+  for (i = 3; i &lt; 51; i++)
+    d[i] = d[i-1] + d[i-2];
+  while (scanf("%d", &i) != EOF)
+    printf("%I64d\n", d[i]);
+
+  return 0;
+}</code></pre>
 </div>
