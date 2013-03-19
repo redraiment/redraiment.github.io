@@ -1,7 +1,39 @@
 <div title="2096 小明A+B" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
-<h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Description</h2>
+<p>小明今年3岁了, 现在他已经能够认识100以内的非负整数, 并且能够进行100以内的非负整数的加法计算.</p>
+<p>对于大于等于100的整数, 小明仅保留该数的最后两位进行计算, 如果计算结果大于等于100, 那么小明也仅保留计算结果的最后两位.</p>
+<p>例如, 对于小明来说:</p>
+<p>1) 1234和34是相等的</p>
+<p>2) 35+80=15</p>
+<p>给定非负整数A和B, 你的任务是代表小明计算出A+B的值.</p>
+<h2>Input</h2>
+<p>输入数据的第一行为一个正整数T, 表示测试数据的组数. 然后是T组测试数据. 每组测试数据包含两个非负整数A和B(A和B均在int型可表示的范围内).</p>
+<h2>Output</h2>
+<p>对于每组测试数据, 输出小明A+B的结果.</p>
+<h2>Sample Input</h2>
+<pre>2
+35 80
+15 1152</pre>
+<h2>Sample Output</h2>
+<pre>15
+67</pre>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+  int a, b;
+
+  scanf("%d", &n);
+  while (n--)
+  {
+    scanf("%d%d", &a, &b);
+    printf("%d\n", (a % 100 + b % 100) % 100);
+  }
+
+  return 0;
+}</code></pre>
 </div>
