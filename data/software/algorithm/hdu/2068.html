@@ -1,7 +1,44 @@
 <div title="2068 RPG的错排" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>今年暑假杭电ACM集训队第一次组成女生队,其中有一队叫RPG,但做为集训队成员之一的野骆驼竟然不知道RPG三个人具体是谁谁。RPG给他机会让他猜猜，第一次猜：R是公主，P是草儿，G是月野兔；第二次猜：R是草儿，P是月野兔，G是公主；第三次猜：R是草儿，P是公主，G是月野兔；......可怜的野骆驼第六次终于把RPG分清楚了。由于RPG的带动，做ACM的女生越来越多，我们的野骆驼想都知道她们，可现在有N多人，他要猜的次数可就多了，为了不为难野骆驼，女生们只要求他答对一半或以上就算过关，请问有多少组答案能使他顺利过关。</p>
+<h2>Input</h2>
+<p>输入的数据里有多个case,每个case包括一个n，代表有几个女生，（n&lt;=25）, n = 0输入结束。</p>
+<h2>Output</h2>
+<p>给出有多少组答案能使他顺利过关。</p>
+<h2>Sample Input</h2>
+<pre>1
+2
+0</pre>
+<h2>Sample Output</h2>
+<pre>1
+1</pre>
 <h1>问题分析</h1>
+<p>和2048、2049题一样，都属于错排题。错排公式:f(n) = (i - 1) * [f(n-1) + f(n-2)]。</p>
+<p>具体的推导请查看<span class="tab-href" title="2048.html">2048</span>。当然，本题目还涉及到组合，排错的i个人要从n个人中选出，并且要累加i从 0 -> n/2的所有错排个数。</p>
 <h1>算法实现</h1>
+<p>数据范围比较大，需要用double型数据。</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int i, n;
+  double s;
+  double d[26][2] = {{1,1},{1,0},{2,1},{6,2}};
+  
+  for (i = 4; i &lt; 26; i++) {
+    d[i][0] = i * d[i-1][0];
+    d[i][1] = (i - 1) * (d[i-1][1] + d[i-2][1]);
+  }
+
+  while (scanf("%d", &n), n) {
+    for (s = 0, i = n/2; i &gt;= 0; i--)
+      s += 1.0*d[n][0]/d[i][0]/d[n-i][0]*d[i][1];
+    printf("%.lf\n", s);
+  }
+
+  return 0;
+}</code></pre>
 </div>
