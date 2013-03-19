@@ -2,11 +2,85 @@
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
 <h2>Problem Description</h2>
+<pre>“ 改革春风吹满地,
+不会AC没关系;
+实在不行回老家，
+还有一亩三分地。
+谢谢!（乐队奏乐）”</pre>
+<p>话说部分学生心态极好，每天就知道游戏，这次考试如此简单的题目，也是云里雾里，而且，还竟然来这么几句打油诗。</p>
+<p>好呀，老师的责任就是帮你解决问题，既然想种田，那就分你一块。</p>
+<p>这块田位于浙江省温州市苍南县灵溪镇林家铺子村，多边形形状的一块地，原本是linle 的，现在就准备送给你了。不过，任何事情都没有那么简单，你必须首先告诉我这块地到底有多少面积，如果回答正确才能真正得到这块地。</p>
+<p>发愁了吧？就是要让你知道，种地也是需要AC知识的！以后还是好好练吧...</p>
 <h2>Input</h2>
+<p>输入数据包含多个测试实例，每个测试实例占一行，每行的开始是一个整数n(3&lt;=n&lt;=100)，它表示多边形的边数（当然也是顶点数），然后是按照逆时针顺序给出的n个顶点的坐标（x1, y1, x2, y2... xn, yn）,为了简化问题，这里的所有坐标都用整数表示。</p>
+<p>输入数据中所有的整数都在32位整数范围内，n=0表示数据的结束，不做处理。</p>
 <h2>Output</h2>
+<p>对于每个测试实例，请输出对应的多边形面积，结果精确到小数点后一位小数。</p>
+<p>每个实例的输出占一行。</p>
 <h2>Sample Input</h2>
+<pre>3 0 0 1 0 0 1
+4 1 0 0 1 -1 0 0 -1
+0</pre>
 <h2>Sample Output</h2>
+<pre>0.5
+2.0</pre>
 <h1>问题分析</h1>
+<h2>Problem Analyse</h2>
+<p>求多边形面积</p>
+<h2>Algorithm Analyse</h2>
+<p>可以利用多边形求面积公式：</p>
+<p>S = 0.5 * ( (x0*y1-x1*y0) + (x1*y2-x2*y1) + ... + (xn*y0-x0*yn) )</p>
+<p>其中点(x0, y0), (x1, y1), ... , (xn, yn)为多边形上按逆时针顺序的顶点。</p>
+<p>简要证明：</p>
+<ol>
+  <li>我们先简单地从三个点入手(包括原点)。</li>
+  <img src="resources/figure/hdu/2036-1.bmp" />
+  <p>面积S<sub>△OAB</sub> = S<sub>ABCD</sub> - S<sub>△OAD</sub> - S<sub>△OBC</sub></p>
+  <ul>
+    <li>S<sub>ABCD</sub> = (y0 + y1) × (x0 - x1) ÷ 2</li>
+    <li>S<sub>△OAD</sub> = x0 × y0 ÷ 2</li>
+    <li>S<sub>△OBC</sub> = (-x1) × y1 ÷ 2</li>
+  </ul>
+  <pre>S<sub>△OAB</sub> = (x0 × y0 + x0 × y1 - x1 × y0 - x1 × y1 - x0 × y0 + x1 × y1) ÷ 2
+	= (x0 × y1 - x1 × y0) ÷ 2</pre>
+  <p>公式成立。同理你可以算出其他情况也能符合这个公式。</p>
+  <li>假设该公式对于n个顶点的多边形成立。即：</li>
+  <p>S = 0.5 * ( (x0*y1-x1*y0) + (x1*y2-x2*y1) + ... + (xn*y0-x0*yn) )</p>
+  <img src="resources/figure/hdu/2036-2.bmp" />
+  <p>再加第n+1点后，面积S' = S + S<sub>△A<sub>0</sub>A<sub>n</sub>A<sub>n+1</sub></sub></p>
+  <ul>
+    <li>S = 0.5 * ( (x0*y1-x1*y0) + (x1*y2-x2*y1) + ... + (xn*y0-x0*yn) )</li>
+    <li>S<sub>△A<sub>0</sub>A<sub>n</sub>A<sub>n+1</sub></sub> = 0.5 * ( (X0*Yn-Xn*Y0) + (Xn*Yn+1-Xn+1*Yn) + (Xn+1*Y0-X0*Yn+1) )</li>
+  </ul>
+  <p>∴S' = S = 0.5 * ( (X0*Y1-X1*Y0) + (X1*Y2-X2*Y1) + ... + (Xn*Yn+1-Xn+1*Yn) + (Xn+1*Y0-X0*Yn+1) )</p>
+</ol>
+<p>综上所述，得到公式：S = 0.5 * ( (x0*y1-x1*y0) + (x1*y2-x2*y1) + ... + (xn*y0-x0*yn) )。</p>
 <h1>算法实现</h1>
+<p>算法知道了就很轻松了，编程的时候只要保存第1个点的坐标就可以了。其他的就不浪费空间了。^_^</p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int x[3], y[3], n;
+  double sum;
+
+  while (scanf("%d", &n), n)
+  {
+    scanf("%d%d", x, y);
+    x[2] = x[0]; y[2] = y[0];
+    sum = 0.0;
+    while (--n)
+    {
+      scanf("%d%d", x+1, y+1);
+      sum += x[0]*y[1] - x[1]*y[0];
+      x[0] = x[1]; y[0] = y[1];
+    }
+    sum += x[0]*y[2] - x[2]*y[0];
+    printf("%.1f\n", sum / 2.0);
+  }
+
+  return 0;
+}</code></pre>
 </div>
