@@ -1,7 +1,58 @@
 <div title="2076 夹角有多大(题目已修改,注意读题)" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>时间过的好快，一个学期就这么的过去了，xhd在傻傻的看着表，出于对数据的渴望，突然他想知道这个表的时针和分针的夹角是多少。现在xhd知道的只有时间，请你帮他算出这个夹角。</p>
+<p>注：夹角的范围[0，180]，时针和分针的转动是连续而不是离散的。</p>
+<h2>Input</h2>
+<p>输入数据的第一行是一个数据T，表示有T组数据。</p>
+<p>每组数据有三个整数h(0 &lt;= h &lt; 24)，m(0 &lt;= m &lt; 60)，s(0 &lt;= s &lt; 60)分别表示时、分、秒。</p>
+<h2>Output</h2>
+<p>对于每组输入数据，输出夹角的大小的整数部分。</p>
+<h2>Sample Input</h2>
+<pre>2
+8 3 17
+5 13 30</pre>
+<h2>Sample Output</h2>
+<pre>138
+75</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>数学题</p>
+<h2>Algorithm Analyse</h2>
+<p>时针走 30°/h = 0.5°/m = (1/120)°/s</p>
+<p>分针走 6°/m = 0.1°/s</p>
+<p>所有在h:m:s时，时针的角度为30*h + m/2 + s/120;分针的角度为:6*m + s/10;</p>
+<p>所有它们的夹角为fabs(30*h + m/2 + s/120 - 6*m - s/10) = fabs(30*h - 11*m/2 - 11*s/120)</p>
+<p>当然，这是在12小时制下(而不是24小时)。 </p>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n, t;
+  scanf("%d", &t);
+  while (t-- && scanf("%d", &n))
+    printf("%.0f\n", pow(3, n-1) + 1);
+  
+  return 0;
+}
+
+#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int n;
+  double h, m, s;
+
+  scanf("%d", &n);
+  while (n-- && scanf("%lf%lf%lf", &h, &m, &s))
+  {
+    if (h &gt; 12) h -= 12;
+    printf("%d\n", (h=fabs(30*h-11*m/2-11*s/120))&gt;180?(int)(360-h):(int)h);
+  }
+  return 0;
+}</code></pre>
 </div>
