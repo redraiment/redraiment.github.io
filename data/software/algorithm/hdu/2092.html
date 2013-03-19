@@ -1,7 +1,51 @@
 <div title="2092 整数解" class="article-content">
 <div class="sign">2008-06-11 20:04</div>
 <h1>问题描述</h1>
+<h2>Problem Description</h2>
+<p>有二个整数，它们加起来等于某个整数，乘起来又等于另一个整数，它们到底是真还是假，也就是这种整数到底存不存在，实在有点吃不准，你能快速回答吗？看来只能通过编程。</p>
+<p>例如：</p>
+<p>x + y = 9，x * y = 15 ? 找不到这样的整数x和y</p>
+<p>1+4=5，1*4=4，所以，加起来等于5，乘起来等于4的二个整数为1和4</p>
+<p>7+(-8)=-1，7*（-8）=-56，所以，加起来等于-1，乘起来等于-56的二个整数为7和-8</p>
+<h2>Input</h2>
+<p>输入数据为成对出现的整数n，m（-10000&lt;n,m&lt;10000），它们分别表示整数的和与积，如果两者都为0，则输入结束。</p>
+<h2>Output</h2>
+<p>只需要对于每个n和m，输出“Yes”或者“No”，明确有还是没有这种整数就行了。</p>
+<h2>Sample Input</h2>
+<pre>9 15
+5 4
+1 -56
+0 0</pre>
+<h2>Sample Output</h2>
+<pre>No
+Yes
+Yes</pre>
 <h1>问题分析</h1>
-<h1>算法实现</h1>
+<h2>Problem Analyse</h2>
+<p>数学题</p>
+<h2>Algorithm Analyse</h2>
+<dl>
+<dd>∵x + y = n</dd>
+<dd>∴y = n - x</dd>
+<dd>∵xy = m</dd>
+<dd>∴(n - x) * x = m</dd>
+<dd>∴x<sup>2</sup> - nx + m = 0</dd>
+<dd>∵m是整数，且xy = m</dd>
+<dd>∴x、y都是整数。</dd>
+<dd>∴要判断是否有整数解，就要判断方程:x<sup>2</sup> - nx + m = 0的△是否为完全平方数。</dd>
+</dl>
 <h1>参考源码</h1>
+<pre><code data-language="c">#include &lt;math.h&gt;
+#include &lt;stdio.h&gt;
+
+#define s(x) ((x)*(x))
+
+int main(void)
+{
+  int x, y;
+
+  while (scanf("%d%d", &x, &y), x+y)
+    puts(s(x)-4*y &gt;= 0 && s(x)-4*y - s((int)sqrt(s(x)-4*y)) == 0 ? "Yes" : "No");
+  return 0;
+}</code></pre>
 </div>
