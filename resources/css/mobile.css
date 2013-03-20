@@ -1,0 +1,29 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: Helvetica,​Arial,​sans-serif;
+}
+
+dt, dd {
+    padding: 5px;
+}
+
+dt {
+    font-size: 12.5px;
+    background-color: green;
+    color: white;
+}
+
+dd {
+    font-size: 16px;
+    color: #2F3E46;
+    border-bottom: 1px solid black;
+}
+
+a, a:visited, a:hover, a:hover {
+    text-decoration: none;
+    color: #2F3E46;
+}
