@@ -5,6 +5,7 @@ cd ..
 
 # Generate Navigator
 bin/generate-nav.sh > data/navigator.json
+bin/generate-nav-mobile.sh > data/navigator.mobile.xml
 
 # local | remote
 target=${1:-local}
