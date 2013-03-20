@@ -1,23 +1,23 @@
 <dl class="navigator">
 <dt>/</dt>
 <dd><a href="mobile.html?p=data/About.html" target="_blank">关于我</a></dd>
-<dt>/happy-life</dt>
+<dt>/幸福生活</dt>
 <dd><a href="mobile.html?p=data/happy-life/care-for-others.html" target="_blank">该怎么去关心人？</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/happy-new-year-in-c.html" target="_blank">一段有趣的C程序，祝大家春节快乐！</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/i-am-back.html" target="_blank">我终于活着回来了！</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/immortal.html" target="_blank">永生轮回之术</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/keyboard-and-mouse.html" target="_blank">鼠标和键盘的故事</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/midnight.html" target="_blank">午夜惊魂</a></dd>
-<dt>/reading-room</dt>
+<dt>/阅读室</dt>
 <dd><a href="mobile.html?p=data/reading-room/awk-one-line.html" target="_blank">awk学习笔记</a></dd>
 <dd><a href="mobile.html?p=data/reading-room/sed-one-line.html" target="_blank">sed单行脚本学习笔记</a></dd>
 <dd><a href="mobile.html?p=data/reading-room/software-and-belief.html" target="_blank">汝当分离软件与信仰</a></dd>
-<dt>/software/algorithm</dt>
+<dt>/软件人生/算法</dt>
 <dd><a href="mobile.html?p=data/software/algorithm/md5.html" target="_blank">MD5算法实现注意点</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/perfect-number.html" target="_blank">求完美数</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/prime-div-in-c.html" target="_blank">求质数 - 除余法</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/prime-filter-in-c.html" target="_blank">求质数 - 筛法</a></dd>
-<dt>/software/algorithm/hdu</dt>
+<dt>/软件人生/算法/杭电100题</dt>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2000.html" target="_blank">2000 ASCII码排序</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2001.html" target="_blank">2001 计算两点间的距离</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2002.html" target="_blank">2002 计算球体积</a></dd>
@@ -118,15 +118,15 @@
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2097.html" target="_blank">2097 Sky数</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2098.html" target="_blank">2098 分拆素数和</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2099.html" target="_blank">2099 整除的尾数</a></dd>
-<dt>/software/code</dt>
+<dt>/软件人生/物尽其（奇）用</dt>
 <dd><a href="mobile.html?p=data/software/code/brainfuck-interpreter-in-c.html" target="_blank">BrainFuck解释器（C语言实现）</a></dd>
-<dt>/software/code/basic</dt>
+<dt>/软件人生/物尽其（奇）用/BASIC解释器</dt>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-1.html" target="_blank">用C语言写解释器[1] - 我们的目标</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-2.html" target="_blank">用C语言写解释器[2] - 表达式求值</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-3.html" target="_blank">用C语言写解释器[3] - 中缀转后缀</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-4.html" target="_blank">用C语言写解释器[4] - 语句分析</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-5.html" target="_blank">用C语言写解释器[5] - 其他一些东西</a></dd>
-<dt>/software/code/DuplexPipe</dt>
+<dt>/软件人生/物尽其（奇）用/DuplexPipe</dt>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-0.html" target="_blank">DuplexPipe-0.1_0发布</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-1.html" target="_blank">DuplexPipe二三事[1] - 有趣的起因：算24</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-2.html" target="_blank">DuplexPipe二三事[2] - 瑞士军刀再显锋芒：让程序相互聊天</a></dd>
@@ -137,47 +137,47 @@
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-7.html" target="_blank">迎国庆，DuplexPipe 发布 0.3.0 版</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-8-linux-nc.html" target="_blank">Linux下用nc实现DuplexPipe</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-9-cygwin-nc.html" target="_blank">在 Cygwin 下编译 netcat_1.10-38</a></dd>
-<dt>/software/code/shell</dt>
+<dt>/软件人生/物尽其（奇）用/脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/code/shell/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
 <dd><a href="mobile.html?p=data/software/code/shell/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
 <dd><a href="mobile.html?p=data/software/code/shell/enhanced-cd.html" target="_blank">cd 增强版</a></dd>
-<dt>/software/javascript</dt>
+<dt>/软件人生/javascript</dt>
 <dd><a href="mobile.html?p=data/software/javascript/node-js-introduct.html" target="_blank">Node.js 初体验</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/rhino-database-access.html" target="_blank">JS访问数据库[非Node.js]</a></dd>
-<dt>/software/javascript/E4X</dt>
+<dt>/软件人生/javascript/E4X</dt>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-0.html" target="_blank">E4X教程[0] - 目录</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-1.html" target="_blank">E4X教程[1] - 入门</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-2.html" target="_blank">E4X教程[2] - 访问 XML 子节点</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-3.html" target="_blank">E4X教程[3] - 后代与筛选器</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-4.html" target="_blank">E4X教程[4] - 命名空间</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-5.html" target="_blank">E4X教程[5] - 全局 XML 对象</a></dd>
-<dt>/software/lisp</dt>
+<dt>/软件人生/lisp</dt>
 <dd><a href="mobile.html?p=data/software/lisp/edbc.html" target="_blank">Emacs-Lisp Database Connectivity</a></dd>
 <dd><a href="mobile.html?p=data/software/lisp/emacs-cgi.html" target="_blank">用 Emacs Lisp 开发 CGI 程序</a></dd>
 <dd><a href="mobile.html?p=data/software/lisp/recursive-lambda-1.html" target="_blank">Lisp匿名递归函数</a></dd>
 <dd><a href="mobile.html?p=data/software/lisp/recursive-lambda-2.html" target="_blank">Lisp匿名递归函数[2] - 在Common Lisp中实现Clojure的fn</a></dd>
-<dt>/software/programming</dt>
+<dt>/软件人生/程序设计方法</dt>
 <dd><a href="mobile.html?p=data/software/programming/design-pattern-and-hero.html" target="_blank">设计模式与武侠</a></dd>
 <dd><a href="mobile.html?p=data/software/programming/designing-command-line-interfaces.html" target="_blank">[译]命令行界面设计</a></dd>
 <dd><a href="mobile.html?p=data/software/programming/loop-vs-recursive.html" target="_blank">循环 vs 递归</a></dd>
 <dd><a href="mobile.html?p=data/software/programming/programming-village.html" target="_blank">编程村一日游</a></dd>
-<dt>/software/programming/kill-if</dt>
+<dt>/软件人生/程序设计方法/消灭成堆的分支语句</dt>
 <dd><a href="mobile.html?p=data/software/programming/kill-if/chain-of-responsibility-like.html" target="_blank">类责任链模式</a></dd>
-<dt>/software/tool-tips</dt>
+<dt>/软件人生/善用佳软</dt>
 <dd><a href="mobile.html?p=data/software/tool-tips/autohotkey-tutorial.html" target="_blank">AutoHotKey 新手入门教程</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/curl-post-blank.html" target="_blank">curl命令post带空格的数据</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/oj-java.html" target="_blank">OJ添加Java语言</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/repl-online.html" target="_blank">收集一些在线的REPL</a></dd>
-<dt>/software/tool-tips/Linux</dt>
+<dt>/软件人生/善用佳软/Linux</dt>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/fork-and-printf.html" target="_blank">fork与printf输出缓冲区</a></dd>
-<dt>/thinking</dt>
+<dt>/思考与感悟</dt>
 <dd><a href="mobile.html?p=data/thinking/donot-impose-others.html" target="_blank">人所不欲，勿施于人</a></dd>
 <dd><a href="mobile.html?p=data/thinking/i-have-a-dream.html" target="_blank">I have a dream</a></dd>
 <dd><a href="mobile.html?p=data/thinking/indistinct.html" target="_blank">【自省文】难得糊涂</a></dd>
 <dd><a href="mobile.html?p=data/thinking/make-base.html" target="_blank">【自醒文】今天你犯贱了吗</a></dd>
 <dd><a href="mobile.html?p=data/thinking/open-source.html" target="_blank">开源不应作为推荐的理由</a></dd>
 <dd><a href="mobile.html?p=data/thinking/sparrow-donot-know-swan.html" target="_blank">燕雀安知鸿鹄之志</a></dd>
-<dt>/thinking/learning</dt>
+<dt>/思考与感悟/学习方法</dt>
 <dd><a href="mobile.html?p=data/thinking/learning/a-funny-thing.html" target="_blank">一个好玩的现象</a></dd>
 <dd><a href="mobile.html?p=data/thinking/learning/accumulate.html" target="_blank">厚积薄发</a></dd>
 <dd><a href="mobile.html?p=data/thinking/learning/forget.html" target="_blank">做到忘记</a></dd>
