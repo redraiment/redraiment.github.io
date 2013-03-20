@@ -13,6 +13,22 @@ var Ajax = function() {
     this.request = request;
 };
 
+Ajax.prototype.get = function(url, callback) {
+    var request = this.request;
+    if (!request) {
+        return false;
+    }
+
+    request.onreadystatechange = function() {
+        if (request.readyState == 4 && request.status == 200) {
+            callback && callback(request.responseText);
+        }
+    };
+    request.open('GET', url, true);
+    request.send(null);
+    return true;
+};
+
 Ajax.prototype.post = function(url, args, callback) {
     var request = this.request;
     if (!request) {
@@ -34,5 +50,5 @@ Ajax.prototype.post = function(url, args, callback) {
     }
     request.send(params.join('&'));
 
-    return
+    return true;
 };

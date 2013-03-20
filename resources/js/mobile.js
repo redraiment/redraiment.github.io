@@ -5,7 +5,7 @@ if (/^\?p=/.test(search)) {
 }
 
 var ajax = new Ajax();
-ajax.post(url, {}, function(text) {
+ajax.get(url, function(text) {
     text = text.replace(/<script.+<\/script>/g, '');
     document.body.innerHTML = text;
 });
