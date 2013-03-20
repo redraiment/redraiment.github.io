@@ -107,6 +107,6 @@ Ext.define('iKnowledge.view.Article', {
     },
 
     onCopyLink: function() {
-        Ext.Msg.alert(this.title, this.getUrl());
+        Ext.Msg.prompt(this.title, '', Ext.emptyFn, this, true, this.getUrl());
     }
 });
