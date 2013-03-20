@@ -32,3 +32,4 @@
 <p>到这里还没有结束。我们知道 UDP 属于非安全连接，通讯之前没有经过三次握手确认。因此在“UDP 连接模式端”发送数据包到“UDP 监听模式端”之前，“监听端”并不知道“连接端”的位置，所以也就无法主动给“连接端”发送数据。而我们的 DuplexPipe 只是一个数据转发工具，本身并不向两端程序发送任何多余的信息。因此第十种模式“UDP 连接模式 - UDP 连接模式”并不能正常工作。于是，真正能建立通讯的模式就只剩下前面九种。我暂时想不出解决方法，如果其他朋友知道如何解决（当然不能让 DuplexPipe 主动发送冗余数据），欢迎联系我（<a href="mailto:redraiment@gmail.com">redraiment@gmail.com</a>），谢谢！
 </p>
 </div>
+<script type="text/javascript" language="JavaScript" src="/resources/js/article.js"></script>

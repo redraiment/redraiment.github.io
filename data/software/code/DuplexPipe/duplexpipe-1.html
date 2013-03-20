@@ -50,3 +50,4 @@ done</code></pre>
 <p>为完成这个任务，计算机要做的就是让“程序1”和“程序2”进行聊天：“程序1”的输出作为“程序2”的输入、“程序2”的输出作为“程序1”的输入。这一定义会让人立刻联想到“管道”（exe1 | exe2），但遗憾的是“管道”是单向的——只能满足“程序1”的输出作为“程序2”的输入。</p>
 <p>其实这就是一个“进程通信”（IPC）的问题，如果你熟悉 UNIX 的历史，也会和我一样联想到 Socket 。我随即想起了网络瑞士军刀——nc（netcat），并用它顺利解决了这个问题！我会在《<span class="tab-href" title="duplexpipe-2.html">DuplexPipe二三事（二）</span>》中介绍这个方法。</p>
 </div>
+<script type="text/javascript" language="JavaScript" src="/resources/js/article.js"></script>

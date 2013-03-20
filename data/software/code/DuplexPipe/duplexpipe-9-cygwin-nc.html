@@ -84,3 +84,4 @@ hyphens in port names must be backslash escaped (e.g. 'ftp/-data').</code></pre>
 <pre><code data-language="shell">nc -l -p 1234 -c 'tee 1234.txt | nc remotehost 1235 | tee 1235.txt'</code></pre>
 <p>执行了上面的命令后，再用客户端连接本地的 1234 端口，nc 就会自动去连接远程的 1235 端口。并且客户端发送的消息会保留一份副本到 1234.txt 文件中；服务器反馈的信息则会保存到 1235.txt 中。</p>
 </div>
+<script type="text/javascript" language="JavaScript" src="/resources/js/article.js"></script>
