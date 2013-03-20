@@ -1,3 +1,9 @@
+// For Google Analytics
+var _gaq = [
+    ['_setAccount', 'UA-39440649-1'],
+    ['_trackPageview']
+];
+
 Ext.application({
     name: 'iKnowledge',
     appFolder: 'app',
