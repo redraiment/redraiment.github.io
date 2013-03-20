@@ -7,23 +7,92 @@ body {
     font-family: Helvetica,​Arial,​sans-serif;
 }
 
-dt, dd {
+.navigator dt, .navigator dd {
     padding: 5px;
 }
 
-dt {
+.navigator dt {
     font-size: 12.5px;
     background-color: green;
     color: white;
 }
 
-dd {
+.navigator dd {
     font-size: 16px;
     color: #2F3E46;
     border-bottom: 1px solid black;
 }
 
-a, a:visited, a:hover, a:hover {
+.navigator a,
+.navigator a:visited,
+.navigator a:hover,
+.navigator a:hover {
     text-decoration: none;
     color: #2F3E46;
+}
+
+.article-content {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 {
+    margin-top: 8px;
+    color: #008000;
+}
+
+.article-content h1 {
+    font-size: xx-large;
+}
+
+.article-content h2 {
+    font-size: x-large;
+}
+
+.article-content h3 {
+    font-size: large;
+}
+
+.article-content p, .article-content pre, .article-content ol, .article-content ul, .article-content li, .article-content dt {
+    margin-top: 8px;
+}
+
+.article-content li {
+    list-style-position: inside;
+}
+
+.article-content dt {
+    text-indent: 0.5em;
+    font-weight: bold;
+}
+
+.article-content dd {
+    text-indent: 1em;
+}
+
+.article-content blockquote {
+    margin-left: 1em;
+}
+
+.article-content a, .article-content a:visited, span.tab-href {
+    color: #3070A0;
+    text-decoration: none;
+}
+
+.article-content table {
+    border-collapse: collapse;
+    empty-cells: show;
+}
+
+.article-content th, .article-content td {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+.article-content div.sign {
+    text-align: right;
+}
+
+.article-content img {
+    margin: 10px 0px;
 }
