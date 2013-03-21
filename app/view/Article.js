@@ -7,6 +7,7 @@ Ext.define('iKnowledge.view.Article', {
 
     constructor: function (config) {
         var me = this;
+        var mobileUrl = this.getUrl() + 'mobile.html#!' + config.url;
 
         config.tbar = ['分享到：', {
             xtype: 'button',
@@ -28,7 +29,7 @@ Ext.define('iKnowledge.view.Article', {
                     scope: me
                 }
             }
-        }];
+        }, '<a href="' + mobileUrl + '">切换到移动版</a>'];
         config.loader = {
             autoLoad: true,
             scripts: true,
@@ -81,12 +82,13 @@ Ext.define('iKnowledge.view.Article', {
     },
 
     getUrl: function() {
-        var path = this.id.substr(4);
-        var url = window.location.protocol + '//'
-                + window.location.hostname
-                + window.location.pathname
-                + '#!' + path;
-        return url;
+        return window.location.protocol + '//'
+             + window.location.hostname
+             + window.location.pathname;
+    },
+
+    getPath: function() {
+        return this.getUrl() + '#!' + this.id.substr(4);
     },
 
     onShareSina: function() {
@@ -95,7 +97,7 @@ Ext.define('iKnowledge.view.Article', {
 
         var sina = 'http://service.weibo.com/share/share.php?';
         var param = {
-            url: this.getUrl(),
+            url: this.getPath(),
             appkey: '',
             title: '《' + this.title + '》',
             pic: picture,
@@ -107,6 +109,6 @@ Ext.define('iKnowledge.view.Article', {
     },
 
     onCopyLink: function() {
-        Ext.Msg.prompt(this.title, '', Ext.emptyFn, this, true, this.getUrl());
+        Ext.Msg.prompt(this.title, '', Ext.emptyFn, this, true, this.getPath());
     }
 });
