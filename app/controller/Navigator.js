@@ -49,9 +49,12 @@ Ext.define('iKnowledge.controller.Navigator', {
 
     getDefaultArticle: function() {
         var url = iKnowledge.controller.Navigator.defaultPage;
-        var search = window.location.search;
+        var hash = location.hash;
+        var search = location.search;
 
-        if (search) {
+        if (/^#!/.test(hash)) {
+            url = hash.substr(2);
+        } else if (search) {
             var param = Ext.Object.fromQueryString(search.substr(1));
             if (param['p']) {
                 url = param['p'];

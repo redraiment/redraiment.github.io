@@ -85,7 +85,7 @@ Ext.define('iKnowledge.view.Article', {
         var url = window.location.protocol + '//'
                 + window.location.hostname
                 + window.location.pathname
-                + '?p=' + path;
+                + '#!' + path;
         return url;
     },
 
