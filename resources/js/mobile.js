@@ -10,6 +10,9 @@ if (/^#!/.test(hash)) {
 var ajax = new Ajax();
 ajax.get(url, function(text) {
     text = text.replace(/<script.+<\/script>/g, '');
+    var pcURL = location.href.replace(/mobile\.html/, '');
+    text = '<a class="version-convert" href="' + pcURL
+         + '">切换到桌面版</a>' + text;
     document.body.innerHTML = text;
 });
 

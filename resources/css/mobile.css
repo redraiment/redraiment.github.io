@@ -5,6 +5,12 @@
 
 body {
     font-family: Helvetica,​Arial,​sans-serif;
+    font-size: 16px;
+}
+
+a.version-convert {
+    float: left;
+    padding: 5px;
 }
 
 .navigator dt, .navigator dd {
@@ -18,7 +24,6 @@ body {
 }
 
 .navigator dd {
-    font-size: 16px;
     color: #2F3E46;
     border-bottom: 1px solid black;
 }
@@ -33,7 +38,6 @@ body {
 
 .article-content {
     padding: 5px;
-    font-size: 16px;
 }
 
 .article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 {
