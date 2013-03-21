@@ -1,185 +1,185 @@
 <dl class="navigator">
 <dt>/</dt>
-<dd><a href="mobile.html?p=data/About.html" target="_blank">关于我</a></dd>
+<dd><a href="mobile.html#!data/About.html" target="_blank">关于我</a></dd>
 <dt>/幸福生活</dt>
-<dd><a href="mobile.html?p=data/happy-life/care-for-others.html" target="_blank">该怎么去关心人？</a></dd>
-<dd><a href="mobile.html?p=data/happy-life/happy-new-year-in-c.html" target="_blank">一段有趣的C程序，祝大家春节快乐！</a></dd>
-<dd><a href="mobile.html?p=data/happy-life/i-am-back.html" target="_blank">我终于活着回来了！</a></dd>
-<dd><a href="mobile.html?p=data/happy-life/immortal.html" target="_blank">永生轮回之术</a></dd>
-<dd><a href="mobile.html?p=data/happy-life/keyboard-and-mouse.html" target="_blank">鼠标和键盘的故事</a></dd>
-<dd><a href="mobile.html?p=data/happy-life/midnight.html" target="_blank">午夜惊魂</a></dd>
+<dd><a href="mobile.html#!data/happy-life/care-for-others.html" target="_blank">该怎么去关心人？</a></dd>
+<dd><a href="mobile.html#!data/happy-life/happy-new-year-in-c.html" target="_blank">一段有趣的C程序，祝大家春节快乐！</a></dd>
+<dd><a href="mobile.html#!data/happy-life/i-am-back.html" target="_blank">我终于活着回来了！</a></dd>
+<dd><a href="mobile.html#!data/happy-life/immortal.html" target="_blank">永生轮回之术</a></dd>
+<dd><a href="mobile.html#!data/happy-life/keyboard-and-mouse.html" target="_blank">鼠标和键盘的故事</a></dd>
+<dd><a href="mobile.html#!data/happy-life/midnight.html" target="_blank">午夜惊魂</a></dd>
 <dt>/阅读室</dt>
-<dd><a href="mobile.html?p=data/reading-room/awk-one-line.html" target="_blank">awk学习笔记</a></dd>
-<dd><a href="mobile.html?p=data/reading-room/sed-one-line.html" target="_blank">sed单行脚本学习笔记</a></dd>
-<dd><a href="mobile.html?p=data/reading-room/software-and-belief.html" target="_blank">汝当分离软件与信仰</a></dd>
+<dd><a href="mobile.html#!data/reading-room/awk-one-line.html" target="_blank">awk学习笔记</a></dd>
+<dd><a href="mobile.html#!data/reading-room/sed-one-line.html" target="_blank">sed单行脚本学习笔记</a></dd>
+<dd><a href="mobile.html#!data/reading-room/software-and-belief.html" target="_blank">汝当分离软件与信仰</a></dd>
 <dt>/软件人生/算法</dt>
-<dd><a href="mobile.html?p=data/software/algorithm/md5.html" target="_blank">MD5算法实现注意点</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/perfect-number.html" target="_blank">求完美数</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/prime-div-in-c.html" target="_blank">求质数 - 除余法</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/prime-filter-in-c.html" target="_blank">求质数 - 筛法</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/md5.html" target="_blank">MD5算法实现注意点</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/perfect-number.html" target="_blank">求完美数</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/prime-div-in-c.html" target="_blank">求质数 - 除余法</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/prime-filter-in-c.html" target="_blank">求质数 - 筛法</a></dd>
 <dt>/软件人生/算法/杭电100题</dt>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2000.html" target="_blank">2000 ASCII码排序</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2001.html" target="_blank">2001 计算两点间的距离</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2002.html" target="_blank">2002 计算球体积</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2003.html" target="_blank">2003 求绝对值</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2004.html" target="_blank">2004 成绩转换</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2005.html" target="_blank">2005 第几天？</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2006.html" target="_blank">2006 求奇数的乘积</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2007.html" target="_blank">2007 平方和与立方和</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2008.html" target="_blank">2008 数值统计</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2009.html" target="_blank">2009 求数列的和</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2010.html" target="_blank">2010 水仙花数</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2011.html" target="_blank">2011 多项式求和</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2012.html" target="_blank">2012 素数判定</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2013.html" target="_blank">2013 蟠桃记</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2014.html" target="_blank">2014 青年歌手大奖赛_评委会打分</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2015.html" target="_blank">2015 偶数求和</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2016.html" target="_blank">2016 数据的交换输出</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2017.html" target="_blank">2017 字符串统计</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2018.html" target="_blank">2018 母牛的故事</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2019.html" target="_blank">2019 数列有序!</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2020.html" target="_blank">2020 绝对值排序</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2021.html" target="_blank">2021 发工资咯：）</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2022.html" target="_blank">2022 海选女主角</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2023.html" target="_blank">2023 求平均成绩</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2024.html" target="_blank">2024 C语言合法标识符</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2025.html" target="_blank">2025 查找最大元素</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2026.html" target="_blank">2026 首字母变大写</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2027.html" target="_blank">2027 统计元音</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2028.html" target="_blank">2028 Lowest Common Multiple Plus</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2029.html" target="_blank">2029 Palindromes_easy version</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2030.html" target="_blank">2030 汉字统计</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2031.html" target="_blank">2031 进制转换</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2032.html" target="_blank">2032 杨辉三角</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2033.html" target="_blank">2033 人见人爱A+B</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2034.html" target="_blank">2034 人见人爱A-B</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2035.html" target="_blank">2035 人见人爱A^B</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2036.html" target="_blank">2036 改革春风吹满</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2037.html" target="_blank">2037 今年暑假不AC</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2038.html" target="_blank">2038 test</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2039.html" target="_blank">2039 三角形</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2040.html" target="_blank">2040 亲和数</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2041.html" target="_blank">2041 超级楼梯</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2042.html" target="_blank">2042 不容易系列之二</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2043.html" target="_blank">2043 密码</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2044.html" target="_blank">2044 一只小蜜蜂...</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2045.html" target="_blank">2045 不容易系列之(3)——LELE的RPG难题</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2046.html" target="_blank">2046 骨牌铺方格</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2047.html" target="_blank">2047 阿牛的EOF牛肉串</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2048.html" target="_blank">2048 神、上帝以及老天爷</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2049.html" target="_blank">2049 不容易系列之(4)——考新郎</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2050.html" target="_blank">2050 折线分割平面</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2051.html" target="_blank">2051 Bitset</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2052.html" target="_blank">2052 Picture</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2053.html" target="_blank">2053 Switch Game</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2054.html" target="_blank">2054 A == B ?</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2055.html" target="_blank">2055 An easy problem</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2056.html" target="_blank">2056 Rectangles</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2057.html" target="_blank">2057 A + B Again</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2058.html" target="_blank">2058 The sum problem</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2059.html" target="_blank">2059 龟兔赛跑</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2060.html" target="_blank">2060 Snooker</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2061.html" target="_blank">2061 Treasure the new start, freshmen!</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2062.html" target="_blank">2062 Subset sequence</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2063.html" target="_blank">2063 过山车</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2064.html" target="_blank">2064 汉诺塔III</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2065.html" target="_blank">2065 “红色病毒”问题</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2066.html" target="_blank">2066 一个人的旅行</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2067.html" target="_blank">2067 小兔的棋盘</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2068.html" target="_blank">2068 RPG的错排</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2069.html" target="_blank">2069 Coin Change</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2070.html" target="_blank">2070 Fibbonacci	Number</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2071.html" target="_blank">2071 Max Num</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2072.html" target="_blank">2072 单词数</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2073.html" target="_blank">2073 无限的路</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2074.html" target="_blank">2074 叠筐</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2075.html" target="_blank">2075 A|B?</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2076.html" target="_blank">2076 夹角有多大(题目已修改,注意读题)</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2077.html" target="_blank">2077 汉诺塔IV</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2078.html" target="_blank">2078 复习时间</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2079.html" target="_blank">2079 选课时间(题目已修改,注意读题)</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2080.html" target="_blank">2080 夹角有多大II</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2081.html" target="_blank">2081 手机短号</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2082.html" target="_blank">2082 找单词</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2083.html" target="_blank">2083 简易版之最短距离</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2084.html" target="_blank">2084 数塔</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2085.html" target="_blank">2085 核反应堆</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2086.html" target="_blank">2086 A1	= ?</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2087.html" target="_blank">2087 剪花布条</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2088.html" target="_blank">2088 Box of Bricks</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2089.html" target="_blank">2089 不要62</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2090.html" target="_blank">2090 算菜价</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2091.html" target="_blank">2091 空心三角形</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2092.html" target="_blank">2092 整数解</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2093.html" target="_blank">2093 考试排名</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2094.html" target="_blank">2094 产生冠军</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2095.html" target="_blank">2095 find your present (2)</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2096.html" target="_blank">2096 小明A+B</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2097.html" target="_blank">2097 Sky数</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2098.html" target="_blank">2098 分拆素数和</a></dd>
-<dd><a href="mobile.html?p=data/software/algorithm/hdu/2099.html" target="_blank">2099 整除的尾数</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2000.html" target="_blank">2000 ASCII码排序</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2001.html" target="_blank">2001 计算两点间的距离</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2002.html" target="_blank">2002 计算球体积</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2003.html" target="_blank">2003 求绝对值</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2004.html" target="_blank">2004 成绩转换</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2005.html" target="_blank">2005 第几天？</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2006.html" target="_blank">2006 求奇数的乘积</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2007.html" target="_blank">2007 平方和与立方和</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2008.html" target="_blank">2008 数值统计</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2009.html" target="_blank">2009 求数列的和</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2010.html" target="_blank">2010 水仙花数</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2011.html" target="_blank">2011 多项式求和</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2012.html" target="_blank">2012 素数判定</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2013.html" target="_blank">2013 蟠桃记</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2014.html" target="_blank">2014 青年歌手大奖赛_评委会打分</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2015.html" target="_blank">2015 偶数求和</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2016.html" target="_blank">2016 数据的交换输出</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2017.html" target="_blank">2017 字符串统计</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2018.html" target="_blank">2018 母牛的故事</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2019.html" target="_blank">2019 数列有序!</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2020.html" target="_blank">2020 绝对值排序</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2021.html" target="_blank">2021 发工资咯：）</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2022.html" target="_blank">2022 海选女主角</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2023.html" target="_blank">2023 求平均成绩</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2024.html" target="_blank">2024 C语言合法标识符</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2025.html" target="_blank">2025 查找最大元素</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2026.html" target="_blank">2026 首字母变大写</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2027.html" target="_blank">2027 统计元音</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2028.html" target="_blank">2028 Lowest Common Multiple Plus</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2029.html" target="_blank">2029 Palindromes_easy version</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2030.html" target="_blank">2030 汉字统计</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2031.html" target="_blank">2031 进制转换</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2032.html" target="_blank">2032 杨辉三角</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2033.html" target="_blank">2033 人见人爱A+B</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2034.html" target="_blank">2034 人见人爱A-B</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2035.html" target="_blank">2035 人见人爱A^B</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2036.html" target="_blank">2036 改革春风吹满</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2037.html" target="_blank">2037 今年暑假不AC</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2038.html" target="_blank">2038 test</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2039.html" target="_blank">2039 三角形</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2040.html" target="_blank">2040 亲和数</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2041.html" target="_blank">2041 超级楼梯</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2042.html" target="_blank">2042 不容易系列之二</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2043.html" target="_blank">2043 密码</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2044.html" target="_blank">2044 一只小蜜蜂...</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2045.html" target="_blank">2045 不容易系列之(3)——LELE的RPG难题</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2046.html" target="_blank">2046 骨牌铺方格</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2047.html" target="_blank">2047 阿牛的EOF牛肉串</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2048.html" target="_blank">2048 神、上帝以及老天爷</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2049.html" target="_blank">2049 不容易系列之(4)——考新郎</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2050.html" target="_blank">2050 折线分割平面</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2051.html" target="_blank">2051 Bitset</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2052.html" target="_blank">2052 Picture</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2053.html" target="_blank">2053 Switch Game</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2054.html" target="_blank">2054 A == B ?</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2055.html" target="_blank">2055 An easy problem</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2056.html" target="_blank">2056 Rectangles</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2057.html" target="_blank">2057 A + B Again</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2058.html" target="_blank">2058 The sum problem</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2059.html" target="_blank">2059 龟兔赛跑</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2060.html" target="_blank">2060 Snooker</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2061.html" target="_blank">2061 Treasure the new start, freshmen!</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2062.html" target="_blank">2062 Subset sequence</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2063.html" target="_blank">2063 过山车</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2064.html" target="_blank">2064 汉诺塔III</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2065.html" target="_blank">2065 “红色病毒”问题</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2066.html" target="_blank">2066 一个人的旅行</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2067.html" target="_blank">2067 小兔的棋盘</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2068.html" target="_blank">2068 RPG的错排</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2069.html" target="_blank">2069 Coin Change</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2070.html" target="_blank">2070 Fibbonacci	Number</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2071.html" target="_blank">2071 Max Num</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2072.html" target="_blank">2072 单词数</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2073.html" target="_blank">2073 无限的路</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2074.html" target="_blank">2074 叠筐</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2075.html" target="_blank">2075 A|B?</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2076.html" target="_blank">2076 夹角有多大(题目已修改,注意读题)</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2077.html" target="_blank">2077 汉诺塔IV</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2078.html" target="_blank">2078 复习时间</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2079.html" target="_blank">2079 选课时间(题目已修改,注意读题)</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2080.html" target="_blank">2080 夹角有多大II</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2081.html" target="_blank">2081 手机短号</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2082.html" target="_blank">2082 找单词</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2083.html" target="_blank">2083 简易版之最短距离</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2084.html" target="_blank">2084 数塔</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2085.html" target="_blank">2085 核反应堆</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2086.html" target="_blank">2086 A1	= ?</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2087.html" target="_blank">2087 剪花布条</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2088.html" target="_blank">2088 Box of Bricks</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2089.html" target="_blank">2089 不要62</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2090.html" target="_blank">2090 算菜价</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2091.html" target="_blank">2091 空心三角形</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2092.html" target="_blank">2092 整数解</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2093.html" target="_blank">2093 考试排名</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2094.html" target="_blank">2094 产生冠军</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2095.html" target="_blank">2095 find your present (2)</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2096.html" target="_blank">2096 小明A+B</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2097.html" target="_blank">2097 Sky数</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2098.html" target="_blank">2098 分拆素数和</a></dd>
+<dd><a href="mobile.html#!data/software/algorithm/hdu/2099.html" target="_blank">2099 整除的尾数</a></dd>
 <dt>/软件人生/物尽其（奇）用</dt>
-<dd><a href="mobile.html?p=data/software/code/brainfuck-interpreter-in-c.html" target="_blank">BrainFuck解释器（C语言实现）</a></dd>
+<dd><a href="mobile.html#!data/software/code/brainfuck-interpreter-in-c.html" target="_blank">BrainFuck解释器（C语言实现）</a></dd>
 <dt>/软件人生/物尽其（奇）用/BASIC解释器</dt>
-<dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-1.html" target="_blank">用C语言写解释器[1] - 我们的目标</a></dd>
-<dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-2.html" target="_blank">用C语言写解释器[2] - 表达式求值</a></dd>
-<dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-3.html" target="_blank">用C语言写解释器[3] - 中缀转后缀</a></dd>
-<dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-4.html" target="_blank">用C语言写解释器[4] - 语句分析</a></dd>
-<dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-5.html" target="_blank">用C语言写解释器[5] - 其他一些东西</a></dd>
+<dd><a href="mobile.html#!data/software/code/basic/basic-interpreter-in-c-1.html" target="_blank">用C语言写解释器[1] - 我们的目标</a></dd>
+<dd><a href="mobile.html#!data/software/code/basic/basic-interpreter-in-c-2.html" target="_blank">用C语言写解释器[2] - 表达式求值</a></dd>
+<dd><a href="mobile.html#!data/software/code/basic/basic-interpreter-in-c-3.html" target="_blank">用C语言写解释器[3] - 中缀转后缀</a></dd>
+<dd><a href="mobile.html#!data/software/code/basic/basic-interpreter-in-c-4.html" target="_blank">用C语言写解释器[4] - 语句分析</a></dd>
+<dd><a href="mobile.html#!data/software/code/basic/basic-interpreter-in-c-5.html" target="_blank">用C语言写解释器[5] - 其他一些东西</a></dd>
 <dt>/软件人生/物尽其（奇）用/DuplexPipe</dt>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-0.html" target="_blank">DuplexPipe-0.1_0发布</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-1.html" target="_blank">DuplexPipe二三事[1] - 有趣的起因：算24</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-2.html" target="_blank">DuplexPipe二三事[2] - 瑞士军刀再显锋芒：让程序相互聊天</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-3.html" target="_blank">DuplexPipe二三事[3] - 网络中转站：端口映射</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-4.html" target="_blank">DuplexPipe二三事[4] - 网络连接方式随心换</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-5.html" target="_blank">DuplexPipe二三事[5] - 来自内网的呼唤</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-6.html" target="_blank">DuplexPipe二三事（六）——没有第七</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-7.html" target="_blank">迎国庆，DuplexPipe 发布 0.3.0 版</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-8-linux-nc.html" target="_blank">Linux下用nc实现DuplexPipe</a></dd>
-<dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-9-cygwin-nc.html" target="_blank">在 Cygwin 下编译 netcat_1.10-38</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-0.html" target="_blank">DuplexPipe-0.1_0发布</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-1.html" target="_blank">DuplexPipe二三事[1] - 有趣的起因：算24</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-2.html" target="_blank">DuplexPipe二三事[2] - 瑞士军刀再显锋芒：让程序相互聊天</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-3.html" target="_blank">DuplexPipe二三事[3] - 网络中转站：端口映射</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-4.html" target="_blank">DuplexPipe二三事[4] - 网络连接方式随心换</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-5.html" target="_blank">DuplexPipe二三事[5] - 来自内网的呼唤</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-6.html" target="_blank">DuplexPipe二三事（六）——没有第七</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-7.html" target="_blank">迎国庆，DuplexPipe 发布 0.3.0 版</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-8-linux-nc.html" target="_blank">Linux下用nc实现DuplexPipe</a></dd>
+<dd><a href="mobile.html#!data/software/code/DuplexPipe/duplexpipe-9-cygwin-nc.html" target="_blank">在 Cygwin 下编译 netcat_1.10-38</a></dd>
 <dt>/软件人生/物尽其（奇）用/脚本小子</dt>
-<dd><a href="mobile.html?p=data/software/code/shell/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
-<dd><a href="mobile.html?p=data/software/code/shell/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
-<dd><a href="mobile.html?p=data/software/code/shell/enhanced-cd.html" target="_blank">cd 增强版</a></dd>
+<dd><a href="mobile.html#!data/software/code/shell/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
+<dd><a href="mobile.html#!data/software/code/shell/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
+<dd><a href="mobile.html#!data/software/code/shell/enhanced-cd.html" target="_blank">cd 增强版</a></dd>
 <dt>/软件人生/javascript</dt>
-<dd><a href="mobile.html?p=data/software/javascript/node-js-introduct.html" target="_blank">Node.js 初体验</a></dd>
-<dd><a href="mobile.html?p=data/software/javascript/rhino-database-access.html" target="_blank">JS访问数据库[非Node.js]</a></dd>
+<dd><a href="mobile.html#!data/software/javascript/node-js-introduct.html" target="_blank">Node.js 初体验</a></dd>
+<dd><a href="mobile.html#!data/software/javascript/rhino-database-access.html" target="_blank">JS访问数据库[非Node.js]</a></dd>
 <dt>/软件人生/javascript/E4X</dt>
-<dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-0.html" target="_blank">E4X教程[0] - 目录</a></dd>
-<dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-1.html" target="_blank">E4X教程[1] - 入门</a></dd>
-<dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-2.html" target="_blank">E4X教程[2] - 访问 XML 子节点</a></dd>
-<dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-3.html" target="_blank">E4X教程[3] - 后代与筛选器</a></dd>
-<dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-4.html" target="_blank">E4X教程[4] - 命名空间</a></dd>
-<dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-5.html" target="_blank">E4X教程[5] - 全局 XML 对象</a></dd>
+<dd><a href="mobile.html#!data/software/javascript/E4X/e4x-tutorial-0.html" target="_blank">E4X教程[0] - 目录</a></dd>
+<dd><a href="mobile.html#!data/software/javascript/E4X/e4x-tutorial-1.html" target="_blank">E4X教程[1] - 入门</a></dd>
+<dd><a href="mobile.html#!data/software/javascript/E4X/e4x-tutorial-2.html" target="_blank">E4X教程[2] - 访问 XML 子节点</a></dd>
+<dd><a href="mobile.html#!data/software/javascript/E4X/e4x-tutorial-3.html" target="_blank">E4X教程[3] - 后代与筛选器</a></dd>
+<dd><a href="mobile.html#!data/software/javascript/E4X/e4x-tutorial-4.html" target="_blank">E4X教程[4] - 命名空间</a></dd>
+<dd><a href="mobile.html#!data/software/javascript/E4X/e4x-tutorial-5.html" target="_blank">E4X教程[5] - 全局 XML 对象</a></dd>
 <dt>/软件人生/lisp</dt>
-<dd><a href="mobile.html?p=data/software/lisp/edbc.html" target="_blank">Emacs-Lisp Database Connectivity</a></dd>
-<dd><a href="mobile.html?p=data/software/lisp/emacs-cgi.html" target="_blank">用 Emacs Lisp 开发 CGI 程序</a></dd>
-<dd><a href="mobile.html?p=data/software/lisp/recursive-lambda-1.html" target="_blank">Lisp匿名递归函数</a></dd>
-<dd><a href="mobile.html?p=data/software/lisp/recursive-lambda-2.html" target="_blank">Lisp匿名递归函数[2] - 在Common Lisp中实现Clojure的fn</a></dd>
+<dd><a href="mobile.html#!data/software/lisp/edbc.html" target="_blank">Emacs-Lisp Database Connectivity</a></dd>
+<dd><a href="mobile.html#!data/software/lisp/emacs-cgi.html" target="_blank">用 Emacs Lisp 开发 CGI 程序</a></dd>
+<dd><a href="mobile.html#!data/software/lisp/recursive-lambda-1.html" target="_blank">Lisp匿名递归函数</a></dd>
+<dd><a href="mobile.html#!data/software/lisp/recursive-lambda-2.html" target="_blank">Lisp匿名递归函数[2] - 在Common Lisp中实现Clojure的fn</a></dd>
 <dt>/软件人生/程序设计方法</dt>
-<dd><a href="mobile.html?p=data/software/programming/design-pattern-and-hero.html" target="_blank">设计模式与武侠</a></dd>
-<dd><a href="mobile.html?p=data/software/programming/designing-command-line-interfaces.html" target="_blank">[译]命令行界面设计</a></dd>
-<dd><a href="mobile.html?p=data/software/programming/loop-vs-recursive.html" target="_blank">循环 vs 递归</a></dd>
-<dd><a href="mobile.html?p=data/software/programming/programming-village.html" target="_blank">编程村一日游</a></dd>
+<dd><a href="mobile.html#!data/software/programming/design-pattern-and-hero.html" target="_blank">设计模式与武侠</a></dd>
+<dd><a href="mobile.html#!data/software/programming/designing-command-line-interfaces.html" target="_blank">[译]命令行界面设计</a></dd>
+<dd><a href="mobile.html#!data/software/programming/loop-vs-recursive.html" target="_blank">循环 vs 递归</a></dd>
+<dd><a href="mobile.html#!data/software/programming/programming-village.html" target="_blank">编程村一日游</a></dd>
 <dt>/软件人生/程序设计方法/消灭成堆的分支语句</dt>
-<dd><a href="mobile.html?p=data/software/programming/kill-if/chain-of-responsibility-like.html" target="_blank">类责任链模式</a></dd>
+<dd><a href="mobile.html#!data/software/programming/kill-if/chain-of-responsibility-like.html" target="_blank">类责任链模式</a></dd>
 <dt>/软件人生/善用佳软</dt>
-<dd><a href="mobile.html?p=data/software/tool-tips/autohotkey-tutorial.html" target="_blank">AutoHotKey 新手入门教程</a></dd>
-<dd><a href="mobile.html?p=data/software/tool-tips/curl-post-blank.html" target="_blank">curl命令post带空格的数据</a></dd>
-<dd><a href="mobile.html?p=data/software/tool-tips/oj-java.html" target="_blank">OJ添加Java语言</a></dd>
-<dd><a href="mobile.html?p=data/software/tool-tips/repl-online.html" target="_blank">收集一些在线的REPL</a></dd>
+<dd><a href="mobile.html#!data/software/tool-tips/autohotkey-tutorial.html" target="_blank">AutoHotKey 新手入门教程</a></dd>
+<dd><a href="mobile.html#!data/software/tool-tips/curl-post-blank.html" target="_blank">curl命令post带空格的数据</a></dd>
+<dd><a href="mobile.html#!data/software/tool-tips/oj-java.html" target="_blank">OJ添加Java语言</a></dd>
+<dd><a href="mobile.html#!data/software/tool-tips/repl-online.html" target="_blank">收集一些在线的REPL</a></dd>
 <dt>/软件人生/善用佳软/Linux</dt>
-<dd><a href="mobile.html?p=data/software/tool-tips/Linux/fork-and-printf.html" target="_blank">fork与printf输出缓冲区</a></dd>
+<dd><a href="mobile.html#!data/software/tool-tips/Linux/fork-and-printf.html" target="_blank">fork与printf输出缓冲区</a></dd>
 <dt>/思考与感悟</dt>
-<dd><a href="mobile.html?p=data/thinking/donot-impose-others.html" target="_blank">人所不欲，勿施于人</a></dd>
-<dd><a href="mobile.html?p=data/thinking/i-have-a-dream.html" target="_blank">I have a dream</a></dd>
-<dd><a href="mobile.html?p=data/thinking/indistinct.html" target="_blank">【自省文】难得糊涂</a></dd>
-<dd><a href="mobile.html?p=data/thinking/make-base.html" target="_blank">【自醒文】今天你犯贱了吗</a></dd>
-<dd><a href="mobile.html?p=data/thinking/open-source.html" target="_blank">开源不应作为推荐的理由</a></dd>
-<dd><a href="mobile.html?p=data/thinking/sparrow-donot-know-swan.html" target="_blank">燕雀安知鸿鹄之志</a></dd>
+<dd><a href="mobile.html#!data/thinking/donot-impose-others.html" target="_blank">人所不欲，勿施于人</a></dd>
+<dd><a href="mobile.html#!data/thinking/i-have-a-dream.html" target="_blank">I have a dream</a></dd>
+<dd><a href="mobile.html#!data/thinking/indistinct.html" target="_blank">【自省文】难得糊涂</a></dd>
+<dd><a href="mobile.html#!data/thinking/make-base.html" target="_blank">【自醒文】今天你犯贱了吗</a></dd>
+<dd><a href="mobile.html#!data/thinking/open-source.html" target="_blank">开源不应作为推荐的理由</a></dd>
+<dd><a href="mobile.html#!data/thinking/sparrow-donot-know-swan.html" target="_blank">燕雀安知鸿鹄之志</a></dd>
 <dt>/思考与感悟/学习方法</dt>
-<dd><a href="mobile.html?p=data/thinking/learning/a-funny-thing.html" target="_blank">一个好玩的现象</a></dd>
-<dd><a href="mobile.html?p=data/thinking/learning/accumulate.html" target="_blank">厚积薄发</a></dd>
-<dd><a href="mobile.html?p=data/thinking/learning/forget.html" target="_blank">做到忘记</a></dd>
-<dd><a href="mobile.html?p=data/thinking/learning/make-the-best-use-of-everything.html" target="_blank">物尽其（奇）用</a></dd>
+<dd><a href="mobile.html#!data/thinking/learning/a-funny-thing.html" target="_blank">一个好玩的现象</a></dd>
+<dd><a href="mobile.html#!data/thinking/learning/accumulate.html" target="_blank">厚积薄发</a></dd>
+<dd><a href="mobile.html#!data/thinking/learning/forget.html" target="_blank">做到忘记</a></dd>
+<dd><a href="mobile.html#!data/thinking/learning/make-the-best-use-of-everything.html" target="_blank">物尽其（奇）用</a></dd>
 </dl>

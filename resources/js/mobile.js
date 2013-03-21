@@ -1,6 +1,9 @@
 var url = 'data/navigator.mobile.xml';
-var search = window.location.search;
-if (/^\?p=/.test(search)) {
+var hash = location.hash;
+var search = location.search;
+if (/^#!/.test(hash)) {
+    url = hash.substr(2);
+} else if (/^\?p=/.test(search)) {
     url = search.substr(3);
 }
 
