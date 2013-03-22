@@ -126,7 +126,8 @@ var i18n_zh_CN = {
     'tool-tips': '善用佳软',
     'reading-room': '阅读室',
     'learning': '学习方法',
-    'happy-life': '幸福生活'
+    'happy-life': '幸福生活',
+    'happy-new-year': '新年快乐'
 };
 
 var go_folder = function(folder) {

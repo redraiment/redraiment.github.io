@@ -3,12 +3,14 @@
 <dd><a href="mobile.html?p=data/About.html" target="_blank">关于我</a></dd>
 <dt>/幸福生活</dt>
 <dd><a href="mobile.html?p=data/happy-life/care-for-others.html" target="_blank">该怎么去关心人？</a></dd>
-<dd><a href="mobile.html?p=data/happy-life/happy-new-year-2011.html" target="_blank">新年快乐</a></dd>
-<dd><a href="mobile.html?p=data/happy-life/happy-new-year-in-c.html" target="_blank">一段有趣的C程序，祝大家春节快乐！</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/i-am-back.html" target="_blank">我终于活着回来了！</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/immortal.html" target="_blank">永生轮回之术</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/keyboard-and-mouse.html" target="_blank">鼠标和键盘的故事</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/midnight.html" target="_blank">午夜惊魂</a></dd>
+<dt>/幸福生活/新年快乐</dt>
+<dd><a href="mobile.html?p=data/happy-life/happy-new-year/2009.html" target="_blank">牛年快乐！[2009]</a></dd>
+<dd><a href="mobile.html?p=data/happy-life/happy-new-year/2010.html" target="_blank">虎年快乐[2010]</a></dd>
+<dd><a href="mobile.html?p=data/happy-life/happy-new-year/2011.html" target="_blank">兔年快乐[2011]</a></dd>
 <dt>/阅读室</dt>
 <dd><a href="mobile.html?p=data/reading-room/awk-one-line.html" target="_blank">awk学习笔记</a></dd>
 <dd><a href="mobile.html?p=data/reading-room/sed-one-line.html" target="_blank">sed单行脚本学习笔记</a></dd>
