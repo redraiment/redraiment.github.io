@@ -20,6 +20,7 @@
 <dd><a href="mobile.html?p=data/software/algorithm/perfect-number.html" target="_blank">求完美数</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/prime-div-in-c.html" target="_blank">求质数 - 除余法</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/prime-filter-in-c.html" target="_blank">求质数 - 筛法</a></dd>
+<dd><a href="mobile.html?p=data/software/algorithm/spell-shield.html" target="_blank">下一步，用拼音搜索屏蔽词？</a></dd>
 <dt>/软件人生/算法/杭电100题</dt>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2000.html" target="_blank">2000 ASCII码排序</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2001.html" target="_blank">2001 计算两点间的距离</a></dd>
@@ -147,6 +148,7 @@
 <dd><a href="mobile.html?p=data/software/code/FriendSell/3-autoauto-platform.html" target="_blank">[3]校内网外挂平台</a></dd>
 <dt>/软件人生/物尽其（奇）用/脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/code/script/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
+<dd><a href="mobile.html?p=data/software/code/script/dos-batch-laplace.html" target="_blank">用DOS批处理来做数字图像处理</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/regex-match-double.html" target="_blank">匹配java double值的正则表达式</a></dd>
 <dt>/软件人生/java脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/javascript/node-js-introduct.html" target="_blank">Node.js 初体验</a></dd>
