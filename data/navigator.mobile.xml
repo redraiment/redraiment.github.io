@@ -147,8 +147,6 @@
 <dd><a href="mobile.html?p=data/software/code/FriendSell/3-autoauto-platform.html" target="_blank">[3]校内网外挂平台</a></dd>
 <dt>/软件人生/物尽其（奇）用/脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/code/script/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
-<dd><a href="mobile.html?p=data/software/code/script/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
-<dd><a href="mobile.html?p=data/software/code/script/enhanced-cd.html" target="_blank">cd 增强版</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/regex-match-double.html" target="_blank">匹配java double值的正则表达式</a></dd>
 <dt>/软件人生/java脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/javascript/node-js-introduct.html" target="_blank">Node.js 初体验</a></dd>
@@ -177,6 +175,8 @@
 <dd><a href="mobile.html?p=data/software/tool-tips/oj-java.html" target="_blank">OJ添加Java语言</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/repl-online.html" target="_blank">收集一些在线的REPL</a></dd>
 <dt>/软件人生/善用佳软/Linux</dt>
+<dd><a href="mobile.html?p=data/software/tool-tips/Linux/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
+<dd><a href="mobile.html?p=data/software/tool-tips/Linux/enhanced-cd.html" target="_blank">cd 增强版</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/fork-and-printf.html" target="_blank">fork与printf输出缓冲区</a></dd>
 <dt>/思考与感悟</dt>
 <dd><a href="mobile.html?p=data/thinking/donot-impose-others.html" target="_blank">人所不欲，勿施于人</a></dd>
