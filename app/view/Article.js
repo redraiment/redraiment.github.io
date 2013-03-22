@@ -7,7 +7,7 @@ Ext.define('iKnowledge.view.Article', {
 
     constructor: function (config) {
         var me = this;
-        var mobileUrl = this.getUrl() + 'mobile.html#!' + config.url;
+        var mobileUrl = this.getUrl() + 'mobile.html?p=' + config.url;
 
         config.tbar = ['分享到：', {
             xtype: 'button',
@@ -88,7 +88,7 @@ Ext.define('iKnowledge.view.Article', {
     },
 
     getPath: function() {
-        return this.getUrl() + '#!' + this.id.substr(4);
+        return this.getUrl() + '?p=' + this.id.substr(4);
     },
 
     onShareSina: function() {
