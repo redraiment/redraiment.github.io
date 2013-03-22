@@ -141,14 +141,17 @@
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-8-linux-nc.html" target="_blank">Linux下用nc实现DuplexPipe</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-9-cygwin-nc.html" target="_blank">在 Cygwin 下编译 netcat_1.10-38</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/guess-and-solve.html" target="_blank">猜数字游戏及自动解猜数字程序</a></dd>
+<dt>/软件人生/物尽其（奇）用/好友买卖外挂</dt>
+<dd><a href="mobile.html?p=data/software/code/FriendSell/1-find-bug.html" target="_blank">[1]使用curl自动买卖好友</a></dd>
 <dt>/软件人生/物尽其（奇）用/脚本小子</dt>
-<dd><a href="mobile.html?p=data/software/code/shell/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
-<dd><a href="mobile.html?p=data/software/code/shell/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
-<dd><a href="mobile.html?p=data/software/code/shell/enhanced-cd.html" target="_blank">cd 增强版</a></dd>
-<dt>/软件人生/javascript</dt>
+<dd><a href="mobile.html?p=data/software/code/script/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
+<dd><a href="mobile.html?p=data/software/code/script/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
+<dd><a href="mobile.html?p=data/software/code/script/enhanced-cd.html" target="_blank">cd 增强版</a></dd>
+<dd><a href="mobile.html?p=data/software/code/script/regex-match-double.html" target="_blank">匹配java double值的正则表达式</a></dd>
+<dt>/软件人生/java脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/javascript/node-js-introduct.html" target="_blank">Node.js 初体验</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/rhino-database-access.html" target="_blank">JS访问数据库[非Node.js]</a></dd>
-<dt>/软件人生/javascript/E4X</dt>
+<dt>/软件人生/java脚本小子/E4X</dt>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-0.html" target="_blank">E4X教程[0] - 目录</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-1.html" target="_blank">E4X教程[1] - 入门</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/E4X/e4x-tutorial-2.html" target="_blank">E4X教程[2] - 访问 XML 子节点</a></dd>
