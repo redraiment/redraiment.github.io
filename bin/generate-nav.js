@@ -125,6 +125,7 @@ var i18n_zh_CN = {
     'script': '脚本小子',
     'thinking': '思考与感悟',
     'tool-tips': '善用佳软',
+    'rack-my-brain': '拍拍脑袋',
     'reading-room': '阅读室',
     'learning': '学习方法',
     'happy-life': '幸福生活',

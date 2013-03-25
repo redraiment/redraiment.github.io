@@ -22,6 +22,7 @@ find data -type d | while read d; do
                 -e 's/script/脚本小子/g' \
                 -e 's/thinking/思考与感悟/g' \
                 -e 's/tool-tips/善用佳软/g' \
+                -e 's/rack-my-brain/拍拍脑袋/g' \
                 -e 's/reading-room/阅读室/g' \
                 -e 's/learning/学习方法/g' \
                 -e 's/happy-new-year/新年快乐/g' \
