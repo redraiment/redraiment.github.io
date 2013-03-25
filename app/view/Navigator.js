@@ -15,12 +15,14 @@ Ext.define('iKnowledge.view.Navigator', {
         config.tbar = [{
             xtype: 'button',
             text: '展开所有',
+            iconCls: 'icon-nav-expand',
             handler: function() {
                 me.expandAll(Ext.emptyFn);
             }
         }, {
             xtype: 'button',
             text: '收起所有',
+            iconCls: 'icon-nav-collapse',
             handler: function() {
                 me.collapseAll(Ext.emptyFn);
             }

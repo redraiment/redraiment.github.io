@@ -100,3 +100,13 @@
     background-image: url(../image/icon-navigator.png);
     background-repeat: no-repeat;
 }
+
+.icon-nav-expand {
+    background-image: url(../image/icon-tree-expand.png);
+    background-repeat: no-repeat;
+}
+
+.icon-nav-collapse {
+    background-image: url(../image/icon-tree-collapse.png);
+    background-repeat: no-repeat;
+}
