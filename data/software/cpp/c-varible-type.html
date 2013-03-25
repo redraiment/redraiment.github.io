@@ -1,0 +1,68 @@
+<div title="戏说C语言变量" class="article-content">
+  <div class="sign">2009-12-20 22:41</div>
+  <h1>好玩的问题</h1>
+  <p>今早帮老师去答疑，一位同学跑来问：&ldquo;使用 printf 输出 %d、%c 时，后面传的参数都是变量的值，为什么 %s 看起来和它们不一样，要传一个地址？&rdquo;我说：&ldquo;小伙子很有前途，一般人不问这样的问题，哈哈！&rdquo;</p>
+  <p>这个问题类似 Java 中基础类型传递值、对象传递引用，这么设计是为了提高效率。对于还没学完C语言的初学者来说，如果我给他扯一堆&ldquo;底层设计&rdquo;或&ldquo;效率&rdquo;等显然不合适，还极有可能掉进&ldquo;值传递还是址传递&rdquo;等文字游戏漩涡中，估计到了最后也只能在他听得晕头转向时搪塞一句&ldquo;当初就是这么设计的&rdquo;。为了尽快得给他满意的答复，我只要想办法让 %s &ldquo;看起来&rdquo;和其他标记一样就行了，于是写了如下的代码：</p>
+  <pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+typedef char STRING[80];
+
+int main(void) {
+    STRING s = "redraiment";
+    int i = 1;
+
+    printf("%s, %d/n", s, i);
+
+    return EXIT_SUCCESS;
+}</code></pre>
+  <p>然后我告诉他：&ldquo;因为C语言不够抽象，让你知道了太多的底层实现细节，比如你知道字符串在内存中是以字符数组的形式保存的。现在我用 typedef 定义了一个字符串类型，把这些细节屏蔽掉。通过 STRING s; 来定义一个名字是 s 的字符串类型变量，这样就和用 double d; int i; 等方式定义变量一样，你无需了解它们在内存中如何实现。此时，对于 printf 来说，%s、%d 后面跟着的 s, i 都是一回事了，它们都是变量的名字，里面保存着不同类型的数据。&rdquo;很幸运，前面的话解决了他的疑惑，让我省下不少口水:P。</p>
+  <h1>指针和数组的定义是个BUG</h1>
+  <p>我初学C语言时，也有过类似的困惑：指针和数组别样的定义方式让我以为它们有别于普通类型。所有普通类型、自定义的结构体类型的定义方式都是 TYPE name，数据类型后面紧跟着变量名。因此，就理论上来说，你定义一个指针 int* pi，其中表示指针类型的&ldquo;*&rdquo;应该从属于 int。但很遗憾，实际上它从属于变量名 pi，证据就是 int* pi, i; 中，变量 i 的类型是 int，而不是一个指针。</p>
+  <p>数组同样存在这样的问题：&ldquo;[]&rdquo;从属于变量名。解决的办法就是将指针或数组自定义成新类型，比如：</p>
+  <pre><code data-language="c">typedef int* PINT;
+PINT p1, p2;</code></pre>
+  <p>此时 p1 和 p2 都是指针。切记不能用宏来解决，它依然会存在上面的问题。</p>
+  <h1>神奇的声明</h1>
+  <p>每次提起变量声明时，我都会想起《C专家编程》里&ldquo;骑士和公主&rdquo;的故事。这是一个很绕嘴的故事（国外诗歌的名字读不习惯），我姑且用毛主席的《沁园春&middot;雪》打个类似的比方。&ldquo;沁园春&rdquo;是词牌名，它<b>是</b>&ldquo;(仄)仄平平，(仄)仄平平，仄仄仄平（韵）&hellip;&hellip;&rdquo;；只要按照这种词牌格式写的词，都被<b>称作</b>&ldquo;沁园春&rdquo;；这首词本身的名字<b>称作</b>&ldquo;雪&rdquo;；&ldquo;雪&rdquo;这首词的内容<b>是</b>&ldquo;北国风光，千里冰封，万里雪飘&hellip;&hellip;&rdquo;。把前面关键词（加粗）部分列于表中：</p>
+  <table>
+    <tbody>
+      <tr>
+        <th>&nbsp;</th>
+        <th>被称作</th>
+        <th>是</th>
+      </tr>
+      <tr>
+        <th>词的名字</th>
+        <td>沁园春</td>
+        <td>&ldquo;(仄)仄平平&hellip;&hellip;&rdquo;</td>
+      </tr>
+      <tr>
+        <th>词</th>
+        <td>雪</td>
+        <td>&ldquo;北国风光 &hellip;&hellip;&rdquo;</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>也许你还不是很了解，我们再把文章开头的问题也罗列成表格：</p>
+  <table>
+    <tbody>
+      <tr>
+        <th>&nbsp;</th>
+        <th>被称作</th>
+        <th>是</th>
+      </tr>
+      <tr>
+        <th>变量的类型</th>
+        <td>STRING</td>
+        <td>char [80]</td>
+      </tr>
+      <tr>
+        <th>变量</th>
+        <td>s</td>
+        <td>"redraiment"</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>现在清晰了，你明白我们的毛主席也是一个编程高手，他创建了&ldquo;沁园春 雪, 国情, 长沙;&rdquo;等多首词。</p>
+</div>
