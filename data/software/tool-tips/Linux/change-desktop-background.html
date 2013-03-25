@@ -1,0 +1,22 @@
+<div title="桌面背景随心换" class="article-content">
+  <div class="sign">2008-10-10 21:17</div>
+  <p>偶然间在网上找到了<a href="http://www.enterdesk.com/gezi/bizhigezi_14.html" target="blank">一百张美图</a>，都是自然风景画，据说能养眼哦～</p>
+  <p>我的桌面背景也是该换换了，不过手工换这一百张可不好玩。Windows 下有桌面随心换这个现成的软件；KDE 下也自带这个功能。但我用的是GNOME，找了半天还是没找到自带的功能。于是写了一个 Python 脚本，隔10分钟换一张桌面背景。感觉好炫，哈哈～</p>
+<pre><code data-language="python">#!/usr/bin/env python
+
+BACKGROUND_DIRS = ['~/Picture/eyes', '~/Picture/backgrounds']
+
+import os, glob, random, itertools, gconf
+
+files = list(itertools.chain(*[[os.path.join(dirpath, name)
+                                for name in filenames]
+                               for dirpath, dirnames, filenames in
+                               itertools.chain(*[os.walk(os.path.expanduser(d))
+                                                 for d in BACKGROUND_DIRS])]))
+gconf.client_get_default().set_string(
+    '/desktop/gnome/background/picture_filename',
+    random.choice(files))</code></pre>
+<p>我把它保存到 ~/bin/wallpaper.py。然后在 cron 里加入</p>
+<pre><code data-language="shell">*/10 * * * * ~/bin/wallpaper.py</code></pre>
+<p>就可以隔10分钟换一次了。</p>
+<img src="resources/figure/linux-change-desktop-background.jpg" />
