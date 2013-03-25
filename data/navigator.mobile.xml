@@ -149,6 +149,7 @@
 <dd><a href="mobile.html?p=data/software/code/FriendSell/3-autoauto-platform.html" target="_blank">[3]校内网外挂平台</a></dd>
 <dt>/软件人生/物尽其（奇）用/脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/code/script/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
+<dd><a href="mobile.html?p=data/software/code/script/batch-rename.html" target="_blank">关于批量重命名文件</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/dos-batch-laplace.html" target="_blank">用DOS批处理来做数字图像处理</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/regex-match-double.html" target="_blank">匹配java double值的正则表达式</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/shell-mult-file.html" target="_blank">Shell中同时读多个文件</a></dd>
@@ -185,6 +186,7 @@
 <dd><a href="mobile.html?p=data/software/tool-tips/oj-java.html" target="_blank">OJ添加Java语言</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/repl-online.html" target="_blank">收集一些在线的REPL</a></dd>
 <dt>/软件人生/善用佳软/Linux</dt>
+<dd><a href="mobile.html?p=data/software/tool-tips/Linux/8-bash-prompt.html" target="_blank">[译]八个有趣实用的Bash提示符</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/change-desktop-background.html" target="_blank">桌面背景随心换</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/debian-num-lock.html" target="_blank">解决 Debian 升级后小键盘失效</a></dd>
