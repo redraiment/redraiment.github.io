@@ -1,0 +1,26 @@
+<div title="Shell中同时读多个文件" class="article-content">
+<div class="sign">2009-08-23 21:05</div>
+<h1>一个文件分割成多个文件</h1>
+<p>有时需要提取文件中的一个或多个列元素生成新的文件，这一操作在 Shell 里很容易实现。比如有一个数据文件data，有三列信息：姓名、学号、班级。</p>
+<blockquote><pre>redraiment 0612800134 0601
+christine 0612800136 0601
+zb 0612800229 0602</pre></blockquote>
+<p>现在需要这个文件的第一列和第二列信息分别存到文件 f1 和 f2 中，可以用 awk 提取，也可以用下面这个简单 shell 程序：</p>
+<pre><code data-language="shell">#!/bin/sh
+
+while read f1 f2 f3
+do
+    echo $f1 &gt;&gt; f1
+    echo $f2 &gt;&gt; f2
+done</code></pre>
+<h1>多个文件合并成一个文件</h1>
+<p>如果想把多个文件重新合并成一个多列文件，而不是追加到文件尾处。例如把上列中生成的 f1 和 f2 重新组成 join.txt 。这时需要同时操作多个文件，就像 C 语言中用 fopen 同时打开多个文件，在 shell 里也是类似的。只是在 shell 里叫做&ldquo;文件描述符&rdquo;，用&ldquo;0-9&rdquo;十个数字表示。其中 0、1、2 分别是系统的标准输入、输出、错误。&ldquo;3-9&rdquo;则由用户只有使用。我们就可以任选两个来重定向输入。脚本如下：</p>
+<pre><code data-language="shell">#!/bin/sh
+
+exec 3&lt;f1
+exec 4&lt;f2
+while read f1 &lt;&amp;3 &amp;&amp; read f2 &lt;&amp;4
+do
+    echo $f1 $f2 &gt;&gt; join.txt
+done</code></pre>
+</div>
