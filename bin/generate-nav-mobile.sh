@@ -12,6 +12,7 @@ find data -type d | while read d; do
             p=/
         fi
         p=$(sed -e 's/software/软件人生/g' \
+                -e 's/cpp/C语言/g' \
                 -e 's/programming/程序设计方法/g' \
                 -e 's/algorithm/算法/g' \
                 -e 's/hdu/杭电100题/g' \
