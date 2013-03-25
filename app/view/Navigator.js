@@ -24,11 +24,25 @@ Ext.define('iKnowledge.view.Navigator', {
             handler: function() {
                 me.collapseAll(Ext.emptyFn);
             }
+        }, '->', {
+            xtype: 'textfield',
+            emptyText: '站内搜索',
+            listeners: {
+                specialkey: me.doSearch
+            }
         }];
         me.callParent(arguments);
     },
 
     initComponent: function() {
         this.callParent(arguments);
+    },
+
+    doSearch: function(me, event, options) {
+        if (event.keyCode == 13) {
+            var google = 'http://www.google.com/cse/publicurl?cx=016566116830714177436:pewf8jtunkm&q=';
+            var url = google + encodeURIComponent(event.currentTarget.value);
+            open(url, 'redraiment-search');
+        }
     }
 });
