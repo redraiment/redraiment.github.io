@@ -1,0 +1,135 @@
+<div title="VB和Dev-C++合作-手把手教你写GUI程序" class="article-content">
+<p>本文的读者定为C语言初学者，介绍的技巧适用于开发迷你型项目或自娱自乐的玩具程序。读者可以抱着茶余饭后休闲娱乐的心态来围观，至于CLI、GUI等名词解释请参看维基百科。</p>
+<h1>诱人的GUI程序</h1>
+<p>程序的作用就是化繁为简，让计算机高效地帮我们完成枯燥的工作。写程序最大的动力就是你精心设计的程序能获得大家的认可和好评，这其中伴随着发布程序给大家使用。</p>
+<p>在C语言编写的操作系统（比如UNIX、Windows等）上，C语言可以说是&ldquo;无所不能&rdquo;。但很多初学者发现，即便自己把C语言教材从头啃到尾，依然只能写出命令行下的程序。程序是CLI还是GUI本无可厚非，对我们程序员来说更重要的是程序本身提供的功能，而且CLI相对于GUI还更灵活一些。也许你可以尝试一下把程序发送给一个非计算机科班出身的朋友，估计得大费唇舌来解释程序如何运行，最后还落得一个&ldquo;不方便&rdquo;的抱怨。撇开这些不说，至少一个活泼的桌面图标也比死气沉沉的终端图标更吸引人。</p>
+<p>但编写GUI程序从来不是一件容易的事情，MFC也好、Swing也罢，都是一堆烦人的接口。用VB可以屏蔽这些细节，界面设计是所见即所得的，拖拖拽拽就能堆出一个像样的界面。本文的原理就是用VB来设计前台界面，C做后台逻辑处理。实现方法就是将C程序打包成DLL文件，由VB程序来调用。</p>
+<h1>所需软件</h1>
+<p>Dev-C++ 4.9.9.2或以上版本，VB 6.0精简版。这两款软件在华军软件园都能下载到，合起来大小也就15MB左右。如果你有完整版的VB当然更好，不过有精简版的也够用了。</p>
+<h1>Dev-C++生成DLL的方法</h1>
+<ol>
+  <li>打开Dev-C++；</li>
+  <li>点击&ldquo;文件&rdquo;-&ldquo;新建&rdquo;-&ldquo;工程&rdquo;，工程类型选择&ldquo;DLL&rdquo;；</li>
+  <li>语言必须选择&ldquo;C&rdquo;，不能选择&ldquo;C++&rdquo;；</li>
+  <li>为工程取一个名字，比如&ldquo;hello&rdquo;。确定后会自动生成&ldquo;dllmain.c&rdquo;和&ldquo;dll.h&rdquo;两个文件；</li>
+  <li>&ldquo;dllmain.c&rdquo;里自带了一个函数&ldquo;DLLIMPORT void HelloWord ()&rdquo;，但为了能在VB里调用，需要在DLLIMPORT后面添加一个&ldquo;__stdcall&rdquo;，即&ldquo;DLLIMPORT __stdcall void HelloWord ()&rdquo;，&ldquo;dll.h&rdquo;文件中也做同样的修改。没有写&ldquo;__stdcall&rdquo;的话会弹出&ldquo;DLL调用约定错误，错误号：49&rdquo;，所以请务必小心。</li>
+  <li>保存文件后，按Ctrl+F9编译。就会在工程的目录下生成一个hello.dll。</li>
+</ol>
+<h1>用VB设计程序界面</h1>
+<ol>
+  <li>打开VB；</li>
+  <li>新建一个&ldquo;标准EXE&rdquo;工程；</li>
+  <li>拖一个按钮控件（工具箱的第三行第二列）到界面上，如下图。</li>
+</ol>
+<img src="resources/figure/vb-dev-cpp/vb.jpg" />
+<h1>在VB中调用DLL里的函数</h1>
+<p>在VB中调用DLL里的函数，首先要声明才可调用。声明的格式是</p>
+<blockquote>[Public|Private] Declare [Sub|Function] 函数名 Lib "DLL路径，可以是相对路径，也可以是绝对路径" (ByVal或ByRef等参数列表) [as 返回值类型]</blockquote>
+<ol>
+  <li>双击VB的窗口界面，打开代码窗口；</li>
+  <li>将一下代码复制到代码窗口里</li>
+  <pre>
+<span style="color: blue;">Private Declare Sub</span> HelloWorld <span style="color: blue;">Lib</span> "hello.dll" ()
+
+<span style="color: blue;">Private Sub</span> Command1_Click()
+
+    HelloWorld
+
+<span style="color: blue;">End Sub</span></pre>
+  <li>点击&ldquo;文件&rdquo;-&ldquo;生成工程1.exe&rdquo;，路径选择刚才Dev-C++生成hello.dll所在的目录。</li>
+  <li>确保&ldquo;工程1.exe&rdquo;和&ldquo;hello.dll&rdquo;两个文件放在同一个目录下，双击运行&ldquo;工程1.exe&rdquo;。</li>
+  <li>点击按钮&ldquo;Command1&rdquo;，就会弹出一个窗口，显示&ldquo;Hello World from DLL!&rdquo;则表示调用DLL成功！如下图</li>
+</ol>
+<img src="resources/figure/vb-dev-cpp/hi.jpg" />
+<p>现在，你可以自由发挥来编写丰富多彩的GUI程序了！</p>
+<h1>附录：C参数在VB中的声明</h1>
+<table>
+  <caption>C参数在VB中的声明对照表</caption>
+  <tbody>
+    <tr>
+      <th>C类型</th>
+      <th>VB类型</th>
+    </tr>
+    <tr>
+      <td>char *</td>
+      <td>ByVal args As String</td>
+    </tr>
+    <tr>
+      <td>short</td>
+      <td>Integer</td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>UINT</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>ULONG</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>WORD,DWORD</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>WPARAM,LPARAM</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>WMSG,UMSG</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>HRESULT</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>BOOL</td>
+      <td>Boolean</td>
+    </tr>
+    <tr>
+      <td>COLORREF</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>HWND,HDC,HBRUSH,HKEY,等等.</td>
+      <td>Long</td>
+    </tr>
+    <tr>
+      <td>LPSTR,LPCSTR</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>LPWSTR,OLECHAR,BSTR</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>LPTSTR</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>VARIANT_BOOL</td>
+      <td>Boolean</td>
+    </tr>
+    <tr>
+      <td>unsignedchar</td>
+      <td>Byte</td>
+    </tr>
+    <tr>
+      <td>BYTE</td>
+      <td>Byte</td>
+    </tr>
+    <tr>
+      <td>VARIANT</td>
+      <td>Variant</td>
+    </tr>
+  </tbody>
+</table>
+</div>
