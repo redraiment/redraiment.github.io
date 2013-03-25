@@ -1,0 +1,51 @@
+<div title="用桌面图标玩贪吃蛇" class="article-content">
+  <div class="sign">2009-10-03 13:19</div>
+  <p>中秋节宅寝室，想玩玩游戏～都说玩电脑，其实最好玩的当然就是操作系统啦。那就用桌面图标来玩贪吃蛇好了！^_^</p>
+  <embed src="http://player.youku.com/player.php/sid/XMTIyODk2Njky/v.swf" quality="high" width="480" height="400" align="middle" allowScriptAccess="sameDomain" allowFullscreen="true" type="application/x-shockwave-flash"></embed>
+  <div class="sign">2009-10-04 18:34</div>
+  <h1>到处都有好玩的玩意儿</h1>
+  <p>计算机的世界是离散的：内存从 0 -&gt; 2n 编号；整个屏幕的画面也是由许多颗像素点组成&hellip;&hellip;如果你不介意的话，把脸尽量地贴近显示器（或者电视屏幕），你会看到整个屏幕是由一颗颗显示不同颜色的小颗粒拼成的。如果这样感受还不深，那你还记得小时候玩过的最初型掌上游戏机吗？如下图：</p>
+  <img src="resources/figure/icon-snake.jpg" />
+  <p>其中经典的飞机、坦克、俄罗斯方块等都是由一个个正方形的黑色方块拼成的。 </p>
+  <p>放眼周边的世界，到处都有这样规则排列的、方方正正的&ldquo;游戏元素&rdquo;：摩天大楼的窗户、大教堂的座位、从楼上往下看的人群、Excel 的表格&hellip;&hellip;当然还有今天要介绍的桌面图标！在优库上一搜索就会出现很多结果，有用寝室楼电灯玩贪吃蛇的、也有军训时集体玩 AK47 阵列的等等，原理都是这样～</p>
+  <p>在看完这篇文章后，你也可以尝试照样画葫芦，比如开启很多个&ldquo;记事本&rdquo;，将他们的窗口调整成四四方方的，然后用它们玩俄罗斯方块。^_^</p>
+  <h1>程序原理</h1>
+  <p>我在优库上发布了视频&mdash;&mdash;用Windows XP桌面图标玩贪吃蛇（视频地址为<a href="http://v.youku.com/v_show/id_XMTIyODk2Njky.html" target="_blank">http://v.youku.com/v_show/id_XMTIyODk2Njky.html</a>），一些朋友在评论中猜测程序原理：有人说是用批处理，还有人说是用汇编，甚至有人直接否定说是我用静态帧拼接起来的，呵呵。其实没大家想的这么复杂，我的程序主要是用 VB 开发的（为方便以后使用，移动桌面图标的代码用 C 语言写，并打包成 DLL 文件。程序的核心语句就是下面这句话：</p>
+  <dl>
+    <dt>SendMessage ( hwnd, LVM_SETITEMPOSITION, i, MAKELPARAM(x,y) );</dt>
+    <dd>向指定的窗口发送消息。整条语句的作用是向桌面发送消息，请求将第&ldquo;i&rdquo;个图标移动到坐标&ldquo;x,y&rdquo;位置。下面按照视频里播放的顺序依次介绍原理：</dd>
+  </dl>
+  <h2>一、创建文件</h2>
+  <p>在视频的最开始，我开启了一个命令提示符执行一条命令。可能正是因为这个原因让大家误以为这个程序是用批处理写的。如果你看了我上次的高清AVI版视频，就知道我命令是：&ldquo;for /l %d in (1,1,16) do echo. &gt;%d.txt&rdquo;。正如网友&ldquo;<em>Sypeace</em>&rdquo;在评论了说的，这条命令的作用就是在桌面创建十六个文本文档来作为贪吃蛇的身体。只要你不怕麻烦当然可以通过右键新建文本文档然后重命名，这只是我的个人习惯，呵呵。</p>
+  <h2>二、启动游戏</h2>
+  <p>文件创建好了，我双击桌面那个蛇形的图标，就是本程序&ldquo;桌面贪吃蛇&rdquo;启动游戏。这时候桌面只剩下三个图标，有两个在左下角，代表贪吃蛇；另一个随机出现，就是食物；其他图标都被移出屏幕，具体坐标为（0, -100），只有当食物被吃掉后下一个才出现。</p>
+  <p>眼尖的朋友可能发现了屏幕的右上角有个白色小框，其实这就是本程序的界面，里面显示了剩余食物的个数。当然这里还包含了另一个秘密，在下一节揭晓！</p>
+  <h2>三、控制方向</h2>
+  <p>贪吃蛇每隔 200 毫秒前进一格，期间还得接受键盘的方向输入。如果你用 C 语言从零开始实现，这固然可行但很繁琐。在 VB 中不用考虑这么多，把贪吃蛇移动的代码加到一个定时器里即可（这也是我选用 VB 的原因）；然后监听窗口 Form 的键盘输入，改变贪吃蛇的前进方向。</p>
+  <p>也许你发现了，其实键盘输入应该用系统钩子来捕获更合理，这样即使焦点离开了主程序也依然可用。这正是此程序现在最大的缺点，如果你不小心在运行的时候将鼠标点了一下桌面，焦点离开了主程序，就会发现贪吃蛇不再受控制。这一切都因为1. 我怕麻烦，2. 想快速开发。但也许你可以来帮我完善它！</p>
+  <h2>四、老板来了</h2>
+  <p>这是个无伤大雅的玩笑。视频播放到最后，你会看到桌面背景变成一个警告：&ldquo;危险，危险！！老板来了！！&rdquo;。然后我按键盘上的&ldquo;Q&rdquo;退出游戏后背景恢复。刷新一下，图标排列整齐。这样桌面就恢复原样，也许老板不晓得你摆弄桌面图标是在玩游戏^_^。</p>
+  <h1>初衷</h1>
+  <p>最近很流行说&ldquo;寂寞&rdquo;，身边的同学也动不动就冒出一句&ldquo;哥读的不是书，是寂寞&rdquo;，很烎很囧哈 ^_^。其实，身为光棍的我情感并没大家想的那么丰富，就像我之前在迷你博客里说的&ldquo;为什么写这些小玩意儿？Because we can~&rdquo;。</p>
+  <h1>关于源码</h1>
+  <p>本程序的源码是开放的，欢迎你参与完善。有朋友反映没找到源码，因为我只给了我<a href="http://sites.google.com/site/redraiment/"> Google Sites </a>的主页地址。是我说的不够详细，这个程序在&ldquo;<a href="http://sites.google.com/site/redraiment/sunshine/">天晴</a>&rdquo;版块，顺便介绍一下&ldquo;<a href="http://sites.google.com/site/redraiment/sunshine/">天晴</a>&rdquo;这个版块放的都是和游戏相关的程序。该程序的链接地址是：<a href="http://sites.google.com/site/redraiment/sunshine/snake/">http://sites.google.com/site/redraiment/sunshine/snake/</a>。进入后下载<a href="http://sites.google.com/site/redraiment/sunshine/snake/Snake_with_src.zip?attredirects=0"> Snake_with_src.zip </a>这个文件就可以了。</p>
+  <p>CSDN上的下载地址为：<a href="http://download.csdn.net/source/1717320">http://download.csdn.net/source/1717320</a></p>
+  <h1>编码建议</h1>
+  <p>玩游戏时有一些注意事项，原本已经写在软件说明里（请参看CSDN下载页码里的软件说明），但没有在文章中做以说明。网友&ldquo;<strong>斗士</strong>&rdquo;指出，这在他自己实现的过程中造成很大不便。故将注意事项列于此处：</p>
+  <ol>
+    <li>玩游戏前要先将桌面的&ldquo;自动排列&rdquo;和&ldquo;对齐到网格&rdquo;选项去掉（在桌面右击鼠标，&ldquo;查看&rdquo;-&ldquo;自动排列/对齐到网格&rdquo;）。否则图标将无法正常移动；</li>
+    <li>如果你是 Vista 用户，请将桌面图标大小设置成经典图标；</li>
+    <li>该程序只在 XP 和 Vista 下测试通过，目前还不能在 Win 7 下正常运行。</li>
+    <li>运行过程中按&ldquo;Q&rdquo;或者&ldquo;Esc&rdquo;键即可退出。或者游戏结束自动退出。</li>
+  </ol>
+  <h1>更新至0.3.0版本</h1>
+  <div class="sign">2009-10-04 23:49</div>
+  <p>完善了部分内容，主要有以下几点：</p>
+  <ol>
+    <li>采用系统钩子技术，解决了离开主窗口不能控制贪吃蛇的问题。</li>
+    <li>去掉主程序窗口，还原整个桌面。</li>
+    <li>为方便大家使用，去掉 Deskicon.dll 和 danger.bmp，仅留一个 Snake.exe 文件。程序全部采用 VB 编写。</li>
+    <li>去掉修改桌面背景功能，以免给大家引起不便。</li>
+  </ol>
+  <embed src="http://player.youku.com/player.php/sid/XMTIzMjU2OTIw/v.swf" quality="high" width="480" height="400" align="middle" allowScriptAccess="sameDomain" allowFullscreen="true" type="application/x-shockwave-flash"></embed>
+</div>

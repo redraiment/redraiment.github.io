@@ -4,6 +4,7 @@
 <dt>/幸福生活</dt>
 <dd><a href="mobile.html?p=data/happy-life/care-for-others.html" target="_blank">该怎么去关心人？</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/i-am-back.html" target="_blank">我终于活着回来了！</a></dd>
+<dd><a href="mobile.html?p=data/happy-life/icon-snake.html" target="_blank">用桌面图标玩贪吃蛇</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/immortal.html" target="_blank">永生轮回之术</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/keyboard-and-mouse.html" target="_blank">鼠标和键盘的故事</a></dd>
 <dd><a href="mobile.html?p=data/happy-life/midnight.html" target="_blank">午夜惊魂</a></dd>
@@ -151,6 +152,7 @@
 <dd><a href="mobile.html?p=data/software/code/script/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/batch-rename.html" target="_blank">关于批量重命名文件</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/dos-batch-laplace.html" target="_blank">用DOS批处理来做数字图像处理</a></dd>
+<dd><a href="mobile.html?p=data/software/code/script/intranet-ip.html" target="_blank">内网IP自动获取</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/regex-match-double.html" target="_blank">匹配java double值的正则表达式</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/shell-mult-file.html" target="_blank">Shell中同时读多个文件</a></dd>
 <dt>/软件人生/java脚本小子</dt>
