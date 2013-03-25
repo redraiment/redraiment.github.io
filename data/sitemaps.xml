@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
@@ -8,28 +8,81 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/image/head.gif</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/happy-life/care-for-others.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
-    <loc>http://redraiment.com/data/happy-life/happy-new-year-in-c.html</loc>
+    <loc>http://redraiment.com/data/happy-life/happy-new-year/2009.html</loc>
     <changefreq>always</changefreq>
     <image:image>
-      <image:loc>http://redraiment.com/resources/figure/happy-new-year/happy-new-year-in-c-1.gif</image:loc>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2009/1.gif</image:loc>
     </image:image>
     <image:image>
-      <image:loc>http://redraiment.com/resources/figure/happy-new-year/happy-new-year-in-c-2.png</image:loc>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2009/2.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/happy-life/happy-new-year/2010.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/happy-life/happy-new-year/2011.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2011/1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2011/2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2011/3.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2011/4.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2011/5.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2011/6.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2011/7.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/happy-new-year/2011/8.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
     </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/happy-life/i-am-back.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/happy-life/immortal.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/happy-life/keyboard-and-mouse.html</loc>
@@ -46,170 +99,289 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/monkey/3.gif</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/happy-life/midnight.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/reading-room/awk-one-line.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/reading-room/sed-one-line.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/reading-room/software-and-belief.html</loc>
     <changefreq>always</changefreq>
-  </url>
-  <url>
-    <loc>http://redraiment.com/data/sitemap.html</loc>
-    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2000.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2001.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2002.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2003.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2004.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2005.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2006.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2007.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2008.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2009.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2010.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2011.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2012.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2013.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2014.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2015.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2016.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2017.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2018.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2019.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2020.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2021.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2022.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2023.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2024.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2025.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2026.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2027.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2028.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2029.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2030.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2031.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2032.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2033.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2034.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2035.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2036.html</loc>
@@ -220,34 +392,58 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2036-2.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2037.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2038.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2039.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2040.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2041.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2042.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2043.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2044.html</loc>
@@ -258,10 +454,16 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2044-2.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2045.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2046.html</loc>
@@ -269,20 +471,32 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2046-1.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2047.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2048.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2049.html</loc>
     <changefreq>always</changefreq>
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2049-1.gif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
     </image:image>
   </url>
   <url>
@@ -300,26 +514,44 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2050-4.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2051.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2052.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2053.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2054.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2055.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2056.html</loc>
@@ -336,30 +568,51 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2056-4.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2057.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2058.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2059.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2060.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2061.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2062.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2063.html</loc>
@@ -372,6 +625,9 @@
     </image:image>
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2063-3.bmp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
     </image:image>
   </url>
   <url>
@@ -395,10 +651,16 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2064-6.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2065.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2066.html</loc>
@@ -421,6 +683,9 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2066-6.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2067.html</loc>
@@ -428,26 +693,44 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2067-1.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2068.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2069.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2070.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2071.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2072.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2073.html</loc>
@@ -455,46 +738,79 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2073-1.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2074.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2075.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2076.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2077.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2078.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2079.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2080.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2081.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2082.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2083.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2084.html</loc>
@@ -502,18 +818,30 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2084-1.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2085.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2086.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2087.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2088.html</loc>
@@ -521,22 +849,37 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2088-1.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2089.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2090.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2091.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2092.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2093.html</loc>
@@ -544,46 +887,102 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/hdu/2093-1.bmp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2094.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2095.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2096.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2097.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2098.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2099.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/md5.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/perfect-number.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/prime-div-in-c.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/prime-filter-in-c.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/algorithm/spell-shield.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/ajax-online-game.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/ajax-game/1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/ajax-game/2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/ajax-game/3.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/ajax-game/4.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/basic/basic-interpreter-in-c-1.html</loc>
@@ -591,46 +990,79 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/c-interpreter-basic-0-1.png</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/basic/basic-interpreter-in-c-2.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/basic/basic-interpreter-in-c-3.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/basic/basic-interpreter-in-c-4.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/basic/basic-interpreter-in-c-5.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/brainfuck-interpreter-in-c.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-0.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-1.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-2.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-3.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-4.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-5.html</loc>
@@ -647,57 +1079,154 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/duplex/duplex-5-4.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-6.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-7.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-8-linux-nc.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/code/DuplexPipe/duplexpipe-9-cygwin-nc.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
-    <loc>http://redraiment.com/data/software/code/shell/awk-remove-comments.html</loc>
+    <loc>http://redraiment.com/data/software/code/DuplexPipe/guess-and-solve.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/FriendSell/1-find-bug.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/FriendSell/1.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/FriendSell/2-autoauto-web.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/FriendSell/AutoAuto-Web.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/FriendSell/3-autoauto-platform.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/FriendSell/AutoAuto.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/script/awk-remove-comments.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/script/batch-rename.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
-    <loc>http://redraiment.com/data/software/code/shell/cd-multi-parent-folder.html</loc>
+    <loc>http://redraiment.com/data/software/code/script/dos-batch-laplace.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/dos-batch-laplace-1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/dos-batch-laplace-2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
-    <loc>http://redraiment.com/data/software/code/shell/enhanced-cd.html</loc>
+    <loc>http://redraiment.com/data/software/code/script/regex-match-double.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/script/shell-mult-file.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/javascript/E4X/e4x-tutorial-0.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/javascript/E4X/e4x-tutorial-1.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/javascript/E4X/e4x-tutorial-2.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/javascript/E4X/e4x-tutorial-3.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/javascript/E4X/e4x-tutorial-4.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/javascript/E4X/e4x-tutorial-5.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/javascript/js-string-multiply.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
@@ -709,16 +1238,25 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/node-js-2.png</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/javascript/rhino-database-access.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/lisp/edbc.html</loc>
     <changefreq>always</changefreq>
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/edbc-hacker-news.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
     </image:image>
   </url>
   <url>
@@ -733,30 +1271,37 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/emacs-cgi-3.png</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
-    <loc>http://redraiment.com/data/software/lisp/recursive-lambda-1.html</loc>
+    <loc>http://redraiment.com/data/software/lisp/recursive-lambda.html</loc>
     <changefreq>always</changefreq>
-  </url>
-  <url>
-    <loc>http://redraiment.com/data/software/lisp/recursive-lambda-2.html</loc>
-    <changefreq>always</changefreq>
-  </url>
-  <url>
-    <loc>http://redraiment.com/data/software/programming/design-pattern-and-hero.html</loc>
-    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/programming/designing-command-line-interfaces.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/programming/kill-if/chain-of-responsibility-like.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/programming/loop-vs-recursive.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/programming/programming-village.html</loc>
@@ -857,62 +1402,199 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/programming-village/32.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/programming/vb-and-dev-cpp.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/vb-dev-cpp/vb.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/vb-dev-cpp/hi.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/rack-my-brain/design-pattern-and-hero.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/rack-my-brain/four-type-programs.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/rack-my-brain/password-security.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/rack-my-brain/programming-language-my-opinion.html</loc>
+    <changefreq>always</changefreq>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/tool-tips/autohotkey-tutorial.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/tool-tips/curl-post-blank.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Linux/8-bash-prompt.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/bash-prompt/1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/bash-prompt/2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/bash-prompt/3.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/bash-prompt/4.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/bash-prompt/5.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/bash-prompt/6.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/bash-prompt/7.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/bash-prompt/8.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Linux/cd-multi-parent-folder.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Linux/change-desktop-background.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/linux-change-desktop-background.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Linux/debian-num-lock.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Linux/enhanced-cd.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/tool-tips/Linux/fork-and-printf.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/tool-tips/oj-java.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/tool-tips/repl-online.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/donot-impose-others.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/i-have-a-dream.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/indistinct.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/thinking/interview-problem.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/learning/a-funny-thing.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/learning/accumulate.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/learning/forget.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/learning/make-the-best-use-of-everything.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/make-base.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/open-source.html</loc>
     <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/thinking/sparrow-donot-know-swan.html</loc>
@@ -922,6 +1604,9 @@
     </image:image>
     <image:image>
       <image:loc>http://redraiment.com/resources/figure/swan-2.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
     </image:image>
   </url>
 </urlset>
