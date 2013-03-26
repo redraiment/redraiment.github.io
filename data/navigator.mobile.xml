@@ -128,6 +128,7 @@
 <dt>/软件人生/代码分享</dt>
 <dd><a href="mobile.html?p=data/software/code/ajax-online-game.html" target="_blank">基于AJAX的在线五子棋游戏</a></dd>
 <dd><a href="mobile.html?p=data/software/code/brainfuck-interpreter-in-c.html" target="_blank">BrainFuck解释器（C语言实现）</a></dd>
+<dd><a href="mobile.html?p=data/software/code/listfile.html" target="_blank">用正则表达式查找文件</a></dd>
 <dt>/软件人生/代码分享/BASIC解释器</dt>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-1.html" target="_blank">用C语言写解释器[1] - 我们的目标</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-2.html" target="_blank">用C语言写解释器[2] - 表达式求值</a></dd>

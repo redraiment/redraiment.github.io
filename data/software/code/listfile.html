@@ -1,0 +1,42 @@
+<div title="用正则表达式查找文件" class="article-content">
+<div class="sign">2010-10-31 20:36</div>
+<h1>背景</h1>
+<p>最近的工作涉及到不少目录之间的批量操作（产品的部署、文件夹之间的同步等等）。可工作的环境是 Win XP，没有自带诸如 Linux 下 find 这样方便的工具。当然，我自己的机器里安装了 Cygwin，但我不能要求其他同事仅仅为了使用这个命令而也装一个 Cygwin。而且，find 是用通配符去匹配文件名，我一直幻想着用正则表达式来匹配文件名/目录，所以我趁周末开发这个小工具。程序已经写好了，并发布到了 Google Code 上，主页是 <a href="http://code.google.com/p/listfile/" target="_blank">http://code.google.com/p/listfile/</a>。如下图：</p>
+<img src="resources/figure/listfile.jpg" />
+<p>正如下面版权里写的，你可以对这个程序/代码做任何你想做的事情：将这个工具用于你的工作中；拿源代码去交作业；向你的&lt;(男|女)?朋友们?&gt;炫耀你开发/找到了一个好玩的东西&hellip;&hellip;</p>
+<h1>使用方法</h1>
+<p>lf [OPTIONS] PATTERN...</p>
+<h2>描述</h2>
+<p>lf 通过给定的模式来列出文件（或目录），类似 UNIX 系统下的 find (1) 命令，不过 find (1) 是用统配符来匹配文件名。比如：星号（*）代表零到多个字符；问号（?）代表单个任意字符。不过，用于匹配路径的话，正则表达式的功能更强大也更灵活。另一个好玩的特性是 lf 可以输出彩色信息，就像 UNIX 里 <span class="code">ls --color=auto</span>
+ 一样。</p>
+<h2>参数</h2>
+<dl>
+  <dt>-a, --all</dt>
+  <dd>显示所有文件（包括隐藏文件）。</dd>
+  <dt>-A, --absolute-path</dt>
+  <dd>输出的文件路径显示为绝对路径。</dd>
+  <dt>-e, --exec command</dt>
+  <dd>执行命令。可以通过&lt;1&gt; .. &lt;n&gt;来引用前面匹配的路径的每一项，而&lt;0&gt;则匹配完整路径。</dd>
+  <dd>此外，可以通过用逗号分隔范围中的第一个和最后一个数字指定一系列连续的文件名。因此&lt;0&gt;和&lt;1,n&gt;是等价的。</dd>
+  <dt>-h, --help </dt>
+  <dd>显示这个帮助文档，并退出。</dd>
+  <dt>-i, --ignore-case</dt>
+  <dd>匹配时忽略大小写。</dd>
+  <dt>-r, --relative-path </dt>
+  <dd>输出的文件路径显示为相对路径（相对于当前路径）。</dd>
+</dl>
+<h2>模式</h2>
+<p>模式表达式同时支持通配符和正则表达式，其中正则表达式要放在尖括号里（&ldquo;&lt;&rdquo;和&ldquo;&gt;&rdquo;）。</p>
+<h2>环境变量</h2>
+<dl>
+  <dt>USERPROFILE</dt>
+  <dd>变量%UserProfile%是 MS Windows NT系统中一个特殊环境变量，它的值是当前用户配置文件所在的目录（类似UNIX下的HOME目录）。</dd>
+</dl>
+<h2>退出值</h2>
+<p>正常情况下为零，否则为非零。</p>
+<h2>例子</h2>
+<pre><code data-language="shell">lf &quot;workspaces/project&lt;[1-9]&gt;/src/*.cpp&quot; -e &quot;copy &lt;0&gt; backup/&lt;2,4&gt;&quot;</code></pre>
+<p>依次把 project1 到 project9 下的 src 文件夹里的 C++ 源文件备份到 backup 目录下相应的 project*/src 目录下，并且文件名保持一致。</p>
+<h1>版权</h1>
+<p>这个程序引用了微软的正则表达式库 GRETA 2.6.4 ，和它相关的东西你要遵循 GRETA 自己的协议。不过，由我写的那部分代码你可以随意使用，你甚至可以告诉你的&lt;(男|女)?朋友们?&gt;（这也是个正则表达式，哈哈）这个程序是你写的！我只希望这个小玩意儿能帮你节省点时间。</p>
+</div>
