@@ -125,16 +125,16 @@
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2097.html" target="_blank">2097 Sky数</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2098.html" target="_blank">2098 分拆素数和</a></dd>
 <dd><a href="mobile.html?p=data/software/algorithm/hdu/2099.html" target="_blank">2099 整除的尾数</a></dd>
-<dt>/软件人生/物尽其（奇）用</dt>
+<dt>/软件人生/代码分享</dt>
 <dd><a href="mobile.html?p=data/software/code/ajax-online-game.html" target="_blank">基于AJAX的在线五子棋游戏</a></dd>
 <dd><a href="mobile.html?p=data/software/code/brainfuck-interpreter-in-c.html" target="_blank">BrainFuck解释器（C语言实现）</a></dd>
-<dt>/软件人生/物尽其（奇）用/BASIC解释器</dt>
+<dt>/软件人生/代码分享/BASIC解释器</dt>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-1.html" target="_blank">用C语言写解释器[1] - 我们的目标</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-2.html" target="_blank">用C语言写解释器[2] - 表达式求值</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-3.html" target="_blank">用C语言写解释器[3] - 中缀转后缀</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-4.html" target="_blank">用C语言写解释器[4] - 语句分析</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-5.html" target="_blank">用C语言写解释器[5] - 其他一些东西</a></dd>
-<dt>/软件人生/物尽其（奇）用/DuplexPipe</dt>
+<dt>/软件人生/代码分享/DuplexPipe</dt>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-0.html" target="_blank">DuplexPipe-0.1_0发布</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-1.html" target="_blank">DuplexPipe二三事[1] - 有趣的起因：算24</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-2.html" target="_blank">DuplexPipe二三事[2] - 瑞士军刀再显锋芒：让程序相互聊天</a></dd>
@@ -146,11 +146,11 @@
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-8-linux-nc.html" target="_blank">Linux下用nc实现DuplexPipe</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/duplexpipe-9-cygwin-nc.html" target="_blank">在 Cygwin 下编译 netcat_1.10-38</a></dd>
 <dd><a href="mobile.html?p=data/software/code/DuplexPipe/guess-and-solve.html" target="_blank">猜数字游戏及自动解猜数字程序</a></dd>
-<dt>/软件人生/物尽其（奇）用/好友买卖外挂</dt>
+<dt>/软件人生/代码分享/好友买卖外挂</dt>
 <dd><a href="mobile.html?p=data/software/code/FriendSell/1-find-bug.html" target="_blank">[1]使用curl自动买卖好友</a></dd>
 <dd><a href="mobile.html?p=data/software/code/FriendSell/2-autoauto-web.html" target="_blank">[2]好友买卖在线外挂</a></dd>
 <dd><a href="mobile.html?p=data/software/code/FriendSell/3-autoauto-platform.html" target="_blank">[3]校内网外挂平台</a></dd>
-<dt>/软件人生/物尽其（奇）用/脚本小子</dt>
+<dt>/软件人生/代码分享/脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/code/script/awk-remove-comments.html" target="_blank">用awk去除C语言注释</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/batch-rename.html" target="_blank">关于批量重命名文件</a></dd>
 <dd><a href="mobile.html?p=data/software/code/script/dos-batch-laplace.html" target="_blank">用DOS批处理来做数字图像处理</a></dd>
@@ -186,12 +186,13 @@
 <dd><a href="mobile.html?p=data/software/rack-my-brain/four-type-programs.html" target="_blank">四类程序</a></dd>
 <dd><a href="mobile.html?p=data/software/rack-my-brain/password-security.html" target="_blank">你的密码安全吗</a></dd>
 <dd><a href="mobile.html?p=data/software/rack-my-brain/programming-language-my-opinion.html" target="_blank">编程和语言之我见</a></dd>
-<dt>/软件人生/善用佳软</dt>
+<dt>/软件人生/物尽其（奇）用</dt>
 <dd><a href="mobile.html?p=data/software/tool-tips/autohotkey-tutorial.html" target="_blank">AutoHotKey 新手入门教程</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/curl-post-blank.html" target="_blank">curl命令post带空格的数据</a></dd>
+<dd><a href="mobile.html?p=data/software/tool-tips/google-doc-blog.html" target="_blank">用Google Docs发表博文</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/oj-java.html" target="_blank">OJ添加Java语言</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/repl-online.html" target="_blank">收集一些在线的REPL</a></dd>
-<dt>/软件人生/善用佳软/Linux</dt>
+<dt>/软件人生/物尽其（奇）用/Linux</dt>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/8-bash-prompt.html" target="_blank">[译]八个有趣实用的Bash提示符</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/change-desktop-background.html" target="_blank">桌面背景随心换</a></dd>

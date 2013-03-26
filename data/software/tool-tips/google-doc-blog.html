@@ -1,0 +1,15 @@
+<div title="用Google Docs发表博文" class="article-content">
+<div class="sign">2009-10-15 23:28</div>
+<p>我比较喜欢使用 Google Docs 来编辑在线文档：直到最近我才有了一台属于自己的计算机，但大部分时间我依然使用实验室的机器，那儿环境各异（有好多种不同的 Windows 和 Linux 发行版本），并不存在一种通用的可编辑格式文档（即便是最简单的文本文档也存在字符编码、换行等问题）；另一个原因就是我的老师们也普遍拥有 Google 帐号，我每写完一篇文章就可以直接 Share 给他们，方便我们交流；还有，Google Docs 可以定时保存，自带一个简易的版本控制系统，不用担心辛苦写的文章化为泡影。其实不止如此，Google Docs 还允许你将写好的文档直接 Publish 到自己的 Blog 上（前提是你的 Blog 提供了可调用的接口）。下面就逐步演示如何发布文章到 CSDN 的博客系统中。</p>
+<p>第一步：首先你需要拥有一个 Google 帐号，并添加了 Google Docs 在线文档服务。</p>
+<p>第二步：新建一个在线文档，编写文章。如下图所示：</p>
+<img src="resources/figure/google-doc-blog/google_docs.jpg" />
+<p>第三步：右击要发布的文档，选择&ldquo;Publish&rdquo;，进入发布页面。如下图所示：</p>
+<img src="resources/figure/google-doc-blog/publish.jpg" />
+<p>第四步：点击&ldquo;Change your blog site settings&rdquo;，选择&ldquo;My own server/custom&rdquo;设置博客接口信息。CSDN 博客的 API 使用&ldquo;MetaWeblog API&rdquo;，URI 地址是&ldquo;http://blog.csdn.net/[userid]/services/MetaBlogApi.aspx&rdquo;，其中&ldquo;[userid]&rdquo;换成你自己的 id，然后是填写帐号、密码等信息。下图是我的配置信息。按&ldquo;Test&rdquo;可以尝试连接，如果设置成功可以得到&ldquo;Test completed: your settings appear to be correct.&rdquo;的提示信息。</p>
+<img src="resources/figure/google-doc-blog/blog_settings.jpg" />
+<p>第五步：设置好以后就可以点击&ldquo;Post to blog&rdquo;按钮来发布。如果发布成功，按钮就会变成&ldquo;Republish post&rdquo;和&ldquo;Remove from blog&rdquo;，分别用来重新发布和删除博文。这时候你到自己的博客上去看一下就会有一篇新发布的文章了！如下图所示。</p>
+<p><img src="resources/figure/google-doc-blog/archive.jpg" /></p>
+<p>第六步：在 CSDN 博客上点击编辑，查看 HTML 源码，可以看到发布的博文格式还是比较简洁。</p>
+<p><img src="resources/figure/google-doc-blog/HTML.jpg" /></p>
+</div>
