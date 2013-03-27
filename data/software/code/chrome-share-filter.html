@@ -1,0 +1,98 @@
+<div title="过滤分享的Chrome扩展" class="article-content">
+<div class="sign">2010-01-31 16:29</div>
+<h1>人人网的分享标题</h1>
+<p>进人人网（校内网）就免不了分享一些在线视频、音乐&hellip;&hellip;有些同学进校内也纯粹是为了看分享，呵呵。分享原本是不错的东西，可以让新鲜事迅速传播。但最近有部分人，在分享链接时，在标题上赫然写着&ldquo;看见不分享就倒霉一年&rdquo;、&ldquo;不分享的考试挂科&rdquo;等诅咒信息，强奸我们的眼睛，唯恐天下不乱！</p>
+<p>以前，在人人网中分享好友的&ldquo;分享&rdquo;时可以自己修改标题，所以我看到此类信息时都会手工去除恶意信息。但最近人人进行了升级，分享好友的&ldquo;分享&rdquo;时只能添加评论，不能修改标题。询问周围的同学，也有不少人对此类标题深恶痛绝！</p>
+<h1>眼不见为净</h1>
+<p>本来这无可厚非，人家写这样的标题或许他/她们真觉得这个视频、音乐很不错，迫切地希望大家都能看/听到。但每个人的喜恶不同，这样的做法有点类似看电影时旁边一个同学向你絮絮叨叨后面的情景&mdash;&mdash;好心办坏事。我还是希望每个人能比较客观地发表自己的意见，因此我不希望这些标题出现在我的首页上。</p>
+<p>一开始，我还是打算像往常一样写个客户端程序，每次在进人人网之前先执行一下，把带此类标题的新鲜事标记为已读。但以我这样的马大哈还真不能保证每次记得执行；另外，我从人人网上下载的Java Client开发包，但找来找去也没找到个像样的文档。所以就放弃客户端的想法。</p>
+<p>转念一想&ldquo;如果浏览器本身提供这样的功能就好了&rdquo;，再一想就想到开发浏览器的扩展/插件。我习惯用Chrome，最新版的也支持扩展开发了，而且在线文档也比较完整：<a href="http://code.google.com/chrome/extensions/index.html" target="_blank">http://code.google.com/chrome/extensions/index.html</a>。</p>
+<h1>Chrome扩展</h1>
+<p>我已经将扩展发布，如果你也有被相类似的问题困扰，并且也使用最新的 Chrome 浏览器，欢迎到项目主页<a href="https://chrome.google.com/extensions/detail/kajehjgpeliapeaileldhcabdalkeflo" target="_blank">https://chrome.google.com/extensions/detail/kajehjgpeliapeaileldhcabdalkeflo</a>下载安装。</p>
+<p>安装完后，当打开人人网时扩展就会启动，并在地址栏里显示图标：</p>
+<img src="resources/figure/share-filter-1.png" />
+<p>在页面加载完后，扩展就会自动检查你的&ldquo;新鲜事列表&rdquo;，把所有带&ldquo;不分享&rdquo;的文字统统替换掉，下图是我和同学做的一个测试：</p>
+<img src="resources/figure/share-filter-2.jpg" />
+<p>想关闭过滤功能，只要将它禁用即可。这个程序很小很简单，下面介绍它的原理。</p>
+<h1>明确需求</h1>
+<ol>
+  <li>过滤功能只在人人网域名（http://*.renren.com/*）下启用；</li>
+  <li>只有访问人人网时，扩展的图标才显示；</li>
+  <li>好友的分享信息会出现在很多地方（如好友主页、新鲜事、分享主页等），这些都要过滤；</li>
+  <li>我只是不想看到那些讨厌的标题，但分享的视频、图片等还是想看的。</li>
+</ol>
+<p>其中（4）是核心功能，（2）可有可无。</p>
+<h1>Chrome扩展简介</h1>
+<p>Chrome扩展的主页是：<a href="http://code.google.com/chrome/extensions/index.html" target="_blank">http://code.google.com/chrome/extensions/index.html</a>。在此我只简单地介绍一下和本扩展相关的内容，更详细的信息请访问其主页。在本扩展中一共只有六个文件，其中三个是图片文件（用于图标），其他三个文件大小都不到1KB，所以无需&ldquo;多事&rdquo;把所谓的源码上传，直接把那几行代码贴到文章中即可。下面逐一介绍六个文件：</p>
+<h2>图标文件</h2>
+<p>图标文件需要提供三个尺寸：</p>
+<ol>
+  <li>icon19.png：大小为19x19，用于地址栏中显示；</li>
+  <li>icon48.png：大小为48x48，在Chrome的扩展管理页面（<a href="chrome://extensions" target="_blank">chrome://extensions</a>）中显示；</li>
+  <li>icon128.png：大小为128x128，安装此扩展时显示。</li>
+</ol>
+<h2>manifest.json</h2>
+<p>这个Chrome扩展的配置文件，用JSON（JavaScript Object Notation）来描述与扩展相关的信息，完整介绍请访问：<a href="http://code.google.com/chrome/extensions/manifest.html" target="_blank">http://code.google.com/chrome/extensions/manifest.html</a>。本扩展的配置信息如下：</p>
+<pre><code data-language="javascript">{
+  "name": "FRRS",
+  "version": "0.2.3",
+  "description": "FRRS",
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "background_page": "background.html",
+  "page_action": {
+    "default_icon": "icon19.png",
+    "default_title": "FRRS"
+  },
+  "content_scripts": [
+  {
+    "matches": ["http://*.renren.com/*"],
+    "js": ["filter.js"],
+    "run_at": "document_end"
+  }
+  ]
+}</code></pre>
+<p>前面五项比较简单，顾名思义，分别是扩展的&ldquo;名称&rdquo;、&ldquo;版本号&rdquo;、&ldquo;描述&rdquo;、&ldquo;图标&rdquo;以及&ldquo;背景页面&rdquo;。在本扩展中&ldquo;背景页面&rdquo;用于实现功能（2），详细内容会在下文介绍。</p>
+<p>&ldquo;page_action&rdquo;是声明页面信息（本例中包含标题和图标），与之对应的是&ldquo;browser_action&rdquo;（本例中没有使用）。当你的扩展与页面无关时用&ldquo;browser_action&rdquo;，此时图标会一直显示在工具栏中；而像本例中，扩展只是针对某些特点的页面（人人网）则使用&ldquo;page_action&rdquo;，此时图标显示在地址栏中，并且默认是不显示的（功能2）。</p>
+<p>至于这个扩展具体作用于哪些页面，则需要在&ldquo;content_scripts&rdquo;里指定，其中元素&ldquo;matches&rdquo;用于匹配URL（详细内容参见<a href="http://code.google.com/chrome/extensions/match_patterns.html" target="_blank">http://code.google.com/chrome/extensions/match_patterns.html</a>）、&ldquo;js&rdquo;用于指定具体的动作、&ldquo;run_at&rdquo;用于指定脚步运行的时间。本例中指定了，当前页面的URL与&ldquo;http://*.renren.com/*&rdquo;匹配时（功能1），并且在页面加载完成后，执行&ldquo;filter.js&rdquo;里的脚步。</p>
+<h2>filter.js</h2>
+<pre><code data-language="javascript">// show icon
+chrome.extension.sendRequest();
+// pattern
+var reg = new RegExp('[^&gt;]*不分享[^&lt;]*', 'g');
+var msg = 'redraiment提醒您：此信息中可能含有另您不愉快的内容，眼不见心不烦。';
+// filter span
+var spans = document.getElementsByTagName('span');
+for (var s = 0; s &lt; spans.length; s++) {
+  var context = spans[s].innerHTML.replace(/&lt;[^&gt;]+&gt;/g, '');
+  if (reg.test(context)) {
+    spans[s].innerHTML = msg;
+  }
+}
+// filter heads
+// ...
+// filter href
+// ...</code></pre>
+<p>这部分是核心功能，我使用的模式（reg）非常简单：检查是否包含&ldquo;不分享&rdquo;三个字。大家可以照葫芦画瓢添加其他模式。</p>
+<p>人人网中分享标题分别使用&ldquo;span&rdquo;标签（新鲜事中）、&ldquo;h4&rdquo;等标题标签（分享主页）以及&ldquo;a&rdquo;超链接标签（好友主页）。我们需要通过DOM逐一获取，此处以&ldquo;span&rdquo;标签为例：获取页面中所有的&ldquo;span&rdquo;元素，删除它们的子标签，用模式&ldquo;reg&rdquo;测试，如果成功就用文本&ldquo;msg&rdquo;替换。其他标签依此类推。</p>
+<p>另外一个需要注意的地方：字符编码。人人网页面采用UTF-8编码，这对匹配中文会有影响，因此在保存filter.js这个文件时，需要将字符编码设为UTF-8（默认ANSI），否则将匹配失败。</p>
+<p>剩下的第一行特别引人注目，这不是一个标准的JavaScript方法，而是Chrome提供的API。它向扩展发送了一个请求，此请求可被&ldquo;background.html&rdquo;中的脚步捕捉。Chrome扩展就是通过发送和捕捉请求来通信的。</p>
+<h2>background.html</h2>
+<pre><code data-language="html">&lt;html&gt;
+&lt;head&gt;
+&lt;script&gt;
+  chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+      chrome.pageAction.show(sender.tab.id);
+    }
+  );
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;/html&gt;</code></pre>
+<p>脚本中添加了一个监听器，当捕捉到&ldquo;filter.js&rdquo;发送的消息时就显示图标。</p>
+<p>我想大家肯定会问，为什么不直接在&ldquo;filter.js&rdquo;里执行&ldquo;chrome.pageAction.show()&rdquo;来显示图标，干嘛这么多事要发送一个请求？这是Chrome扩展的限制，Chrome的所有API请参看：<a href="http://code.google.com/chrome/extensions/api_index.html" target="_blank">http://code.google.com/chrome/extensions/api_index.html</a>，但&ldquo;content_script&rdquo;里指定的脚步只能使用部分API（显示图标这个API就不在其中），而&ldquo;background_page&rdquo;里可以调用所以API，因此只能通过这种方式来实现。</p>
+<h1>其他</h1>
+<p>扩展开发好了，至于如何发布使用，请参见Chrome扩展开发的&ldquo;Hello World&rdquo;：<a href="http://code.google.com/chrome/extensions/getstarted.html" target="_blank">http://code.google.com/chrome/extensions/getstarted.html</a>。</p>
+</div>
