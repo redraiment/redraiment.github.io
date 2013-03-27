@@ -173,6 +173,16 @@
 <dt>/软件人生/C语言</dt>
 <dd><a href="mobile.html?p=data/software/cpp/c-varible-type.html" target="_blank">戏说C语言变量</a></dd>
 <dd><a href="mobile.html?p=data/software/cpp/programming-village.html" target="_blank">编程村一日游</a></dd>
+<dt>/软件人生/C语言/上机实验报告</dt>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/1.html" target="_blank">C实验报告[1]</a></dd>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/2.html" target="_blank">C实验报告[2]</a></dd>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/3.html" target="_blank">C实验报告[3]</a></dd>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/4.html" target="_blank">C实验报告[4]</a></dd>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/5.html" target="_blank">C实验报告[5]</a></dd>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/6.html" target="_blank">C实验报告[6]</a></dd>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/7.html" target="_blank">C实验报告[7]</a></dd>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/8.html" target="_blank">C实验报告[8]</a></dd>
+<dd><a href="mobile.html?p=data/software/cpp/experiment/9.html" target="_blank">C实验报告[9]</a></dd>
 <dt>/软件人生/java脚本小子</dt>
 <dd><a href="mobile.html?p=data/software/javascript/js-string-multiply.html" target="_blank">JavaScript中的字符串乘法</a></dd>
 <dd><a href="mobile.html?p=data/software/javascript/node-js-introduct.html" target="_blank">Node.js 初体验</a></dd>
@@ -214,6 +224,7 @@
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/change-desktop-background.html" target="_blank">桌面背景随心换</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/debian-num-lock.html" target="_blank">解决 Debian 升级后小键盘失效</a></dd>
+<dd><a href="mobile.html?p=data/software/tool-tips/Linux/emacs-99p-cpu.html" target="_blank">解决Emacs占用99%CPU问题</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/enhanced-cd.html" target="_blank">cd 增强版</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/fork-and-printf.html" target="_blank">fork与printf输出缓冲区</a></dd>
 <dt>/思考与感悟</dt>

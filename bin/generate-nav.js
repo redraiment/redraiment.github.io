@@ -116,6 +116,7 @@ var getFileTitle = function(file) {
 var i18n_zh_CN = {
     'software': '软件人生',
     'cpp': 'C语言',
+    'experiment': '上机实验报告',
     'programming': '程序设计方法',
     'algorithm': '算法',
     'hdu': '杭电100题',

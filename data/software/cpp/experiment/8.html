@@ -1,0 +1,88 @@
+<div title="C实验报告[8]" class="article-content">
+<div class="sign">2007-02-06 11:30</div>
+<p>实验内容及要求：</p>
+<ol>
+  <li>编写程序完成单链表的建立、查询，掌握结构体的定义、数据输入方法。</li>
+  <li>请同学完成以下程序的编写。</li>
+</ol>
+<p>一、编写一个建立一个单链表的函数。设链表的表元素信息包含学号、姓名、一门课的成绩；写一个按照学号查一个学生成绩的函数；最后写一个主函数先调用建立函数，再调用查询函数，显示查到学生的姓名和成绩。</p>
+<p>二、编一程序，能把从终端输入的一个字符串中的小写字母全部转换成大写字母，要求输入字符的同时指定该字符在字符串中的序号（即字符在字符串中的顺序号，例如第1个字符的序号为1），字符和序号存入结构体中，字符串存入结构体数组中，然后显示结构体数组的结果。（用字符！表示输入字符串的结束）。</p>
+<p>要求：请同学把预备知识、步骤、程序框图、调试好的程序及存在的问题写在下面（不够可以附页）。</p>
+<p>#1.c</p>
+<pre><code data-language="c">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+struct stu_node
+{
+  int num;
+  char name[80];
+  int sort;
+  struct stu_node * next;
+};
+
+struct stu_node *Make_list()
+{
+  struct stu_node *head,*tail,*p;
+  size_t size=sizeof(struct stu_node);
+
+  p = (struct stu_node *)malloc(size);
+  scanf("%d%s%d",&amp;p-&gt;num,p-&gt;name,&amp;p-&gt;sort);
+  if(!(p-&gt;num))
+          return NULL;
+  head=tail=p;
+  while(p-&gt;num)
+  {
+          p=(struct stu_node *)malloc(size);
+          scanf("%d%s%d",&amp;p-&gt;num,p-&gt;name,&amp;p-&gt;sort);
+          tail-&gt;next=p;
+          p-&gt;next=NULL;
+          tail=p;
+  }
+  return head;
+}
+
+struct stu_node * search_list(struct stu_node *head,int numb)
+{
+  while(head!=NULL)
+  {
+          if(head-&gt;num==numb)
+           return head;
+          head=head-&gt;next;
+  }
+  return head;
+}
+
+int main()
+{
+  struct stu_node *head,*p;
+  int numb;
+
+  head=Make_list();
+  scanf("%d",&amp;numb);
+  p=search_list(head,numb);
+  printf("%10s%20s%10s\n","number","name","sort");
+  printf("%10d%20s%10d\n",p-&gt;num,p-&gt;name,p-&gt;sort);
+  return 0;
+}</code></pre>
+<p>#2.c</p>
+<pre><code data-language="c">#include&lt;stdio.h&gt;
+#include&lt;ctype.h&gt;
+
+int main()
+{
+  struct  {char s;int num;}sa[80];
+  int count=0,i;
+
+  while(scanf("%c",&amp;sa[count].s),sa[count].s!='!')
+  {
+          if(islower(sa[count].s))
+           sa[count].s+='A'-'a';
+          sa[count].num=count+1;
+          count++;
+  }
+  for(i=0;i&lt;count;i++)
+    printf("%c %d\n",sa[i].s,sa[i].num);
+
+  return 0;
+}</code></pre>
+</div>
