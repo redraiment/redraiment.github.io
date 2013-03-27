@@ -29,6 +29,7 @@ find data -type d | while read d; do
                 -e 's/reading-room/阅读室/g' \
                 -e 's/learning/学习方法/g' \
                 -e 's/happy-new-year/新年快乐/g' \
+                -e 's/2b/二逼青年欢乐多/g' \
                 -e 's/happy-life/幸福生活/g' <<< "$p")
         echo "<dt>${p}</dt>"
 

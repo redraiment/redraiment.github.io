@@ -13,6 +13,35 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/2b/icon-snake.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/icon-snake.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/happy-life/2b/immortal.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/happy-life/2b/laugh-dream.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/happy-life/2b/midnight.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/happy-life/2b/notepad-game.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/happy-life/care-for-others.html</loc>
     <changefreq>always</changefreq>
     <image:image>
@@ -78,20 +107,6 @@
     </image:image>
   </url>
   <url>
-    <loc>http://redraiment.com/data/happy-life/icon-snake.html</loc>
-    <changefreq>always</changefreq>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/icon-snake.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>http://redraiment.com/data/happy-life/immortal.html</loc>
-    <changefreq>always</changefreq>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>http://redraiment.com/data/happy-life/keyboard-and-mouse.html</loc>
     <changefreq>always</changefreq>
     <image:image>
@@ -109,17 +124,6 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
     </image:image>
-  </url>
-  <url>
-    <loc>http://redraiment.com/data/happy-life/midnight.html</loc>
-    <changefreq>always</changefreq>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>http://redraiment.com/data/happy-life/notepad-game.html</loc>
-    <changefreq>always</changefreq>
   </url>
   <url>
     <loc>http://redraiment.com/data/happy-life/thought-reading.html</loc>
