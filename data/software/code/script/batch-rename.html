@@ -1,7 +1,9 @@
 <div title="关于批量重命名文件" class="article-content">
 <div class="sign">2009-08-29 12:52</div>
+<h1>无心插柳</h1>
 <p>不久前，我们软件工程系举行了全系大会。我在大会上做了简短的报告，主题是&ldquo;学以致用、动手实践&rdquo;。报告期间我说了一个亲身经历：以前校园内U盘病毒肆虐，病毒会把U盘里所有的文本文件加上系统属性和隐藏属性，并添加&ldquo;.tmp&rdquo;扩展名（例如原文件名为&ldquo;a.txt&rdquo;，病毒修改为&ldquo;a.txt.tmp&rdquo;），然后生成一个和原文件同名的病毒文件。我不幸中招，于是用我所学的知识写了一个小程序，几秒钟就解决了。</p>
 <p>原以为它就像插播广告一样随听随忘，不料言者无心听者有意。几个学弟回去后也都竭尽所能玩了一把：有用 Java 的，也有用 C# 的&hellip;&hellip;功能也五花八门，不仅能批量修改扩展名，还能按 1&rarr;N 的顺序批量重命名文件等等。看他们玩得不亦乐乎，想来那次报告还有点作用嘛^_^。</p>
+<h1>我的解决方法</h1>
 <p>今天又被问起我那时候的程序是怎么写的。其实在我们大一那会儿，要用计算机只能到图书馆的电子阅览室。那儿的系统&ldquo;干干净净&rdquo;，不会有 VC++ 等编译器，而且那种打开网页需要半分钟的速度也不会让你考虑去下载（估计其他高校情况也差不多），所以我是用批处理解决的。我用了下面三条命令：</p>
 <pre><code data-language="shell">::a.bat
 @echo off
@@ -22,5 +24,81 @@ for /R . %%f in (*.jpg) do (
   ren %%f !i!.jpg
   set /a i=!i!+1
 )</code></pre>
-<p>只要大家悉心观察，还有很多好玩的问题可以去解决，祝大家玩得开心^_^。</p>
+<div class="sign">2011-05-17</div>
+<h1>批量重命名汇总</h1>
+<p>只要大家悉心观察，还有很多好玩的问题可以去解决。现将各种批量重命名的批处理代码汇总如下：</p>
+<p>将当前目录下不规则命名的 jpg 文件依次重命名成 1.jpg、2.jpg 等</p>
+<pre><code data-language="shell">@echo off
+::开启延迟的变量扩充
+setlocal enabledelayedexpansion
+::计数器
+set /a i=1
+for %%f in (*.jpg) do (
+  ren %%f !i!.jpg
+  set /a i=!i!+1
+)</code></pre>
+<p>其他代码都是处理当前目录下的文件，这个程序给出递归处理子目录的模板</p>
+<pre><code data-language="shell">for /R . %f in (*) do echo %f</code></pre>
+<p>去掉文件名前面的日期（http://www.oschina.net/code/snippet_125800_4330）</p>
+<pre><code data-language="shell">for %f in (*.sc2replay) do for /F "delims=- tokens=4*" %t in ("%f") do move %f %t</code></pre>
+<p>替换文件名中的字串（http://www.oschina.net/code/snippet_143158_4337）</p>
+<pre><code data-language="shell">@echo off
+setlocal enabledelayedexpansion
+for %%f in (*) do (
+  set name=%%~nf
+  set ext=%%~xf
+  move !name!.!ext! !name:%1=%2!.!ext!
+)</code></pre>
+<p>将文件名变成大写（http://www.oschina.net/code/snippet_99867_4340）</p>
+<pre><code data-language="shell">:: convert file name to upper case
+@echo off
+setlocal enabledelayedexpansion
+set LowerCase=abcdefghijklmnopqrstuvwxyz
+set UpperCase=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+for %%f in (*.txt) do (
+  set string=%%f
+  for /L %%d in (0,1,25) do (
+    set from=!LowerCase:~%%d,1!
+    set to=!UpperCase:~%%d,1!
+    call :convert !from! !to!
+  )
+  move %%f !string!
+)
+
+goto end
+
+:convert
+set string=!string:%1=%2!
+goto :eof
+
+:end</code></pre>
+<h1>Shell版批量重命名</h1>
+<p>将当前目录下不规则命名的 jpg 文件依次重命名成 1.jpg、2.jpg 等</p>
+<pre><code data-language="shell">i=1
+for f in *.jpg; do
+  mv $f ${i}.jpg
+  ((i++))
+done</code></pre>
+<p>其他代码都是处理当前目录下的文件，这个程序给出递归处理子目录的模板</p>
+<pre><code data-language="shell"># 处理子目录文件
+find . -name '*.log' -type f | while read p; do
+  fname=$(basename $p)
+  # do some thing for fname
+  mv $p $(dirname $p)/$fname
+done</code></pre>
+<p>去掉文件名前面的日期（http://www.oschina.net/code/snippet_125800_4330）</p>
+<pre><code data-language="shell">for f in *.sc2replay; do mv $f ${f##*-}; done</code></pre>
+<p>替换文件名中的字串（http://www.oschina.net/code/snippet_143158_4337）</p>
+<pre><code data-language="shell">for f in *; do
+  name=${f%.*}
+  ext=${f##*.}
+  mv $f `sed 's/e/x/g' &lt;&lt;&lt; $name`.$ext
+done</code></pre>
+<p>将文件名变成大写（http://www.oschina.net/code/snippet_99867_4340）</p>
+<pre><code data-language="shell">for f in *; do
+  name=${f%.*}
+  ext=${f##*.}
+  mv $f `tr 'a-z' 'A-Z' &lt;&lt;&lt; $name`.$ext
+done</code></pre>
 </div>
