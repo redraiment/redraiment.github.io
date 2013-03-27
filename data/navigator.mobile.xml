@@ -131,6 +131,7 @@
 <dd><a href="mobile.html?p=data/software/code/listfile.html" target="_blank">用正则表达式查找文件</a></dd>
 <dd><a href="mobile.html?p=data/software/code/open-windows.html" target="_blank">第一款微信小游戏：开窗！</a></dd>
 <dd><a href="mobile.html?p=data/software/code/pig.html" target="_blank">和Pig一起学英语</a></dd>
+<dd><a href="mobile.html?p=data/software/code/SmallC.html" target="_blank">并行开发语言 SmallC</a></dd>
 <dt>/软件人生/代码分享/BASIC解释器</dt>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-1.html" target="_blank">用C语言写解释器[1] - 我们的目标</a></dd>
 <dd><a href="mobile.html?p=data/software/code/basic/basic-interpreter-in-c-2.html" target="_blank">用C语言写解释器[2] - 表达式求值</a></dd>
@@ -202,6 +203,8 @@
 <dd><a href="mobile.html?p=data/software/tool-tips/google-doc-blog.html" target="_blank">用Google Docs发表博文</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/oj-java.html" target="_blank">OJ添加Java语言</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/repl-online.html" target="_blank">收集一些在线的REPL</a></dd>
+<dt>/软件人生/物尽其（奇）用/Emacs</dt>
+<dd><a href="mobile.html?p=data/software/tool-tips/Emacs/wrap-thing.html" target="_blank">文本加引号的插件</a></dd>
 <dt>/软件人生/物尽其（奇）用/Linux</dt>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/8-bash-prompt.html" target="_blank">[译]八个有趣实用的Bash提示符</a></dd>
 <dd><a href="mobile.html?p=data/software/tool-tips/Linux/cd-multi-parent-folder.html" target="_blank">返回多层父目录</a></dd>

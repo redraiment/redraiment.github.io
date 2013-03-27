@@ -1,0 +1,30 @@
+<div title="并行开发语言 SmallC" class="article-content">
+<p>上班以后就一直没搭理毕设的事情，结果可想而知，这两天连日的熬夜，上班都在打哈欠，呵呵。</p>
+<p>不过，现在也是越来越能体会那句话：&ldquo;编码其实很快，主要是设计慢。&rdquo;这次毕设，设计比编码还不仅仅是慢一点！我从去年年底开始思考，直到上周才算正式敲定，编码倒是只花了两天（途中还抽空陪学弟学妹们玩了一下ACM选拔）就基本上搞定，这几天主要是完善完善，让系统更稳定。</p>
+<p>简单介绍一下我的毕设：这次的目标是设计并开发一门新的编程语言，用于并行程序的开发。这门新语言的名字还没来得及起呢，谁有空给它取一个？</p>
+<p>因为我们的目标之一也是让大家容易学习和接受一门新语言，所以这门语言的语法大部分还是继承C语言的，哈哈。其中一项重点特色就是改进了结束符：C语言里，一条语句结束都是用分号&ldquo;;&rdquo;；而在我的新语言里，我另加入句号作为并行结束符，而分号的意义和传统的一致，代表是语句之间是串行关系。其实这也符合我们自然语言里的标点符号，分号表示我还没说完，而句号才表示一句话已经说完了。其他的特性，也就是一些类似&ldquo;弱类型&rdquo;、&ldquo;关联数组&rdquo;、&ldquo;无限精度&rdquo;等脚本语言的小甜品，呵呵。</p>
+<p>看两个例子吧，^_^：</p>
+<p>代码1：biginteger.sc</p>
+<blockquote><pre><span style="color: #800080;">sum</span> = <span style="color: Red;">1</span>;
+<span style="color: Blue;">for</span> (<span style="color: #800080;">i</span> = <span style="color: Red;">1</span>; <span style="color: #800080;">i</span> &lt; <span style="color: Red;">100</span>; <span style="color: #800080;">i</span>++) {
+    <span style="color: #800080;">sum</span> *= <span style="color: #800080;">i</span>;
+};;
+println(<span style="color: #800080;">sum</span>).</pre></blockquote>
+<p>结果1：</p>
+<p>933262154439441526816992388562667004907159682643816214685929638952175999932299156089414639761565182862536979208272237582511852109168640000000000000000000000</p>
+<p>这段代码基本上都是用分号结尾（忘了说，这门语言里，块（大括号之间的内容）也是一条语句，所以也需要加结束符，而for语句也是一条语句，所以上面的代码里，for后面跟了两个分号）。代码的含义还是直观的，就是求99!，这段代码只是掩饰一下高精度运算的特性。</p>
+<p>代码2：if.sc</p>
+<blockquote><pre><span style="color: Green;">/*
+ * 有时是 True，有时是 False
+ * 看谁先获得锁
+ */</span>
+<span style="color: #800080;">i</span> = <span style="color: Red;">1</span> <span style="color: Blue;">on locking</span> <span style="color: #800080;">i</span>.
+<span style="color: Blue;">if</span> (<span style="color: #800080;">i</span>) {
+    println(<span style="color: Red;">"True"</span>);
+} <span style="color: Blue;">else</span> {
+    println(<span style="color: Red;">"False"</span>);
+} <span style="color: Blue;">on locking</span> <span style="color: #800080;">i</span>.</pre></blockquote>
+<p>这段代码很有意思，它没用到随机函数，但执行结果却是随机的！其实这也就是并行编程让人很崩溃的地方，两个线程同时争夺资源时，你真的无法确定谁先谁后。</p>
+<p>这段代码意思有两条语句（两个句号结尾），这么语言里，你使用变量无需声明，可以直接使用。对于字符串，默认值是空串；对于数字，默认值是0。而&ldquo;on locking&rdquo;是这么语言的两个关键字，出现在语句的尾部，作用么顾名思义，就是锁住对应的变量进行同步处理。</p>
+<p>先透露这么多，呵呵，其他的有空再啰嗦。</p>
+</div>
