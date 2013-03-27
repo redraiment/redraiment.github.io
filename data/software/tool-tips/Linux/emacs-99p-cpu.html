@@ -1,0 +1,7 @@
+<div title="解决Emacs占用99%CPU问题" class="article-content">
+<div class="sign">2012-05-02</div>
+<p>在Debian下使用 Emacs23 时 CPU 总是会飙到 99%，但使用 emacs -nw 在终端里使用则不会。之前也 Google 过一阵子，但没找到相关的信息。今天发现是 gtk-qt-engine 这个程序引起的。</p>
+<p>因为我在 Debian 下使用 KDE 桌面环境，而同时使用一些 GNOME 的程序，比如 GIMP，所以安装了 gtk-qt-engine 让 GNOME 程序使用 KDE 界面。因此遇到这个问题需要在 Debian 的 KDE 下使用 Emacs，并且比较爱美，安装 gtk-qt-engine，难怪在 Stackoverflow 上没有类似的问题。</p>
+<p>引起的另一个问题是 Firefox，每次关闭 Firefox 后 CPU 就会飙升到 100%，查看进程列表就会看到 Firefox 并没有真正退出。此时再运行 Firefox 的话就会提示 Firefox 仍然在运行，需要手工 pkill firefox。</p>
+<p>卸载 gtk-qt-engine 后这些问题都会解决。</p>
+</div>
