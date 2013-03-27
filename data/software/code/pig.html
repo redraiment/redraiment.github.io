@@ -1,0 +1,109 @@
+<div title="和Pig一起学英语" class="article-content">
+<div class="sign">2009-02-18 12:55</div>
+<h1>谷歌金山词霸生词本</h1>
+<p>某人看英语文档必备&ldquo;谷歌金山词霸&rdquo;，碰到不认识的生词就添加进&ldquo;生词本&rdquo;里。我想把生词本里的单词打印出来，就可以随时随地看看，但直接从生词本里导出的文档是采用UTF-8编码（用于输出音标），而且格式是混乱的（如下图所示），计算机看得懂，人看起来就很吃力了。</p>
+<img src="resources/figure/pig/txt.jpg" />
+<h1>俺的<img src="resources/figure/pig/pig_icon.jpg" /></h1>
+<p>谷歌金山词霸好像暂时没有提供到处能方便打印的格式（升级后可以一张张地打印卡片）。所以就直接动手来做一个简单的转换器吧。忙活一个晚上，俺的小猪诞生了！小猪初来驾到时，转换出来的网页只能由IE7.0以上的版本才能识别，IE6.0里显示的依然是乱码。现在小猪长大了，功能更丰富了：</p>
+<ul>
+  <li>支持IE5.0等低版本的浏览器；</li>
+  <li>输出样式有&ldquo;列表形式&rdquo;和&ldquo;卡片形式&rdquo;；</li>
+  <li>自己选定输出的内容：序号、单词、音标、解释和分割线等。</li>
+  <li>自己安排输出的顺序。</li>
+</ul>
+<p>在我的精心照料下，小猪还能茁壮成长！预计以后能支持导出pdf格式的文件。</p>
+<table>
+  <caption>Pig 历史更新</caption>
+  <tbody>
+    <tr>
+      <th>Version</th>
+	  <th>Description</th>
+	  <th>Size</th>
+	  <th>Date</th>
+    </tr>
+    <tr>
+      <td>0.1.1</td>
+      <td>最初版本，收藏用。</td>
+      <td>5K</td>
+      <td>2008-11-09</td>
+    </tr>
+    <tr>
+      <td>0.3.0</td>
+      <td>增加了图形界面，批量文件转换。</td>
+      <td>260K</td>
+      <td>2009-01-27</td>
+    </tr>
+    <tr>
+      <td>0.3.1</td>
+      <td>
+        <span>实现Set选项：选项默认不开启(效果和上版本一样)。</span>
+        <ul>
+          <li>允许自定义是否覆盖原有文件。</li>
+          <li>允许指定统一的输出目录地址。</li>
+          <li>允许将多个文件生成一张网页。</li>
+        </ul>
+      </td>
+      <td>200K</td>
+      <td>2009-02-02</td>
+    </tr>
+    <tr>
+      <td>0.5.3</td>
+      <td>
+        <span>实现自定义排版功能：</span>
+        <ul>
+          <li>实现Unicode和ANSI两种编码格式，支持IE6.0等低版本的浏览器。</li>
+          <li>列表和卡片两种不同的风格。</li>
+          <li>自定义输出内容和顺序，以及分割线。</li>
+          <li>自带配置文件，能保存用户的个性化配置信息。</li>
+        </ul>
+      </td>
+      <td>446K</td>
+      <td>2009-02-10</td>
+    </tr>
+  </tbody>
+</table>
+<h1>下载地址：</h1>
+<p>我将目前最新的版本0.5.3上传到CSDN。如果您也被相同的问题困扰，欢迎到<a href="http://download.csdn.net/source/2044361" target="_blank">http://download.csdn.net/source/2044361</a>下载（需要一个积分）。软件自带帮助文档，仅支持Windows系统。</p>
+<h1>运行界面：</h1>
+<img src="resources/figure/pig/pig_set_list.jpg" />
+<h1>输出结果：</h1>
+<p>列表形式：</p>
+<img src="resources/figure/pig/list.jpg" />
+<p>卡片形式：</p>
+<img src="resources/figure/pig/card.jpg" />
+<div class="sign">2011-01-03 04:26</div>
+<h1>关于 Pig</h1>
+<p>Pig 距离上一次更新有快两年的时间了，期间发生了很多事。其中一个原因是我后来对自己电脑上的软件进行了正版化清理：诸如 Visual Basic 6.0 精简版、VMWare 等盗版软件都被我卸载了，而 Pig 之前的版本都是用 VB6 精简版 + Dev-C++ 开发的。</p>
+<h1>姗姗来迟的新版本</h1>
+<p>事隔这么久，期间也有几位热心网友发邮箱报告程序 Bug，并对程序新功能提出了展望。可惜这次的更新不仅没添加任何新功能，反而还砍掉了一些比较鸡肋的功能。</p>
+<img src="resources/figure/pig/070-1.gif" align="right" />
+<p>程序界面如右图所示，与以前的界面相比变化不大（这正是我想要的）。不过本质区别是：以前的 Pig 是一个独立的可执行程序调用一堆动态链接库来完成任务；如今的 Pig 只是一张网页，通过执行 JScript 和极少量的 VBScript 来实现功能。</p>
+<h2>新版本解决的问题</h2>
+<ol>
+  <li>这次的开发编辑器用的是 Emacs，语言选的是 JavaScript 和 HTML。开发环境方面没有版权问题。</li>
+  <li>随着金山词霸本身的升级，生词本导出文件的格式出现了调整。有网友反映 Pig 不能处理这些新文件。这次更新也增强了这方面功能，现在 Pig 能处理到目前为止的所有版本生词本导出的文件。</li>
+  <li>Pig 之前的版本是用 VB 和 C 语言写的，源代码并没有随程序一起发布。这回简单了，JavaScript 和 VBScript 天生具有开源性质，源代码就是程序，你想怎么改都行。</li>
+  <li>更新了帮助文档。</li>
+</ol>
+<h2>砍掉的功能有：</h2>
+<ol>
+  <li>合并&ldquo;指定输出路径&rdquo;和&ldquo;生成单个文件&rdquo;两个功能；</li>
+  <li>删除&ldquo;输出卡片风格&rdquo;（这功能真的没人用），统一用&ldquo;列表&rdquo;形式；</li>
+  <li>删除&ldquo;图片格式&rdquo;（当初有这个功能是因为 IE6 不能显示 Unicode 编码的音标，哪知我是费力不讨好：大家背单词并不关心音标）；</li>
+  <li>删除&ldquo;PDF格式&rdquo;（也是费力不讨好的活）；</li>
+  <li>删除&ldquo;字段排序&rdquo;功能（目前还没人把音标或解释放到单词前面来打印）。</li>
+</ol>
+<h2>下一步预期：</h2>
+<ol>
+  <li>我自己的系统是 Vista，必须找台 XP 的电脑测试一下（毕竟目前的用户都是用 XP 的）；（Done @ 2011-01-03）</li>
+  <li>生成 Excel 格式的文件；</li>
+  <li>在已安装了金山词霸的电脑上能自动分析生词本数据库，用户无需导出成文本文件；</li>
+  <li>去支持其他词典软件，比如有道、灵格斯等。</li>
+</ol>
+<h1>版权问题</h1>
+<p>和我的其他玩具一样：源代码都给你了，那还不是想怎么样就怎么样了？说真的，其实我懒得搭理这种事情。我认识的人都知道这玩意儿是我为他们开发的，其他人怎么想我就不在乎了。先睡觉，醒来我会把程序发布到 Google Code 上，到时再更新链接。</p>
+<h1>后记</h1>
+<p>今天白天在 XP + IE6 下做了简单的测试，并升级到 v0.7.1 版本，不过在 IE6 里选项卡之间切换时会出现一片空白（如下图），是 jQuery 的插件 jdMenu 的问题，它并不影响功能，所以暂时不去修复了。</p>
+<img src="resources/figure/pig/070-2.gif" />
+<p>程序已经发布到 Google Code 上，下载地址是：<a href="http://code.google.com/p/pig-formatter/downloads/list" target="_blank">http://code.google.com/p/pig-formatter/downloads/list</a></p>
+</div>
