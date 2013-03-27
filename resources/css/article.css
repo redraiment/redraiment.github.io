@@ -6,7 +6,7 @@
 }
 
 .article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h5, .article-content h6 {
-    margin-top: 12px;
+    margin-top: 1em;
     color: #008000;
 }
 
@@ -22,8 +22,12 @@
     font-size: large;
 }
 
-.article-content p, .article-content pre, .article-content ol, .article-content ul, .article-content li, .article-content dt {
-    margin-top: 15px;
+.article-content p, .article-content pre, .article-content ol, .article-content ul, .article-content dt {
+    margin-top: 0.8em;
+}
+
+.article-content li {
+    margin-top: 0.3em;
 }
 
 .article-content ul, .article-content ol {
