@@ -1,0 +1,53 @@
+<div title="文本加引号的插件" class="article-content">
+<div class="sign">2011-07-08 20:50</div>
+<p>前几天 <a href="http://weibo.com/marchliu" target="_blank">@刘鑫-MarchLiu</a> 在微博上发布了一个给给文本加引号的插件：<a href="http://weibo.com/1729408273/eDcC8e8w6aD" target="_blank">http://weibo.com/1729408273/eDcC8e8w6aD</a>。不过用起来有点小问题：</p>
+<ol>
+  <li>两头都只能插入一个字符，因此不能用于添加 XML 标签；</li>
+  <li>光标控制上有个 bug，每次执行后光标会往左移动一个字符。</li>
+</ol>
+<p>我自己刚刚也实现了一下，不过我的实现灵活性比较差（前后的符号必须由用户手工输入，不能以参数形式传递）：</p>
+<pre><code data-language="scheme">(defun wrap-thing (thing)
+  &quot;Wrap the thing at point.
+THING is a symbol which specifies the kind of syntactic entity you want.
+Possibilities include `region', `symbol', `list', `sexp', `defun', `filename',
+`url', `email', `word', `sentence', `whitespace', `line', `page' and so on.&quot;
+  (interactive)
+  (let ((range (if (eq thing 'region)
+                   (cons (region-beginning) (region-end))
+                 (bounds-of-thing-at-point thing)))
+        (wrapper (cons (read-string &quot;Left: &quot;)
+                       (read-string &quot;Right: &quot;))))
+    (save-excursion
+      (goto-char (cdr range))
+      (insert (cdr wrapper))
+      (goto-char (car range))
+      (insert (car wrapper)))))
+
+(defmacro make-wrap-for (&amp;rest things)
+  &quot;A tool for define wrap-region, wrap-word etc.&quot;
+  (let ((exp '()))
+    (dolist (e things)
+      (push `(defun ,(intern (concat &quot;wrap-&quot; (symbol-name e))) ()
+               (interactive)
+               (wrap-thing (quote ,e))) exp))
+    (push 'progn exp)))
+
+(make-wrap-for region symbol list sexp defun
+               filename url email word sentence
+               whitespace lint page)
+
+(global-set-key (kbd &quot;C-.&quot;) 'wrap-region)</code></pre>
+<p>把上面的代码放到你的 .emacs 文件中，就能用 C-. 来调用了。如果有需要，你还可以再将 wrap-word、wrap-sentence 等绑定到其他键。</p>
+<div class="sign">2011-08-23</div>
+<p>今天重新实现了 make-wrap-for 这个宏，虽然物理行数还多了一行，但我觉得这个实现更优雅：</p>
+<pre><code data-language="scheme">(defmacro make-wrap-for (&amp;rest things)
+  "A tool for define wrap-region, wrap-word etc."
+  `(progn
+     ,@(mapcar
+        (lambda (e)
+          `(defun ,(intern (concat "wrap-" (symbol-name e))) ()
+             (interactive)
+             (wrap-thing ',e (cons (read-string "Left: ")
+                                   (read-string "Right: ")))))
+        things)))</code></pre>
+</div>
