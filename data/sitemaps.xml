@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
@@ -78,6 +78,13 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/icon-snake.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/icon-snake.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/happy-life/immortal.html</loc>
     <changefreq>always</changefreq>
     <image:image>
@@ -111,6 +118,22 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/thought-reading.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/flash/thought-reading.swf</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/thought-reading-1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/thought-reading-2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/thought-reading-3.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/reading-room/awk-one-line.html</loc>
     <changefreq>always</changefreq>
     <image:image>
@@ -130,6 +153,10 @@
     <image:image>
       <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
     </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/algorithm/env-driven.html</loc>
+    <changefreq>always</changefreq>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/algorithm/hdu/2000.html</loc>
@@ -941,6 +968,20 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/software/algorithm/nth-fibonacci.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/nth-fibonacci.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/algorithm/pascal-triangle.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/PascalTriangle.gif</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/software/algorithm/perfect-number.html</loc>
     <changefreq>always</changefreq>
     <image:image>
@@ -1027,6 +1068,16 @@
     <changefreq>always</changefreq>
     <image:image>
       <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/chrome-share-filter.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/share-filter-1.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/share-filter-2.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -1149,6 +1200,83 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/software/code/icalc/1.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/icalc/2.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/icalc/3.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/icalc/web-1.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/icalc/web-2.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/icalc/4.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/icalc/weibo.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/icalc/5.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/icalc/wechat-1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/icalc/wechat-2.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/listfile.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/listfile.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/open-windows.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/open-windows/1.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/open-windows/2.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/pig.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/pig/txt.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/pig/pig_icon.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/pig/pig_set_list.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/pig/list.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/pig/card.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/pig/070-1.gif</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/pig/070-2.gif</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/software/code/script/awk-remove-comments.html</loc>
     <changefreq>always</changefreq>
     <image:image>
@@ -1173,6 +1301,13 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/software/code/script/intranet-ip.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/intranet-ip.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/software/code/script/regex-match-double.html</loc>
     <changefreq>always</changefreq>
     <image:image>
@@ -1182,6 +1317,117 @@
   <url>
     <loc>http://redraiment.com/data/software/code/script/shell-mult-file.html</loc>
     <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/code/SmallC.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/cpp/c-varible-type.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/cpp/programming-village.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/01.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/02.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/03.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/04.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/05.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/06.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/07.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/08.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/09.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/10.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/11.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/12.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/13.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/14.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/15.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/16.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/17.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/18.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/19.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/20.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/21.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/22.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/23.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/24.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/25.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/26.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/27.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/28.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/29.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/30.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/31.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/programming-village/32.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/software/javascript/E4X/e4x-tutorial-0.html</loc>
@@ -1304,109 +1550,6 @@
     </image:image>
   </url>
   <url>
-    <loc>http://redraiment.com/data/software/programming/programming-village.html</loc>
-    <changefreq>always</changefreq>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/01.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/02.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/03.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/04.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/05.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/06.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/07.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/08.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/09.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/10.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/11.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/12.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/13.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/14.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/15.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/16.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/17.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/18.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/19.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/20.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/21.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/22.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/23.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/24.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/25.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/26.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/27.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/28.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/29.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/30.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/31.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/figure/programming-village/32.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>http://redraiment.com/data/software/programming/vb-and-dev-cpp.html</loc>
     <changefreq>always</changefreq>
     <image:image>
@@ -1425,6 +1568,10 @@
   </url>
   <url>
     <loc>http://redraiment.com/data/software/rack-my-brain/four-type-programs.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/rack-my-brain/is-there-a-script-language.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
@@ -1447,6 +1594,33 @@
     <changefreq>always</changefreq>
     <image:image>
       <image:loc>http://redraiment.com/resources/js/article.js</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Emacs/edit-same-line.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Emacs/wrap-thing.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/software/tool-tips/google-doc-blog.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/google-doc-blog/google_docs.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/google-doc-blog/publish.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/google-doc-blog/blog_settings.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/google-doc-blog/archive.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/google-doc-blog/HTML.jpg</image:loc>
     </image:image>
   </url>
   <url>
