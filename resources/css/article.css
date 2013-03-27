@@ -22,35 +22,39 @@
     font-size: large;
 }
 
-.article-content p, .article-content pre, .article-content ol, .article-content ul, .article-content dt {
+.article-content p, .article-content pre {
     margin-top: 0.8em;
 }
 
-.article-content li {
-    margin-top: 0.3em;
+/* List */
+.article-content ol, .article-content ul {
+    margin: 0.8em 0em 0.8em 1em;
 }
 
-.article-content ul, .article-content ol {
-    text-indent: 1em;
+.article-content li {
+    margin: 0.4em 0em;
+    list-style-position: inside;
 }
 
 .article-content ol li {
-    list-style-position: inside;
     list-style-type: decimal;
 }
 
 .article-content ul li {
-    list-style-position: inside;
     list-style-type: disc;
 }
 
+.article-content dl {
+    margin: 0px;
+}
+
 .article-content dt {
-    text-indent: 1em;
+    margin: 0.8em 0em 0.4em 1em;
     font-weight: bold;
 }
 
 .article-content dd {
-    text-indent: 2em;
+    margin: 0.4em 0em 0.4em 2em;
 }
 
 .article-content blockquote {
