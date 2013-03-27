@@ -18,6 +18,7 @@ find data -type d | while read d; do
                 -e 's/hdu/杭电100题/g' \
                 -e 's/kill-if/消灭成堆的分支语句/g' \
                 -e 's/code/代码分享/g' \
+                -e 's/icalc/中文计算器/g' \
                 -e 's/FriendSell/好友买卖外挂/g' \
                 -e 's/basic/BASIC解释器/g' \
                 -e 's/script/脚本小子/g' \

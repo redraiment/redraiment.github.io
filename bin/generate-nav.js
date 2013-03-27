@@ -121,6 +121,7 @@ var i18n_zh_CN = {
     'hdu': '杭电100题',
     'kill-if': '消灭成堆的分支语句',
     'code': '代码分享',
+    'icalc': '中文计算器',
     'FriendSell': '好友买卖外挂',
     'basic': 'BASIC解释器',
     'script': '脚本小子',
