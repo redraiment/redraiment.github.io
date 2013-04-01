@@ -8,80 +8,144 @@
 <p>一、编写一个建立一个输入职工信息（职工号，姓名，年龄，工资）的函数，并把职工信息存入文件“work.txt”中；写一个按照职工号查一个职工工资的函数；再写一个修改函数，实现工资小于800元的职工加90元，并把修改工资的职工信息建成一个文件“workmodify.txt”；最后写一个主函数先调用建立函数，再调用查询函数对查到的职工信息进行显示，最后调用修改函数修改职工工资。</p>
 <p>二、要求职工信息存储在文件或结构体数组（自己选择），编写程序实现上述功能。</p>
 <p>要求：请同学把预备知识、步骤、程序框图、调试好的程序及存在的问题写在下面（不够可以附页）。</p>
-<pre><code data-language="c">#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
 
-int search_work(char *filename,int num)
-{
-  int numb;
-  int income;
-  FILE *fp;
+/** Data Type */
+typedef struct employee_node {
+  int id;
+  char name[128];
+  int age;
+  double wage;
+  struct employee_node* next;
+} *Employee;
 
-  if((fp=fopen(filename,"r"))==NULL)
-  {
-    printf("Can't open %s \n",filename);
-    return 1;
+typedef void (*Callback)(Employee);
+typedef int (*Predicate)(Employee);
+
+/** API */
+Employee employee_make_node() {
+  Employee e;
+
+  e = (Employee)calloc(1, sizeof(struct employee_node));
+  if (e != NULL) {
+    scanf("%d%s%d%le", &amp;e-&gt;id, e-&gt;name, &amp;e-&gt;age, &amp;e-&gt;wage);
   }
-  while(fscanf(fp,"%d %*s %*d %d",&amp;numb,&amp;income),numb!=num &amp;&amp; !feof(fp));
-  if(numb==num)
-    printf("%d %d\n",numb,income);
-  fclose(fp);
-  return 0;
+  e-&gt;next = NULL;
+
+  return e;
 }
 
-int add(char *filename,char *fileout,int n)
-{
-  FILE *fp,*fpt;
-  int num,age,income;
-  char name[80];
+Employee employee_make_list() {
+  Employee e = NULL, head = NULL;
+  int length;
 
-  fp=fopen(filename,"r");
-  fpt=fopen(fileout,"w+");
-  while(n--)
-  {
-    fscanf(fp,"%d %s %d %d",&amp;num,name,&amp;age,&amp;income);
-    if(income&lt;800)
-      income+=90;
-    fprintf(fpt,"%d %s %d %d\n",num,name,age,income);
+  scanf("%d", &amp;length);
+  while (length--) {
+    Employee p = employee_make_node();
+    if (e) {
+      e = e-&gt;next = p;
+    } else {
+      e = head = p;
+    }
   }
-  fclose(fp);
-  fclose(fpt);
-  return 0;
+
+  return head;
 }
 
-int Creatfile(char *filename)
-{
-  FILE *fp;
-  int num,age,income;
-  char name[80];
-  int count=0;
+Employee employee_map(Employee e, Callback fn) {
+  Employee p, head = e;
 
-  fp=fopen(filename,"w+");
-  while(scanf("%d %s %d %d",&amp;num,name,&amp;age,&amp;income),num)
-  {
-     fprintf(fp,"%d %s %d %d\n",num,name,age,income);
-     count++;
+  while (p = e) {
+    e = e-&gt;next;
+    fn(p);
   }
-  fclose(fp);
-  return count;
+
+  return head;
 }
 
-int main(int argc,char *argv[])
-{
-  int num;
-  char temp[80];
-  int count;
-
-  if(argc&lt;2)
-  {
-     printf("please input the filename\n");
-     return 1;
+Employee employee_some(Employee e, Predicate fn) {
+  for (; e; e = e-&gt;next) {
+    if (fn(e)) {
+      return e;
+    }
   }
-  strcpy(temp,argv[1]);
-  count=Creatfile(strcat(argv[1],".txt"));
-  scanf("%d",&amp;num);
-  search_work(argv[1],num);
-  add(argv[1],strcat(temp,"modify.txt"),count);
-  return 0;
+  return NULL;
+}
+
+/** Interface */
+/* IO */
+FILE* FOUT;
+
+void employee_output_node(Employee e) {
+  fprintf(FOUT, "%d %s %d %.2f\n", e-&gt;id, e-&gt;name, e-&gt;age, e-&gt;wage);
+}
+
+void employee_display_node(Employee e) {
+  FOUT = stdout;
+  if (e != NULL) {
+    employee_output_node(e);
+  }
+}
+
+void employee_display(Employee e) {
+  FOUT = stdout;
+  employee_map(e, employee_output_node);
+}
+
+void employee_save(Employee e, char* filename) {
+  FOUT = fopen(filename, "w");
+  employee_map(e, employee_output_node);
+  fclose(FOUT);
+}
+
+/* Search */
+int search_key_id;
+
+int employee_cmp_id(Employee e) {
+  return e != NULL &amp;&amp; e-&gt;id == search_key_id;
+}
+
+Employee employee_search_by_id(Employee e) {
+  scanf("%d", &amp;search_key_id);
+  return employee_some(e, employee_cmp_id);
+}
+
+/* Modify */
+void employee_adjust_wage_node(Employee e) {
+  if (e != NULL &amp;&amp; e-&gt;wage &lt; 800) {
+    e-&gt;wage += 90;
+  }
+}
+
+void employee_adjust_wage(Employee e) {
+  employee_map(e, employee_adjust_wage_node);
+}
+
+/* Free */
+void employee_free_node(Employee e) {
+  free(e);
+}
+
+Employee employee_free(Employee e) {
+  return employee_map(e, employee_free_node);
+}
+
+int main(void) {
+  Employee e = NULL;
+
+  e = employee_make_list();
+  employee_save(e, "work.txt");
+
+  employee_display_node(employee_search_by_id(e));
+
+  employee_adjust_wage(e);
+  employee_save(e, "workmodify.txt");
+
+  employee_display(e);
+
+  employee_free(e);
+
+  return EXIT_SUCCESS;
 }</code></pre>
 </div>

@@ -9,80 +9,114 @@
 <p>二、编一程序，能把从终端输入的一个字符串中的小写字母全部转换成大写字母，要求输入字符的同时指定该字符在字符串中的序号（即字符在字符串中的顺序号，例如第1个字符的序号为1），字符和序号存入结构体中，字符串存入结构体数组中，然后显示结构体数组的结果。（用字符！表示输入字符串的结束）。</p>
 <p>要求：请同学把预备知识、步骤、程序框图、调试好的程序及存在的问题写在下面（不够可以附页）。</p>
 <p>#1.c</p>
-<pre><code data-language="c">#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
 
-struct stu_node
-{
-  int num;
-  char name[80];
-  int sort;
-  struct stu_node * next;
-};
+typedef struct student_node {
+  int id;
+  char name[128];
+  double score;
+  struct student_node* next;
+} *Student;
 
-struct stu_node *Make_list()
-{
-  struct stu_node *head,*tail,*p;
-  size_t size=sizeof(struct stu_node);
+Student student_new() {
+  Student s;
 
-  p = (struct stu_node *)malloc(size);
-  scanf("%d%s%d",&amp;p-&gt;num,p-&gt;name,&amp;p-&gt;sort);
-  if(!(p-&gt;num))
-          return NULL;
-  head=tail=p;
-  while(p-&gt;num)
-  {
-          p=(struct stu_node *)malloc(size);
-          scanf("%d%s%d",&amp;p-&gt;num,p-&gt;name,&amp;p-&gt;sort);
-          tail-&gt;next=p;
-          p-&gt;next=NULL;
-          tail=p;
+  s = (Student)calloc(1, sizeof(struct student_node));
+  if (s != NULL) {
+    scanf("%d%s%le", &amp;s-&gt;id, s-&gt;name, &amp;s-&gt;score);
   }
+  s-&gt;next = NULL;
+
+  return s;
+}
+
+Student student_list() {
+  Student s = NULL, head = NULL;
+  int length;
+
+  scanf("%d", &amp;length);
+  while (length--) {
+    if (s) {
+      s = s-&gt;next = student_new();
+    } else {
+      s = head = student_new();
+    }
+  }
+
   return head;
 }
 
-struct stu_node * search_list(struct stu_node *head,int numb)
-{
-  while(head!=NULL)
-  {
-          if(head-&gt;num==numb)
-           return head;
-          head=head-&gt;next;
+Student student_search(Student s, int id) {
+  Student p;
+
+  for (p = s; p; p = p-&gt;next) {
+    if (p-&gt;id == id) {
+      return p;
+    }
   }
-  return head;
+
+  return NULL;
 }
 
-int main()
-{
-  struct stu_node *head,*p;
-  int numb;
+void student_display(Student s) {
+  if (s != NULL) {
+    printf("%d %s %g\n", s-&gt;id, s-&gt;name, s-&gt;score);
+  }
+}
 
-  head=Make_list();
-  scanf("%d",&amp;numb);
-  p=search_list(head,numb);
-  printf("%10s%20s%10s\n","number","name","sort");
-  printf("%10d%20s%10d\n",p-&gt;num,p-&gt;name,p-&gt;sort);
-  return 0;
+void student_free(Student s) {
+  while (s) {
+    Student p = s;
+    s = s-&gt;next;
+    free(p);
+  }
+}
+
+int main(void) {
+  Student s = NULL;
+  int id;
+
+  s = student_list();
+  scanf("%d", &amp;id);
+  student_display(student_search(s, id));
+  student_free(s);
+
+  return EXIT_SUCCESS;
 }</code></pre>
 <p>#2.c</p>
-<pre><code data-language="c">#include&lt;stdio.h&gt;
-#include&lt;ctype.h&gt;
+<pre><code data-language="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
 
-int main()
-{
-  struct  {char s;int num;}sa[80];
-  int count=0,i;
+#define MAX 128
 
-  while(scanf("%c",&amp;sa[count].s),sa[count].s!='!')
-  {
-          if(islower(sa[count].s))
-           sa[count].s+='A'-'a';
-          sa[count].num=count+1;
-          count++;
+typedef struct {
+  struct {
+    char value;
+    int index;
+  } data[MAX];
+  int length;
+} CharSequence;
+
+int main(void) {
+  CharSequence seq;
+  int i;
+  char c;
+
+  for (i = 0; (c = getchar()) != '!'; i++) {
+    if (islower(c)) {
+      c = toupper(c);
+    }
+    seq.data[i].value = c;
+    seq.data[i].index = i + 1;
   }
-  for(i=0;i&lt;count;i++)
-    printf("%c %d\n",sa[i].s,sa[i].num);
+  seq.length = i;
 
-  return 0;
+  for (i = 0; i &lt; seq.length; i++) {
+    printf("%d: %c\n", seq.data[i].index, seq.data[i].value);
+  }
+
+  return EXIT_SUCCESS;
 }</code></pre>
 </div>
