@@ -42,6 +42,16 @@
     <changefreq>always</changefreq>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/2b/valentine-day-without-lover.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/valentine-day-1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/valentine-day-2.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/happy-life/ACM/2007-win.html</loc>
     <changefreq>always</changefreq>
     <image:image>
