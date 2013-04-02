@@ -1764,6 +1764,13 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Linux/pidgin-qq.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/linux-qq.png</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/software/tool-tips/oj-java.html</loc>
     <changefreq>always</changefreq>
     <image:image>
