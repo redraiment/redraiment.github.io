@@ -26,6 +26,10 @@
     margin-top: 0.8em;
 }
 
+.article-content p {
+    line-height: 1.4em;
+}
+
 /* List */
 .article-content ol, .article-content ul {
     margin: 0.8em 0em 0.8em 1em;
