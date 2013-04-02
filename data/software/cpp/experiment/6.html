@@ -11,6 +11,7 @@
 <pre><code data-language="c">#include &lt;string.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
 
 char* delk(char* sp) {
   char* p = sp;
@@ -31,7 +32,8 @@ int find(char* s1, char* s2) {
   int i;
 
   for (i = 0; i &lt;= len1 - len2; i++) {
-    if (!strncmp(s1 + i, s2, len2)) {
+    if (!strncmp(s1 + i, s2, len2)
+     &amp;&amp; (!s1[i+len2] || isspace(s1[i+len2]))) {
       return 1;
     }
   }
