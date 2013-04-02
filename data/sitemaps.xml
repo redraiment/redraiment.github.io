@@ -171,6 +171,28 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/treasure/gift.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/gift/1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/gift/2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/gift/3.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/gift/4.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/gift/5.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/gift/6.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/reading-room/awk-one-line.html</loc>
     <changefreq>always</changefreq>
     <image:image>

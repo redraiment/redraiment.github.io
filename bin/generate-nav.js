@@ -132,6 +132,7 @@ var i18n_zh_CN = {
     'reading-room': '阅读室',
     'learning': '学习方法',
     'happy-life': '幸福生活',
+    'treasure': '我的宝贝们',
     '2b': '二逼青年欢乐多',
     'happy-new-year': '新年快乐'
 };
