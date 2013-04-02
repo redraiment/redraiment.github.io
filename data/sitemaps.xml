@@ -59,6 +59,10 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/ACM/second-acm-trials.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/happy-life/care-for-others.html</loc>
     <changefreq>always</changefreq>
     <image:image>
