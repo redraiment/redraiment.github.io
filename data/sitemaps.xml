@@ -233,6 +233,22 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/treasure/my-qq.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/qq/1.bmp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/qq/2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/qq/3.bmp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/qq/4.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/happy-life/treasure/time.html</loc>
     <changefreq>always</changefreq>
     <image:image>
