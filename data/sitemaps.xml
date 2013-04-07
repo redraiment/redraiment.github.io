@@ -63,12 +63,66 @@
     </image:image>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/ACM/acm-lecture.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/acm-1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/acm-2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/acm-3.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/acm-4.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/acm-5.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/acm-6.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/acm-7.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/happy-life/ACM/c-test.html</loc>
     <changefreq>always</changefreq>
   </url>
   <url>
+    <loc>http://redraiment.com/data/happy-life/ACM/pku-250.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/acm-pku-250.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/happy-life/ACM/second-acm-trials.html</loc>
     <changefreq>always</changefreq>
+  </url>
+  <url>
+    <loc>http://redraiment.com/data/happy-life/ACM/software-designer-lecture.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/software-1.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/software-2.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/software-3.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/software-4.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/software-5.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/lecture/software-6.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>http://redraiment.com/data/happy-life/ACM/software-designer.html</loc>
