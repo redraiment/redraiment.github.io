@@ -1,9 +1,3 @@
-if (Ext.is.Phone && !/mobile\.html/.test(document.referer)) {
-    location.href = location.protocol + '//'
-                  + location.hostname + '/mobile.html'
-                  + location.search;
-}
-
 // For Google Analytics
 var _gaq = [
     ['_setAccount', 'UA-39440649-1'],
