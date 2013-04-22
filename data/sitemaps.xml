@@ -2063,6 +2063,16 @@
     <changefreq>always</changefreq>
   </url>
   <url>
+    <loc>http://redraiment.com/data/software/tool-tips/firefox-greasemonkey-iciba.html</loc>
+    <changefreq>always</changefreq>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/iciba-1.bmp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>http://redraiment.com/resources/figure/iciba-2.bmp</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/software/tool-tips/google-doc-blog.html</loc>
     <changefreq>always</changefreq>
     <image:image>

@@ -1,0 +1,143 @@
+<div title="油猴版Firefox插件 - 金山词霸" class="article-content">
+  <div class="sign">2013-04-22 12:33:25</div>
+  <h1>起因</h1>
+  <p>工作中需要查阅很多英文文档，苦于没有管理员权限安装软件，且在线词典仅开放iciba.com。但每次都要打开网页查找很麻烦，所以利用GreaseMonkey开发了这个Firefox插件，只要在页面上选中英文单词，就会弹出一个词霸的小图标，点击图标就显示中文解释。效果如下：</p>
+  <img src="resources/figure/iciba-1.bmp" />
+  <p>选中单词</p>
+  <img src="resources/figure/iciba-2.bmp" />
+  <p>单词解释</p>
+  <h1>用法</h1>
+  <ol>
+    <li>在Firefox中安装 GreaseMonkey 插件</li>
+    <li>将下面的代码保存成 iciba.user.js</li>
+    <li>用Firefox打开上面的js文件，点击安装即可</li>
+  </ol>
+  <p>注：文件名必须以.user.js作扩展名。</p>
+  <h1>代码</h1>
+  <pre><code data-language="javascript">// ==UserScript==
+// @name           金山词霸
+// @namespace      redraiment
+// @description    在页面上选中英文单词（仅由字母组成）时，自动弹出金山词霸图标；点击该图标则显示单词中文解释。
+// @include        *
+// ==/UserScript==
+
+(function() {
+    /** 类型谓词 */
+    var is = function(o, type) {
+        return Object.prototype.toString.call(o) === '[object ' + type + ']';
+    };
+
+    var is_string = function(o) {
+        return is(o, 'String');
+    };
+
+    var is_object = function(o) {
+        return is(o, 'Object');
+    };
+
+    /** 函数式编程工具 */
+    var map = function(fn, list) {
+        var result = [];
+        for (var i = 0; i &lt; list.length; i++) {
+            result.push(fn(list[i]));
+        }
+        return result;
+    };
+
+    /** DOM */
+    // 把字符串解析成XML DOM
+    var xml = (function() {
+        var parser = new DOMParser();
+        return function(text) {
+            var doc = parser.parseFromString(text, 'text/xml');
+            return function(tag) {
+                return doc.getElementsByTagName(tag);
+            };
+        };
+    })();
+
+    // 创建一个元素节点
+    // tag: 元素类型，即HTML标签名
+    // option: 可选参数
+    var node = function(tag, option) {
+        return (function(e, o) {
+            var fn = arguments.callee;
+            for (var name in o) {
+                var value = o[name];
+                if (is_object(value)) {
+                    fn(e[name], value);
+                } else {
+                    e[name] = value;
+                }
+            }
+            return e;
+        })(document.createElement(tag), option || {});
+    };
+
+    /** 核心元素 */
+    var word = '';              // 当前选中的单词
+
+    // 中文解释的界面
+    var dict = node('div', {
+        style: {
+            position: 'absolute',
+            padding: '5px',
+            border: 'solid 1px black',
+            width: '300px',
+            background: '#FFFFFF'
+        },
+        hidden: true
+    });
+
+    // 金山词霸图标
+    var icon = node('img', {
+        src: 'http://www.iciba.com/favicon.ico',
+        style: {
+            position: 'absolute'
+        },
+        hidden: true,
+        onclick: function(e) {
+            var me = this;
+            me.hidden = true;
+
+            GM_xmlhttpRequest({
+                method: 'GET',
+                url: 'http://dict-co.iciba.com/api/dictionary.php?w=' + word,
+                onload: function(o) {
+                    with (dict) {
+                        style.left = me.style.left;
+                        style.top = me.style.top;
+                        innerHTML = map(function(e) {
+                            return e.textContent;
+                        }, xml(o.responseText)('acceptation')).join('&lt;br /&gt;');
+                        hidden = false;
+                    }
+                }
+            });
+        }
+    });
+
+    /** 核心操作 */
+    document.body.appendChild(dict);
+    document.body.appendChild(icon);
+    document.body.onmouseup = function(e) {
+        // 避免点击金山词霸图标的动作触发当前事件
+        if (e.target === icon || e.currentTarget === icon) {
+            return;
+        }
+
+        var text = document.getSelection().getRangeAt(0).toString();
+        var group = /[a-zA-Z]+/.exec(text);
+        if (group &amp;&amp; group.length &gt; 0) {
+            word = group[0];
+
+            icon.style.left = (e.pageX + 20) + 'px';
+            icon.style.top = (e.pageY + 10) + 'px';
+            icon.hidden = false;
+        } else {
+            icon.hidden = true;
+            dict.hidden = true;
+        }
+    };
+})();</code></pre>
+</div>
