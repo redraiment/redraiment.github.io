@@ -2059,6 +2059,10 @@
     <changefreq>always</changefreq>
   </url>
   <url>
+    <loc>http://redraiment.com/data/software/tool-tips/Emacs/generate-sequence.html</loc>
+    <changefreq>always</changefreq>
+  </url>
+  <url>
     <loc>http://redraiment.com/data/software/tool-tips/Emacs/wrap-thing.html</loc>
     <changefreq>always</changefreq>
   </url>

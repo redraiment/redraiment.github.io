@@ -1,0 +1,39 @@
+<div title="替换成连续的数列" class="article-content">
+  <div class="sign">2013-04-28 10:13:54</div>
+  <h1>问题描述</h1>
+  <p>日常开发中有一类编辑动作是生成一组连续的数列。比如要把下面的内容：</p>
+  <blockquote><pre>insert into tbl values ('JOE0');
+insert into tbl values ('JOE0');
+insert into tbl values ('JOE0');
+insert into tbl values ('JOE0');
+insert into tbl values ('JOE0');</pre></blockquote>
+  <p>替换成如下内容：</p>
+  <blockquote><pre>insert into tbl values ('JOE1');
+insert into tbl values ('JOE2');
+insert into tbl values ('JOE3');
+insert into tbl values ('JOE4');
+insert into tbl values ('JOE5');</pre></blockquote>
+  <p>即把0自动替换成一个递增的序列。下面用Emacs抛砖引玉。</p>
+  <h1>相关Emacs特性</h1>
+  <p>大部分编辑器都支持正则表达式替换，允许使用小括号分组并在后面的替换中使用诸如 \1、\2、\3 等向前引用。比如把&lt;h1&gt;和&lt;h2&gt;等标题的内容清空可以使用“\(&lt;h[12]&gt;\)[^&lt;]*”替换成“\1”，其中\(和\)就是捕捉分组，\1则是引用捕捉到的内容。</p>
+  <p>Emacs中不见能支持\1、\2等向前引用的方法，还提供了更高级的功能：“\,”。“\,”后面可以接一句Emacs Lisp表达式，它会把执行的结果替换到目标位置。比如把所有的HTML标签都替换成大写，即&lt;backquote&gt;替换&lt;BACKQUOTE&gt;，可以使用“\(&lt;[^&gt;]+&gt;\)”替换成“\,(upcase \1)”，其中upcase是Emacs Lisp的函数，可以把一个字符串中的小写字母转成大写。</p>
+  <h1>解决方法</h1>
+  <p>使用上述特性解决文章开头的问题，只需使用incf函数即可，它的功能类似C语言中的 ++i。操作如下（其中“|”为光标所在位置）：</p>
+  <ol>
+    <li>将光标移到起始位置</li>
+    <blockquote><pre>|insert into tbl values ('JOE0');
+insert into tbl values ('JOE0');
+insert into tbl values ('JOE0');
+insert into tbl values ('JOE0');
+insert into tbl values ('JOE0');</pre></blockquote>
+    <li>按C-M-%，即执行正则表达式替换</li>
+    <li>根据提示输入要替换的内容“0”，敲回车</li>
+    <li>再输入目标内容“\,(incf count)”，其中count为变量名</li>
+    <li>敲回车，得到如下内容。</li>
+    <blockquote><pre>insert into tbl values ('JOE1');
+insert into tbl values ('JOE2');
+insert into tbl values ('JOE3');
+insert into tbl values ('JOE4');
+insert into tbl values ('JOE5|');</pre></blockquote>
+  </ol>
+</div>
